@@ -1,0 +1,215 @@
+{
+  "id": "6da38ebb-672d-43c4-a3dd-b7aef67b813f",
+  "initialPrompt": "Create a website inspired by https://seif-abdelhamid.github.io/inprogress/",
+  "siteName": "seif-abdelhamid.github.io",
+  "brandBook": {
+    "tones": [
+      "professional",
+      "approachable",
+      "informative",
+      "modern",
+      "clean"
+    ],
+    "designStyle": {
+      "primaryStyle": [
+        "clean",
+        "modern",
+        "minimalist"
+      ],
+      "supportingStyles": [
+        "professional",
+        "approachable",
+        "content-focused"
+      ]
+    },
+    "toneOfVoice": "Professional, approachable, and informative.",
+    "graphicElements": {
+      "icons": "Clean, line-based icons that match the overall modern and approachable aesthetic. Consistent stroke weight and color usage.",
+      "stickers": "",
+      "illustrations": "Abstract or thematic illustrations that complement the brand's playful yet professional tone, potentially using the accent colors."
+    },
+    "designSummary": "**The Digital Portfolio Mosaic: A Fusion of Clean Lines and Dynamic Content**\n\nThe Vision: This design embraces the essence of a modern digital portfolio, prioritizing clarity, visual impact, and intuitive navigation. It's a space where content takes center stage, presented through a structured yet engaging mosaic of elements. The inspiration is a clean, professional layout that balances ample whitespace with strategically placed, vibrant calls to action and rich media.\n\n**Execution Blueprint:**\n1. Grid as a Foundation, Not a Constraint: A flexible 12-column grid will serve as the underlying structure, allowing for both symmetrical and asymmetrical arrangements of content blocks.\n2. Typography as a Hierarchy Guide: Clear typographic scales will define the visual hierarchy, ensuring readability and guiding the user's eye through information.\n3. The 4-Pixel Rhythm: All spacing, padding, and margins will be based on a 4px base unit, ensuring a consistent and harmonious rhythm across the entire design.\n4. Strategic Color Blocking: The primary and accent colors will be used judiciously to highlight key interactive elements and draw attention to important content sections, creating visual interest without overwhelming the user.\n5. Component-Driven Design: UI elements like buttons and containers will adhere to defined styles, featuring rounded corners and subtle shadows for a polished, tactile feel.",
+    "layout": {
+      "grid": {
+        "margins": "Consistent margins around sections and content blocks, typically multiples of the 4px base unit.",
+        "padding": "Generous padding within containers and around content elements, following the 4px base unit.",
+        "compositionApproach": "Flexible 12-column grid with potential for asymmetrical layouts and content overlap.",
+        "spacing": {
+          "gaps": "Base unit: 4px. Standard gaps are 24px (6x base unit).",
+          "rows": "Flexible, based on content",
+          "columns": "12 columns",
+          "compositionApproach": "Not specified"
+        }
+      },
+      "layoutDna": {
+        "contrastSpectrum": "High: Strong contrast between text and background, with vibrant accent colors for CTAs.",
+        "densitySpectrum": "Moderate: Balances content density with ample whitespace.",
+        "textVsImageEmphasis": "Balanced: Both text and imagery are important, with layouts designed to integrate them harmoniously.",
+        "complexitySpectrum": "Moderate: Structured and organized, but with dynamic elements and visual interest.",
+        "gridAlignmentSpectrum": "Flexible Grid: Primarily uses a 12-column grid but allows for asymmetrical arrangements and content overlap.",
+        "negativeSpaceUsage": "Generous: Utilizes whitespace to create breathing room, improve readability, and highlight key elements."
+      },
+      "heroSectionLayout": "**The Dynamic Overlay Intro**\nComposition (Tailwind Spec): Main container (h-screen grid place-items-center p-8). A full-bleed background image or video. A semi-transparent overlay container (absolute inset-0 z-10) with a dark background. Headline 'OMGYRO: Creamy & Savory Halal Platters' (text-white text-7xl font-bold leading-tight) centered within the overlay.\nSignature Hook (Framer Motion Spec): The overlay container uses a `whileInView` animation to fade in with a slight scale-up. The headline text uses `staggerChildren` to animate each letter's opacity and slight vertical movement on load."
+    },
+    "components": {
+      "images": "Layout Role: Integrated within grid structures or as full-bleed backgrounds. | Gallery Type: Card-based grid or carousel layouts, with images often having rounded corners and subtle shadows.",
+      "buttons": "Primary: background-color: #FF6600, color: #FFFFFF, border-radius: 9999px, padding: 12px 24px, box-shadow: rgba(255, 102, 0, 0.25) 0px 2px 8px 0px. Secondary: background-color: transparent, color: #0A0A0A, border: 1px solid #0A0A0A, border-radius: 4px, padding: 12px 24px.",
+      "containers": "Method: Whitespace and subtle borders/shadows. Style: Backgrounds are typically white or light grey, with rounded corners (12px). Sections are separated by generous vertical margins (e.g., 80px)."
+    },
+    "palette": {
+      "colors": {
+        "customColors": [
+          {
+            "name": "accent",
+            "value": "#E55A00"
+          },
+          {
+            "name": "destructive",
+            "value": "#ff0000"
+          },
+          {
+            "name": "destructiveForeground",
+            "value": "#FFFFFF"
+          }
+        ],
+        "background": "#FFFFFF",
+        "secondary": "#0A0A0A",
+        "foreground": "#000000",
+        "secondaryForeground": "#FF6600",
+        "primaryForeground": "#FFFFFF",
+        "primary": "#FF6600"
+      },
+      "paletteUsageGuide": "The primary color (#FF6600) is for key calls to action and brand highlights. The secondary color (#0A0A0A) is used for dark text, backgrounds, or secondary buttons. The background is predominantly white (#FFFFFF) for a clean, airy feel, with black (#000000) for primary text. Accent colors are used sparingly for subtle emphasis.",
+      "paletteAccessibilityNotes": "Ensure sufficient contrast between primary/secondary colors and their foreground counterparts. The primary color (#FF6600) has good contrast against the white background (#FFFFFF). Text on primary buttons (#FFFFFF) is legible. Text on secondary buttons (#FF6600) requires careful consideration against the background it's placed on."
+    },
+    "typography": {
+      "headings": {
+        "font": {
+          "fontFamily": "madefor-display",
+          "role": "headings",
+          "fontJustification": ""
+        },
+        "headingsAccessibilityNotes": "Ensure heading levels (h1, h2, h3, etc.) are used semantically and that font sizes are sufficiently large for readability.",
+        "headingsSimilarFonts": [],
+        "headingsUsageGuide": "Headings should be used for titles and sub-titles to establish clear hierarchy. Font weight and size variations will differentiate levels."
+      },
+      "paragraphs": {
+        "font": {
+          "fontFamily": "open sans",
+          "role": "paragraphs",
+          "fontJustification": ""
+        },
+        "paragraphsUsageGuide": "Paragraphs should be used for body text, descriptions, and longer content blocks. Maintain consistent line height and spacing for readability.",
+        "paragraphsSimilarFonts": [],
+        "paragraphsAccessibilityNotes": "Paragraph font sizes should be at least 16px, with adequate line height (1.5x) and letter spacing to prevent text from feeling cramped."
+      },
+      "customFontFamilies": {},
+      "fontSizes": [
+        {
+          "name": "xs",
+          "size": "0.75rem",
+          "lineHeight": "1",
+          "letterSpacing": "0.05em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "sm",
+          "size": "0.875rem",
+          "lineHeight": "1.25",
+          "letterSpacing": "0.05em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "base",
+          "size": "1rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.025em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "lg",
+          "size": "1.125rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.025em",
+          "fontWeight": "400"
+        },
+        {
+          "name": "xl",
+          "size": "1.25rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.025em",
+          "fontWeight": "500"
+        },
+        {
+          "name": "2xl",
+          "size": "1.5rem",
+          "lineHeight": "1.5",
+          "letterSpacing": "0.025em",
+          "fontWeight": "500"
+        },
+        {
+          "name": "3xl",
+          "size": "1.875rem",
+          "lineHeight": "1.2",
+          "letterSpacing": "0.025em",
+          "fontWeight": "600"
+        },
+        {
+          "name": "4xl",
+          "size": "2.25rem",
+          "lineHeight": "1.2",
+          "letterSpacing": "0.025em",
+          "fontWeight": "600"
+        },
+        {
+          "name": "5xl",
+          "size": "3rem",
+          "lineHeight": "1.1",
+          "letterSpacing": "0.025em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "6xl",
+          "size": "3.75rem",
+          "lineHeight": "1.1",
+          "letterSpacing": "0.025em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "7xl",
+          "size": "4.5rem",
+          "lineHeight": "1.05",
+          "letterSpacing": "0.025em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "8xl",
+          "size": "6rem",
+          "lineHeight": "1.05",
+          "letterSpacing": "0.025em",
+          "fontWeight": "700"
+        },
+        {
+          "name": "9xl",
+          "size": "8rem",
+          "lineHeight": "1.05",
+          "letterSpacing": "0.025em",
+          "fontWeight": "700"
+        }
+      ],
+      "welcomeSectionTypography": {
+        "placement": "Centered or left-aligned within a hero section.",
+        "implementation": "Large, bold headings using 'madefor-display' with a clear typographic hierarchy. Body text using 'open sans' for readability."
+      }
+    },
+    "originImagesUrls": []
+  },
+  "attachments": {
+    "contentImagesUrls": [],
+    "inspirationImagesUrls": [
+      "https://wixmp-c562ea68f10846b458285ce5.wixmp.com/scraped-screenshots/screenshot-1773028935213.webp"
+    ]
+  },
+  "status": "READY",
+  "plan": "\n\n```json\n{\n  \"sections\": [\n    {\n      \"id\": \"overview\",\n      \"title\": \"## Overview\",\n      \"content\": \"This plan creates a restaurant website for OMGYRO, showcasing their halal platters, signature sauces, multiple locations, and brand story with an informational focus.\"\n    },\n    {\n      \"id\": \"key-features\",\n      \"title\": \"## Key features\",\n      \"content\": \"- **View Menu Items**: Browse the restaurant's halal platters and dishes.\\n- **View Location Listing**: See all OMGYRO restaurant locations across New Jersey.\\n- **View Location Details**: Get detailed information about each restaurant location including address and hours.\\n- **View About Information**: Learn about OMGYRO's commitment to halal preparation, signature sauces, and brand story.\\n- **Submit Contact Form**: Send inquiries or feedback to the restaurant.\",\n      \"metadata\": [\n        { \"id\": \"view-menu-items\", \"name\": \"View Menu Items\" },\n        { \"id\": \"view-location-listing\", \"name\": \"View Location Listing\" },\n        { \"id\": \"view-location-details\", \"name\": \"View Location Details\" },\n        { \"id\": \"view-about-information\", \"name\": \"View About Information\" },\n        { \"id\": \"submit-contact-form\", \"name\": \"Submit Contact Form\" }\n      ]\n    },\n    {\n      \"id\": \"structure\",\n      \"title\": \"## Structure\",\n      \"content\": \"- **Header (Reusable)**: Contains the OMGYRO logo and navigation links to all main pages.\\n- **Home Page**: Features hero section with brand messaging, highlights of signature dishes and sauces, and call-to-action for ordering.\\n- **Menu Page**: Displays the full menu of halal platters and dishes with descriptions.\\n- **Locations Page**: Shows all restaurant locations with details including addresses, hours, and contact information for each location.\\n- **About Page**: Presents the OMGYRO story, commitment to halal preparation, signature sauce information, and media features.\\n- **Contact Page**: Provides a contact form for customer inquiries and feedback.\\n- **Footer (Reusable)**: Contains quick links, location information, social media links, and copyright information.\"\n    }\n  ],\n  \"apps\": [\n    {\n      \"id\": \"wix-cms\",\n      \"keyFeatures\": [\n        { \"id\": \"view-menu-items\", \"name\": \"View Menu Items\" },\n        { \"id\": \"view-location-listing\", \"name\": \"View Location Listing\" },\n        { \"id\": \"view-location-details\", \"name\": \"View Location Details\" },\n        { \"id\": \"view-about-information\", \"name\": \"View About Information\" },\n        { \"id\": \"submit-contact-form\", \"name\": \"Submit Contact Form\" }\n      ]\n    }\n  ],\n  \"version\": \"4.0.1\"\n}\n```"
+}
