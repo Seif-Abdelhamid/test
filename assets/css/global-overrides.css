@@ -1,0 +1,3429 @@
+/* ============================================
+   GLOBAL OVERRIDES - COMPLETE DESKTOP/MOBILE SEPARATION
+   ============================================
+   
+   IMPORTANT: Desktop and Mobile styles are COMPLETELY SEPARATED.
+   - Desktop styles: ONLY inside @media (min-width: 769px)
+   - Mobile styles: ONLY inside @media (max-width: 768px)
+   - Base styles: Only truly shared styles (fonts, colors, etc.)
+   
+   Changes to desktop will NOT affect mobile and vice versa.
+   ============================================ */
+
+/* Exuberance Family – loaded from assets/fonts/Exuberance/Web Fonts/ */
+@font-face {
+  font-family: "Exuberance Family";
+  src: url("../fonts/Exuberance/Web Fonts/7af0dcdd1c966d3dacb9ce3d0637c85a.woff2") format("woff2"),
+       url("../fonts/Exuberance/Web Fonts/7af0dcdd1c966d3dacb9ce3d0637c85a.woff") format("woff");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Global Design System */
+:root {
+  --omgyro-orange: #FF6600;
+  --omgyro-black: #000000;
+  --omgyro-white: #FFFFFF;
+  --omgyro-font-heading: "Exuberance Family", sans-serif;
+  --omgyro-font-body: "Exuberance Family", sans-serif;
+
+  --font-base: var(--omgyro-font-body);
+  --font-heading: var(--omgyro-font-heading);
+
+  --color-bg: #ffffff;
+  --color-surface: #f9fafb;
+  --color-text: #121212;
+  --color-muted: #666666;
+  --color-brand: #ff6600;
+  --color-brand-dark: #e55a00;
+  --color-border: #e7e7e7;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Kill ALL white space: no margin/padding on html/body so content touches edges */
+html,
+body {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Sticky footer: body fills viewport, content area grows so footer stays at bottom on short pages (e.g. gift card Check Balance) */
+html {
+  min-height: 100% !important;
+}
+body {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+.site-content {
+  flex: 1 0 auto !important;
+}
+
+/* ============================================
+   HIDE ALL BENTO PLATFORM / UTILITY ELEMENTS
+   These were previously hidden by the Bento theme CSS.
+   Now that we've removed the Bento CSS, hide them explicitly.
+   ============================================ */
+.skip,
+a.skip,
+.sr-only,
+span.sr-only,
+.site-notifications,
+.site-notifications:empty,
+.popup.mfp-hide,
+.popup--store-alert,
+.popup--product,
+.popup--form,
+#popup-newsletter-form,
+#modal-store-alert,
+#modal-product,
+.mfp-hide,
+noscript iframe[src*="googletagmanager"],
+.form-alt,
+.js-form-ajax,
+.form-error-msg,
+.form-success-msg,
+[data-bb-track][aria-hidden="true"] {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Apply Exuberance Family to every element site-wide (header, footer, buttons, links, etc.) */
+*:not(.fa):not(.fas):not(.far):not(.fab):not(.fa-brands):not(.fa-solid):not(.fa-regular):not([class*="fa-"]) {
+  font-family: "Exuberance Family", sans-serif !important;
+}
+
+body,
+button,
+input,
+textarea,
+select,
+nav,
+header,
+footer,
+.btn,
+.btn-brand,
+.btn-brand-alt,
+.menu-item__heading--name,
+.menu-item__details--description,
+.site-header,
+.site-header-desktop-primary,
+.site-header-mobi,
+.site-header-mobi-panel,
+.site-footer,
+.site-footer-desktop,
+.site-footer-desktop-primary,
+.site-footer-desktop-secondary,
+.site-nav-link,
+.site-nav-menu a,
+.modern-btn,
+a,
+span:not(.fa-brands):not(.fa-solid):not(.fa-regular):not([class*="fa-"]),
+label,
+legend {
+  font-family: "Exuberance Family", sans-serif !important;
+}
+
+/* Font Awesome icon protection moved to end of file for max specificity */
+
+/* Fix all text spacing - remove excessive gaps between words and letters */
+* {
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+
+/* Allow letter-spacing only for specific uppercase labels - handled in their specific rules */
+
+body {
+  font-size: 15px;
+  line-height: 1.5 !important;
+  color: var(--color-text);
+  background: var(--color-bg);
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+}
+
+/* Soften load animations across the site */
+.revealable,
+.revealable.revealed {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: opacity 0.3s ease !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-family: var(--font-heading) !important;
+  letter-spacing: 0 !important;
+  margin: 0 0 var(--space-3) 0 !important;
+  color: var(--color-text);
+}
+
+h1,
+.h1 {
+  font-size: clamp(28px, 4vw, 40px);
+}
+
+h2,
+.h2 {
+  font-size: clamp(22px, 3vw, 32px);
+}
+
+h3,
+.h3 {
+  font-size: clamp(18px, 2.4vw, 24px);
+}
+
+p,
+ul,
+ol {
+  margin: 0 0 var(--space-3) 0 !important;
+  color: var(--color-muted);
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  line-height: 1.5 !important;
+  text-align: left !important;
+  text-justify: auto !important;
+}
+
+a {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-brand-dark);
+}
+
+section,
+.content,
+.revealable {
+  margin: 0 !important;
+  padding: var(--space-5) 0 !important;
+  border: none !important;
+  outline: none !important;
+}
+
+/* Seamless background for all content sections */
+body .site-content,
+body .site-content__main,
+body main.site-content__main {
+  background: #ffffff !important;
+}
+
+/* INDEX PAGE: Full width – no white strips on sides, top, or bottom */
+body.index-template .site-content,
+body.index-template .site-content__main,
+body.index-template main.site-content__main {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+body.index-template .why-omg__inner,
+body.index-template .modern-content-wrapper,
+body.index-template .features-modern-grid {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  box-sizing: border-box !important;
+}
+@media (min-width: 769px) {
+  body.index-template .why-omg__inner,
+  body.index-template .modern-content-wrapper,
+  body.index-template .features-modern-grid {
+    padding-left: 40px !important;
+    padding-right: 40px !important;
+  }
+}
+body.index-template footer,
+body.index-template .site-footer,
+body.index-template .site-footer-desktop,
+body.index-template .site-footer-desktop-primary {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Index: keep clear gaps between sections (hero → why-omg, why-omg → content, content blocks) */
+body.index-template .why-omg {
+  padding-bottom: 60px !important;
+}
+body.index-template .modern-content-section {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
+@media (max-width: 768px) {
+  body.index-template .why-omg {
+    padding-bottom: 48px !important;
+  }
+  body.index-template .modern-content-section {
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+}
+body.index-template .site-footer-desktop-primary__container.container {
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+}
+
+/* Remove white space between header and hero */
+.site-content,
+.site-content__main,
+body .site-content,
+body .site-content__main,
+html body .site-content,
+html body .site-content__main {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.site-header + .site-content,
+header + .site-content,
+.site-header + div,
+header + div {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove any gap from the header itself */
+.site-header,
+header.site-header {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.site-header-desktop,
+.site-header-desktop-primary {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Exception: hero section should have NO top/bottom spacing */
+section.hero,
+section#hero,
+.hero,
+#hero {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: #0a0a0a !important;
+  overflow: hidden !important;
+}
+
+/* Exception: sauce detail hero should NOT have black background */
+section.sauce-detail-hero,
+.sauce-detail-hero {
+  background-color: #ffffff !important;
+  background: #ffffff !important;
+}
+
+/* Remove tiny white gap under hero: overlap next section by 2px */
+section.hero,
+section#hero,
+.hero,
+#hero {
+  margin-bottom: -2px !important;
+}
+
+/* Desktop: Full-viewport hero ONLY on homepage; other pages get a smaller hero */
+@media (min-width: 769px) {
+  /* Homepage: hero fills most of viewport */
+  body.index-template section.hero,
+  body.index-template section#hero,
+  body.index-template .hero,
+  body.index-template #hero {
+    height: 85vh !important;
+    min-height: 520px !important;
+    max-height: 85vh !important;
+  }
+  body.index-template .hero .gallery,
+  body.index-template .hero .gallery__item,
+  body.index-template .hero .gallery__item--dimmed,
+  body.index-template #hero .gallery,
+  body.index-template #hero .gallery__item,
+  body.index-template #hero .gallery__item--dimmed {
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+  body.index-template section#hero[style],
+  body.index-template section.hero[style],
+  body.index-template .hero[style],
+  body.index-template #hero[style] {
+    height: 85vh !important;
+    min-height: 520px !important;
+    max-height: 85vh !important;
+  }
+  /* Non-homepage pages with #hero: smaller hero so page content is visible */
+  body:not(.index-template) section.hero,
+  body:not(.index-template) section#hero,
+  body:not(.index-template) .hero,
+  body:not(.index-template) #hero {
+    height: 50vh !important;
+    min-height: 320px !important;
+    max-height: 50vh !important;
+  }
+  body:not(.index-template) .hero .gallery,
+  body:not(.index-template) .hero .gallery__item,
+  body:not(.index-template) .hero .gallery__item--dimmed,
+  body:not(.index-template) #hero .gallery,
+  body:not(.index-template) #hero .gallery__item,
+  body:not(.index-template) #hero .gallery__item--dimmed {
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+}
+
+/* Mobile: full-viewport hero only on homepage; other pages get smaller hero */
+@media (max-width: 768px) {
+  /* Homepage: hero fills viewport */
+  body.index-template section#hero[style],
+  body.index-template section.hero[style],
+  body.index-template .hero[style],
+  body.index-template #hero[style],
+  body.index-template section#hero,
+  body.index-template section.hero,
+  body.index-template .hero,
+  body.index-template #hero {
+    position: relative;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+    margin-bottom: -2px !important;
+    overflow: hidden !important;
+  }
+  body.index-template .hero .gallery,
+  body.index-template .hero .gallery__item,
+  body.index-template .hero .gallery__item--dimmed,
+  body.index-template #hero .gallery,
+  body.index-template #hero .gallery__item,
+  body.index-template #hero .gallery__item--dimmed {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+  /* Non-homepage: smaller hero so content below is visible */
+  body:not(.index-template) section#hero,
+  body:not(.index-template) section.hero,
+  body:not(.index-template) .hero,
+  body:not(.index-template) #hero {
+    position: relative;
+    height: 55vh !important;
+    min-height: 280px !important;
+    max-height: 55vh !important;
+    margin-bottom: -2px !important;
+    overflow: hidden !important;
+  }
+  body:not(.index-template) .hero .gallery,
+  body:not(.index-template) .hero .gallery__item,
+  body:not(.index-template) .hero .gallery__item--dimmed,
+  body:not(.index-template) #hero .gallery,
+  body:not(.index-template) #hero .gallery__item,
+  body:not(.index-template) #hero .gallery__item--dimmed {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+  .hero + section,
+  #hero + section,
+  section.hero + section {
+    border-top: none !important;
+    box-shadow: none !important;
+  }
+  section.hero::after,
+  section#hero::after,
+  .hero::after,
+  #hero::after {
+    display: none !important;
+  }
+}
+
+/* Remove spacing from ALL gallery elements in hero (global) */
+.hero .gallery,
+.hero .gallery--fit,
+.hero .gallery__item,
+.hero .gallery__item--dimmed,
+#hero .gallery,
+#hero .gallery--fit,
+#hero .gallery__item,
+#hero .gallery__item--dimmed,
+section.hero .gallery,
+section.hero .gallery--fit,
+section.hero .gallery__item,
+section.hero .gallery__item--dimmed {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Remove spacing from hero video and overlay (global) */
+.hero video,
+.hero .hero-overlay,
+#hero video,
+#hero .hero-overlay {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* Exception: modern-features section should have minimal top padding */
+section.modern-features.revealable,
+section.modern-features.revealable.revealed {
+  padding-top: 5px !important;
+}
+
+.site-content p,
+.site-content li,
+.site-content .menu-item__details--description,
+.site-content .blog-excerpt {
+  text-align: left !important;
+  text-justify: auto !important;
+  letter-spacing: normal !important;
+  word-spacing: normal !important;
+  line-height: 1.5 !important;
+}
+
+/* Hero: center title, subtitle, and CTA on mobile and desktop */
+.hero .gallery__content,
+#hero .gallery__content {
+  text-align: center !important;
+}
+.hero .gallery__content p,
+.hero .gallery__content .hero-subtitle,
+#hero .gallery__content p,
+#hero .gallery__content .hero-subtitle {
+  text-align: center !important;
+}
+.hero .gallery__content .hero-cta,
+.hero .gallery__content .btn,
+#hero .gallery__content .hero-cta,
+#hero .gallery__content .btn {
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.gallery__item,
+.gallery__item-fallback,
+.image-thumbnail,
+.blog-image,
+.featured-blog-image,
+.blog-post-image {
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+}
+
+/* Buttons */
+.btn,
+.btn-brand,
+.btn-brand-alt {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn-primary,
+.btn-brand {
+  background: var(--color-brand);
+  color: #ffffff !important;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover,
+.btn-brand:hover {
+  background: var(--color-brand-dark);
+  transform: translateY(-1px);
+}
+
+.btn-secondary,
+.btn-brand-alt {
+  background: #ffffff;
+  border-color: var(--color-brand);
+  color: var(--color-brand) !important;
+}
+
+.btn-secondary:hover,
+.btn-brand-alt:hover {
+  background: #fff4ee;
+}
+
+.btn-outline {
+  border-color: var(--color-border);
+  background: transparent;
+  color: var(--color-text);
+}
+
+.btn:focus {
+  outline: 3px solid rgba(255, 102, 0, 0.35);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   NAV BAR - SAME STYLE ON ALL PAGES (matches home)
+   ============================================ */
+
+/* Header styles moved to header-unified.css */
+
+.btn-brand,
+.btn-brand-alt,
+.site-nav-cta.btn-brand,
+.site-nav-cta.btn-brand-alt {
+  background: var(--omgyro-orange) !important;
+  border-color: var(--omgyro-orange) !important;
+  color: var(--omgyro-white) !important;
+}
+
+.btn-brand:hover,
+.btn-brand-alt:hover,
+.site-nav-cta:hover {
+  background: #E55A00 !important;
+  border-color: #E55A00 !important;
+  color: var(--omgyro-white) !important;
+}
+
+/* Order Online button - force orange on ALL headers (site-wide) */
+html body .site-header .site-nav-cta,
+html body .site-header-desktop-primary .site-nav-cta,
+html body .site-header-mobi-panel .site-nav-cta,
+html body .mobi-footer .site-nav-cta {
+  background: #FF6600 !important;
+  background-color: #FF6600 !important;
+  border-color: #FF6600 !important;
+  color: #FFFFFF !important;
+}
+html body .site-header .site-nav-cta:hover,
+html body .site-header-desktop-primary .site-nav-cta:hover,
+html body .site-header-mobi-panel .site-nav-cta:hover,
+html body .mobi-footer .site-nav-cta:hover {
+  background: #E55A00 !important;
+  background-color: #E55A00 !important;
+  border-color: #E55A00 !important;
+  color: #FFFFFF !important;
+}
+
+.btn-brand-alt {
+  background: transparent !important;
+  color: var(--omgyro-orange) !important;
+}
+
+.btn-brand-alt:hover {
+  background: var(--omgyro-orange) !important;
+  color: var(--omgyro-white) !important;
+}
+
+/* Mobile panel and nav toggle styles moved to header-unified.css */
+
+body.nav-open {
+  overflow: hidden !important;
+}
+
+/* Footer - compact, same on all pages */
+html body footer .site-footer-desktop,
+html body .site-footer-desktop,
+html body .site-footer-desktop-primary,
+html body .site-footer-desktop-secondary,
+.site-footer-desktop,
+.site-footer-desktop-primary,
+.site-footer-desktop-secondary {
+  background: var(--omgyro-black) !important;
+  color: var(--omgyro-white) !important;
+}
+
+/* Minimize secondary bar (empty) to save space */
+.site-footer-desktop-secondary,
+html body .site-footer-desktop-secondary {
+  min-height: 0 !important;
+  padding: 0 !important;
+  display: none !important;
+}
+
+html body footer .site-footer-desktop-primary__container,
+.site-footer-desktop-primary__container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 0.5rem !important;
+  padding: 0.75rem 1.25rem !important;
+  max-width: 100% !important;
+}
+
+html body footer .site-footer-desktop-primary .site-nav-menu,
+.site-footer-desktop-primary .site-nav-menu {
+  justify-content: center !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0 1rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+html body footer .site-footer-desktop-primary .site-nav-menu li,
+.site-footer-desktop-primary .site-nav-menu li {
+  margin: 0 !important;
+}
+
+html body footer .site-footer-desktop .site-nav-link,
+.site-footer-desktop .site-nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 0.2rem 0 !important;
+  text-decoration: none !important;
+  transition: color 0.2s ease !important;
+}
+
+html body footer .site-footer-desktop .site-nav-link:hover,
+.site-footer-desktop .site-nav-link:hover {
+  color: var(--omgyro-orange) !important;
+}
+
+/* Social icons - compact pill design */
+html body footer .site-footer-desktop-primary .social-accounts,
+.site-footer-desktop-primary .social-accounts {
+  justify-content: center !important;
+  display: flex !important;
+  gap: 8px !important;
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+html body footer .site-footer-desktop-primary .social-accounts li,
+.site-footer-desktop-primary .social-accounts li {
+  list-style: none !important;
+}
+
+html body footer .site-footer-desktop-primary .social-accounts a,
+.site-footer-desktop-primary .social-accounts a {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 8px !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+}
+
+html body footer .site-footer-desktop-primary .social-accounts a:hover,
+.site-footer-desktop-primary .social-accounts a:hover {
+  background: var(--omgyro-orange) !important;
+  border-color: var(--omgyro-orange) !important;
+  color: #fff !important;
+  transform: scale(1.1) !important;
+}
+
+/* TikTok SVG icon - always visible, inherits color and size */
+.tiktok-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+}
+.tiktok-icon svg {
+  width: 1em !important;
+  height: 1em !important;
+  fill: currentColor !important;
+  vertical-align: middle !important;
+}
+
+/* Force footer social icons to use Font Awesome (override any font inheritance) */
+html body footer .social-accounts .fa-brands,
+html body footer .social-accounts .fa-solid,
+html body .site-footer-desktop .social-accounts span[class*="fa-"] {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+html body footer .social-accounts .fa-brands,
+html body .site-footer-desktop .social-accounts .fa-brands {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+}
+html body footer .social-accounts .fa-solid,
+html body .site-footer-desktop .social-accounts .fa-solid {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+
+/* Icons */
+.nav-icon,
+.feature-icon,
+.icon {
+  font-size: 18px;
+  color: var(--color-brand);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Cards (non-menu pages e.g. catering) */
+.card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.card-title {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.card-desc {
+  color: var(--color-muted);
+}
+
+.card-price {
+  color: var(--color-brand);
+  font-weight: 700;
+}
+
+.download-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  background: #fff7f2;
+  border: 1px solid #ffe1d2;
+  margin-bottom: var(--space-6);
+}
+
+.download-block__preview img {
+  max-width: 320px;
+  width: 100%;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.download-note {
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+/* Form elements */
+input,
+select,
+textarea {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  font-size: 14px;
+}
+
+/* ============================================
+   LOGO STYLING - ALL IN ONE PLACE
+   ============================================ */
+
+/* Desktop Logo - compact */
+.site-logo img,
+.site-header-desktop .site-logo img {
+  max-height: 85px !important;
+  width: auto !important;
+}
+
+@media (max-width: 768px) {
+  /* ============================================
+     MOBILE HEADER - BIG, LOGO BIG AND FULLY INSIDE
+     Panel (site-header-mobi-panel__inner) styles here apply to ALL index pages.
+     Single place to edit panel look: this file + header-unified.css.
+     See MOBILE_PANEL_README.md for behavior (mobile-panel.js) and canonical HTML.
+     ============================================ */
+  
+  /* Header bar: NO overflow hidden so panel can cover full screen */
+  .site-header-mobi,
+  body .site-header-mobi,
+  html body .site-header-mobi {
+    position: relative !important;
+    padding: 14px 20px !important;
+    min-height: 108px !important;
+    height: 108px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Logo: in-flow so it truly centers vertically, BIG */
+  .site-header-mobi .site-logo,
+  body .site-header-mobi .site-logo,
+  html body .site-header-mobi .site-logo {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    width: auto !important;
+    max-width: 260px !important;
+    height: 92px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+  }
+
+  .site-header-mobi .site-logo img,
+  .site-header-mobi .site-logo__btn img,
+  .site-header-mobi .site-logo a img,
+  .site-header-mobi .site-logo > img,
+  body .site-header-mobi .site-logo img,
+  html body .site-header-mobi .site-logo img {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: 100% !important;
+    max-height: 92px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    display: block !important;
+    vertical-align: middle !important;
+  }
+
+  .site-header-mobi .site-logo a,
+  .site-header-mobi .site-logo__btn,
+  .site-header-mobi .site-logo > a,
+  body .site-header-mobi .site-logo a,
+  html body .site-header-mobi .site-logo a {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 92px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Panel must be fixed and full viewport - not clipped by header */
+  body .site-header-mobi .site-header-mobi-panel,
+  html body .site-header-mobi .site-header-mobi-panel,
+  body #SiteHeaderMobilePanel,
+  html body #SiteHeaderMobilePanel {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    z-index: 999999 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  body .site-header-mobi[aria-label],
+  html body .site-header-mobi[aria-label="Navigation Menu Modal"] {
+    justify-content: center !important;
+    align-items: center !important;
+    overflow: visible !important;
+  }
+
+
+  /* Fade logo when nav panel opens/closes */
+  body.nav-open .site-header-mobi .site-logo {
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+  }
+
+  body:not(.nav-open) .site-header-mobi .site-logo {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+  }
+
+  /* Position nav button on the left */
+  body .site-header-mobi .nav-toggle-btn,
+  html body .site-header-mobi .nav-toggle-btn {
+    position: absolute !important;
+    left: 16px !important;
+    right: auto !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 2000 !important;
+    margin: 0 !important;
+    order: -1 !important;
+    flex: 0 0 auto !important;
+  }
+
+  /* Ensure nav panel takes full page - break out of any container */
+  body .site-header-mobi-panel,
+  html body .site-header-mobi-panel,
+  #SiteHeaderMobilePanel {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    max-width: 100vw !important;
+    max-height: 100vh !important;
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+    z-index: 999999 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: translateX(-100%) !important;
+  }
+
+  /* When panel is open, ensure it covers full page */
+  body .site-header-mobi-panel.is-open,
+  html body .site-header-mobi-panel.is-open,
+  body #SiteHeaderMobilePanel.is-open {
+    transform: translateX(0) !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+
+  /* Ensure panel inner also takes full space and layout – same on ALL pages (Contact, Locations, Community, etc.) */
+  body .site-header-mobi-panel__inner,
+  html body .site-header-mobi-panel__inner {
+    width: 100% !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 28px 20px 20px !important;
+    padding-top: 56px !important;
+    box-sizing: border-box !important;
+    overflow-y: visible !important;
+    overflow-x: hidden !important;
+  }
+  /* Panel must scroll so Connect With Us is never cut off */
+  body .site-header-mobi-panel,
+  html body .site-header-mobi-panel,
+  body #SiteHeaderMobilePanel,
+  html body #SiteHeaderMobilePanel {
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  body .site-header-mobi-panel__inner .nav-header,
+  html body .site-header-mobi-panel__inner .nav-header,
+  body .site-header-mobi-panel__inner .site-nav,
+  html body .site-header-mobi-panel__inner .site-nav,
+  body .site-header-mobi-panel__inner .site-social,
+  html body .site-header-mobi-panel__inner .site-social {
+    width: 100% !important;
+    max-width: 100% !important;
+    align-self: center !important;
+  }
+
+  /* Panel close button */
+  body .site-header-mobi-panel .nav-close-btn,
+  html body .site-header-mobi-panel .nav-close-btn {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: rgba(255,255,255,0.06) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    z-index: 10 !important;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease !important;
+  }
+  body .site-header-mobi-panel .nav-close-btn:hover,
+  html body .site-header-mobi-panel .nav-close-btn:hover {
+    background: rgba(255,102,0,0.2) !important;
+    border-color: rgba(255,102,0,0.5) !important;
+    transform: scale(1.05) !important;
+  }
+  body .site-header-mobi-panel .nav-close-btn::before,
+  body .site-header-mobi-panel .nav-close-btn::after,
+  html body .site-header-mobi-panel .nav-close-btn::before,
+  html body .site-header-mobi-panel .nav-close-btn::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    width: 20px !important;
+    height: 2px !important;
+    background: #fff !important;
+    border-radius: 1px !important;
+  }
+  body .site-header-mobi-panel .nav-close-btn::before,
+  html body .site-header-mobi-panel .nav-close-btn::before { transform: translate(-50%,-50%) rotate(45deg) !important; }
+  body .site-header-mobi-panel .nav-close-btn::after,
+  html body .site-header-mobi-panel .nav-close-btn::after { transform: translate(-50%,-50%) rotate(-45deg) !important; }
+  body .site-header-mobi-panel .nav-close-btn:hover::before,
+  body .site-header-mobi-panel .nav-close-btn:hover::after,
+  html body .site-header-mobi-panel .nav-close-btn:hover::before,
+  html body .site-header-mobi-panel .nav-close-btn:hover::after { background: #FF6600 !important; }
+
+  /* Panel nav header: logo + quick actions */
+  body .site-header-mobi-panel .nav-header,
+  html body .site-header-mobi-panel .nav-header {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin-bottom: 36px !important;
+    padding-top: 0 !important;
+  }
+  body .site-header-mobi-panel .nav-header .site-logo,
+  html body .site-header-mobi-panel .nav-header .site-logo {
+    display: block !important;
+    margin-bottom: 28px !important;
+  }
+  body .site-header-mobi-panel .nav-header .site-logo img,
+  html body .site-header-mobi-panel .nav-header .site-logo img {
+    max-width: 160px !important;
+    max-height: 52px !important;
+    height: auto !important;
+    width: auto !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+  body .site-header-mobi-panel .nav-quick-actions,
+  html body .site-header-mobi-panel .nav-quick-actions {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto !important;
+  }
+  body .site-header-mobi-panel .quick-action-card,
+  html body .site-header-mobi-panel .quick-action-card {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: 20px 12px !important;
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+    border-radius: 14px !important;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease !important;
+  }
+  body .site-header-mobi-panel .quick-action-card:hover,
+  html body .site-header-mobi-panel .quick-action-card:hover {
+    background: rgba(255,102,0,0.15) !important;
+    border-color: rgba(255,102,0,0.4) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    box-shadow: 0 8px 24px rgba(255,102,0,0.2) !important;
+  }
+  body .site-header-mobi-panel .quick-action-icon,
+  html body .site-header-mobi-panel .quick-action-icon {
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: linear-gradient(135deg, #FF6600 0%, #ff8533 100%) !important;
+    border-radius: 10px !important;
+    font-size: 20px !important;
+    color: #fff !important;
+    transition: transform 0.25s ease !important;
+  }
+  body .site-header-mobi-panel .quick-action-card:hover .quick-action-icon,
+  html body .site-header-mobi-panel .quick-action-card:hover .quick-action-icon {
+    transform: scale(1.1) !important;
+  }
+  body .site-header-mobi-panel .quick-action-text,
+  body .site-header-mobi-panel .quick-action-label,
+  html body .site-header-mobi-panel .quick-action-text,
+  html body .site-header-mobi-panel .quick-action-label {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #fff !important;
+    text-align: center !important;
+  }
+
+  /* Panel nav sections */
+  body .site-header-mobi-panel .site-nav,
+  html body .site-header-mobi-panel .site-nav {
+    flex: 1 !important;
+    margin-bottom: 28px !important;
+  }
+  body .site-header-mobi-panel .nav-section,
+  html body .site-header-mobi-panel .nav-section {
+    margin-bottom: 28px !important;
+  }
+  body .site-header-mobi-panel .nav-section-title,
+  html body .site-header-mobi-panel .nav-section-title {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.15em !important;
+    text-transform: uppercase !important;
+    color: #FF6600 !important;
+    margin: 0 0 12px !important;
+    padding: 0 12px !important;
+  }
+  body .site-header-mobi-panel .site-nav-menu,
+  html body .site-header-mobi-panel .site-nav-menu {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+    background: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
+  }
+  body .site-header-mobi-panel .site-nav-link,
+  html body .site-header-mobi-panel .site-nav-link {
+    display: flex !important;
+    align-items: center !important;
+    gap: 14px !important;
+    padding: 16px 20px !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+    transition: background 0.25s ease, color 0.25s ease, padding-left 0.25s ease !important;
+  }
+  body .site-header-mobi-panel .site-nav-menu li:last-child .site-nav-link,
+  html body .site-header-mobi-panel .site-nav-menu li:last-child .site-nav-link {
+    border-bottom: none !important;
+  }
+  body .site-header-mobi-panel .site-nav-link:hover,
+  html body .site-header-mobi-panel .site-nav-link:hover {
+    color: #FF6600 !important;
+    background: rgba(255,102,0,0.12) !important;
+    padding-left: 24px !important;
+  }
+  body .site-header-mobi-panel .nav-icon,
+  html body .site-header-mobi-panel .nav-icon {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 16px !important;
+    color: #FF6600 !important;
+    transition: transform 0.25s ease !important;
+  }
+  body .site-header-mobi-panel .site-nav-link:hover .nav-icon,
+  html body .site-header-mobi-panel .site-nav-link:hover .nav-icon {
+    transform: scale(1.1) !important;
+  }
+
+  /* Panel social – CONNECT WITH US + social-accounts: SAME on every page (Contact, Locations, Community, etc.) */
+  html body .site-header-mobi-panel__inner .site-social,
+  html body .site-header-mobi-panel .site-social,
+  html body #SiteHeaderMobilePanel .site-social {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    margin-top: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-bottom: 0 !important;
+    padding-top: 20px !important;
+    padding-bottom: 16px !important;
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    border-top: 1px solid rgba(255,255,255,0.15) !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    box-sizing: border-box !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-section-divider,
+  html body .site-header-mobi-panel .site-social .social-section-divider {
+    width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-section-title,
+  html body .site-header-mobi-panel .site-social .social-section-title {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: rgba(255,255,255,0.7) !important;
+    text-align: center !important;
+    margin: 0 0 14px !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-accounts,
+  html body .site-header-mobi-panel .site-social .social-accounts {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: nowrap !important;
+    gap: 20px !important;
+    list-style: none !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    width: auto !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-accounts li,
+  html body .site-header-mobi-panel .site-social .social-accounts li {
+    margin: 0 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    display: inline-flex !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-accounts a,
+  html body .site-header-mobi-panel .site-social .social-accounts a {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(255,255,255,0.12) !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    border-radius: 50% !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    text-decoration: none !important;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease !important;
+    box-sizing: border-box !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-accounts a .sr-only,
+  html body .site-header-mobi-panel .site-social .social-accounts a .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-accounts a [class*="fa-"],
+  html body .site-header-mobi-panel__inner .site-social .social-accounts a .tiktok-icon,
+  html body .site-header-mobi-panel .site-social .social-accounts a [class*="fa-"],
+  html body .site-header-mobi-panel .site-social .social-accounts a .tiktok-icon {
+    display: inline-block !important;
+    width: 1em !important;
+    height: 1em !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    font-size: 1em !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-accounts a:hover,
+  html body .site-header-mobi-panel .site-social .social-accounts a:hover {
+    background: #FF6600 !important;
+    border-color: #FF6600 !important;
+    color: #fff !important;
+    transform: scale(1.08) !important;
+  }
+  /* Force panel social row centered */
+  html body .site-header-mobi-panel__inner .site-social .social-accounts,
+  html body .site-header-mobi-panel .site-social .social-accounts {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    align-self: center !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social .social-section-divider,
+  html body .site-header-mobi-panel .site-social .social-section-divider {
+    align-self: center !important;
+  }
+  html body .site-header-mobi-panel__inner .site-social,
+  html body .site-header-mobi-panel .site-social {
+    align-items: center !important;
+  }
+
+  .download-block {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  /* Show desktop footer on mobile */
+  .site-footer-desktop {
+    display: block !important;
+  }
+
+  .site-footer-desktop-primary__container {
+    padding: 0.6rem 1rem !important;
+    gap: 0.4rem !important;
+  }
+
+  .site-footer-desktop-primary .site-nav-menu {
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0 0.9rem !important;
+  }
+
+  .site-footer-desktop-primary .social-accounts {
+    margin-bottom: 0 !important;
+  }
+
+  .site-footer-desktop-primary .social-accounts a {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 13px !important;
+  }
+
+  /* Mobile hero: full viewport on homepage only; smaller on other pages */
+  body.index-template .hero,
+  body.index-template #hero,
+  body.index-template section.hero,
+  body.index-template section#hero,
+  body.index-template .hero-section {
+    margin-bottom: -2px !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    height: 100vh !important;
+    min-height: 100vh !important;
+    max-height: 100vh !important;
+  }
+  body:not(.index-template) .hero,
+  body:not(.index-template) #hero,
+  body:not(.index-template) section.hero,
+  body:not(.index-template) section#hero {
+    margin-bottom: -2px !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    height: 55vh !important;
+    min-height: 280px !important;
+    max-height: 55vh !important;
+  }
+
+  .hero .gallery,
+  .hero .gallery__item,
+  .hero .gallery__item--dimmed,
+  #hero .gallery,
+  #hero .gallery__item,
+  #hero .gallery__item--dimmed {
+    height: 100% !important;
+    min-height: 100% !important;
+  }
+
+  /* Remove spacing from hero inner elements - ALL GALLERY ELEMENTS */
+  .hero .gallery,
+  .hero .gallery--fit,
+  .hero .gallery__item,
+  .hero .gallery__item--dimmed,
+  #hero .gallery,
+  #hero .gallery--fit,
+  #hero .gallery__item,
+  #hero .gallery__item--dimmed,
+  section.hero .gallery,
+  section.hero .gallery--fit,
+  section.hero .gallery__item,
+  section.hero .gallery__item--dimmed,
+  section#hero .gallery,
+  section#hero .gallery--fit,
+  section#hero .gallery__item,
+  section#hero .gallery__item--dimmed {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+
+  /* Remove spacing from hero video and overlay */
+  .hero video,
+  .hero .hero-overlay,
+  #hero video,
+  #hero .hero-overlay {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Remove spacing from gallery__content */
+  .hero .gallery__content,
+  #hero .gallery__content {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Home page: Minimize white space between hero and modern-features */
+  .hero + .modern-features,
+  #hero + .modern-features,
+  section.hero + section.modern-features,
+  .hero-section + .modern-features,
+  section[class*="hero"] + section.modern-features {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-top: 5px !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Also target the modern-features section directly */
+  section.modern-features.revealable,
+  section.modern-features.revealable.revealed {
+    margin-top: 0 !important;
+    padding-top: 5px !important;
+  }
+
+
+  /* ============================================
+     MODERN-CONTENT SECTION - DESKTOP ONLY
+     ============================================ */
+  
+  @media (min-width: 769px) {
+    .modern-features .section-label,
+    section.modern-features .section-label,
+    .section-header .section-label,
+    .modern-features .section-header .section-label,
+    .modern-features .section-header span.section-label,
+    body .modern-features .section-label,
+    html body .modern-features .section-label,
+    body .section-label,
+    html body .section-label,
+    body .modern-features .section-header .section-label,
+    html body .modern-features .section-header .section-label {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: 0 !important;
+      font-size: 11px !important;
+      font-weight: 700 !important;
+      letter-spacing: 4px !important;
+      text-transform: uppercase !important;
+      color: var(--color-brand) !important;
+      margin: 0 auto 24px auto !important;
+      padding: 12px 32px !important;
+      background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, rgba(255, 102, 0, 0.05) 100%) !important;
+      border-radius: 50px !important;
+      border: 1.5px solid rgba(255, 102, 0, 0.2) !important;
+      box-shadow: 
+        0 4px 12px rgba(255, 102, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+      position: relative !important;
+      overflow: visible !important;
+      text-align: center !important;
+      text-align-last: center !important;
+      width: auto !important;
+      min-width: fit-content !important;
+      max-width: none !important;
+      line-height: 1.6 !important;
+      height: auto !important;
+      box-sizing: border-box !important;
+    }
+    
+    /* Force text node to be centered */
+    .modern-features .section-label {
+      text-indent: 0 !important;
+    }
+    
+    /* Ensure text inside label is centered - remove any decorative elements */
+    .modern-features .section-label *,
+    .modern-features .section-label span,
+    section.modern-features .section-label *,
+    section.modern-features .section-label span {
+      text-align: center !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      display: inline !important;
+    }
+
+    /* Override any inline styles from index.html - DESKTOP */
+    body .modern-features .section-label,
+    html body .modern-features .section-label,
+    body .section-label,
+    html body .section-label {
+      display: flex !important;
+      width: auto !important;
+      max-width: none !important;
+      gap: 0 !important;
+    }
+    
+    /* Ensure text content is perfectly centered - DESKTOP */
+    .modern-features .section-label {
+      text-align: center !important;
+    }
+
+    /* FORCE REMOVE any ::before or ::after from inline styles - DESKTOP - MAXIMUM SPECIFICITY */
+    .modern-features .section-label::before,
+    section.modern-features .section-label::before,
+    .modern-features .section-header .section-label::before,
+    section.modern-features .section-header .section-label::before,
+    .section-label::before,
+    body .section-label::before,
+    html body .section-label::before,
+    body .modern-features .section-label::before,
+    html body .modern-features .section-label::before,
+    body .modern-features .section-header .section-label::before,
+    html body .modern-features .section-header .section-label::before {
+      display: none !important;
+      content: "" !important;
+      width: 0 !important;
+      height: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      position: absolute !important;
+      left: -9999px !important;
+      background: none !important;
+      border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* FORCE REMOVE any ::after elements - DESKTOP - MAXIMUM SPECIFICITY */
+    .modern-features .section-label::after,
+    section.modern-features .section-label::after,
+    .modern-features .section-header .section-label::after,
+    section.modern-features .section-header .section-label::after,
+    .section-label::after,
+    body .section-label::after,
+    html body .section-label::after,
+    body .modern-features .section-label::after,
+    html body .modern-features .section-label::after,
+    body .modern-features .section-header .section-label::after,
+    html body .modern-features .section-header .section-label::after {
+      display: none !important;
+      content: "" !important;
+      width: 0 !important;
+      height: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      position: absolute !important;
+      left: -9999px !important;
+      background: none !important;
+      border: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* Section title - DESKTOP ONLY */
+    .modern-features .section-title,
+    section.modern-features .section-title {
+      font-size: clamp(38px, 6vw, 60px) !important;
+      font-weight: 800 !important;
+      background: linear-gradient(135deg, #0a0a0a 0%, #2a2a2a 50%, #0a0a0a 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+      background-clip: text !important;
+      margin: 0 auto 20px auto !important;
+      text-align: center !important;
+      line-height: 1.2 !important;
+      letter-spacing: -1.2px !important;
+      position: relative !important;
+      text-shadow: 0 2px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .modern-features .section-title::after {
+      content: '' !important;
+      display: block !important;
+      width: 120px !important;
+      height: 4px !important;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--color-brand) 20%, 
+        var(--color-brand) 80%, 
+        transparent 100%) !important;
+      margin: 24px auto 0 auto !important;
+      border-radius: 4px !important;
+      box-shadow: 0 2px 12px rgba(255, 102, 0, 0.4) !important;
+      animation: titleGlow 2.5s ease-in-out infinite !important;
+    }
+
+    /* --- FEATURES GRID - DESKTOP: 3 COLUMNS FOR 3 CARDS - HORIZONTAL LAYOUT --- */
+    .features-modern-grid,
+    body .features-modern-grid,
+    html body .features-modern-grid,
+    .modern-features .features-modern-grid,
+    body .modern-features .features-modern-grid,
+    html body .modern-features .features-modern-grid,
+    .container .features-modern-grid,
+    body .container .features-modern-grid,
+    .modern-features .container .features-modern-grid {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      grid-template-rows: auto !important;
+      grid-auto-flow: row !important;
+      grid-auto-rows: auto !important;
+      gap: 32px !important;
+      max-width: 1400px !important;
+      margin: 0 auto !important;
+      padding: 0 24px !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: relative !important;
+      align-items: stretch !important;
+      width: 100% !important;
+      flex-direction: unset !important;
+      flex-wrap: unset !important;
+      flex: unset !important;
+    }
+    
+    /* Force override any inline styles or other CSS rules - MAXIMUM SPECIFICITY */
+    body .features-modern-grid[style],
+    html body .features-modern-grid[style],
+    body .modern-features .features-modern-grid[style],
+    html body .modern-features .features-modern-grid[style],
+    body .container .features-modern-grid[style],
+    html body .container .features-modern-grid[style] {
+      grid-template-columns: repeat(3, 1fr) !important;
+      grid-template-rows: auto !important;
+      display: grid !important;
+      grid-auto-flow: row !important;
+      flex-direction: unset !important;
+      flex-wrap: unset !important;
+    }
+    
+    /* Ensure cards are displayed horizontally in the grid - one per column - FORCE */
+    .features-modern-grid > .feature-modern-card,
+    body .features-modern-grid > .feature-modern-card,
+    html body .features-modern-grid > .feature-modern-card {
+      display: block !important;
+      float: none !important;
+      clear: none !important;
+    }
+    
+    .features-modern-grid > .feature-modern-card:nth-child(1) {
+      grid-column: 1 / 2 !important;
+      grid-row: 1 / 2 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    
+    .features-modern-grid > .feature-modern-card:nth-child(2) {
+      grid-column: 2 / 3 !important;
+      grid-row: 1 / 2 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    
+    .features-modern-grid > .feature-modern-card:nth-child(3) {
+      grid-column: 3 / 4 !important;
+      grid-row: 1 / 2 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    
+    /* Override any flexbox or other layout that might be interfering */
+    .features-modern-grid {
+      flex-direction: unset !important;
+      flex-wrap: unset !important;
+      flex: unset !important;
+      flex-basis: unset !important;
+    }
+    
+
+    /* --- FEATURE CARDS - DESKTOP ONLY --- */
+    .feature-modern-card {
+      position: relative !important;
+      display: flex !important;
+      flex-direction: column !important;
+      padding: 42px 38px !important;
+      background: linear-gradient(135deg, #ffffff 0%, #fefefe 100%) !important;
+      border: 2px solid rgba(0, 0, 0, 0.06) !important;
+      border-radius: 24px !important;
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.06),
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+      overflow: hidden !important;
+      min-height: 220px !important;
+      opacity: 1 !important;
+      transform: none !important;
+      cursor: pointer !important;
+      box-sizing: border-box !important;
+    }
+
+    /* Card top accent bar - DESKTOP */
+    .feature-modern-card::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 5px !important;
+      background: linear-gradient(90deg, 
+        var(--color-brand) 0%, 
+        rgba(255, 102, 0, 0.8) 50%,
+        var(--color-brand) 100%) !important;
+      transform: scaleX(0) !important;
+      transform-origin: left !important;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+    }
+
+    /* Card left accent bar - DESKTOP */
+    .feature-modern-card::after {
+      content: '' !important;
+      position: absolute !important;
+      left: 0 !important;
+      top: 0 !important;
+      bottom: 0 !important;
+      width: 5px !important;
+      background: linear-gradient(180deg, 
+        var(--color-brand) 0%, 
+        rgba(255, 102, 0, 0.85) 50%,
+        var(--color-brand) 100%) !important;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+      box-shadow: 0 0 15px rgba(255, 102, 0, 0.3) !important;
+    }
+
+    /* Card hover state - DESKTOP */
+    .feature-modern-card:hover {
+      transform: translateY(-12px) scale(1.01) !important;
+      box-shadow: 
+        0 24px 64px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 102, 0, 0.1),
+        0 0 60px rgba(255, 102, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+      border-color: rgba(255, 102, 0, 0.3) !important;
+      background: linear-gradient(135deg, #ffffff 0%, #fffaf7 100%) !important;
+    }
+
+    .feature-modern-card:hover::before {
+      transform: scaleX(1) !important;
+    }
+
+    .feature-modern-card:hover::after {
+      width: 7px !important;
+      box-shadow: 0 0 30px rgba(255, 102, 0, 0.6) !important;
+    }
+
+    /* Hide old elements - DESKTOP */
+    .feature-modern-card .feature-icon-wrapper,
+    .feature-modern-card .feature-icon,
+    .feature-modern-card .feature-number,
+    .feature-modern-card .feature-line {
+      display: none !important;
+    }
+
+    /* --- CARD CONTENT - DESKTOP ONLY --- */
+    .feature-modern-card .feature-content {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      position: relative !important;
+      z-index: 1 !important;
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+    }
+    
+    /* Ensure h3 has proper width within content - prevent vertical stacking */
+    .feature-modern-card .feature-content h3 {
+      width: 100% !important;
+      min-width: 200px !important;
+      flex-shrink: 0 !important;
+      max-width: 100% !important;
+    }
+
+    /* Card heading - DESKTOP - FIX VERTICAL TEXT STACKING - MAXIMUM OVERRIDE */
+    .feature-modern-card h3,
+    body .feature-modern-card h3,
+    html body .feature-modern-card h3,
+    .feature-content h3,
+    body .feature-content h3,
+    html body .feature-content h3 {
+      font-size: clamp(22px, 3.2vw, 30px) !important;
+      font-weight: 700 !important;
+      color: #0a0a0a !important;
+      margin: 0 0 12px 0 !important;
+      line-height: 1.3 !important;
+      letter-spacing: normal !important;
+      position: relative !important;
+      padding-left: 20px !important;
+      text-align: left !important;
+      width: 100% !important;
+      min-width: 200px !important;
+      max-width: 100% !important;
+      display: block !important;
+      white-space: normal !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
+      writing-mode: horizontal-tb !important;
+      text-transform: none !important;
+      text-orientation: mixed !important;
+      direction: ltr !important;
+      unicode-bidi: normal !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+    
+    /* Force text to display horizontally - override everything */
+    .feature-modern-card h3 *,
+    .feature-modern-card h3 span,
+    .feature-content h3 *,
+    .feature-content h3 span {
+      display: inline !important;
+      white-space: normal !important;
+      writing-mode: horizontal-tb !important;
+      word-break: normal !important;
+      word-wrap: normal !important;
+    }
+
+    .feature-modern-card h3::before {
+      content: '' !important;
+      position: absolute !important;
+      left: 0 !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      width: 5px !important;
+      height: 28px !important;
+      background: linear-gradient(180deg, var(--color-brand), rgba(255, 102, 0, 0.7)) !important;
+      border-radius: 3px !important;
+      box-shadow: 0 0 10px rgba(255, 102, 0, 0.4) !important;
+    }
+
+    /* Card paragraph - DESKTOP */
+    .feature-modern-card p {
+      font-size: 15.5px !important;
+      line-height: 1.5 !important;
+      color: #4a4a4a !important;
+      margin: 0 !important;
+      text-align: left !important;
+      text-justify: auto !important;
+      letter-spacing: normal !important;
+      word-spacing: normal !important;
+      font-weight: 400 !important;
+      width: 100% !important;
+      hyphens: none !important;
+    }
+
+    /* --- CARD ANIMATIONS - DESKTOP --- */
+    .feature-modern-card:nth-child(1) {
+      animation: cardSlideIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both !important;
+    }
+
+    .feature-modern-card:nth-child(2) {
+      animation: cardSlideIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both !important;
+    }
+
+    .feature-modern-card:nth-child(3) {
+      animation: cardSlideIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s both !important;
+    }
+  }
+
+  /* ============================================
+     WHY OMGYRO SECTION - Allow inline design
+     (section styled in index.html for dark theme)
+     ============================================ */
+
+  .why-omg__name::before {
+    display: none !important;
+    content: none !important;
+  }
+
+  html body .site-content .why-omg .why-omg__desc,
+  html body .why-omg .why-omg__desc {
+    text-align: center !important;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* ============================================
+     MODERN-CONTENT SECTION - DESKTOP ONLY
+     ============================================ */
+  
+  @media (min-width: 769px) {
+    /* Modern content section - DESKTOP STRUCTURE - SEAMLESS BLENDED */
+    .modern-content-section {
+      padding: 60px 0 !important;
+      margin: 0 !important;
+      background: #ffffff !important;
+      position: relative !important;
+      overflow: visible !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Remove ALL separation lines and decorative pseudo-elements */
+    .modern-content-section::before,
+    .modern-content-section::after,
+    body .modern-content-section::before,
+    body .modern-content-section::after,
+    html body .modern-content-section::before,
+    html body .modern-content-section::after {
+      display: none !important;
+      content: none !important;
+      width: 0 !important;
+      height: 0 !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
+      background: none !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Remove alternating backgrounds - all sections same white */
+    .modern-content-section:nth-child(even),
+    .modern-content-section:nth-child(odd),
+    body .modern-content-section:nth-child(even),
+    body .modern-content-section:nth-child(odd) {
+      background: #ffffff !important;
+      background-image: none !important;
+      animation: none !important;
+    }
+
+    /* Remove wrapper vertical divider */
+    .modern-content-wrapper::before,
+    body .modern-content-wrapper::before,
+    html body .modern-content-wrapper::before {
+      display: none !important;
+      content: none !important;
+    }
+
+    /* Modern content wrapper - DESKTOP GRID LAYOUT */
+    .modern-content-wrapper {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr !important;
+      gap: 60px !important;
+      max-width: 1400px !important;
+      margin: 0 auto !important;
+      padding: 0 40px !important;
+      align-items: center !important;
+      position: relative !important;
+    }
+
+    /* Modern content image - DESKTOP */
+    .modern-content-image {
+      width: 100% !important;
+      height: 300px !important;
+      min-height: 280px !important;
+      max-height: 320px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      border-radius: 16px !important;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    .modern-content-image .image-container {
+      width: 100% !important;
+      height: 100% !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      background-repeat: no-repeat !important;
+      border-radius: 16px !important;
+      transition: transform 0.5s ease !important;
+    }
+
+    /* Hover zoom on desktop */
+    .modern-content-image:hover .image-container {
+      transform: scale(1.05) !important;
+    }
+
+    /* Modern content text - DESKTOP */
+    .modern-content-text {
+      width: 100% !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+      align-items: flex-start !important;
+    }
+
+    /* Content label - DESKTOP */
+    .content-label {
+      font-size: 10px !important;
+      letter-spacing: 2.5px !important;
+      padding: 8px 20px !important;
+      margin: 0 0 4px 0 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      width: auto !important;
+    }
+
+    /* Content heading - DESKTOP */
+    .modern-content-text h2 {
+      font-size: clamp(26px, 3.2vw, 38px) !important;
+      margin: 0 !important;
+      line-height: 1.3 !important;
+      text-align: left !important;
+      font-weight: 700 !important;
+      color: #0a0a0a !important;
+    }
+
+    /* Content paragraph - DESKTOP */
+    .modern-content-text p {
+      font-size: 14px !important;
+      line-height: 1.7 !important;
+      margin: 0 !important;
+      text-align: left !important;
+      color: #555 !important;
+    }
+
+    /* Modern button - DESKTOP */
+    .modern-btn {
+      padding: 12px 24px !important;
+      font-size: 13px !important;
+      letter-spacing: 1px !important;
+      margin-top: 6px !important;
+    }
+
+    /* Reverse layout - DESKTOP */
+    .modern-content-reverse .modern-content-wrapper {
+      grid-template-columns: 1fr 1fr !important;
+    }
+
+    .modern-content-reverse .modern-content-image {
+      order: 2 !important;
+    }
+
+    .modern-content-reverse .modern-content-text {
+      order: 1 !important;
+    }
+  }
+
+  /* ============================================
+     MODERN-CONTENT SECTION - PREMIUM MOBILE WITH ANIMATIONS
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    /* Modern content section - SEAMLESS BLENDED mobile structure */
+    .modern-content-section {
+      padding: 40px 0 !important;
+      margin: 0 !important;
+      background: #ffffff !important;
+      position: relative !important;
+      overflow: visible !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Remove ALL separation pseudo-elements on mobile */
+    .modern-content-section::before,
+    .modern-content-section::after {
+      display: none !important;
+      content: none !important;
+    }
+
+    /* Remove alternating backgrounds on mobile */
+    .modern-content-section:nth-child(even),
+    .modern-content-section:nth-child(odd) {
+      background: #ffffff !important;
+      background-image: none !important;
+      animation: none !important;
+    }
+
+    /* Modern content wrapper - perfect single column with animations */
+    .modern-content-wrapper {
+      display: flex !important;
+      flex-direction: column !important;
+      grid-template-columns: none !important;
+      gap: 40px !important;
+      padding: 0 20px !important;
+      max-width: 100% !important;
+      align-items: stretch !important;
+      width: 100% !important;
+      position: relative !important;
+    }
+
+    /* Remove divider line on mobile */
+    .modern-content-wrapper::before {
+      display: none !important;
+      content: none !important;
+    }
+
+    /* Reverse order for mobile - text first, then image */
+    .modern-content-reverse .modern-content-wrapper {
+      flex-direction: column !important;
+    }
+
+    .modern-content-reverse .modern-content-image {
+      order: 2 !important;
+    }
+
+    .modern-content-reverse .modern-content-text {
+      order: 1 !important;
+    }
+
+    /* Modern content image - mobile */
+    .modern-content-image {
+      width: 100% !important;
+      height: 200px !important;
+      min-height: 180px !important;
+      max-height: 220px !important;
+      border-radius: 14px !important;
+      order: 2 !important;
+      overflow: hidden !important;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+      position: relative !important;
+    }
+
+    .modern-content-image .image-container {
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 14px !important;
+      background-size: cover !important;
+      background-position: center !important;
+      background-repeat: no-repeat !important;
+      transition: transform 0.4s ease !important;
+      position: relative !important;
+    }
+
+    /* Tap zoom effect on mobile */
+    .modern-content-image:active .image-container {
+      transform: scale(1.03) !important;
+    }
+
+    /* Modern content text - perfectly organized with animations */
+    .modern-content-text {
+      width: 100% !important;
+      order: 1 !important;
+      opacity: 0 !important;
+      transform: translateY(20px) !important;
+      padding: 0 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      transition: opacity 0.6s ease, transform 0.6s ease !important;
+      position: relative !important;
+      z-index: 1 !important;
+    }
+
+    /* Reveal animation for text */
+    .modern-content-section.revealed .modern-content-text,
+    .modern-content-section.revealable.revealed .modern-content-text {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    /* Content label - refined mobile badge with animation */
+    .content-label {
+      font-size: 9px !important;
+      letter-spacing: 2.5px !important;
+      padding: 6px 18px !important;
+      margin: 0 0 4px 0 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      text-align: center !important;
+      width: auto !important;
+      align-self: flex-start !important;
+      animation: fadeInUp 0.6s ease-out 0.2s both !important;
+    }
+
+    /* Content heading - mobile optimized */
+    .modern-content-text h2 {
+      font-size: clamp(22px, 7vw, 30px) !important;
+      margin: 0 !important;
+      line-height: 1.25 !important;
+      text-align: left !important;
+      font-weight: 700 !important;
+      animation: fadeInUp 0.6s ease-out 0.3s both !important;
+    }
+
+    .modern-content-text h2 > span {
+      display: block !important;
+    }
+
+    /* Content paragraph - mobile */
+    .modern-content-text p {
+      font-size: 13px !important;
+      line-height: 1.7 !important;
+      margin: 0 !important;
+      text-align: left !important;
+      text-justify: auto !important;
+      letter-spacing: normal !important;
+      word-spacing: normal !important;
+      color: #555 !important;
+      animation: fadeInUp 0.6s ease-out 0.4s both !important;
+    }
+
+    /* Modern button - full width mobile button with hover effects */
+    .modern-btn {
+      padding: 14px 24px !important;
+      font-size: 12px !important;
+      letter-spacing: 1.5px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      justify-content: center !important;
+      text-align: center !important;
+      margin-top: 6px !important;
+      border-radius: 50px !important;
+      box-shadow: 
+        0 4px 16px rgba(255, 102, 0, 0.2),
+        0 2px 8px rgba(255, 102, 0, 0.1) !important;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      animation: fadeInUp 0.6s ease-out 0.5s both !important;
+    }
+
+    .modern-btn:active {
+      transform: scale(0.97) !important;
+      box-shadow: 
+        0 2px 8px rgba(255, 102, 0, 0.3),
+        0 1px 4px rgba(255, 102, 0, 0.2) !important;
+    }
+
+    /* Touch feedback removed - wrapper divider no longer exists */
+
+    /* Ensure proper spacing between sections - no visible separation */
+    .modern-content-section + .modern-content-section {
+      margin-top: 0 !important;
+      border-top: none !important;
+    }
+  }
+
+  /* Fade in up animation for mobile content */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ============================================
+     MODERN-FEATURES SECTION - MOBILE ONLY
+     ============================================ */
+  
+  @media (max-width: 768px) {
+    /* --- SECTION CONTAINER - MOBILE ONLY --- */
+    .modern-features,
+    section.modern-features {
+      padding: 70px 0 !important;
+      background: transparent !important;
+      margin: 0 !important;
+      position: relative !important;
+      overflow: visible !important;
+    }
+
+    /* Remove background pattern - MOBILE ONLY */
+    .modern-features::before {
+      display: none !important;
+      content: none !important;
+    }
+
+    .modern-features > * {
+      position: relative !important;
+      z-index: 1 !important;
+    }
+
+    .modern-features .section-header {
+      margin: 0 !important;
+      padding: 0 20px !important;
+    }
+
+    .modern-features .section-label {
+      font-size: 10px !important;
+      letter-spacing: 3px !important;
+      padding: 8px 24px !important;
+      text-align: center !important;
+      text-align-last: center !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: auto !important;
+      min-width: fit-content !important;
+      gap: 0 !important;
+      line-height: 1 !important;
+      vertical-align: middle !important;
+    }
+
+    .modern-features .section-title {
+      font-size: clamp(30px, 8vw, 42px) !important;
+      text-align: center !important;
+    }
+
+    .modern-features .section-title::after {
+      width: 80px !important;
+      height: 3px !important;
+      margin: 18px auto 0 auto !important;
+    }
+
+    /* Features grid - MOBILE: VERTICAL STACK - CARDS OVER EACH OTHER - PHONE ONLY */
+    .features-modern-grid,
+    body .features-modern-grid,
+    html body .features-modern-grid,
+    .modern-features .features-modern-grid,
+    body .modern-features .features-modern-grid,
+    html body .modern-features .features-modern-grid,
+    .container .features-modern-grid,
+    body .container .features-modern-grid,
+    .modern-features .container .features-modern-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      flex-wrap: nowrap !important;
+      align-items: stretch !important;
+      justify-content: flex-start !important;
+      gap: 24px !important;
+      padding: 0 20px !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      /* Remove ALL grid properties */
+      grid-template-columns: none !important;
+      grid-template-rows: none !important;
+      grid-auto-flow: unset !important;
+      grid-auto-columns: unset !important;
+      grid-auto-rows: unset !important;
+    }
+    
+    /* Override ANY inline styles on mobile - MUST OVERRIDE INLINE STYLE WITH !important */
+    .features-modern-grid[style],
+    body .features-modern-grid[style],
+    html body .features-modern-grid[style],
+    body .modern-features .features-modern-grid[style],
+    html body .modern-features .features-modern-grid[style],
+    body .container .features-modern-grid[style],
+    html body .container .features-modern-grid[style],
+    .modern-features .features-modern-grid[style],
+    body .modern-features .features-modern-grid[style],
+    .modern-features .container .features-modern-grid[style],
+    html body .modern-features .container .features-modern-grid[style],
+    section.modern-features .features-modern-grid[style],
+    body section.modern-features .features-modern-grid[style],
+    html body section.modern-features .features-modern-grid[style] {
+      display: flex !important;
+      flex-direction: column !important;
+      flex-wrap: nowrap !important;
+      grid-template-columns: none !important;
+      grid-template-rows: none !important;
+      grid-auto-flow: unset !important;
+      grid-auto-columns: unset !important;
+      grid-auto-rows: unset !important;
+    }
+    
+    /* Each card takes full width and stacks vertically - ONE PER ROW */
+    .features-modern-grid > .feature-modern-card,
+    body .features-modern-grid > .feature-modern-card,
+    html body .features-modern-grid > .feature-modern-card {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 0 0 auto !important;
+      flex-basis: auto !important;
+      flex-grow: 0 !important;
+      flex-shrink: 0 !important;
+      display: block !important;
+      margin-bottom: 0 !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      /* Remove ALL grid properties */
+      grid-column: unset !important;
+      grid-row: unset !important;
+      grid-area: unset !important;
+      order: 0 !important;
+    }
+    
+    /* Ensure cards are in correct order vertically */
+    .features-modern-grid > .feature-modern-card:nth-child(1) {
+      order: 1 !important;
+    }
+    
+    .features-modern-grid > .feature-modern-card:nth-child(2) {
+      order: 2 !important;
+    }
+    
+    .features-modern-grid > .feature-modern-card:nth-child(3) {
+      order: 3 !important;
+    }
+
+    .feature-modern-card {
+      padding: 32px 28px !important;
+      min-height: auto !important;
+      border-radius: 20px !important;
+      width: 100% !important;
+    }
+
+    .feature-modern-card:hover {
+      transform: translateY(-8px) scale(1.005) !important;
+    }
+
+    .feature-modern-card .feature-content {
+      gap: 14px !important;
+    }
+
+    /* Card heading - MOBILE - FIX VERTICAL TEXT STACKING */
+    .feature-modern-card h3,
+    body .feature-modern-card h3,
+    html body .feature-modern-card h3,
+    .feature-content h3,
+    body .feature-content h3,
+    html body .feature-content h3 {
+      padding-left: 18px !important;
+      text-align: left !important;
+      font-size: clamp(20px, 5vw, 26px) !important;
+      display: block !important;
+      white-space: normal !important;
+      word-wrap: normal !important;
+      word-break: normal !important;
+      overflow-wrap: normal !important;
+      writing-mode: horizontal-tb !important;
+      text-transform: none !important;
+      letter-spacing: normal !important;
+      width: 100% !important;
+      min-width: 200px !important;
+      max-width: 100% !important;
+      line-height: 1.3 !important;
+      overflow: visible !important;
+      text-overflow: clip !important;
+    }
+    
+    /* Force text to display horizontally on mobile */
+    .feature-modern-card h3 *,
+    .feature-modern-card h3 span,
+    .feature-content h3 *,
+    .feature-content h3 span {
+      display: inline !important;
+      white-space: normal !important;
+      writing-mode: horizontal-tb !important;
+      word-break: normal !important;
+      word-wrap: normal !important;
+    }
+
+    .feature-modern-card h3::before {
+      width: 4px !important;
+      height: 24px !important;
+    }
+
+    .feature-modern-card p {
+      font-size: 15px !important;
+      text-align: left !important;
+      text-justify: auto !important;
+      letter-spacing: normal !important;
+      word-spacing: normal !important;
+    }
+  }
+}
+
+/* Animations for modern-features section */
+@keyframes cardSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.92) rotateX(5deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+  }
+}
+
+@keyframes titleGlow {
+  0%, 100% {
+    opacity: 1;
+    box-shadow: 0 2px 12px rgba(255, 102, 0, 0.4);
+  }
+  50% {
+    opacity: 0.8;
+    box-shadow: 0 2px 20px rgba(255, 102, 0, 0.6);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) translateY(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) translateY(100%) rotate(45deg);
+  }
+}
+
+/* ============================================
+   ARTICLES SECTION - BASE STYLES (BOTH)
+   ============================================ */
+
+/* Base styles that apply to both desktop and mobile */
+
+/* Slideshow animation */
+@keyframes slideShow {
+  0%, 28% {
+    transform: translateX(0);
+  }
+  33%, 61% {
+    transform: translateX(-33.333%);
+  }
+  66%, 94% {
+    transform: translateX(-66.666%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Pause on hover */
+.articles-image-container:hover .articles-grid {
+  animation-play-state: paused !important;
+}
+
+/* ============================================
+   ARTICLES SECTION - DESKTOP ONLY
+   ============================================ */
+
+@media (min-width: 769px) {
+  /* Articles slideshow container - DESKTOP - FIXED STRUCTURE */
+  .articles-image-container {
+    position: relative !important;
+    width: 100% !important;
+    height: 0 !important;
+    padding-bottom: 60% !important; /* Aspect ratio for better image fitting */
+    min-height: 450px !important;
+    max-height: 600px !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
+    background: #ffffff !important;
+  }
+
+  /* Articles grid - DESKTOP - PROPER SLIDESHOW */
+  .articles-grid {
+    display: flex !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 300% !important;
+    height: 100% !important;
+    animation: slideShow 12s infinite !important;
+    transition: transform 0.5s ease-in-out !important;
+  }
+
+  /* Pause on hover - DESKTOP */
+  .articles-image-container:hover .articles-grid {
+    animation-play-state: paused !important;
+  }
+
+  /* Article image link - DESKTOP - PERFECT FIT */
+  .article-image-link {
+    flex: 0 0 33.333% !important;
+    width: 33.333% !important;
+    height: 100% !important;
+    position: relative !important;
+    display: block !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+    transition: none !important;
+    text-decoration: none !important;
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Article image - DESKTOP - PROPER FITTING */
+  .article-image {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-color: #ffffff !important;
+    transition: transform 0.3s ease !important;
+    object-fit: cover !important;
+  }
+
+  /* Hover effect on image - DESKTOP */
+  .article-image-link:hover .article-image {
+    transform: scale(1.05) !important;
+  }
+
+  /* Article overlay - DESKTOP - BETTER POSITIONING */
+  .article-overlay {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.7) 100%) !important;
+    padding: 24px 28px !important;
+    opacity: 1 !important;
+    transition: opacity 0.4s ease !important;
+    z-index: 2 !important;
+  }
+
+  /* Article source text - DESKTOP */
+  .article-overlay .article-source {
+    color: #ffffff !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+  }
+}
+
+.article-source {
+  color: #ffffff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+}
+
+/* Article links container */
+.article-links {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  margin-top: 8px !important;
+}
+
+/* Individual article link */
+.article-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 14px 20px !important;
+  background: linear-gradient(135deg, rgba(255, 102, 0, 0.05) 0%, rgba(255, 102, 0, 0.02) 100%) !important;
+  border: 1.5px solid rgba(255, 102, 0, 0.2) !important;
+  border-radius: 12px !important;
+  text-decoration: none !important;
+  color: var(--color-brand) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.article-link::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  width: 4px !important;
+  background: var(--color-brand) !important;
+  transform: scaleY(0) !important;
+  transition: transform 0.3s ease !important;
+}
+
+.article-link:hover {
+  background: linear-gradient(135deg, rgba(255, 102, 0, 0.1) 0%, rgba(255, 102, 0, 0.05) 100%) !important;
+  border-color: var(--color-brand) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 4px 16px rgba(255, 102, 0, 0.15) !important;
+}
+
+.article-link:hover::before {
+  transform: scaleY(1) !important;
+}
+
+.article-link-icon {
+  font-size: 18px !important;
+  flex-shrink: 0 !important;
+}
+
+.article-link-text {
+  flex: 1 !important;
+  text-align: left !important;
+}
+
+.article-link-arrow {
+  font-size: 18px !important;
+  transition: transform 0.3s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.article-link:hover .article-link-arrow {
+  transform: translateX(4px) !important;
+}
+
+/* ============================================
+   ARTICLES SECTION - MOBILE ONLY
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* Articles slideshow container - MOBILE */
+  .articles-image-container {
+    position: relative !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 350px !important;
+    overflow: hidden !important;
+    border-radius: 20px !important;
+  }
+
+  /* Articles grid - MOBILE */
+  .articles-grid {
+    display: flex !important;
+    width: 300% !important;
+    height: 100% !important;
+    min-height: 350px !important;
+    animation: slideShow 12s infinite !important;
+    position: relative !important;
+  }
+
+  /* Pause on hover - MOBILE (if touch device supports it) */
+  .articles-image-container:hover .articles-grid {
+    animation-play-state: paused !important;
+  }
+
+  /* Article image link - MOBILE */
+  .article-image-link {
+    flex: 0 0 33.333% !important;
+    width: 33.333% !important;
+    height: 100% !important;
+    min-height: 350px !important;
+    position: relative !important;
+    display: block !important;
+    border-radius: 0 !important;
+    overflow: hidden !important;
+    box-shadow: none !important;
+    transition: none !important;
+    text-decoration: none !important;
+    background: #ffffff !important;
+    margin-right: 0 !important;
+  }
+
+  /* Article image - MOBILE */
+  .article-image {
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 350px !important;
+    background-size: contain !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-color: #ffffff !important;
+    transition: none !important;
+  }
+
+  /* Article overlay - MOBILE */
+  .article-overlay {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.6) 100%) !important;
+    padding: 20px !important;
+    opacity: 1 !important;
+    transition: opacity 0.4s ease !important;
+  }
+
+  /* Article links container - MOBILE */
+  .article-links {
+    gap: 10px !important;
+  }
+
+  /* Article link - MOBILE */
+  .article-link {
+    padding: 12px 16px !important;
+    font-size: 13px !important;
+  }
+}
+
+/* Remove ALL ::before and ::after from header and footer */
+.site-header::before,
+.site-header::after,
+.site-header-desktop::before,
+.site-header-desktop::after,
+.site-header-desktop-primary::before,
+.site-header-desktop-primary::after,
+.site-header-desktop-secondary::before,
+.site-header-desktop-secondary::after,
+.site-header-mobi::before,
+.site-header-mobi::after,
+.site-header-mobi-panel::before,
+.site-header-mobi-panel::after,
+.site-header-mobi-panel .site-nav-link::before,
+.site-header-mobi-panel .site-nav-link::after,
+.site-header-mobi-panel .social-accounts a::before,
+.site-nav::before,
+.site-nav::after,
+.nav-close-btn::before,
+.nav-close-btn::after,
+.site-footer::before,
+.site-footer::after,
+.site-footer-desktop::before,
+.site-footer-desktop::after,
+.site-footer-desktop-primary::before,
+.site-footer-desktop-primary::after,
+.site-footer-desktop-secondary::before,
+.site-footer-desktop-secondary::after,
+footer::before,
+footer::after {
+  content: none !important;
+  display: none !important;
+  background: none !important;
+  border: none !important;
+}
+
+/* Close button fallback when ::before/::after removed */
+.nav-close-btn {
+  font-size: 24px !important;
+  line-height: 1 !important;
+  color: var(--omgyro-white) !important;
+}
+.nav-close-btn::after {
+  content: "×" !important;
+  display: block !important;
+  font-size: 28px !important;
+  line-height: 1 !important;
+}
+
+/* Force Exuberance Family on ALL buttons site-wide (overrides Bento/theme) */
+html body button,
+html body input[type="button"],
+html body input[type="submit"],
+html body input[type="reset"],
+html body .btn,
+html body .btn-brand,
+html body .btn-brand-alt,
+html body .btn-primary,
+html body .btn-secondary,
+html body .btn-outline,
+html body .btn-block,
+html body .site-nav-cta,
+html body .site-nav-cta.btn-brand,
+html body .site-nav-cta.btn-brand-alt,
+html body .modern-btn,
+html body .btn-tabs,
+html body .nav-toggle-btn,
+html body .nav-close-btn,
+html body .location-btn,
+html body a.btn,
+html body a.btn-brand,
+html body a.btn-brand-alt,
+html body a.site-nav-cta,
+html body .location-buttons .btn,
+html body .location-buttons button,
+html body [class*="btn"] {
+  font-family: "Exuberance Family", sans-serif !important;
+}
+
+/* ============================================
+   LOCATIONS PAGE: map visible and proper on mobile
+   ============================================ */
+@media (max-width: 768px) {
+  .locations-page .map-wrapper,
+  html body .locations-page .map-wrapper {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 380px !important;
+    flex: 1 1 auto !important;
+    width: 100% !important;
+  }
+  .locations-page .map-container,
+  html body .locations-page .map-container {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 380px !important;
+    height: auto !important;
+    width: 100% !important;
+    overflow: visible !important;
+    padding-bottom: 28px !important;
+    box-sizing: border-box !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.08) !important;
+    border-radius: 16px !important;
+  }
+  .locations-page .map-container::before,
+  .locations-page .map-container::after,
+  html body .locations-page .map-container::before,
+  html body .locations-page .map-container::after {
+    display: none !important;
+  }
+  .locations-page .map-inner,
+  .locations-page #map,
+  html body .locations-page .map-inner,
+  html body .locations-page #map {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 380px !important;
+    height: 380px !important;
+    width: 100% !important;
+    border-radius: 16px !important;
+  }
+  .locations-page .map-container .leaflet-container,
+  html body .locations-page .map-container .leaflet-container {
+    border-radius: 16px !important;
+  }
+  .locations-page .map-attribution,
+  html body .locations-page .map-attribution {
+    bottom: 36px !important;
+    right: 8px !important;
+    left: auto !important;
+    font-size: 10px !important;
+    padding: 4px 8px !important;
+  }
+  .locations-page .map-container .leaflet-control-zoom,
+  html body .locations-page .map-container .leaflet-control-zoom {
+    top: auto !important;
+    bottom: 36px !important;
+    left: 8px !important;
+    right: auto !important;
+  }
+  .locations-page .map-container .leaflet-control-attribution,
+  html body .locations-page .map-container .leaflet-control-attribution {
+    font-size: 9px !important;
+    padding: 2px 5px !important;
+    line-height: 1.2 !important;
+  }
+}
+
+/* ============================================
+   NUCLEAR OVERRIDE: REMOVE ALL SECTION SEPARATION LINES
+   This must be at the END of the file for maximum cascade priority.
+   Targets every possible source of borders/lines between sections.
+   ============================================ */
+
+/* Remove ALL borders, outlines, box-shadows on EVERY section – EXCEPT hero sections (they keep dark bg / video / image) */
+html body .site-content section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero),
+html body .site-content__main section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero),
+html body main section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero),
+html body .modern-content-section,
+html body section.modern-content-section,
+html body .site-content .modern-content-section,
+html body .site-content__main .modern-content-section,
+html body main .modern-content-section,
+html body section.modern-content-section.revealable,
+html body section.modern-content-section.revealable.revealed,
+html body section.modern-content-section.modern-content-reverse,
+html body section.modern-content-section.modern-content-reverse.revealable {
+  border: 0 none !important;
+  border-top: 0 none !important;
+  border-bottom: 0 none !important;
+  border-left: 0 none !important;
+  border-right: 0 none !important;
+  outline: 0 none !important;
+  box-shadow: none !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  animation: none !important;
+  overflow: visible !important;
+}
+
+/* Hero sections: keep dark background so video/image/overlay show – do NOT force white */
+html body main section#hero,
+html body main section.hero,
+html body main section.menu-hero,
+html body main section.r-hero,
+html body main section.community-hero,
+html body .site-content__main section#hero,
+html body .site-content__main section.hero,
+html body .site-content__main section.menu-hero,
+html body .site-content__main section.r-hero,
+html body .site-content__main section.community-hero,
+html body .site-content section#hero,
+html body .site-content section.hero {
+  background: #0a0a0a !important;
+  background-color: #0a0a0a !important;
+  background-image: none !important;
+  border: 0 none !important;
+  box-shadow: none !important;
+}
+
+/* Exception: sauce detail hero should be white */
+html body.sauce-detail-page .sauce-detail-hero,
+html body .sauce-detail-hero {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+/* Clear gap between hero and next section (not zero – keeps visual separation) */
+html body #hero + section,
+html body .hero + section,
+html body .menu-hero + section,
+html body .r-hero + section,
+html body .community-hero + section,
+html body section#hero + section,
+html body section.hero + section {
+  margin-top: 0 !important;
+  padding-top: 56px !important;
+  border-top: none !important;
+}
+@media (max-width: 768px) {
+  html body #hero + section,
+  html body .hero + section,
+  html body .menu-hero + section,
+  html body .r-hero + section,
+  html body .community-hero + section,
+  html body section#hero + section,
+  html body section.hero + section {
+    padding-top: 40px !important;
+  }
+}
+
+/* Remove ALL ::before and ::after on sections – EXCEPT hero sections (they use overlays) */
+html body .site-content section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::before,
+html body .site-content section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::after,
+html body .site-content__main section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::before,
+html body .site-content__main section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::after,
+html body main section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::before,
+html body main section:not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::after,
+html body .modern-content-section::before,
+html body .modern-content-section::after,
+html body section.modern-content-section::before,
+html body section.modern-content-section::after,
+html body section.modern-content-section.revealable::before,
+html body section.modern-content-section.revealable::after,
+html body section.modern-content-section.revealable.revealed::before,
+html body section.modern-content-section.revealable.revealed::after,
+html body section.modern-content-section.modern-content-reverse::before,
+html body section.modern-content-section.modern-content-reverse::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  border: 0 none !important;
+  background: none !important;
+  background-image: none !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  position: absolute !important;
+  left: -99999px !important;
+  top: -99999px !important;
+  pointer-events: none !important;
+}
+
+/* Remove wrapper divider lines */
+html body .modern-content-wrapper::before,
+html body .modern-content-wrapper::after,
+html body .site-content .modern-content-wrapper::before,
+html body .site-content .modern-content-wrapper::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: none !important;
+  opacity: 0 !important;
+}
+
+/* Remove ALL alternating section backgrounds */
+html body .modern-content-section:nth-child(1),
+html body .modern-content-section:nth-child(2),
+html body .modern-content-section:nth-child(3),
+html body .modern-content-section:nth-child(4),
+html body .modern-content-section:nth-child(5),
+html body .modern-content-section:nth-child(odd),
+html body .modern-content-section:nth-child(even),
+html body .modern-content-section:first-child,
+html body .modern-content-section:last-child {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  animation: none !important;
+  border: 0 none !important;
+  box-shadow: none !important;
+}
+
+/* Remove Bento theme separator pseudo-elements */
+html body .c-split::before,
+html body .c-split::after,
+html body .c-one-col--text::before,
+html body .c-one-col--text::after,
+html body section + section::before,
+html body .revealable + .revealable::before {
+  display: none !important;
+  content: none !important;
+}
+
+/* Ensure the main content area has no lines */
+html body .site-content,
+html body .site-content__main,
+html body main.site-content__main {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border: 0 none !important;
+  box-shadow: none !important;
+  outline: 0 none !important;
+}
+
+/* Remove any hr elements */
+html body .site-content hr,
+html body .site-content__main hr,
+html body main hr {
+  display: none !important;
+}
+
+/* Universal catch-all: remove borders from content sections (exclude .why-omg + .hero) */
+html body main > section:not(.why-omg):not(.hero),
+html body main > section + section:not(.why-omg):not(.hero),
+html body .site-content__main > section:not(.why-omg):not(.hero),
+html body .site-content__main > section + section:not(.why-omg):not(.hero) {
+  border: 0 none !important;
+  border-top: 0 none !important;
+  border-bottom: 0 none !important;
+  box-shadow: none !important;
+  outline: 0 none !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+html body main > section:not(.why-omg):not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::before,
+html body main > section:not(.why-omg):not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::after,
+html body .site-content__main > section:not(.why-omg):not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::before,
+html body .site-content__main > section:not(.why-omg):not(#hero):not(.hero):not(.menu-hero):not(.r-hero):not(.community-hero)::after {
+  display: none !important;
+  content: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  opacity: 0 !important;
+  background: none !important;
+  border: 0 none !important;
+  box-shadow: none !important;
+}
+
+/* Why OMGYRO - dark theme (styled in index.html) - no override */
+
+/* Header styles consolidated in header-unified.css */
+
+/* ============================================
+   FONT AWESOME ICON FIX - ABSOLUTE LAST RULE
+   This MUST be the last thing in the file.
+   ============================================ */
+html body .fa-solid,
+html body .fas,
+html body i.fa-solid,
+html body span.fa-solid,
+html body .fa-solid[class],
+html body i[class*="fa-solid"],
+html body span[class*="fa-solid"],
+html body .social-accounts .fa-solid,
+html body .social-accounts span.fa-solid,
+html body .nav-icon .fa-solid,
+html body .nav-icon i.fa-solid,
+html body .why-omg .fa-solid,
+html body .why-omg i.fa-solid {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+
+html body .fa-brands,
+html body .fab,
+html body i.fa-brands,
+html body span.fa-brands,
+html body .fa-brands[class],
+html body i[class*="fa-brands"],
+html body span[class*="fa-brands"],
+html body .social-accounts .fa-brands,
+html body .social-accounts span.fa-brands,
+html body footer .fa-brands,
+html body footer span.fa-brands,
+html body .site-footer-desktop .fa-brands,
+html body .site-footer-desktop span.fa-brands,
+html body .site-header-mobi-panel .fa-brands,
+html body .site-header-mobi-panel span.fa-brands {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+
+html body .fa-regular,
+html body .far,
+html body i.fa-regular,
+html body span.fa-regular {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 400 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  font-style: normal !important;
+  font-variant: normal !important;
+  text-rendering: auto !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+
+/* REWARDS PAGE – no white main; force pics, bg images, icons (beat any other rule) */
+html body.rewards-page {
+  background: #0a0a0a !important;
+  background-color: #0a0a0a !important;
+}
+html body.rewards-page .site-content,
+html body.rewards-page .site-content__main,
+html body.rewards-page main.site-content__main {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+body.rewards-page .r-hero {
+  background-color: #0a0a0a !important;
+  background-image: linear-gradient(135deg, rgba(10,10,10,0.88) 0%, rgba(26,15,8,0.85) 40%, rgba(45,24,16,0.88) 100%),
+    url('https://images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/71900mamouns_156_V3_Edited38bb.jpg?w=1400&fit=crop&auto=compress,format&cs=origin&h=900') !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+  background-repeat: no-repeat, no-repeat !important;
+}
+body.rewards-page .r-oneplace {
+  background-color: #0a0a0a !important;
+  background-image: linear-gradient(135deg, rgba(10,10,10,0.92) 0%, rgba(20,12,8,0.9) 100%),
+    url('https://images.unsplash.com/photo-1529006557810-274b9b2fc783?w=1200&q=80') !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+  background-repeat: no-repeat, no-repeat !important;
+}
+body.rewards-page .r-benefits__icon,
+body.rewards-page .r-benefits__icon i {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 72px !important;
+  height: 72px !important;
+  font-size: 1.75rem !important;
+  color: #fff !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+body.rewards-page .r-points__visual {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 0.85 !important;
+  max-width: 120px !important;
+  height: auto !important;
+}
+
+/* Rewards page – footer visible and SAME layout as other pages (compact, centered, black) */
+html body.rewards-page footer,
+html body.rewards-page footer.site-footer {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background: var(--omgyro-black) !important;
+  background-color: var(--omgyro-black) !important;
+  color: var(--omgyro-white) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html body.rewards-page footer .site-footer-desktop,
+html body.rewards-page footer .site-footer-desktop-primary {
+  display: block !important;
+  visibility: visible !important;
+  background: var(--omgyro-black) !important;
+  background-color: var(--omgyro-black) !important;
+  color: var(--omgyro-white) !important;
+}
+html body.rewards-page footer .site-footer-desktop-primary__container,
+html body.rewards-page footer .site-footer-desktop-primary__container.container {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: 0.5rem !important;
+  padding: 0.75rem 1.25rem !important;
+  max-width: 100% !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+html body.rewards-page footer .site-footer-desktop-primary .site-nav-menu {
+  justify-content: center !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0 1rem !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+html body.rewards-page footer .site-footer-desktop-primary .site-nav-menu li {
+  margin: 0 !important;
+}
+html body.rewards-page footer .site-footer-desktop .site-nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  padding: 0.2rem 0 !important;
+  text-decoration: none !important;
+}
+html body.rewards-page footer .site-footer-desktop .site-nav-link:hover {
+  color: var(--omgyro-orange) !important;
+}
+html body.rewards-page footer .site-footer-desktop-secondary {
+  display: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+}

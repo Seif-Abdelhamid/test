@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/api/create-payment-link", "destination": "/api/create-payment-link.js" }
+  ]
+}
