@@ -10,15 +10,7 @@
    Changes to desktop will NOT affect mobile and vice versa.
    ============================================ */
 
-/* Exuberance Family – loaded from assets/fonts/Exuberance/Web Fonts/ */
-@font-face {
-  font-family: "Exuberance Family";
-  src: url("../fonts/Exuberance/Web Fonts/7af0dcdd1c966d3dacb9ce3d0637c85a.woff2") format("woff2"),
-       url("../fonts/Exuberance/Web Fonts/7af0dcdd1c966d3dacb9ce3d0637c85a.woff") format("woff");
-  font-weight: 400 700;
-  font-style: normal;
-  font-display: swap;
-}
+/* Exuberance Family – not available, Poppins used as fallback */
 
 /* Global Design System */
 :root {
