@@ -9,8 +9,15 @@ export default function HtmlPage() {
 
   useEffect(() => {
     const path = location.pathname.replace(/^\/+|\/+$/g, '');
-    const filePath = path ? `/public/${path}/index.html` : '/public/index.html';
-    const loader = pages[filePath];
+
+    // Try exact path first, then fall back to index.html inside that folder
+    const candidates = [
+      `/public/${path}/index.html`,
+      `/public/${path}.html`,
+    ];
+
+    const filePath = candidates.find((p) => pages[p]);
+    const loader = filePath ? pages[filePath] : undefined;
 
     if (!loader) return;
 
