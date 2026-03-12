@@ -23,13 +23,13 @@
 		<meta property="og:type" content="article">
 		<meta property="og:url" content="index.html">
 			<meta property="og:description" content="OMGyro is New York's Oldest Falafel Shop. Serving the best Halal Food since 1971.">
-			<meta property="og:image" content="../../../../images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited38bb.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;h=600">
+			<meta property="og:image" content="https://images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited38bb.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;h=600">
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:title" content="OMGyro's Hot Sauce | OMGyro | Halal Restaurant in NJ">
 			<meta name="twitter:description" content="OMGyro is New York's Oldest Falafel Shop. Serving the best Halal Food since 1971.">
 			<meta name="twitter:site" content="@mamounsusa">
 			<meta name="twitter:creator" content="@mamounsusa">
-			<meta name="twitter:image" content="../../../../images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited38bb.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;h=600">
+			<meta name="twitter:image" content="https://images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited38bb.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;h=600">
 
 <link rel="preconnect" href="https://www.gstatic.com/" crossorigin>
 	<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
@@ -72,179 +72,79 @@
 			height: 0 !important;
 			overflow: hidden !important;
 		}
+	/* GLOBAL OVERRIDES: unified typography, spacing, imagery, and nav */
 		
-			    	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet" type="text/css">
-			    </style>
-			</noscript>
-	
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="../../../assets/css/global-overrides.css" />
-	<!-- OMGYRO Custom Theme: Black, Orange, White -->
-	<!-- Note: Custom CSS must come after external stylesheet to override -->
-	<style>
-		:root {
-			--omgyro-orange: #FF6600;
-			--omgyro-black: #000000;
-			--omgyro-white: #FFFFFF;
-			--omgyro-font-heading: 'Exuberance Family', sans-serif;
-			--omgyro-font-body: 'Exuberance Family', sans-serif;
-		}
-		
-		/* OMGyro Typography: Apply custom fonts throughout the site */
-		body {
+		body, button, input, textarea, select, nav,
+		.btn, .btn-brand, .btn-brand-alt {
 			font-family: var(--omgyro-font-body) !important;
 		}
-		
 		h1, h2, h3, h4, h5, h6,
 		.h1, .h2, .h3, .h4, .h5, .h6 {
-			font-family: var(--omgyro-font-heading) !important;
-			letter-spacing: 0.5px;
-		}
-		
-		/* Custom Scrollbar Styling - OMGyro Theme */
-		::-webkit-scrollbar {
-			width: 12px;
-			height: 12px;
-		}
-		
-		::-webkit-scrollbar-track {
-			background: #f1f1f1;
-			border-radius: 10px;
-		}
-		
-		::-webkit-scrollbar-thumb {
-			background: linear-gradient(180deg, var(--omgyro-orange) 0%, #E55A00 100%);
-			border-radius: 10px;
-			border: 2px solid #f1f1f1;
-		}
-		
-		::-webkit-scrollbar-thumb:hover {
-			background: linear-gradient(180deg, #E55A00 0%, #CC4400 100%);
-		}
-		
-		::-webkit-scrollbar-corner {
-			background: #f1f1f1;
-		}
-		
-		* {
-			scrollbar-width: thin;
-			scrollbar-color: var(--omgyro-orange) #f1f1f1;
-		}
-		
-		body {
-			scrollbar-width: thin;
-			scrollbar-color: var(--omgyro-orange) #f1f1f1;
-		}
-		
-		/* Buttons - Orange */
-		.site-content .btn-brand,
-		.site-content .btn-brand-alt {
-			background-color: var(--omgyro-orange) !important;
-			border-color: var(--omgyro-orange) !important;
-			color: var(--omgyro-white) !important;
+			font-family: var(--omgyro-font-body) !important;
+			letter-spacing: 0 !important;
 		}
 
-		.site-content .btn-brand:hover,
-		.site-content .btn-brand-alt:hover,
-		.site-content .btn-brand:focus,
-		.site-content .btn-brand-alt:focus {
-			background-color: #E55A00 !important;
-			border-color: #E55A00 !important;
-			color: var(--omgyro-white) !important;
-		}
-		
-		.site-content .btn-brand-alt {
-			background-color: transparent !important;
-			border-color: var(--omgyro-orange) !important;
-			color: var(--omgyro-orange) !important;
+		.site-content p,
+		.site-content li,
+		.site-content .menu-item__details--description,
+		.site-content .blog-excerpt {
+			text-align: justify !important;
+			text-justify: inter-word !important;
 		}
 
-		.site-content .btn-brand-alt:hover,
-		.site-content .btn-brand-alt:focus {
-			background-color: var(--omgyro-orange) !important;
-			color: var(--omgyro-white) !important;
-		}
-		
-		/* Links */
-		a {
-			color: var(--omgyro-orange) !important;
-		}
-		
-		a:hover,
-		a:focus {
-			color: #E55A00 !important;
-		}
-		
-		/* Text Colors - Update brown text to black */
-		span[style*="color: rgb(78, 53, 33)"],
-		span[style*="color:rgb(78, 53, 33)"] {
-			color: var(--omgyro-black) !important;
-		}
-		
-		/* Footer */
-		.site-footer-desktop,
-		.site-footer-desktop-primary,
-		.site-footer-desktop-secondary {
-			background-color: var(--omgyro-black) !important;
-			color: var(--omgyro-white) !important;
+		section,
+		.content,
+		.revealable {
+			margin-top: 0 !important;
+			margin-bottom: 0 !important;
+			padding-top: 30px !important;
+			padding-bottom: 30px !important;
 		}
 
-		/* Center Footer Content */
-		.site-footer-desktop-primary__container {
-			display: flex !important;
-			flex-direction: column !important;
-			align-items: center !important;
-			text-align: center !important;
+		img {
+			object-fit: contain !important;
 		}
 
-		.site-footer-desktop-primary .site-nav-menu {
-			justify-content: center !important;
-			display: flex !important;
-			flex-wrap: wrap !important;
+		.gallery__item,
+		.gallery__item-fallback,
+		.image-thumbnail,
+		.blog-image,
+		.featured-blog-image,
+		.blog-post-image {
+			background-size: contain !important;
+			background-repeat: no-repeat !important;
+			background-position: center !important;
 		}
 
-		.site-footer-desktop-primary .social-accounts {
-			justify-content: center !important;
-			display: flex !important;
-		}
-		
-		.site-footer-desktop .site-nav-link {
-			color: var(--omgyro-white) !important;
-		}
-		
-		.site-footer-desktop .site-nav-link:hover {
-			color: var(--omgyro-orange) !important;
-		}
-		
-		/* Social Icons */
-		.social-accounts a {
-			color: var(--omgyro-white) !important;
-		}
-		
-		.social-accounts a:hover {
-			color: var(--omgyro-orange) !important;
-		}
-		
-		/* Mobile Footer */
-		.mobi-footer {
-			background-color: var(--omgyro-black) !important;
-		}
-		
-		/* Headings */
-		.h1, .h2, h1, h2 {
-			color: var(--omgyro-black) !important;
+		.site-header-desktop .site-logo img {
+			max-height: 80px !important;
+			width: auto !important;
 		}
 
-		/* Skip Link */
-		.skip {
-			background-color: var(--omgyro-orange) !important;
-			color: var(--omgyro-white) !important;
+		.site-header::before,
+		.site-header::after,
+		.site-header-desktop-primary::before,
+		.site-header-desktop-primary::after,
+		.site-header-desktop-secondary::before,
+		.site-header-desktop-secondary::after,
+		.site-header-mobi::before,
+		.site-header-mobi::after,
+		.site-nav::before,
+		.site-nav::after {
+			content: none !important;
+			display: none !important;
+			background: none !important;
+			border: 0 !important;
 		}
+
 		/* Order Online - ORANGE on all pages */
 		.site-header .site-nav-cta, .site-header-desktop-primary .site-nav-cta, .site-header-mobi-panel .site-nav-cta, .mobi-footer .site-nav-cta { background: #FF6600 !important; background-color: #FF6600 !important; border-color: #FF6600 !important; color: #fff !important; }
 		.site-header .site-nav-cta:hover, .site-header-desktop-primary .site-nav-cta:hover, .site-header-mobi-panel .site-nav-cta:hover, .mobi-footer .site-nav-cta:hover { background: #E55A00 !important; background-color: #E55A00 !important; border-color: #E55A00 !important; }
-		</style>
-	<script type="text/javascript">
+	</style>
+			</noscript>
+	
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
+<script type="text/javascript">
 	    Modernizr.addTest("maybemobile", function(){ return (Modernizr.touchevents && Modernizr.mq("only screen and (max-width: 768px)")) ? true : false; });
 	</script>
 
@@ -279,7 +179,6 @@
 				gtag4('config', 'G-1W51SGCDTH');
 			</script>
 	
-	
 
 	
 	
@@ -294,9 +193,11 @@
 	<script type="application/ld+json">{"@context": "http://schema.org", "@type": "Product", "@id": "https://www.mamouns.com/store/product/mamouns-hot-sauce/#product", "url": "https://www.mamouns.com/store/product/mamouns-hot-sauce/", "name": "Mamoun\u0027s Hot Sauce", "description": "Our iconic hot sauce is now available for purchase online! Crafted with a proprietary blend of spices and chile peppers, Mamoun\u0026rsquo;s Hot Sauce adds a fiery and flavorful kick to any dish and has become a beloved condiment for spice enthusiasts.Our gift pack consists of three 5 oz bottles that are carefully packaged and shipped securely via Federal Express priority mail. Order a gift pack today and have the Mamoun\u0026#39;s hot sauce experience delivered directly to your front door!", "brand": {"@id": "https://www.mamouns.com/#organization"}, "image": {"url": "https://images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited.jpg?w=1800\u0026fit=max\u0026auto=compress,format\u0026cs=origin\u0026h=1800", "alt_text": "Bottles of Hot Sauce Image"}}</script>
 
 
-	<link rel="stylesheet" href="../../../assets/css/header-unified.css" />
       
-    </head>
+    
+	<link rel="stylesheet" href="../../../assets/css/global-overrides.css" />
+	<link rel="stylesheet" href="../../../assets/css/header-unified.css" />
+</head>
     <body class="no-hero-intent has-mobi-footer store-product-template store-product-template">
         
 	
@@ -392,6 +293,10 @@
 	</div>
 </header>
 
+
+
+
+
 		
 
 		<div class="site-content">
@@ -407,7 +312,7 @@
         
         
 				<section class="product-imgbrowser">
-					<div class="product-imgbrowser__featured image-thumbnail" style="background-image: url('../../../../images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited9aa8.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5');background-position: 
+					<div class="product-imgbrowser__featured image-thumbnail" style="background-image: url('https://images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited9aa8.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5');background-position: 
   
   
     
@@ -433,7 +338,7 @@
                 
                 
 								<div class="product-imgbrowser__altview">
-									<div class="image-thumbnail" style="background-image: url('../../../../images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited9aa8.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5');background-position: 
+									<div class="image-thumbnail" style="background-image: url('https://images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited9aa8.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5');background-position: 
   
   
     
@@ -459,7 +364,7 @@
                 
                 
 								<div class="product-imgbrowser__altview">
-									<div class="image-thumbnail" style="background-image: url('../../../../images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/6623249964IMG_6708-Edited-Square9aa8.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5');background-position: 
+									<div class="image-thumbnail" style="background-image: url('https://images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/6623249964IMG_6708-Edited-Square9aa8.jpg?w=1200&amp;fit=crop&amp;auto=compress,format&amp;cs=origin&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.5');background-position: 
   
   
     
@@ -501,7 +406,7 @@
                 <input type="hidden" name="variant_base_price" value="34.99">
                 <input type="hidden" name="inventory" value="999">
                 <input type="hidden" name="product_name" value="Mamoun's Hot Sauce">
-                <input type="hidden" name="product_image" value="../../../../images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited717a.jpg?w=1800&amp;fit=max&amp;auto=compress,format&amp;cs=origin&amp;h=1800">
+                <input type="hidden" name="product_image" value="https://images.getbento.com/accounts/0e58cf8ea89fa9cc4ccdf16360d9f235/media/images/85158227-Mamouns-Slique-Edited717a.jpg?w=1800&amp;fit=max&amp;auto=compress,format&amp;cs=origin&amp;h=1800">
                 
 		
 <div class="form-ui">
@@ -540,38 +445,36 @@
 			</main>
 
 			
-					
 
-				<div class="cookie-management-preferences-container"></div>
-		</div>
-
-		
 			
-        <footer>
-          <div class="site-footer-desktop">
-                  <div class="site-footer-desktop-primary">
-                      <div class="site-footer-desktop-primary__container container">
-                              <ul class="social-accounts">
-        <li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook" target="_blank" rel="noopener"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
-        <li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram" target="_blank" rel="noopener"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
-        <li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok" target="_blank" rel="noopener"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
-        <li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#101;&#100;&#98;&#97;&#99;&#107;&#64;&#109;&#97;&#109;&#111;&#117;&#110;&#115;&#46;&#99;&#111;&#109;" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
-		</ul>
-                              <nav class="site-nav">
-                                  <ul class="site-nav-menu">
-		<li><a class="site-nav-link" href="../../../gift-card/index.html" aria-label="Gift Card">Gift Card</a></li>
-		<li><a class="site-nav-link" href="../../../rewards/index.html" aria-label="Rewards">Rewards</a></li>
-		<li><a class="site-nav-link" href="../../../contact/index.html" aria-label="Contact">Contact</a></li>
-		<li><a class="site-nav-link" href="../../../community/index.html" aria-label="Community">Community</a></li>
-                                  </ul>
-                              </nav>
-                      </div>
-                  </div>
-                  <div class="site-footer-desktop-secondary">
-                      
-                  </div>
-          </div>
-        </footer>
+				<div class="cookie-management-preferences-container"></div>
+		</div><footer>
+<div class="site-footer-desktop">
+	<div class="site-footer-desktop-primary">
+		<div class="site-footer-desktop-primary__container container">
+			<ul class="social-accounts">
+				<li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook" target="_blank" rel="noopener"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
+				<li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram" target="_blank" rel="noopener"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
+				<li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok" target="_blank" rel="noopener"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
+				<li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#101;&#100;&#98;&#97;&#99;&#107;&#64;&#109;&#97;&#109;&#111;&#117;&#110;&#115;&#46;&#99;&#111;&#109;" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
+			</ul>
+			<nav class="site-nav">
+				<ul class="site-nav-menu">
+					<li><a class="site-nav-link" href="../../../gift-card/index.html" aria-label="Gift Card">Gift Card</a></li>
+					<li><a class="site-nav-link" href="../../../rewards/index.html" aria-label="Rewards">Rewards</a></li>
+					<li><a class="site-nav-link" href="../../../contact/index.html" aria-label="Contact">Contact</a></li>
+					<li><a class="site-nav-link" href="../../../community/index.html" aria-label="Community">Community</a></li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="site-footer-desktop-secondary"></div>
+</div>
+</footer>
+
+
+
+
 
 		
 	
@@ -588,3 +491,8 @@
 </body>
 
 </html>
+
+
+
+
+
