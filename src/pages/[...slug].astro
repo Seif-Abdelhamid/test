@@ -1,0 +1,22 @@
+---
+const pages = import.meta.glob('/public/**/*.html', { as: 'raw', eager: false });
+
+const slug = Astro.params.slug;
+const normalized = slug ? slug.replace(/\/$/, '') : '';
+
+const filePath = normalized
+  ? `/public/${normalized}/index.html`
+  : '/public/index.html';
+
+const loader = pages[filePath];
+
+if (!loader) {
+  return new Response('Not Found', { status: 404 });
+}
+
+const html = await loader();
+
+return new Response(html, {
+  headers: { 'Content-Type': 'text/html; charset=utf-8' },
+});
+---
