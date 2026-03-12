@@ -1,4 +1,9 @@
 @import './fonts.css';
+@import './omgyro-global.css';
+@import './omgyro-header.css';
+@import './omgyro-menu.css';
+@import './omgyro-rewards.css';
+@import './omgyro-gift-card.css';
 
 @tailwind base;
 @tailwind components;

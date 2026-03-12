@@ -5,8 +5,10 @@ import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import HomePage from '@/components/pages/HomePage';
 import MenuPage from '@/components/pages/MenuPage';
 import LocationsPage from '@/components/pages/LocationsPage';
-import AboutPage from '@/components/pages/AboutPage';
 import ContactPage from '@/components/pages/ContactPage';
+import CateringPage from '@/components/pages/CateringPage';
+import RewardsPage from '@/components/pages/RewardsPage';
+import BlogPage from '@/components/pages/BlogPage';
 
 // Layout component that includes ScrollToTop
 function Layout() {
@@ -46,17 +48,31 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "about",
-        element: <AboutPage />,
-        routeMetadata: {
-          pageIdentifier: 'about',
-        },
-      },
-      {
         path: "contact",
         element: <ContactPage />,
         routeMetadata: {
           pageIdentifier: 'contact',
+        },
+      },
+      {
+        path: "catering",
+        element: <CateringPage />,
+        routeMetadata: {
+          pageIdentifier: 'catering',
+        },
+      },
+      {
+        path: "rewards",
+        element: <RewardsPage />,
+        routeMetadata: {
+          pageIdentifier: 'rewards',
+        },
+      },
+      {
+        path: "blog",
+        element: <BlogPage />,
+        routeMetadata: {
+          pageIdentifier: 'blog',
         },
       },
       {

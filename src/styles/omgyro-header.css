@@ -1,0 +1,745 @@
+/**
+ * OMGYRO HEADER - SINGLE SOURCE OF TRUTH
+ * All header styling lives here. No duplicates elsewhere.
+ * Load this LAST in all pages.
+ */
+
+/* ============================================
+   CSS VARIABLES - Header Theme
+   ============================================ */
+:root {
+  --header-bg: #000000;
+  --header-text: #FFFFFF;
+  --header-accent: #FF6600;
+  --header-accent-hover: #E55A00;
+  --header-font: "Exuberance Family", sans-serif;
+  --header-logo-height: 85px;
+  --header-logo-height-mobile: 92px;
+  --header-padding: 10px 20px;
+  --header-padding-mobile: 14px 20px;
+  --header-mobi-height: 108px;
+}
+
+/* ============================================
+   DESKTOP/MOBILE VISIBILITY - Must beat Bento theme
+   ============================================ */
+@media (min-width: 769px) {
+  html body .site-header-desktop {
+    display: block !important;
+    visibility: visible !important;
+  }
+  html body .site-header-mobi {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
+@media (max-width: 768px) {
+  html body .site-header-desktop {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  html body .site-header-mobi {
+    display: flex !important;
+    visibility: visible !important;
+  }
+}
+
+/* ============================================
+   DESKTOP HEADER - Max specificity to beat Bento theme
+   ============================================ */
+
+/* Base header - full width, override Bento positioning */
+html body .site-header,
+html body .site-header-desktop,
+html body .site-header-desktop-primary {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  background: var(--header-bg) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative !important;
+}
+
+/* Override Bento theme: prevent absolute positioning that causes overlap */
+html body .site-header-desktop-primary .site-logo,
+html body .site-header-desktop-primary .site-nav,
+html body .site-header-desktop-primary .site-nav-menu {
+  position: relative !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+}
+
+/* Header container - flex row, logo LEFT, nav RIGHT - override theme .container */
+html body .site-header-desktop-primary .container,
+html body .site-header-desktop-primary .container.omgyro-header-inner,
+html body .site-header-desktop-primary .omgyro-header-inner {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: var(--header-padding) !important;
+  gap: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Neutralize Bento .container::after clearfix - breaks flex layout */
+html body .site-header-desktop-primary .container::after,
+html body .site-header-desktop-primary .container.omgyro-header-inner::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Logo - left side only */
+html body .site-header-desktop-primary .site-logo {
+  flex-shrink: 0 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+  order: 0 !important;
+}
+
+html body .site-header-desktop-primary .site-logo a {
+  display: flex !important;
+  align-items: center !important;
+}
+
+html body .site-header-desktop-primary .site-logo img {
+  display: block !important;
+  max-height: var(--header-logo-height) !important;
+  width: auto !important;
+  vertical-align: middle !important;
+}
+
+/* Navigation - right side */
+html body .site-header-desktop-primary .site-nav {
+  display: flex !important;
+  flex: 1 1 auto !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  margin: 0 !important;
+  min-width: 0 !important;
+  order: 1 !important;
+}
+
+/* Nav menu - horizontal row */
+html body .site-header-desktop-primary .site-nav-menu {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  gap: 8px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  list-style: none !important;
+}
+
+html body .site-header-desktop-primary .site-nav-menu li {
+  margin: 0 !important;
+  flex-shrink: 0 !important;
+  display: list-item !important;
+}
+
+/* Nav links */
+html body .site-header-desktop-primary .site-nav-link,
+html body .site-header-desktop-primary .site-nav-menu a {
+  font-family: var(--header-font) !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.5px !important;
+  color: var(--header-text) !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 6px 10px !important;
+  text-decoration: none !important;
+  white-space: nowrap !important;
+  transition: color 0.2s ease !important;
+}
+
+html body .site-header-desktop-primary .site-nav-link:hover,
+html body .site-header-desktop-primary .site-nav-menu a:hover {
+  color: var(--header-accent) !important;
+  background: transparent !important;
+}
+
+/* Order Online CTA button - ORANGE pill (override Bento black) */
+html body .site-header-desktop-primary .site-nav-cta {
+  font-family: var(--header-font) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  padding: 10px 24px !important;
+  margin-left: 8px !important;
+  background: #FF6600 !important;
+  background-color: #FF6600 !important;
+  color: #FFFFFF !important;
+  border: 2px solid #FF6600 !important;
+  border-color: #FF6600 !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.25) !important;
+}
+
+html body .site-header-desktop-primary .site-nav-cta:hover {
+  background: #E55A00 !important;
+  background-color: #E55A00 !important;
+  border-color: #E55A00 !important;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.35) !important;
+}
+
+/* ============================================
+   MOBILE HEADER
+   ============================================ */
+
+.site-header-mobi {
+  background: var(--header-bg) !important;
+  padding: var(--header-padding-mobile) !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  position: relative !important;
+  min-height: var(--header-mobi-height) !important;
+  height: var(--header-mobi-height) !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.site-header-mobi .site-logo {
+  position: relative !important;
+  left: auto !important;
+  margin: 0 auto !important;
+  transform: none !important;
+  z-index: 10 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  max-height: 92px !important;
+}
+
+.site-header-mobi .site-logo img {
+  max-height: 92px !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* Nav toggle button */
+.site-header-mobi .nav-toggle-btn {
+  position: absolute !important;
+  left: 16px !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 20 !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 8px !important;
+  cursor: pointer !important;
+}
+
+.nav-toggle-btn__line {
+  display: block !important;
+  width: 24px !important;
+  height: 2px !important;
+  background: var(--header-text) !important;
+  margin: 5px 0 !important;
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* ============================================
+   MOBILE NAVIGATION PANEL — Design system
+   ============================================ */
+:root {
+  --panel-bg: #0a0a0a;
+  --panel-bg-subtle: rgba(255, 255, 255, 0.03);
+  --panel-border: rgba(255, 255, 255, 0.08);
+  --panel-space-xs: 8px;
+  --panel-space-sm: 12px;
+  --panel-space-md: 20px;
+  --panel-space-lg: 28px;
+  --panel-space-xl: 36px;
+  --panel-radius: 14px;
+  --panel-radius-sm: 10px;
+}
+
+.site-header-mobi-panel {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100vh !important;
+  background: linear-gradient(180deg, #0d0d0d 0%, #0a0a0a 40%, #080808 100%) !important;
+  z-index: 9999 !important;
+  transform: translateX(-100%) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+              opacity 0.35s ease,
+              visibility 0.35s !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.site-header-mobi-panel.is-open {
+  transform: translateX(0) !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* —— Panel inner: layout & spacing —— */
+.site-header-mobi-panel__inner {
+  display: flex !important;
+  flex-direction: column !important;
+  min-height: 100% !important;
+  padding: var(--panel-space-lg) var(--panel-space-md) var(--panel-space-xl) !important;
+  padding-top: 56px !important;
+  box-sizing: border-box !important;
+}
+
+/* —— Close button —— */
+.site-header-mobi-panel .nav-close-btn {
+  position: absolute !important;
+  top: var(--panel-space-md) !important;
+  right: var(--panel-space-md) !important;
+  width: 48px !important;
+  height: 48px !important;
+  background: var(--panel-bg-subtle) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  z-index: 10 !important;
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.2s ease !important;
+}
+
+.site-header-mobi-panel .nav-close-btn:hover {
+  background: rgba(255, 102, 0, 0.15) !important;
+  border-color: rgba(255, 102, 0, 0.4) !important;
+  transform: scale(1.05) !important;
+}
+
+.site-header-mobi-panel .nav-close-btn::before,
+.site-header-mobi-panel .nav-close-btn::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  width: 20px !important;
+  height: 2px !important;
+  background: var(--header-text) !important;
+  border-radius: 1px !important;
+  transition: background 0.2s ease !important;
+}
+
+.site-header-mobi-panel .nav-close-btn::before {
+  transform: translate(-50%, -50%) rotate(45deg) !important;
+}
+
+.site-header-mobi-panel .nav-close-btn::after {
+  transform: translate(-50%, -50%) rotate(-45deg) !important;
+}
+
+.site-header-mobi-panel .nav-close-btn:hover::before,
+.site-header-mobi-panel .nav-close-btn:hover::after {
+  background: var(--header-accent) !important;
+}
+
+/* —— Nav header: logo + quick actions —— */
+.site-header-mobi-panel .nav-header {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  margin-bottom: var(--panel-space-xl) !important;
+  padding-top: 0 !important;
+}
+
+.site-header-mobi-panel .nav-header .site-logo {
+  display: block !important;
+  margin-bottom: var(--panel-space-lg) !important;
+}
+
+.site-header-mobi-panel .nav-header .site-logo img {
+  max-width: 160px !important;
+  max-height: 52px !important;
+  height: auto !important;
+  width: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+}
+
+/* Quick actions grid */
+.site-header-mobi-panel .nav-quick-actions {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: var(--panel-space-sm) !important;
+  width: 100% !important;
+  max-width: 280px !important;
+  margin: 0 auto !important;
+}
+
+.site-header-mobi-panel .quick-action-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  padding: var(--panel-space-md) var(--panel-space-sm) !important;
+  background: var(--panel-bg-subtle) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: var(--panel-radius) !important;
+  text-decoration: none !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.25s ease,
+              border-color 0.25s ease,
+              box-shadow 0.25s ease !important;
+}
+
+.site-header-mobi-panel .quick-action-card:hover {
+  background: rgba(255, 102, 0, 0.12) !important;
+  border-color: rgba(255, 102, 0, 0.35) !important;
+  transform: translateY(-4px) scale(1.02) !important;
+  box-shadow: 0 8px 24px rgba(255, 102, 0, 0.15) !important;
+}
+
+.site-header-mobi-panel .quick-action-icon {
+  width: 44px !important;
+  height: 44px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, var(--header-accent) 0%, #ff8533 100%) !important;
+  border-radius: var(--panel-radius-sm) !important;
+  font-size: 20px !important;
+  color: #fff !important;
+  transition: transform 0.25s ease !important;
+}
+
+.site-header-mobi-panel .quick-action-card:hover .quick-action-icon {
+  transform: scale(1.1) !important;
+}
+
+.site-header-mobi-panel .quick-action-text,
+.site-header-mobi-panel .quick-action-label {
+  font-family: var(--header-font) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: var(--header-text) !important;
+  text-align: center !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* —— Nav sections —— */
+.site-header-mobi-panel .site-nav {
+  flex: 1 !important;
+  margin-bottom: var(--panel-space-lg) !important;
+}
+
+.site-header-mobi-panel .nav-section {
+  margin-bottom: var(--panel-space-lg) !important;
+}
+
+.site-header-mobi-panel .nav-section:last-child {
+  margin-bottom: 0 !important;
+}
+
+.site-header-mobi-panel .nav-section-title {
+  font-family: var(--header-font) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  color: var(--header-accent) !important;
+  margin: 0 0 var(--panel-space-sm) !important;
+  padding: 0 var(--panel-space-sm) !important;
+}
+
+.site-header-mobi-panel .site-nav-menu {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 2px !important;
+  border-radius: var(--panel-radius) !important;
+  overflow: hidden !important;
+  background: var(--panel-bg-subtle) !important;
+  border: 1px solid var(--panel-border) !important;
+}
+
+.site-header-mobi-panel .site-nav-menu li {
+  margin: 0 !important;
+}
+
+.site-header-mobi-panel .site-nav-link {
+  display: flex !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 16px var(--panel-space-md) !important;
+  font-family: var(--header-font) !important;
+  font-size: 16px !important;
+  font-weight: 500 !important;
+  color: var(--header-text) !important;
+  text-decoration: none !important;
+  border-bottom: 1px solid var(--panel-border) !important;
+  transition: background 0.25s ease, color 0.25s ease, padding-left 0.25s ease !important;
+}
+
+.site-header-mobi-panel .site-nav-menu li:last-child .site-nav-link {
+  border-bottom: none !important;
+}
+
+.site-header-mobi-panel .site-nav-link:hover {
+  color: var(--header-accent) !important;
+  background: rgba(255, 102, 0, 0.1) !important;
+  padding-left: 24px !important;
+}
+
+.site-header-mobi-panel .nav-icon {
+  width: 28px !important;
+  height: 28px !important;
+  min-width: 28px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 16px !important;
+  color: var(--header-accent) !important;
+  transition: transform 0.25s ease !important;
+}
+
+.site-header-mobi-panel .site-nav-link:hover .nav-icon {
+  transform: scale(1.1) !important;
+}
+
+/* Order Online CTA in panel (if present) */
+.site-header-mobi-panel .site-nav-cta,
+.mobi-footer .site-nav-cta {
+  display: block !important;
+  width: 100% !important;
+  text-align: center !important;
+  font-family: var(--header-font) !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.5px !important;
+  text-transform: uppercase !important;
+  padding: 14px 24px !important;
+  margin: 0 !important;
+  background: #FF6600 !important;
+  background-color: #FF6600 !important;
+  color: #FFFFFF !important;
+  border: 2px solid #FF6600 !important;
+  border-radius: 9999px !important;
+  text-decoration: none !important;
+  transition: all 0.2s ease !important;
+  box-shadow: 0 2px 8px rgba(255, 102, 0, 0.25) !important;
+}
+
+.site-header-mobi-panel .site-nav-cta:hover,
+.mobi-footer .site-nav-cta:hover {
+  background: #E55A00 !important;
+  background-color: #E55A00 !important;
+  border-color: #E55A00 !important;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.35) !important;
+  color: #FFFFFF !important;
+}
+
+/* —— Social: Connect With Us (centered) —— */
+.site-header-mobi-panel .site-social {
+  margin-top: auto !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-top: 20px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  border-top: 1px solid var(--panel-border) !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+  box-sizing: border-box !important;
+}
+
+.site-header-mobi-panel .social-section-divider {
+  margin-bottom: var(--panel-space-sm) !important;
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.site-header-mobi-panel .social-section-title {
+  font-family: var(--header-font) !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-align: center !important;
+  margin: 0 0 var(--panel-space-sm) !important;
+}
+
+.site-header-mobi-panel .social-accounts {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  gap: 20px !important;
+  list-style: none !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.site-header-mobi-panel .social-accounts li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.site-header-mobi-panel .social-accounts a {
+  width: 48px !important;
+  height: 48px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: var(--panel-bg-subtle) !important;
+  border: 1px solid var(--panel-border) !important;
+  border-radius: 50% !important;
+  color: var(--header-text) !important;
+  font-size: 18px !important;
+  text-decoration: none !important;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background 0.25s ease,
+              border-color 0.25s ease,
+              color 0.25s ease !important;
+}
+
+.site-header-mobi-panel .social-accounts a:hover {
+  background: var(--header-accent) !important;
+  border-color: var(--header-accent) !important;
+  color: #fff !important;
+  transform: translateY(-4px) scale(1.08) !important;
+}
+
+/* Panel open: staggered entrance (optional, via JS or class) */
+.site-header-mobi-panel.is-open .site-header-mobi-panel__inner .nav-header {
+  animation: panelHeaderIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.site-header-mobi-panel.is-open .site-header-mobi-panel__inner .site-nav .nav-section {
+  animation: panelSectionIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.site-header-mobi-panel.is-open .site-header-mobi-panel__inner .site-nav .nav-section:nth-child(1) { animation-delay: 0.05s; }
+.site-header-mobi-panel.is-open .site-header-mobi-panel__inner .site-nav .nav-section:nth-child(2) { animation-delay: 0.1s; }
+
+.site-header-mobi-panel.is-open .site-header-mobi-panel__inner .site-social {
+  animation: panelSocialIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s forwards;
+  opacity: 0;
+}
+
+@keyframes panelHeaderIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes panelSectionIn {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes panelSocialIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   CLEANUP - Remove pseudo-elements
+   ============================================ */
+
+.site-header::before,
+.site-header::after,
+.site-header-desktop::before,
+.site-header-desktop::after,
+.site-header-desktop-primary::before,
+.site-header-desktop-primary::after,
+.site-header-mobi::before,
+.site-header-mobi::after,
+.site-header-mobi-panel .site-nav-link::before,
+.site-header-mobi-panel .site-nav-link::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Kill Bento-injected header spacer (remove from layout) */
+.site-header-spacer-desktop,
+html body .site-header-spacer-desktop {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+  pointer-events: none !important;
+}
+
+/* ============================================
+   ORDER ONLINE BUTTON - ORANGE ON ALL PAGES
+   Force #FF6600 - overrides any Bento/black
+   ============================================ */
+html body .site-header a.site-nav-cta,
+html body .site-header a.btn.site-nav-cta,
+html body .site-header a.btn.btn-brand.site-nav-cta,
+html body .site-header-desktop-primary a.site-nav-cta,
+html body .site-header-desktop-primary a.btn.site-nav-cta,
+html body .site-header-desktop-primary a.btn.btn-brand.site-nav-cta,
+html body .site-header-mobi-panel a.site-nav-cta,
+html body .mobi-footer a.site-nav-cta,
+html body .mobi-footer a.btn.site-nav-cta,
+html body .mobi-footer a.btn.btn-brand.site-nav-cta,
+html body .mobi-footer a.btn.btn-brand.btn-block.site-nav-cta {
+  background: #FF6600 !important;
+  background-color: #FF6600 !important;
+  border-color: #FF6600 !important;
+  color: #FFFFFF !important;
+}
+html body .site-header a.site-nav-cta:hover,
+html body .site-header-desktop-primary a.site-nav-cta:hover,
+html body .site-header-mobi-panel a.site-nav-cta:hover,
+html body .mobi-footer a.site-nav-cta:hover {
+  background: #E55A00 !important;
+  background-color: #E55A00 !important;
+  border-color: #E55A00 !important;
+  color: #FFFFFF !important;
+}

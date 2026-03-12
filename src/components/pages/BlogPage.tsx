@@ -1,21 +1,22 @@
 import { useEffect } from 'react';
 
-const bodyContent = `<header class="site-header">
+const pageHTML = `
+<header class="site-header">
 <div class="site-header-desktop">
 	<div class="site-header-desktop-primary" data-header-sticky>
 		<div class="container omgyro-header-inner">
 			<div class="site-logo">
-				<a class="site-logo__btn" href="../index.html" aria-label="OMGYRO Halal Food">
-					<img class="site-logo__expanded" src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" loading="eager" fetchpriority="high" />
+				<a class="site-logo__btn" href="/" aria-label="OMGYRO Halal Food">
+					<img class="site-logo__expanded" src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" loading="eager" fetchpriority="high" />
 				</a>
 			</div>
 			<nav class="site-nav">
 				<ul class="site-nav-menu" data-menu-type="desktop">
-					<li><a class="site-nav-link" href="../locations/index.html" aria-label="Locations" role="button">Locations</a></li>
-					<li><a class="site-nav-link" href="../menu/index.html" aria-label="Menu" role="button">Menu</a></li>
-					<li><a class="site-nav-link" href="../catering/index.html" aria-label="Catering" role="button">Catering</a></li>
-					<li><a class="site-nav-link" href="../store/index.html" aria-label="Sauce Bible" role="button">Sauce Bible</a></li>
-					<li><a class="site-nav-link" href="index.html" aria-label="Blog" role="button">Blog</a></li>
+					<li><a class="site-nav-link" href="/locations" aria-label="Locations" role="button">Locations</a></li>
+					<li><a class="site-nav-link" href="/menu" aria-label="Menu" role="button">Menu</a></li>
+					<li><a class="site-nav-link" href="/catering" aria-label="Catering" role="button">Catering</a></li>
+					<li><a class="site-nav-link" href="/store" aria-label="Sauce Bible" role="button">Sauce Bible</a></li>
+					<li><a class="site-nav-link" href="/" aria-label="Blog" role="button">Blog</a></li>
 					<li><a href="https://omgyrohalal.square.site/" class="btn btn-brand site-nav-cta" target="_blank" rel="noopener" aria-label="Order Online" role="button">Order Online</a></li>
 				</ul>
 			</nav>
@@ -24,8 +25,8 @@ const bodyContent = `<header class="site-header">
 </div>
 <div class="site-header-mobi" aria-label="Navigation Menu Modal">
 	<div class="site-logo">
-		<a class="site-logo__btn" href="../index.html" aria-label="OMGYRO Halal Food">
-			<img src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
+		<a class="site-logo__btn" href="/" aria-label="OMGYRO Halal Food">
+			<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
 		</a>
 	</div>
 	<button type="button" class="nav-toggle-btn" aria-controls="SiteHeaderMobilePanel" aria-expanded="false">
@@ -39,8 +40,8 @@ const bodyContent = `<header class="site-header">
 			<button class="nav-close-btn" aria-label="Close Navigation"></button>
 			<div class="nav-header">
 				<div class="site-logo">
-					<a href="../index.html" aria-label="OMGYRO Halal Food">
-						<img src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
+					<a href="/" aria-label="OMGYRO Halal Food">
+						<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
 					</a>
 				</div>
 				<div class="nav-quick-actions">
@@ -48,7 +49,7 @@ const bodyContent = `<header class="site-header">
 						<span class="quick-action-icon"><i class="fa fa-bag-shopping"></i></span>
 						<span class="quick-action-text">Order Now</span>
 					</a>
-					<a href="../locations/index.html" class="quick-action-card">
+					<a href="/locations" class="quick-action-card">
 						<span class="quick-action-icon"><i class="fa fa-location-dot"></i></span>
 						<span class="quick-action-text">Find Us</span>
 					</a>
@@ -58,19 +59,19 @@ const bodyContent = `<header class="site-header">
 				<div class="nav-section">
 					<div class="nav-section-title">Main</div>
 					<ul class="site-nav-menu" data-menu-type="mobile">
-						<li><a class="site-nav-link" href="../menu/index.html" aria-label="Menu"><span class="nav-icon"><i class="fa-solid fa-utensils"></i></span><span>Menu</span></a></li>
-						<li><a class="site-nav-link" href="../locations/index.html" aria-label="Locations"><span class="nav-icon"><i class="fa-solid fa-location-dot"></i></span><span>Locations</span></a></li>
-						<li><a class="site-nav-link" href="../catering/index.html" aria-label="Catering"><span class="nav-icon"><i class="fa-solid fa-champagne-glasses"></i></span><span>Catering</span></a></li>
-						<li><a class="site-nav-link" href="../store/index.html" aria-label="Sauce Bible"><span class="nav-icon"><i class="fa-solid fa-fire"></i></span><span>Sauce Bible</span></a></li>
+						<li><a class="site-nav-link" href="/menu" aria-label="Menu"><span class="nav-icon"><i class="fa-solid fa-utensils"></i></span><span>Menu</span></a></li>
+						<li><a class="site-nav-link" href="/locations" aria-label="Locations"><span class="nav-icon"><i class="fa-solid fa-location-dot"></i></span><span>Locations</span></a></li>
+						<li><a class="site-nav-link" href="/catering" aria-label="Catering"><span class="nav-icon"><i class="fa-solid fa-champagne-glasses"></i></span><span>Catering</span></a></li>
+						<li><a class="site-nav-link" href="/store" aria-label="Sauce Bible"><span class="nav-icon"><i class="fa-solid fa-fire"></i></span><span>Sauce Bible</span></a></li>
 					</ul>
 				</div>
 				<div class="nav-section">
 					<div class="nav-section-title">About</div>
 					<ul class="site-nav-menu" data-menu-type="mobile">
-						<li><a class="site-nav-link" href="index.html" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
-						<li><a class="site-nav-link" href="../gift-card/index.html" aria-label="Gift Card"><span class="nav-icon"><i class="fa-solid fa-gift"></i></span><span>Gift Card</span></a></li>
-						<li><a class="site-nav-link" href="../contact/index.html" aria-label="Contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span><span>Contact</span></a></li>
-						<li><a class="site-nav-link" href="../community/index.html" aria-label="Community"><span class="nav-icon"><i class="fa-solid fa-users"></i></span><span>Community</span></a></li>
+						<li><a class="site-nav-link" href="/" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
+						<li><a class="site-nav-link" href="/gift-card" aria-label="Gift Card"><span class="nav-icon"><i class="fa-solid fa-gift"></i></span><span>Gift Card</span></a></li>
+						<li><a class="site-nav-link" href="/contact" aria-label="Contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span><span>Contact</span></a></li>
+						<li><a class="site-nav-link" href="/community" aria-label="Community"><span class="nav-icon"><i class="fa-solid fa-users"></i></span><span>Community</span></a></li>
 					</ul>
 				</div>
 			</nav>
@@ -165,7 +166,7 @@ const bodyContent = `<header class="site-header">
 			</div>
 			<article class="spotlight-card fade-in" id="spotlightCard" onclick="openBlogModal('locations-nj')">
 				<div class="spotlight-card__image-wrap">
-					<img src="../assets/images/The-store.jpg" alt="OMGYRO Locations in New Jersey" />
+					<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/The-store.jpg" alt="OMGYRO Locations in New Jersey" />
 				</div>
 				<div class="spotlight-card__content">
 					<div class="spotlight-card__meta">
@@ -194,7 +195,7 @@ const bodyContent = `<header class="site-header">
 				<!-- Card 1 -->
 				<article class="blog-card stagger-in" data-category="Press" onclick="openBlogModal('njcom-spotlight')">
 					<div class="blog-card__image">
-						<img src="../assets/images/people.jpg" alt="NJ.com Spotlights OMGYRO" />
+						<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/people.jpg" alt="NJ.com Spotlights OMGYRO" />
 						<span class="category-badge" data-cat="Press">Press</span>
 					</div>
 					<div class="blog-card__body">
@@ -211,7 +212,7 @@ const bodyContent = `<header class="site-header">
 				<!-- Card 2 -->
 				<article class="blog-card stagger-in" data-category="Guide" onclick="openBlogModal('best-gyro-spot')">
 					<div class="blog-card__image">
-						<img src="../assets/images/Platters/Compo-Platter.jpeg" alt="Best Gyro Spot Near You" />
+						<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg" alt="Best Gyro Spot Near You" />
 						<span class="category-badge" data-cat="Guide">Guide</span>
 					</div>
 					<div class="blog-card__body">
@@ -228,7 +229,7 @@ const bodyContent = `<header class="site-header">
 				<!-- Card 3 -->
 				<article class="blog-card stagger-in" data-category="Partnerships" onclick="openBlogModal('crunch-fitness')">
 					<div class="blog-card__image">
-						<img src="../assets/images/Team.jpeg" alt="OMGYRO x Crunch Fitness" />
+						<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Team.jpeg" alt="OMGYRO x Crunch Fitness" />
 						<span class="category-badge" data-cat="Partnerships">Partnerships</span>
 					</div>
 					<div class="blog-card__body">
@@ -245,7 +246,7 @@ const bodyContent = `<header class="site-header">
 				<!-- Card 4 -->
 				<article class="blog-card stagger-in" data-category="News" onclick="openBlogModal('halal-scene')">
 					<div class="blog-card__image">
-						<img src="../assets/images/Sauce-Bible.jpeg" alt="OMGYRO Halal Scene" />
+						<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauce-Bible.jpeg" alt="OMGYRO Halal Scene" />
 						<span class="category-badge" data-cat="News">News</span>
 					</div>
 					<div class="blog-card__body">
@@ -322,10 +323,10 @@ const bodyContent = `<header class="site-header">
 			</ul>
 			<nav class="site-nav">
 				<ul class="site-nav-menu">
-					<li><a class="site-nav-link" href="../gift-card/index.html" aria-label="Gift Card">Gift Card</a></li>
-					<li><a class="site-nav-link" href="../rewards/index.html" aria-label="Rewards">Rewards</a></li>
-					<li><a class="site-nav-link" href="../contact/index.html" aria-label="Contact">Contact</a></li>
-					<li><a class="site-nav-link" href="../community/index.html" aria-label="Community">Community</a></li>
+					<li><a class="site-nav-link" href="/gift-card" aria-label="Gift Card">Gift Card</a></li>
+					<li><a class="site-nav-link" href="/rewards" aria-label="Rewards">Rewards</a></li>
+					<li><a class="site-nav-link" href="/contact" aria-label="Contact">Contact</a></li>
+					<li><a class="site-nav-link" href="/community" aria-label="Community">Community</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -555,13 +556,54 @@ const bodyContent = `<header class="site-header">
 
 	});
 </script>
-<script src="../assets/js/mobile-panel.js"></script>
 `;
 
 export default function BlogPage() {
   useEffect(() => {
     document.title = 'Blog | OMGyro Halal';
+
+    const navToggleBtn = document.querySelector('.nav-toggle-btn') as HTMLElement | null;
+    const mobilePanel = document.getElementById('SiteHeaderMobilePanel');
+    const navCloseBtn = document.querySelector('.nav-close-btn') as HTMLElement | null;
+
+    if (!navToggleBtn || !mobilePanel) return;
+
+    function openNav() {
+      mobilePanel!.classList.add('is-open');
+      navToggleBtn!.classList.add('is-active');
+      navToggleBtn!.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('nav-open');
+    }
+    function closeNav() {
+      mobilePanel!.classList.remove('is-open');
+      navToggleBtn!.classList.remove('is-active');
+      navToggleBtn!.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
+    }
+
+    navToggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      mobilePanel!.classList.contains('is-open') ? closeNav() : openNav();
+    });
+
+    navCloseBtn?.addEventListener('click', function(e) { e.preventDefault(); closeNav(); });
+
+    mobilePanel.addEventListener('click', function(e) {
+      if (e.target === mobilePanel) closeNav();
+    });
+
+    const navLinks = mobilePanel.querySelectorAll('.site-nav-link, .quick-action-card');
+    navLinks.forEach(link => link.addEventListener('click', () => setTimeout(closeNav, 300)));
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } }),
+      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+    );
+    document.querySelectorAll('.revealable, .reveal-on-scroll').forEach(el => observer.observe(el));
+
+    return () => { observer.disconnect(); };
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+  return <div dangerouslySetInnerHTML={{ __html: pageHTML }} />;
 }

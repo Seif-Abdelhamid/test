@@ -1,21 +1,22 @@
 import { useEffect } from 'react';
 
-const bodyContent = `<header class="site-header">
+const pageHTML = `
+<header class="site-header">
 <div class="site-header-desktop">
 		<div class="site-header-desktop-primary" data-header-sticky>
 			<div class="container omgyro-header-inner">
 				<div class="site-logo">
-					<a class="site-logo__btn" href="../index.html" aria-label="OMGYRO Halal Food">
-						<img class="site-logo__expanded" src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" loading="eager" fetchpriority="high" />
+					<a class="site-logo__btn" href="/" aria-label="OMGYRO Halal Food">
+						<img class="site-logo__expanded" src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" loading="eager" fetchpriority="high" />
 					</a>
 				</div>
 				<nav class="site-nav">
 					<ul class="site-nav-menu" data-menu-type="desktop">
-						<li><a class="site-nav-link" href="../locations/index.html" aria-label="Locations" role="button">Locations</a></li>
-						<li><a class="site-nav-link" href="../menu/index.html" aria-label="Menu" role="button">Menu</a></li>
-						<li><a class="site-nav-link" href="../catering/index.html" aria-label="Catering" role="button">Catering</a></li>
-						<li><a class="site-nav-link" href="../store/index.html" aria-label="Sauce Bible" role="button">Sauce Bible</a></li>
-						<li><a class="site-nav-link" href="../blog/index.html" aria-label="Blog" role="button">Blog</a></li>
+						<li><a class="site-nav-link" href="/locations" aria-label="Locations" role="button">Locations</a></li>
+						<li><a class="site-nav-link" href="/menu" aria-label="Menu" role="button">Menu</a></li>
+						<li><a class="site-nav-link" href="/catering" aria-label="Catering" role="button">Catering</a></li>
+						<li><a class="site-nav-link" href="/store" aria-label="Sauce Bible" role="button">Sauce Bible</a></li>
+						<li><a class="site-nav-link" href="/blog" aria-label="Blog" role="button">Blog</a></li>
 						<li><a href="https://omgyrohalal.square.site/" class="btn btn-brand site-nav-cta" target="_blank" rel="noopener" aria-label="Order Online" role="button">Order Online</a></li>
 					</ul>
 				</nav>
@@ -24,8 +25,8 @@ const bodyContent = `<header class="site-header">
 	</div>
 	<div class="site-header-mobi" aria-label="Navigation Menu Modal">
 		<div class="site-logo">
-			<a class="site-logo__btn" href="../index.html" aria-label="OMGYRO Halal Food">
-				<img src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
+			<a class="site-logo__btn" href="/" aria-label="OMGYRO Halal Food">
+				<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
 			</a>
 		</div>
 		<button type="button" class="nav-toggle-btn" aria-controls="SiteHeaderMobilePanel" aria-expanded="false">
@@ -39,8 +40,8 @@ const bodyContent = `<header class="site-header">
 				<button class="nav-close-btn" aria-label="Close Navigation"></button>
 				<div class="nav-header">
 					<div class="site-logo">
-						<a href="../index.html" aria-label="OMGYRO Halal Food">
-							<img src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
+						<a href="/" aria-label="OMGYRO Halal Food">
+							<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
 						</a>
 					</div>
 					<div class="nav-quick-actions">
@@ -48,7 +49,7 @@ const bodyContent = `<header class="site-header">
 							<span class="quick-action-icon"><i class="fa fa-bag-shopping"></i></span>
 							<span class="quick-action-text">Order Now</span>
 						</a>
-						<a href="../locations/index.html" class="quick-action-card">
+						<a href="/locations" class="quick-action-card">
 							<span class="quick-action-icon"><i class="fa fa-location-dot"></i></span>
 							<span class="quick-action-text">Find Us</span>
 						</a>
@@ -58,20 +59,20 @@ const bodyContent = `<header class="site-header">
 					<div class="nav-section">
 						<div class="nav-section-title">Main</div>
 						<ul class="site-nav-menu" data-menu-type="mobile">
-							<li><a class="site-nav-link" href="../menu/index.html" aria-label="Menu"><span class="nav-icon"><i class="fa-solid fa-utensils"></i></span><span>Menu</span></a></li>
-							<li><a class="site-nav-link" href="../locations/index.html" aria-label="Locations"><span class="nav-icon"><i class="fa-solid fa-location-dot"></i></span><span>Locations</span></a></li>
-							<li><a class="site-nav-link" href="../catering/index.html" aria-label="Catering"><span class="nav-icon"><i class="fa-solid fa-champagne-glasses"></i></span><span>Catering</span></a></li>
-							<li><a class="site-nav-link" href="../store/index.html" aria-label="Sauce Bible"><span class="nav-icon"><i class="fa-solid fa-fire"></i></span><span>Sauce Bible</span></a></li>
-							<li><a class="site-nav-link" href="../blog/index.html" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
+							<li><a class="site-nav-link" href="/menu" aria-label="Menu"><span class="nav-icon"><i class="fa-solid fa-utensils"></i></span><span>Menu</span></a></li>
+							<li><a class="site-nav-link" href="/locations" aria-label="Locations"><span class="nav-icon"><i class="fa-solid fa-location-dot"></i></span><span>Locations</span></a></li>
+							<li><a class="site-nav-link" href="/catering" aria-label="Catering"><span class="nav-icon"><i class="fa-solid fa-champagne-glasses"></i></span><span>Catering</span></a></li>
+							<li><a class="site-nav-link" href="/store" aria-label="Sauce Bible"><span class="nav-icon"><i class="fa-solid fa-fire"></i></span><span>Sauce Bible</span></a></li>
+							<li><a class="site-nav-link" href="/blog" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
 						</ul>
 					</div>
 					<div class="nav-section">
 						<div class="nav-section-title">About</div>
 						<ul class="site-nav-menu" data-menu-type="mobile">
-							<li><a class="site-nav-link" href="../blog/index.html" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
-							<li><a class="site-nav-link" href="../gift-card/index.html" aria-label="Gift Card"><span class="nav-icon"><i class="fa-solid fa-gift"></i></span><span>Gift Card</span></a></li>
-							<li><a class="site-nav-link" href="../contact/index.html" aria-label="Contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span><span>Contact</span></a></li>
-							<li><a class="site-nav-link" href="../community/index.html" aria-label="Community"><span class="nav-icon"><i class="fa-solid fa-users"></i></span><span>Community</span></a></li>
+							<li><a class="site-nav-link" href="/blog" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
+							<li><a class="site-nav-link" href="/gift-card" aria-label="Gift Card"><span class="nav-icon"><i class="fa-solid fa-gift"></i></span><span>Gift Card</span></a></li>
+							<li><a class="site-nav-link" href="/contact" aria-label="Contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span><span>Contact</span></a></li>
+							<li><a class="site-nav-link" href="/community" aria-label="Community"><span class="nav-icon"><i class="fa-solid fa-users"></i></span><span>Community</span></a></li>
 						</ul>
 					</div>
 				</nav>
@@ -175,7 +176,7 @@ const bodyContent = `<header class="site-header">
 					<div class="r-feat r-feat--left reveal-on-scroll">
 						<div class="r-feat__visual">
 							<div class="r-feat__img-frame">
-								<img src="../assets/images/Platters/Compo-Platter.jpeg" alt="OMGyro platter" class="r-feat__img" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg" alt="OMGyro platter" class="r-feat__img" loading="lazy" />
 								<div class="r-feat__img-overlay"></div>
 							</div>
 							<span class="r-feat__float-tag">$1 = 10 PTS</span>
@@ -197,7 +198,7 @@ const bodyContent = `<header class="site-header">
 						</div>
 						<div class="r-feat__visual">
 							<div class="r-feat__img-frame">
-								<img src="../assets/images/Desserts/Baklava.jpeg" alt="Birthday baklava" class="r-feat__img" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Desserts/Baklava.jpeg" alt="Birthday baklava" class="r-feat__img" loading="lazy" />
 								<div class="r-feat__img-overlay"></div>
 							</div>
 							<span class="r-feat__float-tag">ON US</span>
@@ -207,7 +208,7 @@ const bodyContent = `<header class="site-header">
 					<div class="r-feat r-feat--left reveal-on-scroll">
 						<div class="r-feat__visual">
 							<div class="r-feat__img-frame">
-								<img src="../assets/images/Gyros/Combo-Gyro.jpeg" alt="OMGyro combo gyro" class="r-feat__img" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Gyros/Combo-Gyro.jpeg" alt="OMGyro combo gyro" class="r-feat__img" loading="lazy" />
 								<div class="r-feat__img-overlay"></div>
 							</div>
 							<span class="r-feat__float-tag">VIP ONLY</span>
@@ -229,7 +230,7 @@ const bodyContent = `<header class="site-header">
 						</div>
 						<div class="r-feat__visual">
 							<div class="r-feat__img-frame">
-								<img src="../assets/images/Fries/Combo-Fries.jpeg" alt="Loaded fries" class="r-feat__img" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Fries/Combo-Fries.jpeg" alt="Loaded fries" class="r-feat__img" loading="lazy" />
 								<div class="r-feat__img-overlay"></div>
 							</div>
 							<span class="r-feat__float-tag">FREE</span>
@@ -263,7 +264,7 @@ const bodyContent = `<header class="site-header">
 					<div class="r-exchange__grid">
 						<div class="r-exchange__card r-tilt reveal-on-scroll" data-popup-name="Side of Fries" data-popup-pts="85" data-popup-img="../assets/images/Sides/SeasonFries.jpeg" data-popup-desc="Crispy golden seasoned fries — the perfect side. Lightly salted with our signature spice blend." data-popup-spend="$8.50">
 							<div class="r-exchange__card-img">
-								<img src="../assets/images/Sides/SeasonFries.jpeg" alt="Seasoned Fries" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/SeasonFries.jpeg" alt="Seasoned Fries" loading="lazy" />
 								<span class="r-exchange__card-badge" data-counter="85">0 PTS</span>
 							</div>
 							<div class="r-exchange__card-body">
@@ -273,7 +274,7 @@ const bodyContent = `<header class="site-header">
 						</div>
 						<div class="r-exchange__card r-tilt reveal-on-scroll" data-popup-name="Onion Rings" data-popup-pts="350" data-popup-img="../assets/images/Sides/OnionsRings.jpeg" data-popup-desc="Hand-battered crispy onion rings served golden and hot. A fan-favorite side that pairs with everything." data-popup-spend="$35">
 							<div class="r-exchange__card-img">
-								<img src="../assets/images/Sides/OnionsRings.jpeg" alt="Onion Rings" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/OnionsRings.jpeg" alt="Onion Rings" loading="lazy" />
 								<span class="r-exchange__card-badge" data-counter="350">0 PTS</span>
 							</div>
 							<div class="r-exchange__card-body">
@@ -283,7 +284,7 @@ const bodyContent = `<header class="site-header">
 						</div>
 						<div class="r-exchange__card r-tilt reveal-on-scroll" data-popup-name="Fountain Drink" data-popup-pts="400" data-popup-img="../assets/images/Drinks/Lmonade.jpeg" data-popup-desc="Ice-cold fountain drink of your choice. Fresh lemonade, soda, or iced tea to wash it all down." data-popup-spend="$40">
 							<div class="r-exchange__card-img">
-								<img src="../assets/images/Drinks/Lmonade.jpeg" alt="Lemonade" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Drinks/Lmonade.jpeg" alt="Lemonade" loading="lazy" />
 								<span class="r-exchange__card-badge" data-counter="400">0 PTS</span>
 							</div>
 							<div class="r-exchange__card-body">
@@ -293,7 +294,7 @@ const bodyContent = `<header class="site-header">
 						</div>
 						<div class="r-exchange__card r-tilt reveal-on-scroll" data-popup-name="Falafel Box" data-popup-pts="500" data-popup-img="../assets/images/Sides/FalafelBox.jpeg" data-popup-desc="Freshly fried crispy falafel served in a box with tahini sauce. Made from scratch, always fresh, never frozen." data-popup-spend="$50">
 							<div class="r-exchange__card-img">
-								<img src="../assets/images/Sides/FalafelBox.jpeg" alt="Falafel Box" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg" alt="Falafel Box" loading="lazy" />
 								<span class="r-exchange__card-badge" data-counter="500">0 PTS</span>
 							</div>
 							<div class="r-exchange__card-body">
@@ -303,7 +304,7 @@ const bodyContent = `<header class="site-header">
 						</div>
 						<div class="r-exchange__card r-tilt reveal-on-scroll" data-popup-name="Double Protein" data-popup-pts="700" data-popup-img="../assets/images/Sides/Lamp-Chicken.jpeg" data-popup-desc="Double up on protein in any platter or gyro. Extra lamb, chicken, or falafel — because one serving is never enough." data-popup-spend="$70">
 							<div class="r-exchange__card-img">
-								<img src="../assets/images/Sides/Lamp-Chicken.jpeg" alt="Double Protein" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/Lamp-Chicken.jpeg" alt="Double Protein" loading="lazy" />
 								<span class="r-exchange__card-badge" data-counter="700">0 PTS</span>
 							</div>
 							<div class="r-exchange__card-body">
@@ -313,7 +314,7 @@ const bodyContent = `<header class="site-header">
 						</div>
 						<div class="r-exchange__card r-tilt reveal-on-scroll" data-popup-name="Free Entree" data-popup-pts="1625" data-popup-img="../assets/images/Gyros/Combo-Gyro.jpeg" data-popup-desc="Any entree on the menu — completely free. Gyro, platter, salad, or wrap. You earned it, you choose it." data-popup-spend="$162.50">
 							<div class="r-exchange__card-img">
-								<img src="../assets/images/Gyros/Combo-Gyro.jpeg" alt="Free Entree" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Gyros/Combo-Gyro.jpeg" alt="Free Entree" loading="lazy" />
 								<span class="r-exchange__card-badge" data-counter="1625">0 PTS</span>
 							</div>
 							<div class="r-exchange__card-body">
@@ -407,7 +408,7 @@ const bodyContent = `<header class="site-header">
 		<!-- ==================== 7. SPLIT CTA ==================== -->
 			<section class="r-split" aria-label="Order online">
 				<div class="r-split__left">
-					<img src="../assets/images/Salad/Combo-Salad.jpeg" alt="OMGyro Salad" class="r-split__img" loading="lazy" />
+					<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Salad/Combo-Salad.jpeg" alt="OMGyro Salad" class="r-split__img" loading="lazy" />
 				</div>
 				<div class="r-split__right">
 					<span class="r-split__eyebrow">ALL IN ONE PLACE</span>
@@ -484,10 +485,10 @@ const bodyContent = `<header class="site-header">
 					</ul>
 					<nav class="site-nav">
 						<ul class="site-nav-menu">
-							<li><a class="site-nav-link " href="../gift-card/index.html" aria-label="Gift Card">Gift Card</a></li>
-							<li><a class="site-nav-link " href="../rewards/index.html" aria-label="Rewards">Rewards</a></li>
-							<li><a class="site-nav-link " href="../contact/index.html" aria-label="Contact">Contact</a></li>
-							<li><a class="site-nav-link " href="../community/index.html" aria-label="Community">Community</a></li>
+							<li><a class="site-nav-link " href="/gift-card" aria-label="Gift Card">Gift Card</a></li>
+							<li><a class="site-nav-link " href="/rewards" aria-label="Rewards">Rewards</a></li>
+							<li><a class="site-nav-link " href="/contact" aria-label="Contact">Contact</a></li>
+							<li><a class="site-nav-link " href="/community" aria-label="Community">Community</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -754,13 +755,54 @@ const bodyContent = `<header class="site-header">
 
 })();
 </script>
-<script src="../assets/js/mobile-panel.js"></script>
 `;
 
 export default function RewardsPage() {
   useEffect(() => {
-    document.title = 'Earn Rewards | OMGYRO Halal in NJ';
+    document.title = 'Rewards | OMGyro Halal';
+
+    const navToggleBtn = document.querySelector('.nav-toggle-btn') as HTMLElement | null;
+    const mobilePanel = document.getElementById('SiteHeaderMobilePanel');
+    const navCloseBtn = document.querySelector('.nav-close-btn') as HTMLElement | null;
+
+    if (!navToggleBtn || !mobilePanel) return;
+
+    function openNav() {
+      mobilePanel!.classList.add('is-open');
+      navToggleBtn!.classList.add('is-active');
+      navToggleBtn!.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('nav-open');
+    }
+    function closeNav() {
+      mobilePanel!.classList.remove('is-open');
+      navToggleBtn!.classList.remove('is-active');
+      navToggleBtn!.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
+    }
+
+    navToggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      mobilePanel!.classList.contains('is-open') ? closeNav() : openNav();
+    });
+
+    navCloseBtn?.addEventListener('click', function(e) { e.preventDefault(); closeNav(); });
+
+    mobilePanel.addEventListener('click', function(e) {
+      if (e.target === mobilePanel) closeNav();
+    });
+
+    const navLinks = mobilePanel.querySelectorAll('.site-nav-link, .quick-action-card');
+    navLinks.forEach(link => link.addEventListener('click', () => setTimeout(closeNav, 300)));
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } }),
+      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+    );
+    document.querySelectorAll('.revealable, .reveal-on-scroll').forEach(el => observer.observe(el));
+
+    return () => { observer.disconnect(); };
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+  return <div dangerouslySetInnerHTML={{ __html: pageHTML }} />;
 }

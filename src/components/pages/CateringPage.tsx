@@ -1,22 +1,22 @@
 import { useEffect } from 'react';
 
-const bodyContent = `
+const pageHTML = `
 <header class="site-header">
 <div class="site-header-desktop">
 		<div class="site-header-desktop-primary" data-header-sticky>
 			<div class="container omgyro-header-inner">
 				<div class="site-logo">
-					<a class="site-logo__btn" href="../index.html" aria-label="OMGYRO Halal Food">
-						<img class="site-logo__expanded" src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" loading="eager" fetchpriority="high" />
+					<a class="site-logo__btn" href="/" aria-label="OMGYRO Halal Food">
+						<img class="site-logo__expanded" src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" loading="eager" fetchpriority="high" />
 					</a>
 				</div>
 				<nav class="site-nav">
 					<ul class="site-nav-menu" data-menu-type="desktop">
-						<li><a class="site-nav-link" href="../locations/index.html" aria-label="Locations" role="button">Locations</a></li>
-						<li><a class="site-nav-link" href="../menu/index.html" aria-label="Menu" role="button">Menu</a></li>
-						<li><a class="site-nav-link" href="../catering/index.html" aria-label="Catering" role="button">Catering</a></li>
-						<li><a class="site-nav-link" href="../store/index.html" aria-label="Sauce Bible" role="button">Sauce Bible</a></li>
-						<li><a class="site-nav-link" href="../blog/index.html" aria-label="Blog" role="button">Blog</a></li>
+						<li><a class="site-nav-link" href="/locations" aria-label="Locations" role="button">Locations</a></li>
+						<li><a class="site-nav-link" href="/menu" aria-label="Menu" role="button">Menu</a></li>
+						<li><a class="site-nav-link" href="/catering" aria-label="Catering" role="button">Catering</a></li>
+						<li><a class="site-nav-link" href="/store" aria-label="Sauce Bible" role="button">Sauce Bible</a></li>
+						<li><a class="site-nav-link" href="/blog" aria-label="Blog" role="button">Blog</a></li>
 						<li><a href="https://omgyrohalal.square.site/" class="btn btn-brand site-nav-cta" target="_blank" rel="noopener" aria-label="Order Online" role="button">Order Online</a></li>
 					</ul>
 				</nav>
@@ -25,8 +25,8 @@ const bodyContent = `
 	</div>
 	<div class="site-header-mobi" aria-label="Navigation Menu Modal">
 		<div class="site-logo">
-			<a class="site-logo__btn" href="../index.html" aria-label="OMGYRO Halal Food">
-				<img src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
+			<a class="site-logo__btn" href="/" aria-label="OMGYRO Halal Food">
+				<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
 			</a>
 		</div>
 		<button type="button" class="nav-toggle-btn" aria-controls="SiteHeaderMobilePanel" aria-expanded="false">
@@ -40,8 +40,8 @@ const bodyContent = `
 				<button class="nav-close-btn" aria-label="Close Navigation"></button>
 				<div class="nav-header">
 					<div class="site-logo">
-						<a href="../index.html" aria-label="OMGYRO Halal Food">
-							<img src="../assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
+						<a href="/" aria-label="OMGYRO Halal Food">
+							<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
 						</a>
 					</div>
 					<div class="nav-quick-actions">
@@ -49,7 +49,7 @@ const bodyContent = `
 							<span class="quick-action-icon"><i class="fa fa-bag-shopping"></i></span>
 							<span class="quick-action-text">Order Now</span>
 						</a>
-						<a href="../locations/index.html" class="quick-action-card">
+						<a href="/locations" class="quick-action-card">
 							<span class="quick-action-icon"><i class="fa fa-location-dot"></i></span>
 							<span class="quick-action-text">Find Us</span>
 						</a>
@@ -59,20 +59,20 @@ const bodyContent = `
 					<div class="nav-section">
 						<div class="nav-section-title">Main</div>
 						<ul class="site-nav-menu" data-menu-type="mobile">
-							<li><a class="site-nav-link" href="../menu/index.html" aria-label="Menu"><span class="nav-icon"><i class="fa-solid fa-utensils"></i></span><span>Menu</span></a></li>
-							<li><a class="site-nav-link" href="../locations/index.html" aria-label="Locations"><span class="nav-icon"><i class="fa-solid fa-location-dot"></i></span><span>Locations</span></a></li>
-							<li><a class="site-nav-link" href="../catering/index.html" aria-label="Catering"><span class="nav-icon"><i class="fa-solid fa-champagne-glasses"></i></span><span>Catering</span></a></li>
-							<li><a class="site-nav-link" href="../store/index.html" aria-label="Sauce Bible"><span class="nav-icon"><i class="fa-solid fa-fire"></i></span><span>Sauce Bible</span></a></li>
-							<li><a class="site-nav-link" href="../blog/index.html" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
+							<li><a class="site-nav-link" href="/menu" aria-label="Menu"><span class="nav-icon"><i class="fa-solid fa-utensils"></i></span><span>Menu</span></a></li>
+							<li><a class="site-nav-link" href="/locations" aria-label="Locations"><span class="nav-icon"><i class="fa-solid fa-location-dot"></i></span><span>Locations</span></a></li>
+							<li><a class="site-nav-link" href="/catering" aria-label="Catering"><span class="nav-icon"><i class="fa-solid fa-champagne-glasses"></i></span><span>Catering</span></a></li>
+							<li><a class="site-nav-link" href="/store" aria-label="Sauce Bible"><span class="nav-icon"><i class="fa-solid fa-fire"></i></span><span>Sauce Bible</span></a></li>
+							<li><a class="site-nav-link" href="/blog" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
 						</ul>
 					</div>
 					<div class="nav-section">
 						<div class="nav-section-title">About</div>
 						<ul class="site-nav-menu" data-menu-type="mobile">
-							<li><a class="site-nav-link" href="../blog/index.html" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
-							<li><a class="site-nav-link" href="../gift-card/index.html" aria-label="Gift Card"><span class="nav-icon"><i class="fa-solid fa-gift"></i></span><span>Gift Card</span></a></li>
-							<li><a class="site-nav-link" href="../contact/index.html" aria-label="Contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span><span>Contact</span></a></li>
-							<li><a class="site-nav-link" href="../community/index.html" aria-label="Community"><span class="nav-icon"><i class="fa-solid fa-users"></i></span><span>Community</span></a></li>
+							<li><a class="site-nav-link" href="/blog" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
+							<li><a class="site-nav-link" href="/gift-card" aria-label="Gift Card"><span class="nav-icon"><i class="fa-solid fa-gift"></i></span><span>Gift Card</span></a></li>
+							<li><a class="site-nav-link" href="/contact" aria-label="Contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span><span>Contact</span></a></li>
+							<li><a class="site-nav-link" href="/community" aria-label="Community"><span class="nav-icon"><i class="fa-solid fa-users"></i></span><span>Community</span></a></li>
 						</ul>
 					</div>
 				</nav>
@@ -183,7 +183,7 @@ const bodyContent = `
 					<div class="menu-featured__grid">
 						<div class="menu-featured__card m-reveal" data-featured-link="trays">
 							<div class="menu-featured__card-img">
-								<img src="../assets/images/Platters/Compo-Platter.jpeg" alt="Vegetarian Platter" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg" alt="Vegetarian Platter" loading="lazy" />
 								<span class="menu-featured__badge"><i class="fa-solid fa-fire"></i> #1 Seller</span>
 							</div>
 							<div class="menu-featured__card-body">
@@ -193,7 +193,7 @@ const bodyContent = `
 						</div>
 						<div class="menu-featured__card m-reveal" data-featured-link="trays">
 							<div class="menu-featured__card-img">
-								<img src="../assets/images/Platters/Lamp-Chicken.jpeg" alt="Meat Platter" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Lamp-Chicken.jpeg" alt="Meat Platter" loading="lazy" />
 								<span class="menu-featured__badge"><i class="fa-solid fa-users"></i> Feeds 8-12</span>
 							</div>
 							<div class="menu-featured__card-body">
@@ -203,7 +203,7 @@ const bodyContent = `
 						</div>
 						<div class="menu-featured__card m-reveal" data-featured-link="stations">
 							<div class="menu-featured__card-img">
-								<img src="../assets/images/Sides/FalafelBox.jpeg" alt="Falafel Station" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg" alt="Falafel Station" loading="lazy" />
 								<span class="menu-featured__badge"><i class="fa-solid fa-hands"></i> DIY Setup</span>
 							</div>
 							<div class="menu-featured__card-body">
@@ -245,7 +245,7 @@ const bodyContent = `
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex" data-popular>
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Vegetarian Platter"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Vegetarian Platter"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Vegetarian Platter</p>
 			</div>
@@ -253,7 +253,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Meat Platter"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Meat Platter"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Meat Platter</p>
 			</div>
@@ -278,7 +278,7 @@ const bodyContent = `
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Tray"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Tray"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Falafel Tray (10/24 Pack)</p>
 			</div>
@@ -286,7 +286,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Tray"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Tray"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Chicken Tray (10/24 Pack)</p>
 			</div>
@@ -294,7 +294,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Falafel-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Shawarma Tray"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Falafel-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Shawarma Tray"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Shawarma Tray (10/24 Pack)</p>
 			</div>
@@ -319,7 +319,7 @@ const bodyContent = `
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex" data-popular>
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Station"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Station"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Falafel Station</p>
 			</div>
@@ -327,7 +327,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Station"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Station"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Chicken Station</p>
 			</div>
@@ -335,7 +335,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Shawarma Station"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Shawarma Station"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Shawarma Station</p>
 			</div>
@@ -360,7 +360,7 @@ const bodyContent = `
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Tray 30pc"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Tray 30pc"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Falafel Tray 30pc</p>
 			</div>
@@ -368,7 +368,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hummus / Baba Ganouj"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hummus / Baba Ganouj"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Hummus / Baba Ganouj</p>
 			</div>
@@ -376,7 +376,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Tabbouleh"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Tabbouleh"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Tabbouleh</p>
 			</div>
@@ -384,7 +384,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Seasoned Rice"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Seasoned Rice"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Seasoned Rice</p>
 			</div>
@@ -392,7 +392,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/SeasonFries.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Seasoned Fries"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/SeasonFries.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Seasoned Fries"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Seasoned Fries</p>
 			</div>
@@ -417,7 +417,7 @@ const bodyContent = `
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava Walnuts 72pc"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava Walnuts 72pc"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Baklava Walnuts 72pc</p>
 			</div>
@@ -425,7 +425,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava Pistachios 72pc"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava Pistachios 72pc"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Baklava Pistachios 72pc</p>
 			</div>
@@ -433,7 +433,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Drinks/Lmonade.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Specialty Drinks 1gal"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Drinks/Lmonade.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Specialty Drinks 1gal"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Specialty Drinks 1gal</p>
 			</div>
@@ -458,7 +458,7 @@ const bodyContent = `
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hot Sauce"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hot Sauce"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Hot Sauce</p>
 			</div>
@@ -466,7 +466,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Tahineh Sauce"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Tahineh Sauce"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Tahineh Sauce</p>
 			</div>
@@ -474,7 +474,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Garlic Sauce"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Garlic Sauce"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Garlic Sauce</p>
 			</div>
@@ -482,7 +482,7 @@ const bodyContent = `
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Bag of Pita Bread"></div>
+			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Bag of Pita Bread"></div>
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Bag of Pita Bread</p>
 			</div>
@@ -509,7 +509,7 @@ const bodyContent = `
 						<a href="../store/product/green-sauce/index.html" class="menu-sauces__card" data-heat="mild">
 							<div class="menu-sauces__card-glow"></div>
 							<div class="menu-sauces__card-img">
-								<img src="../assets/images/Sauces/Green-Sauce.png" alt="Green Sauce" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauces/Green-Sauce.png" alt="Green Sauce" loading="lazy" />
 							</div>
 							<div class="menu-sauces__card-body">
 								<span class="menu-sauces__card-tag"><i class="fa-solid fa-leaf"></i> Mild</span>
@@ -521,7 +521,7 @@ const bodyContent = `
 						<a href="../store/product/hot-sauce/index.html" class="menu-sauces__card" data-heat="hot">
 							<div class="menu-sauces__card-glow"></div>
 							<div class="menu-sauces__card-img">
-								<img src="../assets/images/Sauces/Hot-Sauce.png" alt="Hot Sauce" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauces/Hot-Sauce.png" alt="Hot Sauce" loading="lazy" />
 							</div>
 							<div class="menu-sauces__card-body">
 								<span class="menu-sauces__card-tag"><i class="fa-solid fa-pepper-hot"></i> Hot</span>
@@ -533,7 +533,7 @@ const bodyContent = `
 						<a href="../store/product/omg-sauce/index.html" class="menu-sauces__card" data-heat="extra">
 							<div class="menu-sauces__card-glow"></div>
 							<div class="menu-sauces__card-img">
-								<img src="../assets/images/Sauces/OMG-Sauce.png" alt="OMG Sauce" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauces/OMG-Sauce.png" alt="OMG Sauce" loading="lazy" />
 							</div>
 							<div class="menu-sauces__card-body">
 								<span class="menu-sauces__card-tag"><i class="fa-solid fa-fire"></i> Extra Hot</span>
@@ -545,7 +545,7 @@ const bodyContent = `
 						<a href="../store/product/white-sauce/index.html" class="menu-sauces__card" data-heat="creamy">
 							<div class="menu-sauces__card-glow"></div>
 							<div class="menu-sauces__card-img">
-								<img src="../assets/images/Sauces/White-Sauce.png" alt="White Sauce" loading="lazy" />
+								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauces/White-Sauce.png" alt="White Sauce" loading="lazy" />
 							</div>
 							<div class="menu-sauces__card-body">
 								<span class="menu-sauces__card-tag"><i class="fa-solid fa-droplet"></i> Creamy</span>
@@ -555,7 +555,7 @@ const bodyContent = `
 							</div>
 						</a>
 					</div>
-					<a href="../store/index.html" class="menu-sauces__btn m-magnetic">
+					<a href="/store" class="menu-sauces__btn m-magnetic">
 						<span>SHOP ALL SAUCES</span>
 						<span class="menu-sauces__btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
 						<span class="m-confetti-container" aria-hidden="true"></span>
@@ -570,7 +570,7 @@ const bodyContent = `
 						<span class="menu-rewards-cta__eyebrow">OMGYRO REWARDS</span>
 						<h3 class="menu-rewards-cta__h3">Earn Free Food<br>Every Time You Order</h3>
 						<p class="menu-rewards-cta__text">Every $1 you spend earns 10 points. Stack them up and redeem for free food — from fries to full entrees.</p>
-						<a href="../rewards/index.html" class="menu-rewards-cta__btn m-magnetic">
+						<a href="/rewards" class="menu-rewards-cta__btn m-magnetic">
 							<span>JOIN REWARDS</span>
 							<span class="menu-rewards-cta__btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
 							<span class="m-confetti-container" aria-hidden="true"></span>
@@ -635,16 +635,16 @@ const bodyContent = `
                               <nav class="site-nav">
                                   <ul class="site-nav-menu">
 		<li>
-			<a class="site-nav-link "  href="../gift-card/index.html"  aria-label="Gift Card">Gift Card</a>
+			<a class="site-nav-link "  href="/gift-card"  aria-label="Gift Card">Gift Card</a>
 		</li>
 		<li>
-			<a class="site-nav-link "  href="../rewards/index.html"  aria-label="Rewards">Rewards</a>
+			<a class="site-nav-link "  href="/rewards"  aria-label="Rewards">Rewards</a>
 		</li>
 		<li>
-			<a class="site-nav-link "  href="../contact/index.html"  aria-label="Contact">Contact</a>
+			<a class="site-nav-link "  href="/contact"  aria-label="Contact">Contact</a>
 		</li>
 		<li>
-			<a class="site-nav-link "  href="../community/index.html"  aria-label="Community">Community</a>
+			<a class="site-nav-link "  href="/community"  aria-label="Community">Community</a>
 		</li>
                                   </ul>
                               </nav>
@@ -884,13 +884,54 @@ const bodyContent = `
 
     })();
     </script>
-    <script src="../assets/js/mobile-panel.js"></script>
 `;
 
 export default function CateringPage() {
   useEffect(() => {
-    document.title = 'Catering | OMGYRO Halal in NJ';
+    document.title = 'Catering | OMGyro Halal';
+
+    const navToggleBtn = document.querySelector('.nav-toggle-btn') as HTMLElement | null;
+    const mobilePanel = document.getElementById('SiteHeaderMobilePanel');
+    const navCloseBtn = document.querySelector('.nav-close-btn') as HTMLElement | null;
+
+    if (!navToggleBtn || !mobilePanel) return;
+
+    function openNav() {
+      mobilePanel!.classList.add('is-open');
+      navToggleBtn!.classList.add('is-active');
+      navToggleBtn!.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('nav-open');
+    }
+    function closeNav() {
+      mobilePanel!.classList.remove('is-open');
+      navToggleBtn!.classList.remove('is-active');
+      navToggleBtn!.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
+    }
+
+    navToggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      mobilePanel!.classList.contains('is-open') ? closeNav() : openNav();
+    });
+
+    navCloseBtn?.addEventListener('click', function(e) { e.preventDefault(); closeNav(); });
+
+    mobilePanel.addEventListener('click', function(e) {
+      if (e.target === mobilePanel) closeNav();
+    });
+
+    const navLinks = mobilePanel.querySelectorAll('.site-nav-link, .quick-action-card');
+    navLinks.forEach(link => link.addEventListener('click', () => setTimeout(closeNav, 300)));
+
+    const observer = new IntersectionObserver(
+      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } }),
+      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
+    );
+    document.querySelectorAll('.revealable, .reveal-on-scroll').forEach(el => observer.observe(el));
+
+    return () => { observer.disconnect(); };
   }, []);
 
-  return <div dangerouslySetInnerHTML={{ __html: bodyContent }} />;
+  return <div dangerouslySetInnerHTML={{ __html: pageHTML }} />;
 }
