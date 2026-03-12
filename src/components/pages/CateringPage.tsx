@@ -94,9 +94,9 @@ const bodyContent = `
 
 		<div class="site-content">
 
-			<main class="site-content__main page-id--1001175">
-<!-- Menu hero – cinematic, particles, floating icons, CTA -->
-			<section class="menu-hero" aria-label="Menu">
+			<main class="site-content__main page-id--catering">
+<!-- Catering hero – cinematic, particles, floating icons, CTA -->
+			<section class="menu-hero" aria-label="Catering">
 				<div class="menu-hero__bg" role="presentation" aria-hidden="true"></div>
 				<div class="menu-hero__particles" aria-hidden="true">
 					<span class="menu-hero__particle menu-hero__particle--1"></span>
@@ -116,28 +116,24 @@ const bodyContent = `
 				</div>
 				<div class="menu-hero__inner">
 					<div class="menu-hero__badge">
-						<i class="fa-solid fa-fire"></i>
-						<span>HALAL • FRESH • MADE TO ORDER</span>
+						<i class="fa-solid fa-champagne-glasses"></i>
+						<span>HALAL &bull; FRESH &bull; FEEDS A CROWD</span>
 					</div>
 					<h1 class="menu-hero__title">
 						<span class="menu-hero__title-line menu-hero__title-line--1" data-typewriter="OUR"></span>
-						<span class="menu-hero__title-line menu-hero__title-line--2" data-typewriter="MENU"></span>
+						<span class="menu-hero__title-line menu-hero__title-line--2" data-typewriter="CATERING"></span>
 					</h1>
-					<p class="menu-hero__tagline">Pick a category below and explore. Then order online for pickup or delivery.</p>
+					<p class="menu-hero__tagline">Pick a category below and explore our catering options.</p>
 					<div class="menu-hero__cta">
 						<a href="https://omgyrohalal.square.site/" class="menu-hero__btn m-magnetic" target="_blank" rel="noopener">
-							<span class="menu-hero__btn-text">ORDER NOW</span>
+							<span class="menu-hero__btn-text">ORDER CATERING</span>
 							<span class="menu-hero__btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
 							<span class="m-confetti-container" aria-hidden="true"></span>
 						</a>
-						<button type="button" class="menu-hero__btn menu-hero__btn--download js-menu-download" aria-label="Download menu as PDF">
-							<span class="menu-hero__btn-icon"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></span>
-							<span class="menu-hero__btn-text">Download menu</span>
-						</button>
 					</div>
-					<a href="#menus" class="menu-hero__scroll" aria-label="Scroll to menu">
+					<a href="#menus" class="menu-hero__scroll" aria-label="Scroll to catering menu">
 						<span class="menu-hero__scroll-line"></span>
-						<span class="menu-hero__scroll-label">BROWSE MENU</span>
+						<span class="menu-hero__scroll-label">BROWSE CATERING</span>
 					</a>
 				</div>
 			</section>
@@ -145,81 +141,74 @@ const bodyContent = `
 			<!-- Marquee ticker (duplicated for seamless loop) -->
 			<div class="menu-ticker" aria-hidden="true">
 				<div class="menu-ticker__track">
-					<span class="menu-ticker__item">RICE PLATTERS</span>
+					<span class="menu-ticker__item">TRAYS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">GYROS</span>
+					<span class="menu-ticker__item">SANDWICH TRAYS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">LOADED FRIES</span>
+					<span class="menu-ticker__item">SANDWICH STATIONS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SALADS</span>
+					<span class="menu-ticker__item">SIDE TRAYS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">FROM THE FRYER</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SIDES</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">DESSERTS</span>
+					<span class="menu-ticker__item">PASTRIES</span>
 					<span class="menu-ticker__dot"></span>
 					<span class="menu-ticker__item">DRINKS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">RICE PLATTERS</span>
+					<span class="menu-ticker__item">EXTRAS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">GYROS</span>
+					<span class="menu-ticker__item">TRAYS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">LOADED FRIES</span>
+					<span class="menu-ticker__item">SANDWICH TRAYS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SALADS</span>
+					<span class="menu-ticker__item">SANDWICH STATIONS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">FROM THE FRYER</span>
+					<span class="menu-ticker__item">SIDE TRAYS</span>
 					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SIDES</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">DESSERTS</span>
+					<span class="menu-ticker__item">PASTRIES</span>
 					<span class="menu-ticker__dot"></span>
 					<span class="menu-ticker__item">DRINKS</span>
+					<span class="menu-ticker__dot"></span>
+					<span class="menu-ticker__item">EXTRAS</span>
 					<span class="menu-ticker__dot"></span>
 				</div>
 			</div>
 
 			<!-- ==================== FEATURED ITEMS ==================== -->
-			<section class="menu-featured" aria-label="Featured items">
+			<section class="menu-featured" aria-label="Featured catering items">
 				<div class="menu-featured__wrap">
 					<div class="menu-featured__header m-reveal">
 						<span class="menu-featured__label">MOST POPULAR</span>
-						<h2 class="menu-featured__h2">Fan Favorites</h2>
-						<p class="menu-featured__sub">The items everyone keeps coming back for</p>
+						<h2 class="menu-featured__h2">Catering Favorites</h2>
+						<p class="menu-featured__sub">The items everyone keeps ordering for their events</p>
 					</div>
 					<div class="menu-featured__grid">
-						<div class="menu-featured__card m-reveal" data-featured-link="rice-platters">
+						<div class="menu-featured__card m-reveal" data-featured-link="trays">
 							<div class="menu-featured__card-img">
-								<img src="../assets/images/Platters/Compo-Platter.jpeg" alt="Combo Platter" loading="lazy" />
+								<img src="../assets/images/Platters/Compo-Platter.jpeg" alt="Vegetarian Platter" loading="lazy" />
 								<span class="menu-featured__badge"><i class="fa-solid fa-fire"></i> #1 Seller</span>
-								<span class="menu-featured__card-price">$15.99</span>
 							</div>
 							<div class="menu-featured__card-body">
-								<h3 class="menu-featured__card-name">Combo Platter</h3>
-								<p class="menu-featured__card-desc">A delicious combination platter with your choice of proteins over salad or rice</p>
+								<h3 class="menu-featured__card-name">Vegetarian Platter</h3>
+								<p class="menu-featured__card-desc">A generous vegetarian platter with falafel, hummus, baba ganouj, tabbouleh, and more</p>
 							</div>
 						</div>
-						<div class="menu-featured__card m-reveal" data-featured-link="gyros">
+						<div class="menu-featured__card m-reveal" data-featured-link="trays">
 							<div class="menu-featured__card-img">
-								<img src="../assets/images/Gyros/Combo-Gyro.jpeg" alt="Combo Gyro" loading="lazy" />
-								<span class="menu-featured__badge"><i class="fa-solid fa-star"></i> Fan Fave</span>
-								<span class="menu-featured__card-price">$13.99</span>
+								<img src="../assets/images/Platters/Lamp-Chicken.jpeg" alt="Meat Platter" loading="lazy" />
+								<span class="menu-featured__badge"><i class="fa-solid fa-users"></i> Feeds 8-12</span>
 							</div>
 							<div class="menu-featured__card-body">
-								<h3 class="menu-featured__card-name">Combo Gyro</h3>
-								<p class="menu-featured__card-desc">A combination gyro with your choice of proteins in a warm pita</p>
+								<h3 class="menu-featured__card-name">Meat Platter</h3>
+								<p class="menu-featured__card-desc">A hearty meat platter with shawarma, chicken kebob, and all the fixings</p>
 							</div>
 						</div>
-						<div class="menu-featured__card m-reveal" data-featured-link="loaded-fries">
+						<div class="menu-featured__card m-reveal" data-featured-link="stations">
 							<div class="menu-featured__card-img">
-								<img src="../assets/images/Fries/Combo-Fries.jpeg" alt="Combo Fries" loading="lazy" />
-								<span class="menu-featured__badge"><i class="fa-solid fa-bolt"></i> Trending</span>
-								<span class="menu-featured__card-price">$12.99</span>
+								<img src="../assets/images/Sides/FalafelBox.jpeg" alt="Falafel Station" loading="lazy" />
+								<span class="menu-featured__badge"><i class="fa-solid fa-hands"></i> DIY Setup</span>
 							</div>
 							<div class="menu-featured__card-body">
-								<h3 class="menu-featured__card-name">Loaded Fries</h3>
-								<p class="menu-featured__card-desc">Loaded fries with your choice of toppings — the ultimate comfort food</p>
+								<h3 class="menu-featured__card-name">Falafel Station</h3>
+								<p class="menu-featured__card-desc">A DIY falafel station with all the toppings &mdash; let your guests build their own</p>
 							</div>
 						</div>
 					</div>
@@ -227,17 +216,15 @@ const bodyContent = `
 			</section>
 
 			<!-- Category nav: in-page, scrolls with content (no overlay) -->
-			<nav class="tabs-bar" aria-label="Menu categories" id="tabsBar">
+			<nav class="tabs-bar" aria-label="Catering categories" id="tabsBar">
 				<div class="tabs-bar__inner">
 					<ul class="tabs-nav" role="tablist">
-						<li role="presentation"><a id="tab-rice-platters" class="btn btn-tabs active" href="#rice-platters" role="tab" aria-selected="true" tabindex="0">Rice Platters</a></li>
-						<li role="presentation"><a id="tab-gyros" class="btn btn-tabs" href="#gyros" role="tab" aria-selected="false" tabindex="-1">Gyros</a></li>
-						<li role="presentation"><a id="tab-loaded-fries" class="btn btn-tabs" href="#loaded-fries" role="tab" aria-selected="false" tabindex="-1">Loaded Fries</a></li>
-						<li role="presentation"><a id="tab-salads" class="btn btn-tabs" href="#salads" role="tab" aria-selected="false" tabindex="-1">Salads</a></li>
-						<li role="presentation"><a id="tab-from-the-fryer" class="btn btn-tabs" href="#from-the-fryer" role="tab" aria-selected="false" tabindex="-1">From The Fryer</a></li>
-						<li role="presentation"><a id="tab-sides" class="btn btn-tabs" href="#sides" role="tab" aria-selected="false" tabindex="-1">Sides</a></li>
-						<li role="presentation"><a id="tab-desserts" class="btn btn-tabs" href="#desserts" role="tab" aria-selected="false" tabindex="-1">Desserts</a></li>
-						<li role="presentation"><a id="tab-drinks" class="btn btn-tabs" href="#drinks" role="tab" aria-selected="false" tabindex="-1">Drinks</a></li>
+						<li role="presentation"><a id="tab-trays" class="btn btn-tabs active" href="#trays" role="tab" aria-selected="true" tabindex="0">Trays</a></li>
+						<li role="presentation"><a id="tab-sandwich-trays" class="btn btn-tabs" href="#sandwich-trays" role="tab" aria-selected="false" tabindex="-1">Sandwich Trays</a></li>
+						<li role="presentation"><a id="tab-stations" class="btn btn-tabs" href="#stations" role="tab" aria-selected="false" tabindex="-1">Stations</a></li>
+						<li role="presentation"><a id="tab-side-trays" class="btn btn-tabs" href="#side-trays" role="tab" aria-selected="false" tabindex="-1">Side Trays</a></li>
+						<li role="presentation"><a id="tab-pastries-drinks" class="btn btn-tabs" href="#pastries-drinks" role="tab" aria-selected="false" tabindex="-1">Pastries &amp; Drinks</a></li>
+						<li role="presentation"><a id="tab-extras" class="btn btn-tabs" href="#extras" role="tab" aria-selected="false" tabindex="-1">Extras</a></li>
 					</ul>
 				</div>
 			</nav>
@@ -246,587 +233,264 @@ const bodyContent = `
 			<div class="tabs">
 				<div class="tabs-content">
 
-						<section id="rice-platters" class="menu-category-section" role="region" aria-labelledby="tab-rice-platters">
+						<!-- ===== TRAYS ===== -->
+						<section id="trays" class="menu-category-section" role="region" aria-labelledby="tab-trays">
 
 		<div class="menu-description container-sm">
-			<h1>Rice Platters</h1><p>served over a choice of salad or seasoned rice (or both for an additional charge) with tahineh sauce and a pita on the side</p><table style="width: 100%;"><tbody><tr></tr></tbody></table><div id="intro"><br></div>
-
+			<h1>Trays</h1><p>large catering trays perfect for any event or gathering</p>
 		</div>
 
         <div class="menu-flex-container">
-
-			<section class="menu-section">
-					<div class="menu-section__header">
-
-					</div>
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex" data-popular>
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Combo Platter"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Combo Platter</p>
-				<span class="menu-item__price">$15.99</span>
-			</div>
-
-			<p class="menu-item__details--description">a delicious combination platter with your choice of proteins</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Falafel-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Platter"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Falafel Platter</p>
-				<span class="menu-item__price">$14.99</span>
-			</div>
-
-			<p class="menu-item__details--description">crispy falafel and tender chicken served over salad or rice</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="House Chicken Platter"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">House Chicken Platter</p>
-				<span class="menu-item__price">$14.99</span>
-			</div>
-
-			<p class="menu-item__details--description">our signature house chicken served over salad or rice</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Jerk-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Jerk Chicken Platter"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Jerk Chicken Platter</p>
-				<span class="menu-item__price">$15.99</span>
-			</div>
-
-			<p class="menu-item__details--description">spicy jerk seasoned chicken served over salad or rice</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Lamb Platter"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Lamb Platter</p>
-				<span class="menu-item__price">$16.99</span>
-			</div>
-
-			<p class="menu-item__details--description">tender lamb and chicken combination served over salad or rice</p>
-
-		</li>
-
-					</ul>
-			</section>
-
-
-        </div>
-
-						</section>
-
-						<section id="gyros" class="menu-category-section" role="region" aria-labelledby="tab-gyros">
-
-		<div class="menu-description container-sm">
-			<h1>Gyros</h1><p>served over a choice of salad or seasoned rice (or both for an additional charge) with tahineh sauce and a pita on the side</p><table style="width: 100%;"><tbody><tr></tr></tbody></table><div id="intro"><br></div>
-
-		</div>
-
-        <div class="menu-flex-container">
-
 			<section class="menu-section">
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex" data-popular>
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Gyros/Combo-Gyro.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Combo Gyro"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Vegetarian Platter"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Combo Gyro</p>
-				<span class="menu-item__price">$13.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Vegetarian Platter</p>
 			</div>
-
-			<p class="menu-item__details--description">a combination gyro with your choice of proteins in a warm pita</p>
-
+			<p class="menu-item__details--description">falafel, hummus, baba ganouj, tabbouleh, grape leaves, and pita bread</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Gyros/Falafel-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Gyro"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Meat Platter"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Falafel Gyro</p>
-				<span class="menu-item__price">$12.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Meat Platter</p>
 			</div>
+			<p class="menu-item__details--description">shawarma, chicken kebob, seasoned rice, hummus, salad, and pita bread</p>
+		</li>
 
-			<p class="menu-item__details--description">crispy falafel and chicken in a warm pita with fresh vegetables and tahineh sauce</p>
+					</ul>
+			</section>
+        </div>
 
+						</section>
+
+						<!-- ===== SANDWICH TRAYS ===== -->
+						<section id="sandwich-trays" class="menu-category-section" role="region" aria-labelledby="tab-sandwich-trays">
+
+		<div class="menu-description container-sm">
+			<h1>Sandwich Trays</h1><p>trays of our signature sandwiches, available in 10 or 24 packs</p>
+		</div>
+
+        <div class="menu-flex-container">
+			<section class="menu-section">
+					<ul class="menu-flex-layout">
+
+		<li class="menu-item menu-item--flex">
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Tray"></div>
+				<div class="menu-item__heading">
+					<p class="menu-item__heading menu-item__heading--name">Falafel Tray (10/24 Pack)</p>
+			</div>
+			<p class="menu-item__details--description">crispy falafel sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Gyros/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="House Chicken Gyro"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Tray"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">House Chicken Gyro</p>
-				<span class="menu-item__price">$11.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Chicken Tray (10/24 Pack)</p>
 			</div>
-
-			<p class="menu-item__details--description">our signature house chicken in a warm pita with fresh vegetables and tahineh sauce</p>
-
+			<p class="menu-item__details--description">chicken kebob sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Gyros/Jerk-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Jerk Chicken Gyro"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Falafel-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Shawarma Tray"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Jerk Chicken Gyro</p>
-				<span class="menu-item__price">$12.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Shawarma Tray (10/24 Pack)</p>
 			</div>
-
-			<p class="menu-item__details--description">spicy jerk seasoned chicken in a warm pita with fresh vegetables and tahineh sauce</p>
-
+			<p class="menu-item__details--description">shawarma sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
 		</li>
+
+					</ul>
+			</section>
+        </div>
+
+						</section>
+
+						<!-- ===== STATIONS ===== -->
+						<section id="stations" class="menu-category-section" role="region" aria-labelledby="tab-stations">
+
+		<div class="menu-description container-sm">
+			<h1>Sandwich Stations</h1><p>DIY sandwich stations with all the fixings &mdash; let your guests build their own</p>
+		</div>
+
+        <div class="menu-flex-container">
+			<section class="menu-section">
+					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex" data-popular>
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Gyros/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Lamb Gyro"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Station"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Lamb Gyro</p>
-				<span class="menu-item__price">$13.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Falafel Station</p>
 			</div>
+			<p class="menu-item__details--description">crispy falafel with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
+		</li>
 
-			<p class="menu-item__details--description">tender lamb and chicken combination in a warm pita with fresh vegetables and tahineh sauce</p>
+		<li class="menu-item menu-item--flex">
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Station"></div>
+				<div class="menu-item__heading">
+					<p class="menu-item__heading menu-item__heading--name">Chicken Station</p>
+			</div>
+			<p class="menu-item__details--description">grilled chicken kebob with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
+		</li>
 
+		<li class="menu-item menu-item--flex">
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Shawarma Station"></div>
+				<div class="menu-item__heading">
+					<p class="menu-item__heading menu-item__heading--name">Shawarma Station</p>
+			</div>
+			<p class="menu-item__details--description">thinly sliced shawarma with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
 		</li>
 
 					</ul>
 			</section>
-
-
         </div>
 
 						</section>
 
-						<section id="loaded-fries" class="menu-category-section" role="region" aria-labelledby="tab-loaded-fries">
+						<!-- ===== SIDE TRAYS ===== -->
+						<section id="side-trays" class="menu-category-section" role="region" aria-labelledby="tab-side-trays">
 
 		<div class="menu-description container-sm">
-			<h1>Loaded Fries</h1><p>loaded fries with your choice of toppings</p><table style="width: 100%;"><tbody><tr></tr></tbody></table><div id="intro"><br></div>
-
+			<h1>Side Trays</h1><p>large trays of our most popular sides</p>
 		</div>
 
         <div class="menu-flex-container">
-
-			<section class="menu-section">
-					<div class="menu-section__header">
-
-					</div>
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Fries/Combo-Fries.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Combo Fries"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Combo Fries</p>
-				<span class="menu-item__price">$12.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fries with your choice of toppings</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Fries/Falafel-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Fries"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Falafel Fries</p>
-				<span class="menu-item__price">$11.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fries topped with falafel and chicken</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Fries/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="House Chicken Fries"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">House Chicken Fries</p>
-				<span class="menu-item__price">$11.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fries topped with our signature house chicken</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Fries/Jerk-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Jerk Chicken Fries"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Jerk Chicken Fries</p>
-				<span class="menu-item__price">$12.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fries topped with spicy jerk chicken</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Fries/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Lamb Fries"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Lamb Fries</p>
-				<span class="menu-item__price">$12.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fries topped with lamb and chicken</p>
-
-		</li>
-
-					</ul>
-			</section>
-
-
-        </div>
-
-						</section>
-
-						<section id="salads" class="menu-category-section" role="region" aria-labelledby="tab-salads">
-
-		<div class="menu-description container-sm">
-			<h1>Salads</h1><p>served over a choice of salad or seasoned rice (or both for an additional charge) with tahineh sauce and a pita on the side</p><table style="width: 100%;"><tbody><tr></tr></tbody></table><div id="intro"><br></div>
-
-		</div>
-
-        <div class="menu-flex-container">
-
-			<section class="menu-section">
-					<div class="menu-section__header">
-
-					</div>
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Salad/Combo-Salad.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Combo Salad"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Combo Salad</p>
-				<span class="menu-item__price">$14.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fresh salad with your choice of proteins</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Salad/Falafel-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Salad"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Falafel Salad</p>
-				<span class="menu-item__price">$13.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fresh salad with falafel and chicken</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Salad/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="House Chicken Salad"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">House Chicken Salad</p>
-				<span class="menu-item__price">$13.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fresh salad with our signature house chicken</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Salad/Jerk-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Jerk Chicken Salad"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Jerk Chicken Salad</p>
-				<span class="menu-item__price">$14.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fresh salad with spicy jerk chicken</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Salad/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Lamb Salad"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Lamb Salad</p>
-				<span class="menu-item__price">$14.99</span>
-			</div>
-
-			<p class="menu-item__details--description">fresh salad with lamb and chicken</p>
-
-		</li>
-
-					</ul>
-			</section>
-
-
-        </div>
-
-						</section>
-
-						<section id="from-the-fryer" class="menu-category-section" role="region" aria-labelledby="tab-from-the-fryer">
-
-		<div class="menu-description container-sm">
-			<h1>From The Fryer</h1><p>crispy favorites from the fryer</p><table style="width: 100%;"><tbody><tr></tr></tbody></table><div id="intro"><br></div>
-
-		</div>
-
-        <div class="menu-flex-container">
-
 			<section class="menu-section">
 					<ul class="menu-flex-layout">
 
-					</ul>
-			</section>
-
-        </div>
-
-						</section>
-
-						<section id="sides" class="menu-category-section" role="region" aria-labelledby="tab-sides">
-
-		<div class="menu-description container-sm">
-			<h1>Sides</h1><p>served over a choice of salad or seasoned rice (or both for an additional charge) with tahineh sauce and a pita on the side</p><table style="width: 100%;"><tbody><tr></tr></tbody></table><div id="intro"><br></div>
-
-		</div>
-
-        <div class="menu-flex-container">
-
-			<section class="menu-section">
-					<div class="menu-section__header">
-
-					</div>
-					<ul class="menu-flex-layout">
-
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Box"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Tray 30pc"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Falafel Box</p>
-				<span class="menu-item__price">$6.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Falafel Tray 30pc</p>
 			</div>
-
-			<p class="menu-item__details--description">crispy falafel served as a side</p>
-
+			<p class="menu-item__details--description">30 pieces of our crispy, golden falafel</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/HotWings.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hot Wings"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hummus / Baba Ganouj"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Hot Wings</p>
-				<span class="menu-item__price">$8.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Hummus / Baba Ganouj</p>
 			</div>
-
-			<p class="menu-item__details--description">spicy chicken wings</p>
-
+			<p class="menu-item__details--description">large tray of our home-made hummus or roasted eggplant baba ganouj</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/Mozz.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Mozzarella Sticks"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Tabbouleh"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Mozzarella Sticks</p>
-				<span class="menu-item__price">$6.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Tabbouleh</p>
 			</div>
-
-			<p class="menu-item__details--description">crispy mozzarella sticks</p>
-
+			<p class="menu-item__details--description">bulgur wheat salad with finely chopped mint, parsley, garlic, onions, and peppers</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/OnionsRings.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Onion Rings"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Seasoned Rice"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Onion Rings</p>
-				<span class="menu-item__price">$5.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Seasoned Rice</p>
 			</div>
-
-			<p class="menu-item__details--description">crispy golden onion rings</p>
-
+			<p class="menu-item__details--description">large tray of our signature seasoned rice</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
 			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/SeasonFries.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Seasoned Fries"></div>
-
 				<div class="menu-item__heading">
 					<p class="menu-item__heading menu-item__heading--name">Seasoned Fries</p>
-				<span class="menu-item__price">$4.99</span>
 			</div>
-
-			<p class="menu-item__details--description">fries seasoned with our special blend</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Sides/Tenders.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Tenders"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Chicken Tenders</p>
-				<span class="menu-item__price">$7.99</span>
-			</div>
-
-			<p class="menu-item__details--description">crispy chicken tenders</p>
-
+			<p class="menu-item__details--description">large tray of our seasoned fries with our special blend of spices</p>
 		</li>
 
 					</ul>
 			</section>
-
-
         </div>
 
 						</section>
 
-						<section id="desserts" class="menu-category-section" role="region" aria-labelledby="tab-desserts">
+						<!-- ===== PASTRIES & DRINKS ===== -->
+						<section id="pastries-drinks" class="menu-category-section" role="region" aria-labelledby="tab-pastries-drinks">
 
 		<div class="menu-description container-sm">
-			<h1>Desserts</h1><p>served over a choice of salad or seasoned rice (or both for an additional charge) with tahineh sauce and a pita on the side</p><table style="width: 100%;"><tbody><tr></tr></tbody></table><div id="intro"><br></div>
-
+			<h1>Pastries &amp; Drinks</h1><p>sweet treats and refreshing drinks for your event</p>
 		</div>
 
         <div class="menu-flex-container">
-
 			<section class="menu-section">
-					<div class="menu-section__header">
-
-					</div>
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava Walnuts 72pc"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Baklava</p>
-				<span class="menu-item__price">$5.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Baklava Walnuts 72pc</p>
 			</div>
-
-			<p class="menu-item__details--description">traditional Middle Eastern pastry with honey and nuts</p>
-
+			<p class="menu-item__details--description">72 pieces of traditional fillo dough baklava stuffed with walnuts</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Desserts/Chocolate.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chocolate Dessert"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava Pistachios 72pc"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Chocolate Dessert</p>
-				<span class="menu-item__price">$6.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Baklava Pistachios 72pc</p>
 			</div>
-
-			<p class="menu-item__details--description">rich chocolate dessert</p>
-
+			<p class="menu-item__details--description">72 pieces of traditional fillo dough baklava stuffed with pistachios</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Desserts/Oreo-cheese-cake.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Oreo Cheesecake"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Drinks/Lmonade.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Specialty Drinks 1gal"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Oreo Cheesecake</p>
-				<span class="menu-item__price">$7.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Specialty Drinks 1gal</p>
 			</div>
-
-			<p class="menu-item__details--description">creamy cheesecake with Oreo cookies</p>
-
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Desserts/Regular-cheese-cake.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Regular Cheesecake"></div>
-
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Regular Cheesecake</p>
-				<span class="menu-item__price">$6.99</span>
-			</div>
-
-			<p class="menu-item__details--description">classic creamy cheesecake</p>
-
+			<p class="menu-item__details--description">one gallon of your choice: mint lemonade, mango, tamarind, or iced tea</p>
 		</li>
 
 					</ul>
 			</section>
-
-
         </div>
 
 						</section>
 
-						<section id="drinks" class="menu-category-section" role="region" aria-labelledby="tab-drinks">
+						<!-- ===== EXTRAS ===== -->
+						<section id="extras" class="menu-category-section" role="region" aria-labelledby="tab-extras">
 
 		<div class="menu-description container-sm">
-			<h1>Drinks</h1><p>served over a choice of salad or seasoned rice (or both for an additional charge) with tahineh sauce and a pita on the side</p><table style="width: 100%;"><tbody><tr></tr></tbody></table><div id="intro"><br></div>
-
+			<h1>Extra Sides</h1><p>add-ons and extras to complete your catering order</p>
 		</div>
 
         <div class="menu-flex-container">
-
 			<section class="menu-section">
-					<div class="menu-section__header">
-
-					</div>
 					<ul class="menu-flex-layout">
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Drinks/CanSoda.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Canned Soda"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hot Sauce"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Canned Soda</p>
-				<span class="menu-item__price">$2.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Hot Sauce</p>
 			</div>
-
-			<p class="menu-item__details--description">refreshing canned soft drinks</p>
-
+			<p class="menu-item__details--description">spicy sauce made from the finest, imported hot pepper spices</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Drinks/Half&Half.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Half & Half"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Tahineh Sauce"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Half & Half</p>
-				<span class="menu-item__price">$3.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Tahineh Sauce</p>
 			</div>
-
-			<p class="menu-item__details--description">a refreshing half lemonade half iced tea</p>
-
+			<p class="menu-item__details--description">smooth sesame seed-based sauce</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Drinks/Lmonade.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Lemonade"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Garlic Sauce"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Lemonade</p>
-				<span class="menu-item__price">$3.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Garlic Sauce</p>
 			</div>
-
-			<p class="menu-item__details--description">freshly squeezed lemonade</p>
-
+			<p class="menu-item__details--description">savory, garlic infused sauce</p>
 		</li>
 
 		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('../assets/images/Drinks/SweetTea.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Sweet Tea"></div>
-
+			<div class="image-thumbnail" style="background-image: url('../assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Bag of Pita Bread"></div>
 				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Sweet Tea</p>
-				<span class="menu-item__price">$3.99</span>
+					<p class="menu-item__heading menu-item__heading--name">Bag of Pita Bread</p>
 			</div>
-
-			<p class="menu-item__details--description">southern style sweet iced tea</p>
-
+			<p class="menu-item__details--description">6 pieces; baked fresh in-house daily</p>
 		</li>
 
 					</ul>
 			</section>
-
-
         </div>
 
 						</section>
@@ -940,20 +604,16 @@ const bodyContent = `
 			</section>
 
 			<!-- Order CTA strip -->
-			<section class="menu-order-cta" aria-label="Order online">
+			<section class="menu-order-cta" aria-label="Order catering">
 				<div class="menu-order-cta__inner">
-					<h2 class="menu-order-cta__title">Ready to order?</h2>
-					<p class="menu-order-cta__text">Pickup or delivery — order online and we’ll have it ready.</p>
+					<h2 class="menu-order-cta__title">Ready to order catering?</h2>
+					<p class="menu-order-cta__text">Order online and we'll have your catering order ready for pickup.</p>
 					<div class="menu-order-cta__actions">
 						<a href="https://omgyrohalal.square.site/" class="menu-order-cta__btn m-magnetic" target="_blank" rel="noopener">
-							<span class="menu-order-cta__btn-text">Order online</span>
+							<span class="menu-order-cta__btn-text">Order catering</span>
 							<span class="menu-order-cta__btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
 							<span class="m-confetti-container" aria-hidden="true"></span>
 						</a>
-						<button type="button" class="menu-order-cta__btn menu-order-cta__btn--download js-menu-download" aria-label="Download menu as PDF">
-							<span class="menu-order-cta__btn-icon"><i class="fa-solid fa-file-pdf" aria-hidden="true"></i></span>
-							<span class="menu-order-cta__btn-text">Download menu</span>
-						</button>
 					</div>
 				</div>
 			</section>
@@ -1013,30 +673,6 @@ const bodyContent = `
             <div class="menu-modal-footer">
                 <a href="https://omgyrohalal.square.site/" class="menu-modal-btn" target="_blank" rel="noopener">Order Now</a>
                 <button class="menu-modal-btn menu-modal-btn-secondary" id="modalCloseBtn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Download Menu Modal – shows menu images from assets/images/Menu/ -->
-    <div id="menuDownloadModal" class="menu-download-modal" aria-hidden="true" aria-label="View menu">
-        <div class="menu-download-modal__backdrop"></div>
-        <div class="menu-download-modal__box">
-            <button type="button" class="menu-download-modal__close" id="menuDownloadModalClose" aria-label="Close">&times;</button>
-            <h2 class="menu-download-modal__title">Our Menu</h2>
-            <p class="menu-download-modal__sub">View or download each page below.</p>
-            <div class="menu-download-modal__list">
-                <div class="menu-download-modal__item">
-                    <img src="../assets/images/Menu/1.webp" alt="Menu page 1" loading="lazy" />
-                    <a href="../assets/images/Menu/1.webp" class="menu-download-modal__btn" download="OMGYRO-Menu-Page-1.webp" target="_blank" rel="noopener">Download page 1</a>
-                </div>
-                <div class="menu-download-modal__item">
-                    <img src="../assets/images/Menu/2.webp" alt="Menu page 2" loading="lazy" />
-                    <a href="../assets/images/Menu/2.webp" class="menu-download-modal__btn" download="OMGYRO-Menu-Page-2.webp" target="_blank" rel="noopener">Download page 2</a>
-                </div>
-                <div class="menu-download-modal__item">
-                    <img src="../assets/images/Menu/3.webp" alt="Menu page 3" loading="lazy" />
-                    <a href="../assets/images/Menu/3.webp" class="menu-download-modal__btn" download="OMGYRO-Menu-Page-3.webp" target="_blank" rel="noopener">Download page 3</a>
-                </div>
             </div>
         </div>
     </div>
@@ -1150,7 +786,7 @@ const bodyContent = `
                 });
             });
 
-            var defaultId = 'rice-platters';
+            var defaultId = 'trays';
             var hash = window.location.hash;
             if (hash && hash.length > 1 && document.getElementById(hash.substring(1))) {
                 defaultId = hash.substring(1);
@@ -1197,7 +833,6 @@ const bodyContent = `
             card.addEventListener('mouseleave', function() {
                 card.style.transform = '';
             });
-            // Add shine overlay
             var shine = document.createElement('div');
             shine.className = 'm-tilt-shine';
             card.appendChild(shine);
@@ -1247,51 +882,18 @@ const bodyContent = `
             });
         });
 
-        // ======= 10. DOWNLOAD MENU – open modal with menu images from assets/images/Menu/ =======
-        (function() {
-            var modal = document.getElementById('menuDownloadModal');
-            var closeBtn = document.getElementById('menuDownloadModalClose');
-            var backdrop = modal && modal.querySelector('.menu-download-modal__backdrop');
-
-            function openDownloadModal() {
-                if (!modal) return;
-                modal.classList.add('active');
-                modal.setAttribute('aria-hidden', 'false');
-                document.body.style.overflow = 'hidden';
-            }
-            function closeDownloadModal() {
-                if (!modal) return;
-                modal.classList.remove('active');
-                modal.setAttribute('aria-hidden', 'true');
-                document.body.style.overflow = '';
-            }
-
-            document.querySelectorAll('.js-menu-download').forEach(function(btn) {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openDownloadModal();
-                });
-            });
-            if (closeBtn) closeBtn.addEventListener('click', closeDownloadModal);
-            if (backdrop) backdrop.addEventListener('click', closeDownloadModal);
-            modal.addEventListener('click', function(e) { if (e.target === modal) closeDownloadModal(); });
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('active')) closeDownloadModal();
-            });
-        })();
-
     })();
     </script>
     <script src="../assets/js/mobile-panel.js"></script>
 `;
 
-export default function MenuPage() {
+export default function CateringPage() {
   useEffect(() => {
     // Set page title
-    document.title = 'Menus | OMGYRO Halal in NJ';
+    document.title = 'Catering | OMGYRO Halal in NJ';
 
     // Inject CSS
-    const cssFiles = ['/assets/css/global-overrides.css', '/assets/css/header-unified.css', '/assets/css/menu.css'];
+    const cssFiles = ['/assets/css/global-overrides.css', '/assets/css/header-unified.css'];
     cssFiles.forEach((href) => {
       if (!document.querySelector(`link[href="${href}"]`)) {
         const link = document.createElement('link');
