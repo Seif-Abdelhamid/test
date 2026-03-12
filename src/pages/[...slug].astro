@@ -19,6 +19,16 @@ const seoTagsServiceConfig = await loadSEOTagsServiceConfig({
   <head>
     <Head />
     <SEO.Tags seoTagsServiceConfig={seoTagsServiceConfig} slot="seo-tags" />
+    <!-- OMGyro custom CSS -->
+    <link rel="stylesheet" href="/assets/css/global-overrides.css" />
+    <link rel="stylesheet" href="/assets/css/header-unified.css" />
+    <link rel="stylesheet" href="/assets/css/menu.css" />
+    <link rel="stylesheet" href="/assets/css/rewards.css" />
+    <link rel="stylesheet" href="/assets/css/gift-card.css" />
+    <!-- OMGyro custom JS -->
+    <script src="/assets/js/lenis-smooth.js" defer></script>
+    <script src="/assets/js/mobile-panel.js" defer></script>
+    <script src="/assets/js/sauce-bottle-fill.js" defer></script>
   </head>
   <body class="w-full h-full">
     <div id="root" class="w-full h-full">

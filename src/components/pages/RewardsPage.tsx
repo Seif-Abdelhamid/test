@@ -759,30 +759,7 @@ const bodyContent = `<header class="site-header">
 
 export default function RewardsPage() {
   useEffect(() => {
-    // Set page title
     document.title = 'Earn Rewards | OMGYRO Halal in NJ';
-
-    // Inject CSS
-    const cssFiles = ['/assets/css/global-overrides.css', '/assets/css/header-unified.css', '/assets/css/rewards.css'];
-    cssFiles.forEach((href) => {
-      if (!document.querySelector(`link[href="${href}"]`)) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = href;
-        document.head.appendChild(link);
-      }
-    });
-
-    // Inject JS
-    const jsFiles = ['/assets/js/mobile-panel.js', '/assets/js/lenis-smooth.js'];
-    jsFiles.forEach((src) => {
-      if (!document.querySelector(`script[src="${src}"]`)) {
-        const script = document.createElement('script');
-        script.src = src;
-        script.defer = true;
-        document.body.appendChild(script);
-      }
-    });
   }, []);
 
   return <div dangerouslySetInnerHTML={{ __html: bodyContent }} />;
