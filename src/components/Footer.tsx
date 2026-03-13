@@ -1,118 +1,64 @@
 import { Link } from 'react-router-dom';
-import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from 'lucide-react';
+
+const TikTokSVG = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em" aria-hidden="true">
+    <path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z" />
+  </svg>
+);
+
+const footerLinks = [
+  { name: 'Rewards', path: '/rewards' },
+  { name: 'Gift Card', path: '/gift-card' },
+  { name: 'Contact', path: '/contact' },
+];
 
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-foreground text-background py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Brand Section */}
-          <div>
-            <h3 className="text-2xl font-heading font-bold mb-4">OMGYRO</h3>
-            <p className="text-background/80 mb-4">
-              Experience the OMG Way - Creamy, savory, and absolutely delicious halal platters.
-            </p>
-            <div className="flex gap-4">
-              <a 
-                href="https://facebook.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors duration-200"
-                aria-label="Facebook"
-              >
-                <Facebook size={20} />
+    <footer className="bg-brand-black text-white">
+      <div className="border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-5 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <ul className="flex items-center gap-5 list-none m-0 p-0">
+            <li>
+              <a href="https://www.facebook.com/profile.php?id=61565412359779" aria-label="Facebook" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors text-xl">
+                <i className="fa-brands fa-facebook" aria-hidden="true" />
+                <span className="sr-only">Facebook</span>
               </a>
-              <a 
-                href="https://instagram.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors duration-200"
-                aria-label="Instagram"
-              >
-                <Instagram size={20} />
+            </li>
+            <li>
+              <a href="https://www.instagram.com/omgyrohalal/" aria-label="Instagram" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors text-xl">
+                <i className="fa-brands fa-instagram" aria-hidden="true" />
+                <span className="sr-only">Instagram</span>
               </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="text-background/80 hover:text-primary transition-colors duration-200"
-                aria-label="Twitter"
-              >
-                <Twitter size={20} />
+            </li>
+            <li>
+              <a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-primary transition-colors text-xl">
+                <TikTokSVG />
+                <span className="sr-only">TikTok</span>
               </a>
-            </div>
-          </div>
+            </li>
+            <li>
+              <a href="mailto:feedback@mamounts.com" aria-label="Email" className="text-white/60 hover:text-primary transition-colors text-xl">
+                <i className="fa-solid fa-envelope" aria-hidden="true" />
+                <span className="sr-only">Email</span>
+              </a>
+            </li>
+          </ul>
 
-          {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-heading font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-background/80 hover:text-primary transition-colors duration-200">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/menu" className="text-background/80 hover:text-primary transition-colors duration-200">
-                  Menu
-                </Link>
-              </li>
-              <li>
-                <Link to="/locations" className="text-background/80 hover:text-primary transition-colors duration-200">
-                  Locations
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-background/80 hover:text-primary transition-colors duration-200">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link to="/contact" className="text-background/80 hover:text-primary transition-colors duration-200">
-                  Contact
-                </Link>
-              </li>
+          <nav aria-label="Footer navigation">
+            <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 list-none m-0 p-0">
+              {footerLinks.map(({ name, path }) => (
+                <li key={path}>
+                  <Link to={path} className="text-sm text-white/60 hover:text-primary transition-colors">
+                    {name}
+                  </Link>
+                </li>
+              ))}
             </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h4 className="text-lg font-heading font-bold mb-4">Contact</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2">
-                <MapPin size={18} className="mt-1 flex-shrink-0 text-primary" />
-                <span className="text-background/80">South Orange, NJ</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Phone size={18} className="mt-1 flex-shrink-0 text-primary" />
-                <span className="text-background/80">(555) 123-4567</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <Mail size={18} className="mt-1 flex-shrink-0 text-primary" />
-                <span className="text-background/80">info@omgyro.com</span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Hours */}
-          <div>
-            <h4 className="text-lg font-heading font-bold mb-4">Hours</h4>
-            <ul className="space-y-2 text-background/80">
-              <li>Monday - Thursday: 11am - 10pm</li>
-              <li>Friday - Saturday: 11am - 11pm</li>
-              <li>Sunday: 12pm - 9pm</li>
-            </ul>
-          </div>
+          </nav>
         </div>
-
-        {/* Bottom Bar */}
-        <div className="pt-8 border-t border-background/20 text-center">
-          <p className="text-background/60 text-sm">
-            © {currentYear} seif-abdelhamid.github.io. All rights reserved.
-          </p>
-        </div>
+      </div>
+      <div className="text-center py-4 text-xs text-white/30">
+        &copy; {new Date().getFullYear()} OMGYRO Halal. All rights reserved.
       </div>
     </footer>
   );

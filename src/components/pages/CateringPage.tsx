@@ -1,937 +1,140 @@
+import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
-
-const pageHTML = `
-<header class="site-header">
-<div class="site-header-desktop">
-		<div class="site-header-desktop-primary" data-header-sticky>
-			<div class="container omgyro-header-inner">
-				<div class="site-logo">
-					<a class="site-logo__btn" href="/" aria-label="OMGYRO Halal Food">
-						<img class="site-logo__expanded" src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" loading="eager" fetchpriority="high" />
-					</a>
-				</div>
-				<nav class="site-nav">
-					<ul class="site-nav-menu" data-menu-type="desktop">
-						<li><a class="site-nav-link" href="/locations" aria-label="Locations" role="button">Locations</a></li>
-						<li><a class="site-nav-link" href="/menu" aria-label="Menu" role="button">Menu</a></li>
-						<li><a class="site-nav-link" href="/catering" aria-label="Catering" role="button">Catering</a></li>
-						<li><a class="site-nav-link" href="/store" aria-label="Sauce Bible" role="button">Sauce Bible</a></li>
-						<li><a class="site-nav-link" href="/blog" aria-label="Blog" role="button">Blog</a></li>
-						<li><a href="https://omgyrohalal.square.site/" class="btn btn-brand site-nav-cta" target="_blank" rel="noopener" aria-label="Order Online" role="button">Order Online</a></li>
-					</ul>
-				</nav>
-			</div>
-		</div>
-	</div>
-	<div class="site-header-mobi" aria-label="Navigation Menu Modal">
-		<div class="site-logo">
-			<a class="site-logo__btn" href="/" aria-label="OMGYRO Halal Food">
-				<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
-			</a>
-		</div>
-		<button type="button" class="nav-toggle-btn" aria-controls="SiteHeaderMobilePanel" aria-expanded="false">
-			<span class="sr-only">Toggle Navigation</span>
-			<span class="nav-toggle-btn__line"></span>
-			<span class="nav-toggle-btn__line"></span>
-			<span class="nav-toggle-btn__line"></span>
-		</button>
-		<div id="SiteHeaderMobilePanel" class="site-header-mobi-panel">
-			<div class="site-header-mobi-panel__inner">
-				<button class="nav-close-btn" aria-label="Close Navigation"></button>
-				<div class="nav-header">
-					<div class="site-logo">
-						<a href="/" aria-label="OMGYRO Halal Food">
-							<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png" alt="OMGYRO Halal Food" />
-						</a>
-					</div>
-					<div class="nav-quick-actions">
-						<a href="https://omgyrohalal.square.site/" class="quick-action-card" target="_blank" rel="noopener">
-							<span class="quick-action-icon"><i class="fa fa-bag-shopping"></i></span>
-							<span class="quick-action-text">Order Now</span>
-						</a>
-						<a href="/locations" class="quick-action-card">
-							<span class="quick-action-icon"><i class="fa fa-location-dot"></i></span>
-							<span class="quick-action-text">Find Us</span>
-						</a>
-					</div>
-				</div>
-				<nav class="site-nav" aria-label="Navigation Menu">
-					<div class="nav-section">
-						<div class="nav-section-title">Main</div>
-						<ul class="site-nav-menu" data-menu-type="mobile">
-							<li><a class="site-nav-link" href="/menu" aria-label="Menu"><span class="nav-icon"><i class="fa-solid fa-utensils"></i></span><span>Menu</span></a></li>
-							<li><a class="site-nav-link" href="/locations" aria-label="Locations"><span class="nav-icon"><i class="fa-solid fa-location-dot"></i></span><span>Locations</span></a></li>
-							<li><a class="site-nav-link" href="/catering" aria-label="Catering"><span class="nav-icon"><i class="fa-solid fa-champagne-glasses"></i></span><span>Catering</span></a></li>
-							<li><a class="site-nav-link" href="/store" aria-label="Sauce Bible"><span class="nav-icon"><i class="fa-solid fa-fire"></i></span><span>Sauce Bible</span></a></li>
-							<li><a class="site-nav-link" href="/blog" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
-						</ul>
-					</div>
-					<div class="nav-section">
-						<div class="nav-section-title">About</div>
-						<ul class="site-nav-menu" data-menu-type="mobile">
-							<li><a class="site-nav-link" href="/blog" aria-label="Blog"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
-							<li><a class="site-nav-link" href="/gift-card" aria-label="Gift Card"><span class="nav-icon"><i class="fa-solid fa-gift"></i></span><span>Gift Card</span></a></li>
-							<li><a class="site-nav-link" href="/contact" aria-label="Contact"><span class="nav-icon"><i class="fa-solid fa-envelope"></i></span><span>Contact</span></a></li>
-							<li><a class="site-nav-link" href="/community" aria-label="Community"><span class="nav-icon"><i class="fa-solid fa-users"></i></span><span>Community</span></a></li>
-						</ul>
-					</div>
-				</nav>
-				<div class="site-social site-social--bordered">
-					<div class="social-section-divider">
-						<div class="social-section-title">Connect With Us</div>
-					</div>
-					<ul class="social-accounts">
-						<li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook" target="_blank" rel="noopener"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
-						<li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram" target="_blank" rel="noopener"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
-						<li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok" target="_blank" rel="noopener"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
-						<li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#101;&#100;&#98;&#97;&#99;&#107;&#64;&#109;&#97;&#109;&#111;&#117;&#110;&#115;&#46;&#99;&#111;&#109;" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-</header>
-
-		<div class="site-content">
-
-			<main class="site-content__main page-id--catering">
-<!-- Catering hero – cinematic, particles, floating icons, CTA -->
-			<section class="menu-hero" aria-label="Catering">
-				<div class="menu-hero__bg" role="presentation" aria-hidden="true"></div>
-				<div class="menu-hero__particles" aria-hidden="true">
-					<span class="menu-hero__particle menu-hero__particle--1"></span>
-					<span class="menu-hero__particle menu-hero__particle--2"></span>
-					<span class="menu-hero__particle menu-hero__particle--3"></span>
-					<span class="menu-hero__particle menu-hero__particle--4"></span>
-					<span class="menu-hero__particle menu-hero__particle--5"></span>
-					<span class="menu-hero__particle menu-hero__particle--6"></span>
-				</div>
-				<div class="menu-hero__floating" aria-hidden="true">
-					<span class="menu-hero__float menu-hero__float--1"><i class="fa-solid fa-utensils"></i></span>
-					<span class="menu-hero__float menu-hero__float--2"><i class="fa-solid fa-pepper-hot"></i></span>
-					<span class="menu-hero__float menu-hero__float--3"><i class="fa-solid fa-bowl-food"></i></span>
-					<span class="menu-hero__float menu-hero__float--4"><i class="fa-solid fa-burger"></i></span>
-					<span class="menu-hero__float menu-hero__float--5"><i class="fa-solid fa-ice-cream"></i></span>
-					<span class="menu-hero__float menu-hero__float--6"><i class="fa-solid fa-mug-hot"></i></span>
-				</div>
-				<div class="menu-hero__inner">
-					<div class="menu-hero__badge">
-						<i class="fa-solid fa-champagne-glasses"></i>
-						<span>HALAL &bull; FRESH &bull; FEEDS A CROWD</span>
-					</div>
-					<h1 class="menu-hero__title">
-						<span class="menu-hero__title-line menu-hero__title-line--1" data-typewriter="OUR"></span>
-						<span class="menu-hero__title-line menu-hero__title-line--2" data-typewriter="CATERING"></span>
-					</h1>
-					<p class="menu-hero__tagline">Pick a category below and explore our catering options.</p>
-					<div class="menu-hero__cta">
-						<a href="https://omgyrohalal.square.site/" class="menu-hero__btn m-magnetic" target="_blank" rel="noopener">
-							<span class="menu-hero__btn-text">ORDER CATERING</span>
-							<span class="menu-hero__btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-							<span class="m-confetti-container" aria-hidden="true"></span>
-						</a>
-					</div>
-					<a href="#menus" class="menu-hero__scroll" aria-label="Scroll to catering menu">
-						<span class="menu-hero__scroll-line"></span>
-						<span class="menu-hero__scroll-label">BROWSE CATERING</span>
-					</a>
-				</div>
-			</section>
-
-			<!-- Marquee ticker (duplicated for seamless loop) -->
-			<div class="menu-ticker" aria-hidden="true">
-				<div class="menu-ticker__track">
-					<span class="menu-ticker__item">TRAYS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SANDWICH TRAYS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SANDWICH STATIONS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SIDE TRAYS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">PASTRIES</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">DRINKS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">EXTRAS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">TRAYS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SANDWICH TRAYS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SANDWICH STATIONS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">SIDE TRAYS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">PASTRIES</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">DRINKS</span>
-					<span class="menu-ticker__dot"></span>
-					<span class="menu-ticker__item">EXTRAS</span>
-					<span class="menu-ticker__dot"></span>
-				</div>
-			</div>
-
-			<!-- ==================== FEATURED ITEMS ==================== -->
-			<section class="menu-featured" aria-label="Featured catering items">
-				<div class="menu-featured__wrap">
-					<div class="menu-featured__header m-reveal">
-						<span class="menu-featured__label">MOST POPULAR</span>
-						<h2 class="menu-featured__h2">Catering Favorites</h2>
-						<p class="menu-featured__sub">The items everyone keeps ordering for their events</p>
-					</div>
-					<div class="menu-featured__grid">
-						<div class="menu-featured__card m-reveal" data-featured-link="trays">
-							<div class="menu-featured__card-img">
-								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg" alt="Vegetarian Platter" loading="lazy" />
-								<span class="menu-featured__badge"><i class="fa-solid fa-fire"></i> #1 Seller</span>
-							</div>
-							<div class="menu-featured__card-body">
-								<h3 class="menu-featured__card-name">Vegetarian Platter</h3>
-								<p class="menu-featured__card-desc">A generous vegetarian platter with falafel, hummus, baba ganouj, tabbouleh, and more</p>
-							</div>
-						</div>
-						<div class="menu-featured__card m-reveal" data-featured-link="trays">
-							<div class="menu-featured__card-img">
-								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Lamp-Chicken.jpeg" alt="Meat Platter" loading="lazy" />
-								<span class="menu-featured__badge"><i class="fa-solid fa-users"></i> Feeds 8-12</span>
-							</div>
-							<div class="menu-featured__card-body">
-								<h3 class="menu-featured__card-name">Meat Platter</h3>
-								<p class="menu-featured__card-desc">A hearty meat platter with shawarma, chicken kebob, and all the fixings</p>
-							</div>
-						</div>
-						<div class="menu-featured__card m-reveal" data-featured-link="stations">
-							<div class="menu-featured__card-img">
-								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg" alt="Falafel Station" loading="lazy" />
-								<span class="menu-featured__badge"><i class="fa-solid fa-hands"></i> DIY Setup</span>
-							</div>
-							<div class="menu-featured__card-body">
-								<h3 class="menu-featured__card-name">Falafel Station</h3>
-								<p class="menu-featured__card-desc">A DIY falafel station with all the toppings &mdash; let your guests build their own</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Category nav: in-page, scrolls with content (no overlay) -->
-			<nav class="tabs-bar" aria-label="Catering categories" id="tabsBar">
-				<div class="tabs-bar__inner">
-					<ul class="tabs-nav" role="tablist">
-						<li role="presentation"><a id="tab-trays" class="btn btn-tabs active" href="#trays" role="tab" aria-selected="true" tabindex="0">Trays</a></li>
-						<li role="presentation"><a id="tab-sandwich-trays" class="btn btn-tabs" href="#sandwich-trays" role="tab" aria-selected="false" tabindex="-1">Sandwich Trays</a></li>
-						<li role="presentation"><a id="tab-stations" class="btn btn-tabs" href="#stations" role="tab" aria-selected="false" tabindex="-1">Stations</a></li>
-						<li role="presentation"><a id="tab-side-trays" class="btn btn-tabs" href="#side-trays" role="tab" aria-selected="false" tabindex="-1">Side Trays</a></li>
-						<li role="presentation"><a id="tab-pastries-drinks" class="btn btn-tabs" href="#pastries-drinks" role="tab" aria-selected="false" tabindex="-1">Pastries &amp; Drinks</a></li>
-						<li role="presentation"><a id="tab-extras" class="btn btn-tabs" href="#extras" role="tab" aria-selected="false" tabindex="-1">Extras</a></li>
-					</ul>
-				</div>
-			</nav>
-
-		<section id="menus" aria-label="menus-section" class="content revealable">
-			<div class="tabs">
-				<div class="tabs-content">
-
-						<!-- ===== TRAYS ===== -->
-						<section id="trays" class="menu-category-section" role="region" aria-labelledby="tab-trays">
-
-		<div class="menu-description container-sm">
-			<h1>Trays</h1><p>large catering trays perfect for any event or gathering</p>
-		</div>
-
-        <div class="menu-flex-container">
-			<section class="menu-section">
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex" data-popular>
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Vegetarian Platter"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Vegetarian Platter</p>
-			</div>
-			<p class="menu-item__details--description">falafel, hummus, baba ganouj, tabbouleh, grape leaves, and pita bread</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Meat Platter"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Meat Platter</p>
-			</div>
-			<p class="menu-item__details--description">shawarma, chicken kebob, seasoned rice, hummus, salad, and pita bread</p>
-		</li>
-
-					</ul>
-			</section>
-        </div>
-
-						</section>
-
-						<!-- ===== SANDWICH TRAYS ===== -->
-						<section id="sandwich-trays" class="menu-category-section" role="region" aria-labelledby="tab-sandwich-trays">
-
-		<div class="menu-description container-sm">
-			<h1>Sandwich Trays</h1><p>trays of our signature sandwiches, available in 10 or 24 packs</p>
-		</div>
-
-        <div class="menu-flex-container">
-			<section class="menu-section">
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Tray"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Falafel Tray (10/24 Pack)</p>
-			</div>
-			<p class="menu-item__details--description">crispy falafel sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Tray"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Chicken Tray (10/24 Pack)</p>
-			</div>
-			<p class="menu-item__details--description">chicken kebob sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Falafel-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Shawarma Tray"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Shawarma Tray (10/24 Pack)</p>
-			</div>
-			<p class="menu-item__details--description">shawarma sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
-		</li>
-
-					</ul>
-			</section>
-        </div>
-
-						</section>
-
-						<!-- ===== STATIONS ===== -->
-						<section id="stations" class="menu-category-section" role="region" aria-labelledby="tab-stations">
-
-		<div class="menu-description container-sm">
-			<h1>Sandwich Stations</h1><p>DIY sandwich stations with all the fixings &mdash; let your guests build their own</p>
-		</div>
-
-        <div class="menu-flex-container">
-			<section class="menu-section">
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex" data-popular>
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Station"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Falafel Station</p>
-			</div>
-			<p class="menu-item__details--description">crispy falafel with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/House-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Chicken Station"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Chicken Station</p>
-			</div>
-			<p class="menu-item__details--description">grilled chicken kebob with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Lamp-Chicken.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Shawarma Station"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Shawarma Station</p>
-			</div>
-			<p class="menu-item__details--description">thinly sliced shawarma with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
-		</li>
-
-					</ul>
-			</section>
-        </div>
-
-						</section>
-
-						<!-- ===== SIDE TRAYS ===== -->
-						<section id="side-trays" class="menu-category-section" role="region" aria-labelledby="tab-side-trays">
-
-		<div class="menu-description container-sm">
-			<h1>Side Trays</h1><p>large trays of our most popular sides</p>
-		</div>
-
-        <div class="menu-flex-container">
-			<section class="menu-section">
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/FalafelBox.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Falafel Tray 30pc"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Falafel Tray 30pc</p>
-			</div>
-			<p class="menu-item__details--description">30 pieces of our crispy, golden falafel</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hummus / Baba Ganouj"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Hummus / Baba Ganouj</p>
-			</div>
-			<p class="menu-item__details--description">large tray of our home-made hummus or roasted eggplant baba ganouj</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Tabbouleh"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Tabbouleh</p>
-			</div>
-			<p class="menu-item__details--description">bulgur wheat salad with finely chopped mint, parsley, garlic, onions, and peppers</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Seasoned Rice"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Seasoned Rice</p>
-			</div>
-			<p class="menu-item__details--description">large tray of our signature seasoned rice</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Sides/SeasonFries.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Seasoned Fries"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Seasoned Fries</p>
-			</div>
-			<p class="menu-item__details--description">large tray of our seasoned fries with our special blend of spices</p>
-		</li>
-
-					</ul>
-			</section>
-        </div>
-
-						</section>
-
-						<!-- ===== PASTRIES & DRINKS ===== -->
-						<section id="pastries-drinks" class="menu-category-section" role="region" aria-labelledby="tab-pastries-drinks">
-
-		<div class="menu-description container-sm">
-			<h1>Pastries &amp; Drinks</h1><p>sweet treats and refreshing drinks for your event</p>
-		</div>
-
-        <div class="menu-flex-container">
-			<section class="menu-section">
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava Walnuts 72pc"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Baklava Walnuts 72pc</p>
-			</div>
-			<p class="menu-item__details--description">72 pieces of traditional fillo dough baklava stuffed with walnuts</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Desserts/Baklava.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Baklava Pistachios 72pc"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Baklava Pistachios 72pc</p>
-			</div>
-			<p class="menu-item__details--description">72 pieces of traditional fillo dough baklava stuffed with pistachios</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Drinks/Lmonade.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Specialty Drinks 1gal"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Specialty Drinks 1gal</p>
-			</div>
-			<p class="menu-item__details--description">one gallon of your choice: mint lemonade, mango, tamarind, or iced tea</p>
-		</li>
-
-					</ul>
-			</section>
-        </div>
-
-						</section>
-
-						<!-- ===== EXTRAS ===== -->
-						<section id="extras" class="menu-category-section" role="region" aria-labelledby="tab-extras">
-
-		<div class="menu-description container-sm">
-			<h1>Extra Sides</h1><p>add-ons and extras to complete your catering order</p>
-		</div>
-
-        <div class="menu-flex-container">
-			<section class="menu-section">
-					<ul class="menu-flex-layout">
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Hot Sauce"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Hot Sauce</p>
-			</div>
-			<p class="menu-item__details--description">spicy sauce made from the finest, imported hot pepper spices</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Tahineh Sauce"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Tahineh Sauce</p>
-			</div>
-			<p class="menu-item__details--description">smooth sesame seed-based sauce</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Garlic Sauce"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Garlic Sauce</p>
-			</div>
-			<p class="menu-item__details--description">savory, garlic infused sauce</p>
-		</li>
-
-		<li class="menu-item menu-item--flex">
-			<div class="image-thumbnail" style="background-image: url('https://seif-abdelhamid.github.io/inprogress/assets/images/Platters/Compo-Platter.jpeg');background-position: center; background-size: cover;"><img class="sr-only" alt="Bag of Pita Bread"></div>
-				<div class="menu-item__heading">
-					<p class="menu-item__heading menu-item__heading--name">Bag of Pita Bread</p>
-			</div>
-			<p class="menu-item__details--description">6 pieces; baked fresh in-house daily</p>
-		</li>
-
-					</ul>
-			</section>
-        </div>
-
-						</section>
-
-				</div>
-			</div>
-		</section>
-
-			<!-- ==================== SAUCE CROSS-SELL ==================== -->
-			<section class="menu-sauces m-reveal" aria-label="Our sauces">
-				<div class="menu-sauces__wrap">
-					<span class="menu-sauces__eyebrow">THE SAUCE BIBLE</span>
-					<h2 class="menu-sauces__h2">Bring The Flavor Home</h2>
-					<p class="menu-sauces__sub">Our legendary sauces are now available to buy. Drizzle, dip, and pour to your heart's content.</p>
-					<div class="menu-sauces__grid">
-						<a href="../store/product/green-sauce/index.html" class="menu-sauces__card" data-heat="mild">
-							<div class="menu-sauces__card-glow"></div>
-							<div class="menu-sauces__card-img">
-								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauces/Green-Sauce.png" alt="Green Sauce" loading="lazy" />
-							</div>
-							<div class="menu-sauces__card-body">
-								<span class="menu-sauces__card-tag"><i class="fa-solid fa-leaf"></i> Mild</span>
-								<div class="menu-sauces__card-name">Green Sauce</div>
-								<p class="menu-sauces__card-desc">Fresh, herby &amp; zesty</p>
-								<span class="menu-sauces__card-cta">Shop Now <i class="fa-solid fa-arrow-right"></i></span>
-							</div>
-						</a>
-						<a href="../store/product/hot-sauce/index.html" class="menu-sauces__card" data-heat="hot">
-							<div class="menu-sauces__card-glow"></div>
-							<div class="menu-sauces__card-img">
-								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauces/Hot-Sauce.png" alt="Hot Sauce" loading="lazy" />
-							</div>
-							<div class="menu-sauces__card-body">
-								<span class="menu-sauces__card-tag"><i class="fa-solid fa-pepper-hot"></i> Hot</span>
-								<div class="menu-sauces__card-name">Hot Sauce</div>
-								<p class="menu-sauces__card-desc">Bold heat, rich flavor</p>
-								<span class="menu-sauces__card-cta">Shop Now <i class="fa-solid fa-arrow-right"></i></span>
-							</div>
-						</a>
-						<a href="../store/product/omg-sauce/index.html" class="menu-sauces__card" data-heat="extra">
-							<div class="menu-sauces__card-glow"></div>
-							<div class="menu-sauces__card-img">
-								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauces/OMG-Sauce.png" alt="OMG Sauce" loading="lazy" />
-							</div>
-							<div class="menu-sauces__card-body">
-								<span class="menu-sauces__card-tag"><i class="fa-solid fa-fire"></i> Extra Hot</span>
-								<div class="menu-sauces__card-name">OMG Sauce</div>
-								<p class="menu-sauces__card-desc">Our signature fire</p>
-								<span class="menu-sauces__card-cta">Shop Now <i class="fa-solid fa-arrow-right"></i></span>
-							</div>
-						</a>
-						<a href="../store/product/white-sauce/index.html" class="menu-sauces__card" data-heat="creamy">
-							<div class="menu-sauces__card-glow"></div>
-							<div class="menu-sauces__card-img">
-								<img src="https://seif-abdelhamid.github.io/inprogress/assets/images/Sauces/White-Sauce.png" alt="White Sauce" loading="lazy" />
-							</div>
-							<div class="menu-sauces__card-body">
-								<span class="menu-sauces__card-tag"><i class="fa-solid fa-droplet"></i> Creamy</span>
-								<div class="menu-sauces__card-name">White Sauce</div>
-								<p class="menu-sauces__card-desc">Smooth &amp; tangy classic</p>
-								<span class="menu-sauces__card-cta">Shop Now <i class="fa-solid fa-arrow-right"></i></span>
-							</div>
-						</a>
-					</div>
-					<a href="/store" class="menu-sauces__btn m-magnetic">
-						<span>SHOP ALL SAUCES</span>
-						<span class="menu-sauces__btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-						<span class="m-confetti-container" aria-hidden="true"></span>
-					</a>
-				</div>
-			</section>
-
-			<!-- ==================== REWARDS CALLOUT ==================== -->
-			<section class="menu-rewards-cta m-reveal" aria-label="Earn rewards">
-				<div class="menu-rewards-cta__inner">
-					<div class="menu-rewards-cta__copy">
-						<span class="menu-rewards-cta__eyebrow">OMGYRO REWARDS</span>
-						<h3 class="menu-rewards-cta__h3">Earn Free Food<br>Every Time You Order</h3>
-						<p class="menu-rewards-cta__text">Every $1 you spend earns 10 points. Stack them up and redeem for free food — from fries to full entrees.</p>
-						<a href="/rewards" class="menu-rewards-cta__btn m-magnetic">
-							<span>JOIN REWARDS</span>
-							<span class="menu-rewards-cta__btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-							<span class="m-confetti-container" aria-hidden="true"></span>
-						</a>
-					</div>
-					<div class="menu-rewards-cta__visual">
-						<div class="menu-rewards-cta__stats">
-							<div class="menu-rewards-cta__stat m-reveal">
-								<span class="menu-rewards-cta__stat-icon"><i class="fa-solid fa-coins"></i></span>
-								<span class="menu-rewards-cta__stat-num">10x</span>
-								<span class="menu-rewards-cta__stat-label">POINTS PER $1</span>
-							</div>
-							<div class="menu-rewards-cta__stat m-reveal">
-								<span class="menu-rewards-cta__stat-icon"><i class="fa-solid fa-gift"></i></span>
-								<span class="menu-rewards-cta__stat-num">FREE</span>
-								<span class="menu-rewards-cta__stat-label">BIRTHDAY REWARD</span>
-							</div>
-							<div class="menu-rewards-cta__stat m-reveal">
-								<span class="menu-rewards-cta__stat-icon"><i class="fa-solid fa-bolt"></i></span>
-								<span class="menu-rewards-cta__stat-num">85</span>
-								<span class="menu-rewards-cta__stat-label">PTS FOR FRIES</span>
-							</div>
-							<div class="menu-rewards-cta__stat m-reveal">
-								<span class="menu-rewards-cta__stat-icon"><i class="fa-solid fa-trophy"></i></span>
-								<span class="menu-rewards-cta__stat-num">VIP</span>
-								<span class="menu-rewards-cta__stat-label">EXCLUSIVE DEALS</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- Order CTA strip -->
-			<section class="menu-order-cta" aria-label="Order catering">
-				<div class="menu-order-cta__inner">
-					<h2 class="menu-order-cta__title">Ready to order catering?</h2>
-					<p class="menu-order-cta__text">Order online and we'll have your catering order ready for pickup.</p>
-					<div class="menu-order-cta__actions">
-						<a href="https://omgyrohalal.square.site/" class="menu-order-cta__btn m-magnetic" target="_blank" rel="noopener">
-							<span class="menu-order-cta__btn-text">Order catering</span>
-							<span class="menu-order-cta__btn-icon"><i class="fa-solid fa-arrow-right"></i></span>
-							<span class="m-confetti-container" aria-hidden="true"></span>
-						</a>
-					</div>
-				</div>
-			</section>
-
-			</main>
-
-	</div>
-
-        <footer>
-          <div class="site-footer-desktop">
-                  <div class="site-footer-desktop-primary">
-                      <div class="site-footer-desktop-primary__container container">
-                              <ul class="social-accounts">
-        <li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook" target="_blank" rel="noopener"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
-        <li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram" target="_blank" rel="noopener"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
-        <li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok" target="_blank" rel="noopener"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
-        <li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#101;&#100;&#98;&#97;&#99;&#107;&#64;&#109;&#97;&#109;&#111;&#117;&#110;&#115;&#46;&#99;&#111;&#109;" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
-		</ul>
-                              <nav class="site-nav">
-                                  <ul class="site-nav-menu">
-		<li>
-			<a class="site-nav-link "  href="/gift-card"  aria-label="Gift Card">Gift Card</a>
-		</li>
-		<li>
-			<a class="site-nav-link "  href="/rewards"  aria-label="Rewards">Rewards</a>
-		</li>
-		<li>
-			<a class="site-nav-link "  href="/contact"  aria-label="Contact">Contact</a>
-		</li>
-		<li>
-			<a class="site-nav-link "  href="/community"  aria-label="Community">Community</a>
-		</li>
-                                  </ul>
-                              </nav>
-                      </div>
-                  </div>
-                  <div class="site-footer-desktop-secondary">
-
-                  </div>
-          </div>
-        </footer>
-
-<!-- Menu Item Modal -->
-    <div id="menuModal" class="menu-modal">
-        <div class="menu-modal-content">
-            <div class="menu-modal-header">
-                <button class="menu-modal-close" id="modalClose" aria-label="Close">&times;</button>
-            </div>
-            <div class="menu-modal-image" id="modalImage">
-                <div class="menu-modal-image-overlay">
-                    <h2 class="menu-modal-image-title" id="modalTitle"></h2>
-                </div>
-            </div>
-            <div class="menu-modal-body">
-                <p class="menu-modal-description" id="modalDescription"></p>
-            </div>
-            <div class="menu-modal-footer">
-                <a href="https://omgyrohalal.square.site/" class="menu-modal-btn" target="_blank" rel="noopener">Order Now</a>
-                <button class="menu-modal-btn menu-modal-btn-secondary" id="modalCloseBtn">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <script>
-    (function() {
-        'use strict';
-
-        // ======= 1. SCROLL REVEAL =======
-        function revealOnScroll() {
-            var els = document.querySelectorAll('.m-reveal');
-            var wh = window.innerHeight;
-            els.forEach(function(el) {
-                if (el.getBoundingClientRect().top < wh - 80) el.classList.add('m-revealed');
-            });
-        }
-        window.addEventListener('scroll', revealOnScroll);
-        window.addEventListener('load', revealOnScroll);
-        revealOnScroll();
-
-        // ======= 2. TYPEWRITER EFFECT ON HERO =======
-        (function() {
-            var lines = document.querySelectorAll('.menu-hero__title-line[data-typewriter]');
-            var lineIdx = 0;
-            function typeLine() {
-                if (lineIdx >= lines.length) return;
-                var el = lines[lineIdx];
-                var text = el.getAttribute('data-typewriter');
-                var charIdx = 0;
-                el.textContent = '';
-                el.classList.add('m-typing');
-                var timer = setInterval(function() {
-                    charIdx++;
-                    el.textContent = text.slice(0, charIdx);
-                    if (charIdx >= text.length) {
-                        clearInterval(timer);
-                        el.classList.remove('m-typing');
-                        lineIdx++;
-                        setTimeout(typeLine, 150);
-                    }
-                }, 100);
-            }
-            setTimeout(typeLine, 500);
-        })();
-
-        // ======= 3. MENU MODAL =======
-        (function() {
-            var modal = document.getElementById('menuModal');
-            var modalTitle = document.getElementById('modalTitle');
-            var modalImage = document.getElementById('modalImage');
-            var modalDescription = document.getElementById('modalDescription');
-            var closeBtn = document.getElementById('modalClose');
-            var closeBtn2 = document.getElementById('modalCloseBtn');
-
-            document.querySelectorAll('.menu-item').forEach(function(item) {
-                item.style.cursor = 'pointer';
-                item.addEventListener('click', function() {
-                    var thumb = item.querySelector('.image-thumbnail');
-                    var nameEl = item.querySelector('.menu-item__heading--name');
-                    var descEl = item.querySelector('.menu-item__details--description');
-                    if (thumb && nameEl && descEl) {
-                        var imageUrl = window.getComputedStyle(thumb).backgroundImage.slice(5, -2);
-                        modalTitle.textContent = nameEl.textContent.trim();
-                        modalImage.style.backgroundImage = 'url(' + imageUrl + ')';
-                        modalDescription.textContent = descEl.textContent.trim();
-                        modal.classList.add('active');
-                        document.body.style.overflow = 'hidden';
-                    }
-                });
-            });
-
-            function closeModal() {
-                modal.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-            closeBtn.addEventListener('click', closeModal);
-            closeBtn2.addEventListener('click', closeModal);
-            modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
-            });
-        })();
-
-        // ======= 4. TABS =======
-        (function() {
-            var tabLinks = document.querySelectorAll('.tabs-nav a[role="tab"]');
-            var sections = document.querySelectorAll('.menu-category-section');
-
-            function setActiveTab(id) {
-                tabLinks.forEach(function(t) {
-                    var isActive = (t.getAttribute('href') === '#' + id);
-                    t.classList.toggle('active', isActive);
-                    t.setAttribute('aria-selected', isActive ? 'true' : 'false');
-                    t.setAttribute('tabindex', isActive ? '0' : '-1');
-                });
-            }
-
-            function showSection(id) {
-                sections.forEach(function(s) { s.classList.toggle('is-visible', s.id === id); });
-                setActiveTab(id);
-                history.replaceState(null, null, '#' + id);
-                var el = document.getElementById(id);
-                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-
-            tabLinks.forEach(function(link) {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    var href = link.getAttribute('href');
-                    if (href && href.charAt(0) === '#') showSection(href.substring(1));
-                });
-            });
-
-            var defaultId = 'trays';
-            var hash = window.location.hash;
-            if (hash && hash.length > 1 && document.getElementById(hash.substring(1))) {
-                defaultId = hash.substring(1);
-            }
-            showSection(defaultId);
-        })();
-
-        // ======= 5. STICKY TABS =======
-        (function() {
-            var tabsBar = document.getElementById('tabsBar');
-            if (!tabsBar) return;
-            var placeholder = document.createElement('div');
-            placeholder.className = 'm-tabs-placeholder';
-            tabsBar.parentNode.insertBefore(placeholder, tabsBar);
-            var offset = tabsBar.offsetTop - 75;
-
-            function onScroll() {
-                if (window.scrollY >= offset) {
-                    tabsBar.classList.add('m-sticky');
-                    placeholder.style.height = tabsBar.offsetHeight + 'px';
-                    placeholder.classList.add('m-active');
-                } else {
-                    tabsBar.classList.remove('m-sticky');
-                    placeholder.style.height = '';
-                    placeholder.classList.remove('m-active');
-                }
-            }
-            window.addEventListener('scroll', onScroll);
-            onScroll();
-        })();
-
-        // ======= 6. 3D TILT ON MENU CARDS =======
-        document.querySelectorAll('.menu-item').forEach(function(card) {
-            card.addEventListener('mousemove', function(e) {
-                var rect = card.getBoundingClientRect();
-                var x = e.clientX - rect.left;
-                var y = e.clientY - rect.top;
-                var cx = rect.width / 2;
-                var cy = rect.height / 2;
-                var rotX = ((y - cy) / cy) * -4;
-                var rotY = ((x - cx) / cx) * 4;
-                card.style.transform = 'perspective(800px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) translateY(-6px)';
-            });
-            card.addEventListener('mouseleave', function() {
-                card.style.transform = '';
-            });
-            var shine = document.createElement('div');
-            shine.className = 'm-tilt-shine';
-            card.appendChild(shine);
-        });
-
-        // ======= 7. CONFETTI BURST ON CTA =======
-        document.querySelectorAll('.m-confetti-container').forEach(function(container) {
-            var btn = container.closest('a, button');
-            if (!btn) return;
-            btn.addEventListener('click', function() {
-                for (var i = 0; i < 18; i++) {
-                    var dot = document.createElement('span');
-                    dot.className = 'm-confetti-dot';
-                    var angle = (Math.PI * 2 * i) / 18;
-                    var vel = 50 + Math.random() * 70;
-                    dot.style.setProperty('--tx', (Math.cos(angle) * vel) + 'px');
-                    dot.style.setProperty('--ty', (Math.sin(angle) * vel) + 'px');
-                    dot.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
-                    dot.style.background = ['#FF6600','#FFB347','#FF4500','#FFA500','#fff'][Math.floor(Math.random()*5)];
-                    container.appendChild(dot);
-                    setTimeout(function(d) { d.remove(); }, 800, dot);
-                }
-            });
-        });
-
-        // ======= 8. MAGNETIC BUTTON EFFECT =======
-        document.querySelectorAll('.m-magnetic').forEach(function(btn) {
-            btn.addEventListener('mousemove', function(e) {
-                var rect = btn.getBoundingClientRect();
-                var x = e.clientX - rect.left - rect.width / 2;
-                var y = e.clientY - rect.top - rect.height / 2;
-                btn.style.setProperty('--mx', (x * 0.2) + 'px');
-                btn.style.setProperty('--my', (y * 0.2) + 'px');
-            });
-            btn.addEventListener('mouseleave', function() {
-                btn.style.setProperty('--mx', '0px');
-                btn.style.setProperty('--my', '0px');
-            });
-        });
-
-        // ======= 9. FEATURED CARD CLICK → NAVIGATE TO CATEGORY =======
-        document.querySelectorAll('[data-featured-link]').forEach(function(card) {
-            card.addEventListener('click', function() {
-                var id = card.dataset.featuredLink;
-                var tabLink = document.querySelector('.tabs-nav a[href="#' + id + '"]');
-                if (tabLink) tabLink.click();
-            });
-        });
-
-    })();
-    </script>
-`;
+import Reveal from '@/components/Reveal';
+
+const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
+
+const features = [
+  { icon: 'fa-solid fa-utensils', title: 'Full Platters', desc: 'Signature halal platters for groups of any size — gyros, falafel, and more.' },
+  { icon: 'fa-solid fa-fire-flame-curved', title: 'Sauce Station', desc: 'Our famous 4-sauce station included with every catering package.' },
+  { icon: 'fa-solid fa-truck', title: 'On-Site Setup', desc: 'We handle delivery and setup so you can focus on your event.' },
+  { icon: 'fa-solid fa-certificate', title: '100% Halal', desc: 'All catering orders are fully halal certified and prepared fresh.' },
+];
+
+const packages = [
+  {
+    name: 'Small Gathering',
+    serves: 'Serves 10–25',
+    price: 'Starting at $150',
+    items: ['Choice of 2 proteins', '2 sides', 'Pita bread', 'Sauce station'],
+  },
+  {
+    name: 'Corporate Event',
+    serves: 'Serves 25–75',
+    price: 'Starting at $400',
+    items: ['Choice of 3 proteins', '3 sides', 'Pita bread', 'Sauce station', 'Dedicated server'],
+    featured: true,
+  },
+  {
+    name: 'Full Catering',
+    serves: 'Serves 75+',
+    price: 'Custom quote',
+    items: ['Full menu access', 'All sides', 'Sauce station', 'Setup + breakdown', 'Dedicated team'],
+  },
+];
 
 export default function CateringPage() {
-  useEffect(() => {
-    document.title = 'Catering | OMGyro Halal';
+  useEffect(() => { document.title = 'Catering | OMGyro Halal'; }, []);
 
-    const navToggleBtn = document.querySelector('.nav-toggle-btn') as HTMLElement | null;
-    const mobilePanel = document.getElementById('SiteHeaderMobilePanel');
-    const navCloseBtn = document.querySelector('.nav-close-btn') as HTMLElement | null;
+  return (
+    <main className="bg-white min-h-screen">
+      {/* Hero */}
+      <section
+        className="relative py-32 px-4 flex items-center justify-center text-center"
+        style={{ background: 'linear-gradient(135deg, #000 60%, #FF6600 100%)' }}
+      >
+        <Reveal>
+          <span className="text-primary font-heading uppercase tracking-widest text-sm">Book Your Event</span>
+          <h1 className="font-display text-6xl md:text-8xl uppercase text-white mt-3 mb-6">Catering</h1>
+          <p className="font-paragraph text-white/70 max-w-lg mx-auto text-lg mb-8">
+            Bring the OMG Way to your next event. Corporate lunches, weddings, parties — we've got you covered.
+          </p>
+          <Link
+            to="/contact"
+            className="inline-block bg-primary text-white font-heading font-semibold px-10 py-4 rounded-full hover:bg-accent transition-all duration-200 hover:-translate-y-1"
+          >
+            Request a Quote
+          </Link>
+        </Reveal>
+      </section>
 
-    if (!navToggleBtn || !mobilePanel) return;
+      {/* Feature cards */}
+      <section className="py-20 px-4 bg-brand-black">
+        <div className="max-w-5xl mx-auto">
+          <Reveal className="text-center mb-12">
+            <h2 className="font-display text-5xl uppercase text-white">Why OMGYRO Catering?</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {features.map(({ icon, title, desc }, i) => (
+              <Reveal key={title} delay={i * 100}>
+                <div className="p-6 rounded-2xl border border-white/10 bg-white/5 text-center hover:border-primary/40 transition-all duration-300">
+                  <i className={\`\${icon} text-primary text-3xl mb-4 block\`} />
+                  <h3 className="font-heading font-bold text-white mb-2">{title}</h3>
+                  <p className="font-paragraph text-white/60 text-sm">{desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    function openNav() {
-      mobilePanel!.classList.add('is-open');
-      navToggleBtn!.classList.add('is-active');
-      navToggleBtn!.setAttribute('aria-expanded', 'true');
-      document.body.classList.add('nav-open');
-    }
-    function closeNav() {
-      mobilePanel!.classList.remove('is-open');
-      navToggleBtn!.classList.remove('is-active');
-      navToggleBtn!.setAttribute('aria-expanded', 'false');
-      document.body.classList.remove('nav-open');
-    }
+      {/* Packages */}
+      <section className="py-20 px-4 bg-secondary">
+        <div className="max-w-5xl mx-auto">
+          <Reveal className="text-center mb-12">
+            <span className="text-primary font-heading uppercase tracking-widest text-sm">What's Included</span>
+            <h2 className="font-display text-5xl uppercase text-brand-black mt-2">Catering Packages</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {packages.map(({ name, serves, price, items, featured }, i) => (
+              <Reveal key={name} delay={i * 100}>
+                <div className={\`rounded-2xl p-8 flex flex-col border-2 transition-all duration-300 \${
+                  featured
+                    ? 'border-primary bg-brand-black text-white shadow-xl shadow-primary/20 scale-105'
+                    : 'border-border bg-white hover:border-primary/50'
+                }\`}>
+                  {featured && <span className="text-primary font-heading text-xs uppercase tracking-widest mb-3">Most Popular</span>}
+                  <h3 className={\`font-display text-3xl uppercase mb-1 \${featured ? 'text-white' : 'text-brand-black'}\`}>{name}</h3>
+                  <p className={\`font-paragraph text-sm mb-4 \${featured ? 'text-white/60' : 'text-muted-foreground'}\`}>{serves}</p>
+                  <p className="text-primary font-display text-2xl mb-6">{price}</p>
+                  <ul className="space-y-2 mb-8 flex-1">
+                    {items.map(item => (
+                      <li key={item} className={\`flex items-center gap-2 font-paragraph text-sm \${featured ? 'text-white/80' : 'text-foreground/70'}\`}>
+                        <i className="fa-solid fa-check text-primary text-xs flex-shrink-0" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  <Link
+                    to="/contact"
+                    className={\`inline-flex justify-center items-center gap-2 font-heading font-semibold px-6 py-3 rounded-full text-sm transition-all duration-200 \${
+                      featured
+                        ? 'bg-primary text-white hover:bg-accent'
+                        : 'bg-brand-black text-white hover:bg-primary'
+                    }\`}
+                  >
+                    Get a Quote <i className="fa-solid fa-arrow-right" />
+                  </Link>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
 
-    navToggleBtn.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      mobilePanel!.classList.contains('is-open') ? closeNav() : openNav();
-    });
-
-    navCloseBtn?.addEventListener('click', function(e) { e.preventDefault(); closeNav(); });
-
-    mobilePanel.addEventListener('click', function(e) {
-      if (e.target === mobilePanel) closeNav();
-    });
-
-    const navLinks = mobilePanel.querySelectorAll('.site-nav-link, .quick-action-card');
-    navLinks.forEach(link => link.addEventListener('click', () => setTimeout(closeNav, 300)));
-
-    const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); observer.unobserve(e.target); } }),
-      { threshold: 0.1, rootMargin: '0px 0px -100px 0px' }
-    );
-    document.querySelectorAll('.revealable, .reveal-on-scroll').forEach(el => observer.observe(el));
-
-    return () => { observer.disconnect(); };
-  }, []);
-
-  return <div dangerouslySetInnerHTML={{ __html: pageHTML }} />;
+      {/* CTA */}
+      <section className="bg-brand-black py-20 px-4 text-center">
+        <Reveal>
+          <h2 className="font-display text-5xl uppercase text-white mb-4">Ready to Book?</h2>
+          <p className="font-paragraph text-white/60 mb-8 max-w-sm mx-auto">Contact us and we'll put together a custom menu for your event.</p>
+          <Link
+            to="/contact"
+            className="inline-block bg-primary text-white font-heading font-semibold px-10 py-4 rounded-full hover:bg-accent transition-all duration-200 hover:-translate-y-1"
+          >
+            Contact Us Today
+          </Link>
+        </Reveal>
+      </section>
+    </main>
+  );
 }
