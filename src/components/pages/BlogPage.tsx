@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Reveal from '@/components/Reveal';
+import { Image } from '@/components/ui/image';
 
 const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
 
@@ -71,7 +72,7 @@ export default function BlogPage() {
             <Reveal key={title} delay={i * 100}>
               <article className="rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 bg-white flex flex-col">
                 <div className="h-52 overflow-hidden">
-                  <img src={img} alt={title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                  <Image src={img} alt={title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                 </div>
                 <div className="p-6 flex flex-col flex-1">
                   <div className="flex items-center gap-3 mb-3">

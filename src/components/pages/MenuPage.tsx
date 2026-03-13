@@ -73,11 +73,7 @@ export default function MenuPage() {
                         {item.dishImage ? (
                           <Image src={item.dishImage} alt={item.dishName ?? 'Dish'} className="w-full h-full object-cover" />
                         ) : (
-                          <img
-                            src={IMG + 'Gyros/Combo-Gyro.jpeg'}
-                            alt={item.dishName ?? 'Dish'}
-                            className="w-full h-full object-cover"
-                          />
+                          <Image src={IMG + 'Gyros/Combo-Gyro.jpeg'} alt={item.dishName ?? 'Dish'} className="w-full h-full object-cover" />
                         )}
                         {item.category && (
                           <span className="absolute top-3 left-3 bg-brand-black/80 text-white text-xs font-heading px-3 py-1 rounded-full">
