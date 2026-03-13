@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { Image } from '@/components/ui/image';
 
 const LOGO = 'https://seif-abdelhamid.github.io/inprogress/assets/images/OMGYRO-logo.png';
 const ORDER_URL = 'https://omgyrohalal.square.site/';
@@ -61,7 +62,7 @@ export default function Header() {
           <div className="container omgyro-header-inner">
             <div className="site-logo">
               <Link to="/" className="site-logo__btn" aria-label="OMGYRO Halal Food">
-                <img className="site-logo__expanded" src={LOGO} alt="OMGYRO Halal Food" loading="eager" />
+                <Image className="site-logo__expanded" src={LOGO} alt="OMGYRO Halal Food" loading="eager" />
               </Link>
             </div>
             <nav className="site-nav">
@@ -92,7 +93,7 @@ export default function Header() {
       <div className="site-header-mobi" aria-label="Navigation Menu">
         <div className="site-logo">
           <Link to="/" className="site-logo__btn" aria-label="OMGYRO Halal Food">
-            <img src={LOGO} alt="OMGYRO Halal Food" />
+            <Image src={LOGO} alt="OMGYRO Halal Food" />
           </Link>
         </div>
 
@@ -120,7 +121,7 @@ export default function Header() {
             <div className="nav-header">
               <div className="site-logo">
                 <Link to="/" aria-label="OMGYRO" onClick={onLinkClick}>
-                  <img src={LOGO} alt="OMGYRO Halal Food" />
+                  <Image src={LOGO} alt="OMGYRO Halal Food" />
                 </Link>
               </div>
               <div className="nav-quick-actions">

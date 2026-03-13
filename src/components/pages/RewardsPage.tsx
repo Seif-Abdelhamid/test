@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Reveal from '@/components/Reveal';
+import { Image } from '@/components/ui/image';
 
 const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
 
@@ -88,7 +89,7 @@ export default function RewardsPage() {
               <Reveal key={label} delay={i * 60}>
                 <div className="rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                   <div className="h-40 overflow-hidden relative">
-                    <img src={img} alt={label} className="w-full h-full object-cover" />
+                    <Image src={img} alt={label} className="w-full h-full object-cover" />
                     <span className="absolute top-2 right-2 bg-primary text-white font-heading text-xs font-bold px-3 py-1 rounded-full">
                       {pts} PTS
                     </span>

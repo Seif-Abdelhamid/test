@@ -1,23 +1,29 @@
 import { MemberProvider } from '@/integrations';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import HomePage from '@/components/pages/HomePage';
-import MenuPage from '@/components/pages/MenuPage';
-import LocationsPage from '@/components/pages/LocationsPage';
-import ContactPage from '@/components/pages/ContactPage';
-import CateringPage from '@/components/pages/CateringPage';
-import RewardsPage from '@/components/pages/RewardsPage';
-import BlogPage from '@/components/pages/BlogPage';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
+
+// Lazy load pages to avoid circular dependencies
+const HomePage = lazy(() => import('@/components/pages/HomePage'));
+const MenuPage = lazy(() => import('@/components/pages/MenuPage'));
+const LocationsPage = lazy(() => import('@/components/pages/LocationsPage'));
+const ContactPage = lazy(() => import('@/components/pages/ContactPage'));
+const CateringPage = lazy(() => import('@/components/pages/CateringPage'));
+const RewardsPage = lazy(() => import('@/components/pages/RewardsPage'));
+const BlogPage = lazy(() => import('@/components/pages/BlogPage'));
 
 function Layout() {
   return (
     <>
       <ScrollToTop />
       <Header />
-      <Outlet />
+      <Suspense fallback={<LoadingSpinner />}>
+        <Outlet />
+      </Suspense>
       <Footer />
     </>
   );
@@ -29,13 +35,13 @@ const router = createBrowserRouter([
     element: <Layout />,
     errorElement: <ErrorPage />,
     children: [
-      { index: true, element: <HomePage />, routeMetadata: { pageIdentifier: 'home' } },
-      { path: 'menu', element: <MenuPage />, routeMetadata: { pageIdentifier: 'menu' } },
-      { path: 'locations', element: <LocationsPage />, routeMetadata: { pageIdentifier: 'locations' } },
-      { path: 'contact', element: <ContactPage />, routeMetadata: { pageIdentifier: 'contact' } },
-      { path: 'catering', element: <CateringPage />, routeMetadata: { pageIdentifier: 'catering' } },
-      { path: 'rewards', element: <RewardsPage />, routeMetadata: { pageIdentifier: 'rewards' } },
-      { path: 'blog', element: <BlogPage />, routeMetadata: { pageIdentifier: 'blog' } },
+      { index: true, element: <Suspense fallback={<LoadingSpinner />}><HomePage /></Suspense>, routeMetadata: { pageIdentifier: 'home' } },
+      { path: 'menu', element: <Suspense fallback={<LoadingSpinner />}><MenuPage /></Suspense>, routeMetadata: { pageIdentifier: 'menu' } },
+      { path: 'locations', element: <Suspense fallback={<LoadingSpinner />}><LocationsPage /></Suspense>, routeMetadata: { pageIdentifier: 'locations' } },
+      { path: 'contact', element: <Suspense fallback={<LoadingSpinner />}><ContactPage /></Suspense>, routeMetadata: { pageIdentifier: 'contact' } },
+      { path: 'catering', element: <Suspense fallback={<LoadingSpinner />}><CateringPage /></Suspense>, routeMetadata: { pageIdentifier: 'catering' } },
+      { path: 'rewards', element: <Suspense fallback={<LoadingSpinner />}><RewardsPage /></Suspense>, routeMetadata: { pageIdentifier: 'rewards' } },
+      { path: 'blog', element: <Suspense fallback={<LoadingSpinner />}><BlogPage /></Suspense>, routeMetadata: { pageIdentifier: 'blog' } },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

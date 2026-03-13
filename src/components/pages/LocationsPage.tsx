@@ -47,7 +47,7 @@ export default function LocationsPage() {
                     {loc.locationImage ? (
                       <Image src={loc.locationImage} alt={loc.locationName ?? 'Location'} className="w-full h-full object-cover" />
                     ) : (
-                      <img src={FALLBACK} alt={loc.locationName ?? 'Location'} className="w-full h-full object-cover opacity-70" />
+                      <Image src={FALLBACK} alt={loc.locationName ?? 'Location'} className="w-full h-full object-cover opacity-70" />
                     )}
                   </div>
                   <div className="p-6 flex flex-col flex-1">

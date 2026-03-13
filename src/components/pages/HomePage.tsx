@@ -14,7 +14,7 @@ const contentSections = [
   {
     label: 'Our Story',
     heading: 'The Original Platters Restaurant in NJ',
-    body: "At OMGYRO, we're more than just delicious food — we're about creating unforgettable experiences, one platter at a time. Our slogan, "The OMG Way," reflects our commitment to excellence in everything we do.",
+    body: "At OMGYRO, we're more than just delicious food — we're about creating unforgettable experiences, one platter at a time. Our slogan, \"The OMG Way,\" reflects our commitment to excellence in everything we do.",
     cta: { text: 'Find a Location', to: '/locations', external: false },
     image: `${IMG}Platters/Compo-Platter.jpeg`,
     reverse: false,
