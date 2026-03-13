@@ -47,11 +47,12 @@ export default function MenuPage() {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={\`font-heading font-semibold px-6 py-2 rounded-full text-sm transition-all duration-200 \${
-                      activeCategory === cat
+                    className={
+                      'font-heading font-semibold px-6 py-2 rounded-full text-sm transition-all duration-200 ' +
+                      (activeCategory === cat
                         ? 'bg-primary text-white shadow-md shadow-primary/30'
-                        : 'bg-secondary text-foreground hover:bg-brand-black hover:text-white'
-                    }\`}
+                        : 'bg-secondary text-foreground hover:bg-brand-black hover:text-white')
+                    }
                   >
                     {cat}
                   </button>
@@ -73,7 +74,7 @@ export default function MenuPage() {
                           <Image src={item.dishImage} alt={item.dishName ?? 'Dish'} className="w-full h-full object-cover" />
                         ) : (
                           <img
-                            src={\`\${IMG}Gyros/Combo-Gyro.jpeg\`}
+                            src={IMG + 'Gyros/Combo-Gyro.jpeg'}
                             alt={item.dishName ?? 'Dish'}
                             className="w-full h-full object-cover"
                           />
@@ -90,7 +91,7 @@ export default function MenuPage() {
                           <p className="font-paragraph text-foreground/60 text-sm leading-relaxed flex-1 mb-3 line-clamp-2">{item.description}</p>
                         )}
                         {item.price != null && (
-                          <span className="font-display text-xl text-primary">\${item.price.toFixed(2)}</span>
+                          <span className="font-display text-xl text-primary">${item.price.toFixed(2)}</span>
                         )}
                       </div>
                     </div>

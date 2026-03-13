@@ -67,12 +67,12 @@ export default function LocationsPage() {
                     {loc.phoneNumber && (
                       <div className="flex items-center gap-3 mb-3">
                         <i className="fa-solid fa-phone text-primary flex-shrink-0" />
-                        <a href={\`tel:\${loc.phoneNumber}\`} className="font-paragraph text-primary text-sm hover:underline">{loc.phoneNumber}</a>
+                        <a href={'tel:' + loc.phoneNumber} className="font-paragraph text-primary text-sm hover:underline">{loc.phoneNumber}</a>
                       </div>
                     )}
                     {loc.address && (
                       <a
-                        href={\`https://maps.google.com/?q=\${encodeURIComponent(loc.address)}\`}
+                        href={'https://maps.google.com/?q=' + encodeURIComponent(loc.address)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="mt-auto inline-flex items-center gap-2 bg-brand-black text-white font-heading font-semibold px-6 py-3 rounded-full text-sm hover:bg-primary transition-colors self-start"

@@ -1,8 +1,6 @@
 @import './fonts.css';
+@import './omgyro-header.css';
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* OMGYRO header & nav CSS — must come after Tailwind */
-@import './omgyro-header.css';

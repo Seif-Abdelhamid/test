@@ -68,7 +68,7 @@ export default function CateringPage() {
             {features.map(({ icon, title, desc }, i) => (
               <Reveal key={title} delay={i * 100}>
                 <div className="p-6 rounded-2xl border border-white/10 bg-white/5 text-center hover:border-primary/40 transition-all duration-300">
-                  <i className={\`\${icon} text-primary text-3xl mb-4 block\`} />
+                  <i className={icon + ' text-primary text-3xl mb-4 block'} />
                   <h3 className="font-heading font-bold text-white mb-2">{title}</h3>
                   <p className="font-paragraph text-white/60 text-sm">{desc}</p>
                 </div>
@@ -88,18 +88,19 @@ export default function CateringPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {packages.map(({ name, serves, price, items, featured }, i) => (
               <Reveal key={name} delay={i * 100}>
-                <div className={\`rounded-2xl p-8 flex flex-col border-2 transition-all duration-300 \${
-                  featured
+                <div className={
+                  'rounded-2xl p-8 flex flex-col border-2 transition-all duration-300 ' +
+                  (featured
                     ? 'border-primary bg-brand-black text-white shadow-xl shadow-primary/20 scale-105'
-                    : 'border-border bg-white hover:border-primary/50'
-                }\`}>
+                    : 'border-border bg-white hover:border-primary/50')
+                }>
                   {featured && <span className="text-primary font-heading text-xs uppercase tracking-widest mb-3">Most Popular</span>}
-                  <h3 className={\`font-display text-3xl uppercase mb-1 \${featured ? 'text-white' : 'text-brand-black'}\`}>{name}</h3>
-                  <p className={\`font-paragraph text-sm mb-4 \${featured ? 'text-white/60' : 'text-muted-foreground'}\`}>{serves}</p>
+                  <h3 className={'font-display text-3xl uppercase mb-1 ' + (featured ? 'text-white' : 'text-brand-black')}>{name}</h3>
+                  <p className={'font-paragraph text-sm mb-4 ' + (featured ? 'text-white/60' : 'text-muted-foreground')}>{serves}</p>
                   <p className="text-primary font-display text-2xl mb-6">{price}</p>
                   <ul className="space-y-2 mb-8 flex-1">
                     {items.map(item => (
-                      <li key={item} className={\`flex items-center gap-2 font-paragraph text-sm \${featured ? 'text-white/80' : 'text-foreground/70'}\`}>
+                      <li key={item} className={'flex items-center gap-2 font-paragraph text-sm ' + (featured ? 'text-white/80' : 'text-foreground/70')}>
                         <i className="fa-solid fa-check text-primary text-xs flex-shrink-0" />
                         {item}
                       </li>
@@ -107,11 +108,10 @@ export default function CateringPage() {
                   </ul>
                   <Link
                     to="/contact"
-                    className={\`inline-flex justify-center items-center gap-2 font-heading font-semibold px-6 py-3 rounded-full text-sm transition-all duration-200 \${
-                      featured
-                        ? 'bg-primary text-white hover:bg-accent'
-                        : 'bg-brand-black text-white hover:bg-primary'
-                    }\`}
+                    className={
+                      'inline-flex justify-center items-center gap-2 font-heading font-semibold px-6 py-3 rounded-full text-sm transition-all duration-200 ' +
+                      (featured ? 'bg-primary text-white hover:bg-accent' : 'bg-brand-black text-white hover:bg-primary')
+                    }
                   >
                     Get a Quote <i className="fa-solid fa-arrow-right" />
                   </Link>

@@ -66,7 +66,7 @@ export default function RewardsPage() {
               <Reveal key={num} delay={i * 120}>
                 <div className="text-center p-8 bg-white rounded-2xl border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
                   <div className="font-display text-6xl text-primary/20 leading-none mb-4">{num}</div>
-                  <i className={\`\${icon} text-primary text-3xl mb-4 block\`} />
+                  <i className={icon + ' text-primary text-3xl mb-4 block'} />
                   <h3 className="font-heading font-bold text-brand-black text-lg mb-2">{title}</h3>
                   <p className="font-paragraph text-muted-foreground text-sm">{desc}</p>
                 </div>
