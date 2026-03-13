@@ -10,6 +10,7 @@ const footerLinks = [
   { name: 'Rewards', path: '/rewards' },
   { name: 'Gift Card', path: '/gift-card' },
   { name: 'Contact', path: '/contact' },
+  { name: 'Community', path: '/community' },
 ];
 
 export default function Footer() {

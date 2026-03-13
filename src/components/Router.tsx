@@ -11,6 +11,9 @@ import ContactPage from '@/components/pages/ContactPage';
 import CateringPage from '@/components/pages/CateringPage';
 import RewardsPage from '@/components/pages/RewardsPage';
 import BlogPage from '@/components/pages/BlogPage';
+import StorePage from '@/components/pages/StorePage';
+import GiftCardPage from '@/components/pages/GiftCardPage';
+import CommunityPage from '@/components/pages/CommunityPage';
 
 function Layout() {
   return (
@@ -36,6 +39,9 @@ const router = createBrowserRouter([
       { path: 'catering', element: <CateringPage />, routeMetadata: { pageIdentifier: 'catering' } },
       { path: 'rewards', element: <RewardsPage />, routeMetadata: { pageIdentifier: 'rewards' } },
       { path: 'blog', element: <BlogPage />, routeMetadata: { pageIdentifier: 'blog' } },
+      { path: 'store', element: <StorePage />, routeMetadata: { pageIdentifier: 'store' } },
+      { path: 'gift-card', element: <GiftCardPage />, routeMetadata: { pageIdentifier: 'gift-card' } },
+      { path: 'community', element: <CommunityPage />, routeMetadata: { pageIdentifier: 'community' } },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

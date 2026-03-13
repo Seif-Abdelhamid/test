@@ -24,6 +24,7 @@ const mobileAboutNav = [
   { name: 'Gift Card', path: '/gift-card', icon: 'fa-solid fa-gift' },
   { name: 'Rewards', path: '/rewards', icon: 'fa-solid fa-star' },
   { name: 'Contact', path: '/contact', icon: 'fa-solid fa-envelope' },
+  { name: 'Community', path: '/community', icon: 'fa-solid fa-users' },
 ];
 
 const TikTokSVG = () => (
