@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { BaseCrudService } from '@/integrations';
 import { ContactSubmissions } from '@/entities';
-import Reveal from '@/components/Reveal';
 
 export default function ContactPage() {
   const [form, setForm] = useState({ customerName: '', emailAddress: '', subject: '', message: '' });
@@ -31,123 +30,123 @@ export default function ContactPage() {
   };
 
   return (
-    <main className="bg-white min-h-screen">
-      <section className="bg-brand-black py-20 px-4 text-center">
-        <Reveal>
-          <span className="text-primary font-heading uppercase tracking-widest text-sm">Get In Touch</span>
-          <h1 className="font-display text-6xl md:text-7xl uppercase text-white mt-2">Contact Us</h1>
-        </Reveal>
-      </section>
+    <main className="site-content__main page-id--contact">
 
-      <section className="py-20 px-4 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-          {/* Info column */}
-          <Reveal>
-            <h2 className="font-display text-4xl uppercase text-brand-black mb-8">We'd Love to Hear From You</h2>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
-                  <i className="fa-solid fa-location-dot text-primary" />
-                </div>
-                <div>
-                  <p className="font-heading font-semibold text-brand-black">South Orange, NJ</p>
-                  <p className="font-paragraph text-foreground/60 text-sm">+ Locations across New Jersey</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
-                  <i className="fa-solid fa-envelope text-primary" />
-                </div>
-                <div>
-                  <p className="font-heading font-semibold text-brand-black">Email Us</p>
-                  <a href="mailto:feedback@mamounts.com" className="font-paragraph text-primary text-sm hover:underline">feedback@mamounts.com</a>
-                </div>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center flex-shrink-0">
-                  <i className="fa-brands fa-instagram text-primary" />
-                </div>
-                <div>
-                  <p className="font-heading font-semibold text-brand-black">Follow Us</p>
-                  <a href="https://www.instagram.com/omgyrohalal/" target="_blank" rel="noopener noreferrer" className="font-paragraph text-primary text-sm hover:underline">@omgyrohalal</a>
-                </div>
-              </div>
+      <section className="ultimate-form-section">
+        <div className="form-mesh-bg" />
+        <div className="container">
+          <div className="ultimate-form-header">
+            <div className="ultimate-badge badge-form">
+              <div className="badge-sparkle" />
+              <span className="badge-icon">💫</span>
+              <span className="badge-text">Send Message</span>
             </div>
-          </Reveal>
+            <h2 className="ultimate-title">
+              <span className="title-word word-1">Share</span>
+              <span className="title-word word-2">Your</span>
+              <span className="title-word word-3">Thoughts</span>
+            </h2>
+          </div>
 
-          {/* Form column */}
-          <Reveal delay={150}>
+          <div className="ultimate-form-wrapper">
+            <div className="form-glow-orb" />
             {status === 'success' ? (
-              <div className="bg-green-50 border border-green-200 rounded-2xl p-10 text-center">
-                <i className="fa-solid fa-circle-check text-green-500 text-4xl mb-4" />
-                <h3 className="font-display text-3xl uppercase text-brand-black mb-2">Message Sent!</h3>
-                <p className="font-paragraph text-foreground/60">We'll get back to you as soon as possible.</p>
-                <button onClick={() => setStatus('idle')} className="mt-6 text-primary font-heading text-sm hover:underline">Send another message</button>
+              <div style={{ textAlign: 'center', padding: '60px 20px' }}>
+                <i className="fa-solid fa-circle-check" style={{ fontSize: '3rem', color: '#10b981', marginBottom: '16px', display: 'block' }} />
+                <h3 style={{ fontSize: '2rem', marginBottom: '8px' }}>Message Sent!</h3>
+                <p style={{ color: '#666' }}>We'll get back to you as soon as possible.</p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  style={{ marginTop: '24px', color: '#FF6600', background: 'none', border: 'none', cursor: 'pointer', fontWeight: 600 }}
+                >
+                  Send another message
+                </button>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-5">
-                <div>
-                  <label className="block font-heading font-semibold text-brand-black text-sm mb-1">Name <span className="text-primary">*</span></label>
-                  <input
-                    type="text"
-                    name="customerName"
-                    value={form.customerName}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-border rounded-xl px-4 py-3 font-paragraph text-sm focus:outline-none focus:border-primary transition-colors"
-                    placeholder="Your name"
-                  />
+              <form className="ultimate-form" onSubmit={handleSubmit}>
+                <div className="form-row-ultimate">
+                  <div className="ultimate-field">
+                    <div className="field-glow" />
+                    <div className="field-icon-wrapper"><i className="fa fa-user" /></div>
+                    <input
+                      type="text"
+                      name="customerName"
+                      value={form.customerName}
+                      onChange={handleChange}
+                      className="ultimate-input"
+                      placeholder="Your Name"
+                      required
+                    />
+                    <div className="field-underline" />
+                    <div className="field-focus-line" />
+                  </div>
+                  <div className="ultimate-field">
+                    <div className="field-glow" />
+                    <div className="field-icon-wrapper"><i className="fa-solid fa-envelope" /></div>
+                    <input
+                      type="email"
+                      name="emailAddress"
+                      value={form.emailAddress}
+                      onChange={handleChange}
+                      className="ultimate-input"
+                      placeholder="Your Email"
+                      required
+                    />
+                    <div className="field-underline" />
+                    <div className="field-focus-line" />
+                  </div>
                 </div>
-                <div>
-                  <label className="block font-heading font-semibold text-brand-black text-sm mb-1">Email <span className="text-primary">*</span></label>
-                  <input
-                    type="email"
-                    name="emailAddress"
-                    value={form.emailAddress}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-border rounded-xl px-4 py-3 font-paragraph text-sm focus:outline-none focus:border-primary transition-colors"
-                    placeholder="your@email.com"
-                  />
-                </div>
-                <div>
-                  <label className="block font-heading font-semibold text-brand-black text-sm mb-1">Subject</label>
+
+                <div className="ultimate-field">
+                  <div className="field-glow" />
+                  <div className="field-icon-wrapper"><i className="fa fa-tag" /></div>
                   <input
                     type="text"
                     name="subject"
                     value={form.subject}
                     onChange={handleChange}
-                    className="w-full border border-border rounded-xl px-4 py-3 font-paragraph text-sm focus:outline-none focus:border-primary transition-colors"
-                    placeholder="What's this about?"
+                    className="ultimate-input"
+                    placeholder="Subject"
                   />
+                  <div className="field-underline" />
+                  <div className="field-focus-line" />
                 </div>
-                <div>
-                  <label className="block font-heading font-semibold text-brand-black text-sm mb-1">Message <span className="text-primary">*</span></label>
+
+                <div className="ultimate-field textarea-field">
+                  <div className="field-glow" />
+                  <div className="field-icon-wrapper"><i className="fa fa-comment" /></div>
                   <textarea
                     name="message"
                     value={form.message}
                     onChange={handleChange}
+                    className="ultimate-input ultimate-textarea"
+                    rows={6}
+                    placeholder="Your Message"
                     required
-                    rows={5}
-                    className="w-full border border-border rounded-xl px-4 py-3 font-paragraph text-sm focus:outline-none focus:border-primary transition-colors resize-none"
-                    placeholder="Tell us what's on your mind..."
                   />
+                  <div className="field-underline" />
+                  <div className="field-focus-line" />
                 </div>
+
                 {status === 'error' && (
-                  <p className="text-destructive font-paragraph text-sm">Something went wrong. Please try again.</p>
+                  <div className="form-status form-status--error" aria-live="polite">Something went wrong. Please try again.</div>
                 )}
-                <button
-                  type="submit"
-                  disabled={status === 'sending'}
-                  className="w-full bg-brand-black text-white font-heading font-semibold py-4 rounded-full hover:bg-primary transition-all duration-200 disabled:opacity-60"
-                >
-                  {status === 'sending' ? 'Sending...' : 'Send Message'}
-                </button>
+
+                <div className="form-submit-wrap">
+                  <button type="submit" className="ultimate-submit" disabled={status === 'sending'}>
+                    <span className="submit-text">{status === 'sending' ? 'Sending...' : 'Send Message'}</span>
+                    <span className="submit-icon"><i className="fa fa-paper-plane" /></span>
+                    <div className="submit-shine" />
+                    <div className="submit-ripple" />
+                    <div className="submit-particles"><span /><span /><span /></div>
+                  </button>
+                </div>
               </form>
             )}
-          </Reveal>
+          </div>
         </div>
       </section>
+
     </main>
   );
 }

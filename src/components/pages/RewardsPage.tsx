@@ -1,147 +1,198 @@
-import { useEffect } from 'react';
-import Reveal from '@/components/Reveal';
+import { useEffect, useState } from 'react';
 import { Image } from '@/components/ui/image';
 
 const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
 
-const steps = [
-  { num: '01', icon: 'fa-solid fa-bag-shopping', title: 'Order Online', desc: 'Place your order through our Square site — every dollar you spend earns points.' },
-  { num: '02', icon: 'fa-solid fa-coins', title: 'Earn 10 Points / $1', desc: 'Rack up points every single order. The more you eat, the more you earn.' },
-  { num: '03', icon: 'fa-solid fa-gift', title: 'Redeem Free Food', desc: 'Exchange points for free sides, drinks, or even a full entree. Starting at just 85 pts.' },
+const exchangeItems = [
+  { name: 'Side of Fries', pts: 85, img: IMG + 'Sides/SeasonFries.jpeg', desc: 'Crispy golden seasoned fries — the perfect side. Lightly salted with our signature spice blend.', spend: '$8.50' },
+  { name: 'Onion Rings', pts: 350, img: IMG + 'Sides/OnionsRings.jpeg', desc: 'Hand-battered crispy onion rings served golden and hot. A fan-favorite side that pairs with everything.', spend: '$35' },
+  { name: 'Fountain Drink', pts: 400, img: IMG + 'Drinks/Lmonade.jpeg', desc: 'Ice-cold fountain drink of your choice. Fresh lemonade, soda, or iced tea to wash it all down.', spend: '$40' },
+  { name: 'Falafel Box', pts: 500, img: IMG + 'Sides/FalafelBox.jpeg', desc: 'Freshly fried crispy falafel served in a box with tahini sauce. Made from scratch, always fresh, never frozen.', spend: '$50' },
+  { name: 'Double Protein', pts: 700, img: IMG + 'Sides/Lamp-Chicken.jpeg', desc: 'Double up on protein in any platter or gyro. Extra lamb, chicken, or falafel — because one serving is never enough.', spend: '$70' },
+  { name: 'Free Entree', pts: 1625, img: IMG + 'Gyros/Combo-Gyro.jpeg', desc: 'Any entree on the menu — completely free. Gyro, platter, salad, or wrap. You earned it, you choose it.', spend: '$162.50' },
 ];
 
-const rewards = [
-  { pts: 85, label: 'Side of Fries', img: `${IMG}Sides/SeasonFries.jpeg` },
-  { pts: 350, label: 'Onion Rings', img: `${IMG}Sides/OnionsRings.jpeg` },
-  { pts: 400, label: 'Fountain Drink', img: `${IMG}Drinks/Lmonade.jpeg` },
-  { pts: 500, label: 'Falafel Box', img: `${IMG}Sides/FalafelBox.jpeg` },
-  { pts: 700, label: 'Double Protein', img: `${IMG}Sides/Lamp-Chicken.jpeg` },
-  { pts: 1625, label: 'Free Entree', img: `${IMG}Gyros/Combo-Gyro.jpeg` },
-];
-
-const faqs = [
-  { q: 'Do points expire?', a: "Points don't expire as long as you keep ordering. Redeemed rewards have their own expiration." },
-  { q: 'Can I earn points on delivery?', a: 'Yes — when you order through our Square site for pickup or delivery, you earn points on every order.' },
-  { q: 'How do I sign up?', a: "Click Join Now below. When you place an order on our Square site, create an account or log in with your email. That's it." },
-  { q: 'Can I use rewards at any location?', a: "Yes! Your rewards work at all OMGYRO locations. Just make sure you're logged in when ordering." },
+const features = [
+  { side: 'left', num: '01', title: ['EARN 10 POINTS', 'FOR EVERY $1'], desc: 'Order through our Square site and watch the points stack up. Every dollar you spend gets you 10 points closer to free food.', tag: { icon: 'fa-solid fa-coins', text: 'Points on every order' }, floatTag: '$1 = 10 PTS', img: IMG + 'Platters/Compo-Platter.jpeg', alt: 'OMGyro platter' },
+  { side: 'right', num: '02', title: ['BIRTHDAY', 'REWARD'], desc: 'Birthdays are a big deal here. Members get a surprise reward during their birthday month. Because you deserve it.', tag: { icon: 'fa-solid fa-cake-candles', text: 'Free birthday treat' }, floatTag: 'ON US', img: IMG + 'Desserts/Baklava.jpeg', alt: 'Birthday baklava' },
+  { side: 'left', num: '03', title: ['EXCLUSIVE', 'OFFERS'], desc: "Access Members-Only deals and bonus point events throughout the year. The kind of deals you can't get anywhere else.", tag: { icon: 'fa-solid fa-lock', text: 'Members only' }, floatTag: 'VIP ONLY', img: IMG + 'Gyros/Combo-Gyro.jpeg', alt: 'OMGyro combo gyro' },
+  { side: 'right', num: '04', title: ['SURPRISE', 'FOOD DROPS'], desc: "Like free food? We do too. Keep an eye out — we randomly drop free rewards to members just because we can.", tag: { icon: 'fa-solid fa-gift', text: 'Random free food' }, floatTag: 'FREE', img: IMG + 'Fries/Combo-Fries.jpeg', alt: 'Loaded fries' },
 ];
 
 export default function RewardsPage() {
   useEffect(() => { document.title = 'Rewards | OMGyro Halal'; }, []);
+  const [popup, setPopup] = useState<typeof exchangeItems[0] | null>(null);
 
   return (
-    <main className="bg-white min-h-screen">
+    <main className="site-content__main page-id--rewards">
+
       {/* Hero */}
-      <section className="bg-brand-black min-h-[60vh] flex items-center justify-center px-4 text-center relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundSize: 'cover', backgroundPosition: 'center' }} />
-        <Reveal className="relative z-10">
-          <div className="inline-flex items-center gap-2 bg-primary/20 text-primary border border-primary/30 rounded-full px-5 py-2 font-heading text-sm uppercase tracking-wider mb-6">
-            <i className="fa-solid fa-crown" /> OMGYRO Rewards
+      <section className="r-hero" aria-label="Join rewards">
+        <div className="r-hero__particles" aria-hidden="true">
+          {[1,2,3,4,5,6,7,8].map(n => <span key={n} className={'r-particle r-particle--' + n} />)}
+        </div>
+        <div className="r-hero__floating" aria-hidden="true">
+          <span className="r-float r-float--1"><i className="fa-solid fa-pepper-hot" /></span>
+          <span className="r-float r-float--2"><i className="fa-solid fa-coins" /></span>
+          <span className="r-float r-float--3"><i className="fa-solid fa-star" /></span>
+          <span className="r-float r-float--4"><i className="fa-solid fa-crown" /></span>
+          <span className="r-float r-float--5"><i className="fa-solid fa-gift" /></span>
+          <span className="r-float r-float--6"><i className="fa-solid fa-fire-flame-curved" /></span>
+        </div>
+        <div className="r-hero__content">
+          <div className="r-hero__badge">
+            <i className="fa-solid fa-crown" />
+            <span>OMGYRO REWARDS</span>
           </div>
-          <h1 className="font-display text-7xl md:text-9xl uppercase text-white leading-none mb-6">
-            Eat.<br />Earn.<br /><span className="text-primary">Get Rewarded.</span>
+          <h1 className="r-hero__h1">
+            <span className="r-hero__line r-hero__line--1">EAT.</span>
+            <span className="r-hero__line r-hero__line--2">EARN.</span>
+            <span className="r-hero__line r-hero__line--3">GET REWARDED.</span>
           </h1>
-          <p className="font-paragraph text-white/70 text-lg mb-8 max-w-md mx-auto">
-            Join OMGYRO Rewards and get free halal on your next order.
-          </p>
-          <a
-            href="https://omgyrohalal.square.site/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-primary text-white font-heading font-semibold px-10 py-4 rounded-full hover:bg-accent transition-all duration-200 hover:-translate-y-1 shadow-lg shadow-primary/40"
-          >
-            Join Now — It's Free
+          <p className="r-hero__sub">Join OMGyro Rewards and get <strong>free halal on your next order</strong>.</p>
+          <div className="r-hero__btns">
+            <a href="https://omgyrohalal.square.site/" className="r-btn r-btn--primary" target="_blank" rel="noopener noreferrer">
+              <span className="r-btn__text">JOIN NOW</span>
+              <span className="r-btn__icon"><i className="fa-solid fa-arrow-right" /></span>
+            </a>
+          </div>
+          <a href="#how-it-works" className="r-hero__scroll">
+            <span className="r-hero__scroll-line" />
+            <span className="r-hero__scroll-label">SCROLL</span>
           </a>
-        </Reveal>
+        </div>
       </section>
 
-      {/* How it works */}
-      <section className="py-20 px-4 bg-secondary">
-        <div className="max-w-5xl mx-auto">
-          <Reveal className="text-center mb-14">
-            <span className="text-primary font-heading uppercase tracking-widest text-sm">Simple & Free</span>
-            <h2 className="font-display text-5xl uppercase text-brand-black mt-2">How It Works</h2>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {steps.map(({ num, icon, title, desc }, i) => (
-              <Reveal key={num} delay={i * 120}>
-                <div className="text-center p-8 bg-white rounded-2xl border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                  <div className="font-display text-6xl text-primary/20 leading-none mb-4">{num}</div>
-                  <i className={icon + ' text-primary text-3xl mb-4 block'} />
-                  <h3 className="font-heading font-bold text-brand-black text-lg mb-2">{title}</h3>
-                  <p className="font-paragraph text-muted-foreground text-sm">{desc}</p>
+      {/* Ticker */}
+      <div className="r-ticker" aria-hidden="true">
+        <div className="r-ticker__track">
+          {['$1 = 10 POINTS', 'FREE FOOD', 'BIRTHDAY REWARDS', 'EXCLUSIVE OFFERS', '$1 = 10 POINTS', 'FREE FOOD', 'BIRTHDAY REWARDS', 'EXCLUSIVE OFFERS'].map((item, i) => (
+            <span key={i}><span className="r-ticker__item">{item}</span><span className="r-ticker__dot" /></span>
+          ))}
+        </div>
+      </div>
+
+      {/* Feature Cards */}
+      <section className="r-features" id="how-it-works" aria-label="How rewards work">
+        <div className="r-features__container">
+          <div className="r-features__line" aria-hidden="true">
+            {[1,2,3,4].map(n => <span key={n} className={'r-features__line-dot r-features__line-dot--' + n} />)}
+          </div>
+          {features.map(({ side, num, title, desc, tag, floatTag, img, alt }) => {
+            const visual = (
+              <div className="r-feat__visual">
+                <div className="r-feat__img-frame">
+                  <img src={img} alt={alt} className="r-feat__img" loading="lazy" />
+                  <div className="r-feat__img-overlay" />
                 </div>
-              </Reveal>
-            ))}
-          </div>
+                <span className="r-feat__float-tag">{floatTag}</span>
+              </div>
+            );
+            const copy = (
+              <div className="r-feat__copy">
+                <span className="r-feat__num">{num}</span>
+                <h3 className="r-feat__title">{title[0]}<br />{title[1]}</h3>
+                <p className="r-feat__desc">{desc}</p>
+                <div className="r-feat__tag"><i className={tag.icon} /> {tag.text}</div>
+              </div>
+            );
+            return (
+              <div key={num} className={'r-feat r-feat--' + side + ' reveal-on-scroll'}>
+                {side === 'left' ? <>{visual}{copy}</> : <>{copy}{visual}</>}
+              </div>
+            );
+          })}
         </div>
       </section>
 
-      {/* Rewards grid */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <Reveal className="text-center mb-14">
-            <span className="text-primary font-heading uppercase tracking-widest text-sm">Rewards Exchange</span>
-            <h2 className="font-display text-5xl uppercase text-brand-black mt-2">Real Food Is Really Rewarding</h2>
-          </Reveal>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {rewards.map(({ pts, label, img }, i) => (
-              <Reveal key={label} delay={i * 60}>
-                <div className="rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
-                  <div className="h-40 overflow-hidden relative">
-                    <Image src={img} alt={label} className="w-full h-full object-cover" />
-                    <span className="absolute top-2 right-2 bg-primary text-white font-heading text-xs font-bold px-3 py-1 rounded-full">
-                      {pts} PTS
-                    </span>
-                  </div>
-                  <div className="p-4 bg-white">
-                    <h3 className="font-heading font-semibold text-brand-black">{label}</h3>
-                    <p className="font-paragraph text-muted-foreground text-xs mt-1">Earn ${(pts / 10).toFixed(2)} to unlock</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* FAQs */}
-      <section className="py-20 px-4 bg-brand-black">
-        <div className="max-w-2xl mx-auto">
-          <Reveal className="text-center mb-12">
-            <h2 className="font-display text-5xl uppercase text-white">Rewards FAQ</h2>
-          </Reveal>
-          <div className="space-y-4">
-            {faqs.map(({ q, a }, i) => (
-              <Reveal key={q} delay={i * 80}>
-                <details className="group bg-white/5 border border-white/10 rounded-2xl p-6 cursor-pointer hover:border-primary/40 transition-colors">
-                  <summary className="font-heading font-semibold text-white flex justify-between items-center list-none">
-                    {q}
-                    <i className="fa-solid fa-chevron-down text-primary text-sm transition-transform group-open:rotate-180" />
-                  </summary>
-                  <p className="font-paragraph text-white/60 text-sm mt-4 leading-relaxed">{a}</p>
-                </details>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-primary py-20 px-4 text-center">
-        <Reveal>
-          <h2 className="font-display text-5xl uppercase text-white mb-4">Stop Leaving Free Food on the Table</h2>
-          <p className="font-paragraph text-white/80 mb-8 max-w-sm mx-auto">Join thousands of OMGYRO fans already earning free halal.</p>
-          <a
-            href="https://omgyrohalal.square.site/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block bg-white text-primary font-heading font-bold px-10 py-4 rounded-full hover:bg-white/90 transition-all duration-200 hover:-translate-y-1"
-          >
-            Join Now
+      {/* Extra */}
+      <section className="r-extra" aria-label="Be extra">
+        <div className="r-extra__bg-text" aria-hidden="true">EXTRA</div>
+        <div className="r-extra__wrap reveal-on-scroll">
+          <h2 className="r-extra__h2">IT'S OKAY TO BE<br /><span className="r-extra__accent">EXTRA</span></h2>
+          <p className="r-extra__body">Earn even more points with bonus challenges, special events, and surprise multipliers. The more you order, the faster you get to free halal.</p>
+          <a href="https://omgyrohalal.square.site/" className="r-btn r-btn--dark" target="_blank" rel="noopener noreferrer">
+            <span className="r-btn__text">START EARNING</span>
+            <span className="r-btn__icon"><i className="fa-solid fa-arrow-right" /></span>
           </a>
-        </Reveal>
+        </div>
       </section>
+
+      {/* Exchange */}
+      <section className="r-exchange" aria-label="Rewards exchange">
+        <div className="r-exchange__wrap">
+          <div className="r-exchange__header reveal-on-scroll">
+            <span className="r-exchange__label">REWARDS EXCHANGE</span>
+            <h2 className="r-exchange__h2">REAL FOOD IS<br />REALLY REWARDING</h2>
+            <p className="r-exchange__sub">Exchange your points for free OMGyro favorites</p>
+          </div>
+          <div className="r-exchange__grid">
+            {exchangeItems.map(item => (
+              <div key={item.name} className="r-exchange__card r-tilt reveal-on-scroll" onClick={() => setPopup(item)} style={{ cursor: 'pointer' }}>
+                <div className="r-exchange__card-img">
+                  <img src={item.img} alt={item.name} loading="lazy" />
+                  <span className="r-exchange__card-badge">{item.pts} PTS</span>
+                </div>
+                <div className="r-exchange__card-body">
+                  <h4 className="r-exchange__card-name">{item.name}</h4>
+                  <span className="r-exchange__card-arrow"><i className="fa-solid fa-arrow-right" /></span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Split CTA */}
+      <section className="r-split" aria-label="Order online">
+        <div className="r-split__left">
+          <img src={IMG + 'Salad/Combo-Salad.jpeg'} alt="OMGyro Salad" className="r-split__img" loading="lazy" />
+        </div>
+        <div className="r-split__right">
+          <span className="r-split__eyebrow">ALL IN ONE PLACE</span>
+          <h2 className="r-split__h2">Your Rewards,<br />Your Way</h2>
+          <p className="r-split__copy">Order online through Square to track your points, redeem rewards, and get free food. It's that simple.</p>
+          <a href="https://omgyrohalal.square.site/" className="r-btn r-btn--primary" target="_blank" rel="noopener noreferrer">
+            <span className="r-btn__text">ORDER ONLINE</span>
+            <span className="r-btn__icon"><i className="fa-solid fa-arrow-right" /></span>
+          </a>
+        </div>
+      </section>
+
+      {/* Popup */}
+      {popup && (
+        <div className="r-popup-overlay" style={{ display: 'flex' }} onClick={() => setPopup(null)}>
+          <div className="r-popup" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
+            <button className="r-popup__close" aria-label="Close popup" onClick={() => setPopup(null)}>
+              <i className="fa-solid fa-xmark" />
+            </button>
+            <div className="r-popup__img-wrap">
+              <img className="r-popup__img" src={popup.img} alt={popup.name} />
+              <span className="r-popup__badge">{popup.pts} PTS</span>
+            </div>
+            <div className="r-popup__content">
+              <h3 className="r-popup__name">{popup.name}</h3>
+              <p className="r-popup__desc">{popup.desc}</p>
+              <div className="r-popup__stats">
+                <div className="r-popup__stat">
+                  <span className="r-popup__stat-num">{popup.pts}</span>
+                  <span className="r-popup__stat-label">POINTS NEEDED</span>
+                </div>
+                <div className="r-popup__stat-divider" />
+                <div className="r-popup__stat">
+                  <span className="r-popup__stat-num">{popup.spend}</span>
+                  <span className="r-popup__stat-label">SPEND TO EARN</span>
+                </div>
+              </div>
+              <a href="https://omgyrohalal.square.site/" className="r-btn r-btn--primary" target="_blank" rel="noopener noreferrer">
+                <span className="r-btn__text">ORDER TO REDEEM</span>
+                <span className="r-btn__icon"><i className="fa-solid fa-arrow-right" /></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
     </main>
   );
 }

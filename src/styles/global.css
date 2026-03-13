@@ -1,5 +1,13 @@
 @import './fonts.css';
 @import './omgyro-header.css';
+@import './global-overrides.css';
+@import './menu.css';
+@import './blog.css';
+@import './community.css';
+@import './contact.css';
+@import './giftcard.css';
+@import './gift-card.css';
+@import './rewards.css';
 
 @tailwind base;
 @tailwind components;

@@ -1,0 +1,15 @@
+:root {
+			--omgyro-orange: #FF6600;
+			--omgyro-black: #000000;
+			--omgyro-white: #FFFFFF;
+			--omgyro-font-heading: 'Exuberance Family', sans-serif;
+			--omgyro-font-body: 'Exuberance Family', sans-serif;
+		}
+		body { font-family: var(--omgyro-font-body) !important; }
+		h1, h2, h3, h4, h5, h6 { font-family: var(--omgyro-font-heading) !important; }
+		.site-footer-desktop, .site-footer-desktop-primary, .site-footer-desktop-secondary { background-color: var(--omgyro-black) !important; color: var(--omgyro-white) !important; }
+		.site-footer-desktop .site-nav-link { color: var(--omgyro-white) !important; }
+		.site-footer-desktop .site-nav-link:hover { color: var(--omgyro-orange) !important; }
+		.mobi-footer { background-color: var(--omgyro-black) !important; }
+		.site-header .site-nav-cta, .site-header-desktop-primary .site-nav-cta, .site-header-mobi-panel .site-nav-cta, .mobi-footer .site-nav-cta { background: #FF6600 !important; background-color: #FF6600 !important; border-color: #FF6600 !important; color: #fff !important; }
+		.site-header .site-nav-cta:hover, .site-header-desktop-primary .site-nav-cta:hover, .site-header-mobi-panel .site-nav-cta:hover, .mobi-footer .site-nav-cta:hover { background: #E55A00 !important; background-color: #E55A00 !important; border-color: #E55A00 !important; }
