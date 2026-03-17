@@ -2,8 +2,6 @@ import { MemberProvider } from '@/integrations';
 import { createBrowserRouter, RouterProvider, Navigate, Outlet } from 'react-router-dom';
 import { ScrollToTop } from '@/lib/scroll-to-top';
 import ErrorPage from '@/integrations/errorHandlers/ErrorPage';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 import HomePage from '@/components/pages/HomePage';
 import MenuPage from '@/components/pages/MenuPage';
 import LocationsPage from '@/components/pages/LocationsPage';
@@ -19,9 +17,7 @@ function Layout() {
   return (
     <>
       <ScrollToTop />
-      <Header />
       <Outlet />
-      <Footer />
     </>
   );
 }
