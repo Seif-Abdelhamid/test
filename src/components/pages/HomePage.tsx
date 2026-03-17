@@ -37,22 +37,30 @@ export default function HomePage() {
           </div>
           <div className="why-omg__row">
             <div className="why-omg__card">
-              <div className="why-omg__icon-wrap"><i className="fa-solid fa-star" /></div>
+              <div className="why-omg__icon-wrap">
+                <i className="fa-solid fa-star" />
+              </div>
               <h3 className="why-omg__name">The OMG Way</h3>
               <p className="why-omg__desc">Excellence in every bite, every time.</p>
             </div>
             <div className="why-omg__card">
-              <div className="why-omg__icon-wrap"><i className="fa-solid fa-certificate" /></div>
+              <div className="why-omg__icon-wrap">
+                <i className="fa-solid fa-certificate" />
+              </div>
               <h3 className="why-omg__name">100% Halal</h3>
               <p className="why-omg__desc">Certified and prepared with integrity.</p>
             </div>
             <div className="why-omg__card">
-              <div className="why-omg__icon-wrap"><i className="fa-solid fa-fire-flame-curved" /></div>
+              <div className="why-omg__icon-wrap">
+                <i className="fa-solid fa-fire-flame-curved" />
+              </div>
               <h3 className="why-omg__name">Signature Sauces</h3>
               <p className="why-omg__desc">Bold flavors that hit different.</p>
             </div>
             <div className="why-omg__card">
-              <div className="why-omg__icon-wrap"><i className="fa-solid fa-location-dot" /></div>
+              <div className="why-omg__icon-wrap">
+                <i className="fa-solid fa-location-dot" />
+              </div>
               <h3 className="why-omg__name">Growing Fast</h3>
               <p className="why-omg__desc">Expanding all across New Jersey.</p>
             </div>
@@ -60,7 +68,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Modern Content Section 1 */}
+      {/* Modern Content Section 1: The OMG Way */}
       <section className="modern-content-section revealable">
         <div className="modern-content-wrapper">
           <div className="modern-content-image">
@@ -75,7 +83,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Modern Content Section 2 */}
+      {/* Modern Content Section 2: In The News */}
       <section className="modern-content-section modern-content-reverse revealable">
         <div className="modern-content-wrapper">
           <div className="modern-content-image">
@@ -90,7 +98,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Modern Content Section 3 */}
+      {/* Modern Content Section 3: Sauce Bible */}
       <section className="modern-content-section revealable">
         <div className="modern-content-wrapper">
           <div className="modern-content-image">
@@ -104,6 +112,7 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
     </main>
   );
 }

@@ -1,11 +1,86 @@
-import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect, useState, useRef } from 'react';
 
 const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
+
+type ArticleKey = 'locations-nj' | 'njcom-spotlight' | 'best-gyro-spot' | 'crunch-fitness' | 'halal-scene';
+
+interface BlogArticle {
+  title: string;
+  category: string;
+  author: string;
+  date: string;
+  image: string;
+  content: string;
+}
+
+const blogData: Record<ArticleKey, BlogArticle> = {
+  'locations-nj': {
+    title: 'OMGYRO Locations in New Jersey: Now Open & Coming Soon',
+    category: 'Locations',
+    author: 'OMGyro Team',
+    date: 'February 20, 2025',
+    image: IMG + 'The-store.jpg',
+    content: '<p>OMGYRO is growing across New Jersey. Our current locations include South Orange, Union, Paramus, and more — each serving 100% halal, fresh-made gyros, platters, and our signature sauces.</p><p>We\'re also opening new spots so even more of NJ can get a taste. Keep an eye on our Locations page for the latest openings and coming-soon cities.</p><p>Find the OMGYRO nearest you, stop in, and see why we\'re the flavor that\'s taking over New Jersey\'s halal scene.</p>',
+  },
+  'njcom-spotlight': {
+    title: 'NJ.com Spotlights OMGYRO: Fresh Flavors, Fast Service, Big Momentum',
+    category: 'Press',
+    author: 'OMGyro Team',
+    date: 'February 15, 2025',
+    image: IMG + 'people.jpg',
+    content: '<p>NJ.com has spotlighted OMGYRO for our fresh halal flavors, fast service, and the momentum behind our expansion across the state.</p><p>We\'re proud to be part of New Jersey\'s food scene and to bring quality halal options to more communities. Thank you to everyone who has made this growth possible.</p><p>Read the full feature on NJ.com and then come see us at a location near you.</p>',
+  },
+  'best-gyro-spot': {
+    title: 'What Makes OMGYRO the Best Gyro Spot Near You',
+    category: 'Guide',
+    author: 'OMGyro Team',
+    date: 'February 10, 2025',
+    image: IMG + 'Platters/Compo-Platter.jpeg',
+    content: '<p>It starts with quality: 100% halal proteins, fresh vegetables, and house-made sauces. Our gyros and platters are made to order so every bite is as good as the first.</p><p>Then there\'s our Sauce Bible — Hot, OMG, White, and Green sauces that you can take home. Plus fast, friendly service and locations across NJ.</p><p>That\'s what makes OMGYRO the best gyro spot near you. Come taste the difference.</p>',
+  },
+  'crunch-fitness': {
+    title: 'OMGYRO x Crunch Fitness: Fueling Livingston with Flavor',
+    category: 'Partnerships',
+    author: 'OMGyro Team',
+    date: 'February 5, 2025',
+    image: IMG + 'Team.jpeg',
+    content: '<p>OMGYRO is proud to partner with Crunch Fitness in Livingston. After your workout, refuel with halal gyros, platters, and bowls that taste great and fit your lifestyle.</p><p>Good food and fitness go hand in hand. We\'re excited to bring OMGYRO flavor to the Livingston community and to everyone who trains at Crunch.</p><p>Stop by and see us — we\'re here to fuel your gains with flavor.</p>',
+  },
+  'halal-scene': {
+    title: "OMGYRO: The Flavor That's Taking Over New Jersey's Halal Scene",
+    category: 'News',
+    author: 'OMGyro Team',
+    date: 'February 1, 2025',
+    image: IMG + 'Sauce-Bible.jpeg',
+    content: '<p>Signature sauces, fresh halal cooking, and a growing footprint — OMGYRO is the flavor that\'s taking over New Jersey\'s halal scene.</p><p>From our iconic Hot and OMG sauces to our White and Green options, we\'re known for taste that keeps people coming back. Add in platters, gyros, and bowls made with care, and it\'s no wonder we\'re expanding across NJ.</p><p>Thank you for being part of the OMGYRO community. There\'s more to come.</p>',
+  },
+};
 
 export default function BlogPage() {
   useEffect(() => { document.title = 'Blog | OMGyro Halal'; }, []);
   const [activeFilter, setActiveFilter] = useState('all');
+  const [modalKey, setModalKey] = useState<ArticleKey | null>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+
+  const openModal = (key: ArticleKey) => {
+    setModalKey(key);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closeModal = () => {
+    setModalKey(null);
+    document.body.style.overflow = '';
+  };
+
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') closeModal();
+    }
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
+  const modalArticle = modalKey ? blogData[modalKey] : null;
 
   return (
     <main className="site-content">
@@ -82,7 +157,7 @@ export default function BlogPage() {
               <span className="spotlight-dot" />
               Spotlight
             </div>
-            <article className="spotlight-card fade-in" id="spotlightCard">
+            <article className="spotlight-card fade-in" id="spotlightCard" onClick={() => openModal('locations-nj')}>
               <div className="spotlight-card__image-wrap">
                 <img src={IMG + 'The-store.jpg'} alt="OMGYRO Locations in New Jersey" />
               </div>
@@ -113,7 +188,7 @@ export default function BlogPage() {
           <div className="blog-masonry" id="blogMasonry">
 
             {(activeFilter === 'all' || activeFilter === 'Press') && (
-              <article className="blog-card stagger-in" data-category="Press">
+              <article className="blog-card stagger-in" data-category="Press" onClick={() => openModal('njcom-spotlight')}>
                 <div className="blog-card__image">
                   <img src={IMG + 'people.jpg'} alt="NJ.com Spotlights OMGYRO" />
                   <span className="category-badge" data-cat="Press">Press</span>
@@ -131,7 +206,7 @@ export default function BlogPage() {
             )}
 
             {(activeFilter === 'all' || activeFilter === 'Guide') && (
-              <article className="blog-card stagger-in" data-category="Guide">
+              <article className="blog-card stagger-in" data-category="Guide" onClick={() => openModal('best-gyro-spot')}>
                 <div className="blog-card__image">
                   <img src={IMG + 'Platters/Compo-Platter.jpeg'} alt="Best Gyro Spot Near You" />
                   <span className="category-badge" data-cat="Guide">Guide</span>
@@ -149,7 +224,7 @@ export default function BlogPage() {
             )}
 
             {(activeFilter === 'all' || activeFilter === 'Partnerships') && (
-              <article className="blog-card stagger-in" data-category="Partnerships">
+              <article className="blog-card stagger-in" data-category="Partnerships" onClick={() => openModal('crunch-fitness')}>
                 <div className="blog-card__image">
                   <img src={IMG + 'Team.jpeg'} alt="OMGYRO x Crunch Fitness" />
                   <span className="category-badge" data-cat="Partnerships">Partnerships</span>
@@ -167,7 +242,7 @@ export default function BlogPage() {
             )}
 
             {(activeFilter === 'all' || activeFilter === 'News') && (
-              <article className="blog-card stagger-in" data-category="News">
+              <article className="blog-card stagger-in" data-category="News" onClick={() => openModal('halal-scene')}>
                 <div className="blog-card__image">
                   <img src={IMG + 'Sauce-Bible.jpeg'} alt="OMGYRO Halal Scene" />
                   <span className="category-badge" data-cat="News">News</span>
@@ -203,6 +278,48 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+
+      {/* Blog Modal Drawer */}
+      <div
+        className={`blog-modal-overlay${modalKey ? ' active' : ''}`}
+        id="blogModalOverlay"
+        onClick={(e) => { if (e.target === e.currentTarget) closeModal(); }}
+      >
+        <div className="blog-modal" ref={modalRef} onClick={(e) => e.stopPropagation()}>
+          <div className="blog-modal__progress">
+            <div className="blog-modal__progress-bar" id="modalProgressBar" />
+          </div>
+          <button className="blog-modal__close" onClick={closeModal} aria-label="Close">
+            <i className="fa-solid fa-xmark" />
+          </button>
+          {modalArticle && (
+            <>
+              <img className="blog-modal__image" src={modalArticle.image} alt={modalArticle.title} />
+              <div className="blog-modal__inner">
+                <a href="#" className="blog-modal__back" onClick={(e) => { e.preventDefault(); closeModal(); }} aria-label="Back to Blog">
+                  <i className="fa-solid fa-arrow-left" aria-hidden="true" /> Back to Blog
+                </a>
+                <div className="blog-modal__body">
+                  <div className="blog-modal__meta">
+                    <span className="category-badge" data-cat={modalArticle.category}>{modalArticle.category}</span>
+                    <span>{modalArticle.date}</span>
+                    <span>{modalArticle.author}</span>
+                  </div>
+                  <h2>{modalArticle.title}</h2>
+                  <div className="modal-content" dangerouslySetInnerHTML={{ __html: modalArticle.content }} />
+                  <p className="blog-modal__share-label">Share this article</p>
+                  <div className="blog-modal__share">
+                    <button className="blog-modal__share-btn" aria-label="Share on Facebook"><i className="fa-brands fa-facebook-f" /></button>
+                    <button className="blog-modal__share-btn" aria-label="Share on Twitter"><i className="fa-brands fa-x-twitter" /></button>
+                    <button className="blog-modal__share-btn" aria-label="Copy link"><i className="fa-solid fa-link" /></button>
+                    <button className="blog-modal__share-btn" aria-label="Share via email"><i className="fa-solid fa-envelope" /></button>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
 
     </main>
   );

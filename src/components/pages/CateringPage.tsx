@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 
 const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
 
+type TabId = 'trays' | 'sandwich-trays' | 'stations' | 'side-trays' | 'pastries-drinks' | 'extras';
+
 export default function CateringPage() {
   useEffect(() => { document.title = 'Catering | OMGyro Halal'; }, []);
-  const [activeTab, setActiveTab] = useState('trays');
+  const [activeTab, setActiveTab] = useState<TabId>('trays');
 
   return (
     <main className="site-content__main page-id--catering">
@@ -82,7 +84,7 @@ export default function CateringPage() {
             <p className="menu-featured__sub">The items everyone keeps ordering for their events</p>
           </div>
           <div className="menu-featured__grid">
-            <div className="menu-featured__card m-reveal" data-featured-link="trays">
+            <div className="menu-featured__card m-reveal" data-featured-link="trays" onClick={() => setActiveTab('trays')}>
               <div className="menu-featured__card-img">
                 <img src={IMG + 'Platters/Compo-Platter.jpeg'} alt="Vegetarian Platter" loading="lazy" />
                 <span className="menu-featured__badge"><i className="fa-solid fa-fire" /> #1 Seller</span>
@@ -92,7 +94,7 @@ export default function CateringPage() {
                 <p className="menu-featured__card-desc">A generous vegetarian platter with falafel, hummus, baba ganouj, tabbouleh, and more</p>
               </div>
             </div>
-            <div className="menu-featured__card m-reveal" data-featured-link="trays">
+            <div className="menu-featured__card m-reveal" data-featured-link="trays" onClick={() => setActiveTab('trays')}>
               <div className="menu-featured__card-img">
                 <img src={IMG + 'Platters/Lamp-Chicken.jpeg'} alt="Meat Platter" loading="lazy" />
                 <span className="menu-featured__badge"><i className="fa-solid fa-users" /> Feeds 8-12</span>
@@ -102,7 +104,7 @@ export default function CateringPage() {
                 <p className="menu-featured__card-desc">A hearty meat platter with shawarma, chicken kebob, and all the fixings</p>
               </div>
             </div>
-            <div className="menu-featured__card m-reveal" data-featured-link="stations">
+            <div className="menu-featured__card m-reveal" data-featured-link="stations" onClick={() => setActiveTab('stations')}>
               <div className="menu-featured__card-img">
                 <img src={IMG + 'Sides/FalafelBox.jpeg'} alt="Falafel Station" loading="lazy" />
                 <span className="menu-featured__badge"><i className="fa-solid fa-hands" /> DIY Setup</span>
@@ -116,28 +118,28 @@ export default function CateringPage() {
         </div>
       </section>
 
-      {/* Category nav */}
+      {/* Category Nav */}
       <nav className="tabs-bar" aria-label="Catering categories" id="tabsBar">
         <div className="tabs-bar__inner">
           <ul className="tabs-nav" role="tablist">
-            {[
-              { id: 'trays', label: 'Trays' },
-              { id: 'sandwich-trays', label: 'Sandwich Trays' },
-              { id: 'stations', label: 'Stations' },
-              { id: 'side-trays', label: 'Side Trays' },
-              { id: 'pastries-drinks', label: 'Pastries & Drinks' },
-              { id: 'extras', label: 'Extras' },
-            ].map(({ id, label }) => (
+            {([
+              ['trays', 'Trays'],
+              ['sandwich-trays', 'Sandwich Trays'],
+              ['stations', 'Stations'],
+              ['side-trays', 'Side Trays'],
+              ['pastries-drinks', 'Pastries & Drinks'],
+              ['extras', 'Extras'],
+            ] as [TabId, string][]).map(([id, label]) => (
               <li key={id} role="presentation">
-                <button
-                  id={'tab-' + id}
-                  className={'btn btn-tabs' + (activeTab === id ? ' active' : '')}
+                <a
+                  id={`tab-${id}`}
+                  className={`btn btn-tabs${activeTab === id ? ' active' : ''}`}
+                  href={`#${id}`}
                   role="tab"
                   aria-selected={activeTab === id}
-                  onClick={() => setActiveTab(id)}
-                >
-                  {label}
-                </button>
+                  tabIndex={activeTab === id ? 0 : -1}
+                  onClick={e => { e.preventDefault(); setActiveTab(id); }}
+                >{label}</a>
               </li>
             ))}
           </ul>
@@ -148,171 +150,189 @@ export default function CateringPage() {
         <div className="tabs">
           <div className="tabs-content">
 
-            {/* TRAYS */}
-            {activeTab === 'trays' && (
-              <section id="trays" className="menu-category-section" role="region" aria-labelledby="tab-trays">
-                <div className="menu-description container-sm">
-                  <h1>Trays</h1><p>large catering trays perfect for any event or gathering</p>
-                </div>
-                <div className="menu-flex-container"><section className="menu-section"><ul className="menu-flex-layout">
-                  <li className="menu-item menu-item--flex" data-popular="">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Compo-Platter.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Vegetarian Platter" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Vegetarian Platter</p></div>
-                    <p className="menu-item__details--description">falafel, hummus, baba ganouj, tabbouleh, grape leaves, and pita bread</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Lamp-Chicken.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Meat Platter" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Meat Platter</p></div>
-                    <p className="menu-item__details--description">shawarma, chicken kebob, seasoned rice, hummus, salad, and pita bread</p>
-                  </li>
-                </ul></section></div>
-              </section>
-            )}
+            {/* Trays */}
+            <section id="trays" className="menu-category-section" role="region" aria-labelledby="tab-trays" style={{ display: activeTab === 'trays' ? undefined : 'none' }}>
+              <div className="menu-description container-sm">
+                <h1>Trays</h1>
+                <p>large catering trays perfect for any event or gathering</p>
+              </div>
+              <div className="menu-flex-container">
+                <section className="menu-section">
+                  <ul className="menu-flex-layout">
+                    <li className="menu-item menu-item--flex" data-popular>
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Vegetarian Platter" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Vegetarian Platter</p></div>
+                      <p className="menu-item__details--description">falafel, hummus, baba ganouj, tabbouleh, grape leaves, and pita bread</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Lamp-Chicken.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Meat Platter" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Meat Platter</p></div>
+                      <p className="menu-item__details--description">shawarma, chicken kebob, seasoned rice, hummus, salad, and pita bread</p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </section>
 
-            {/* SANDWICH TRAYS */}
-            {activeTab === 'sandwich-trays' && (
-              <section id="sandwich-trays" className="menu-category-section" role="region" aria-labelledby="tab-sandwich-trays">
-                <div className="menu-description container-sm">
-                  <h1>Sandwich Trays</h1><p>trays of our signature sandwiches, available in 10 or 24 packs</p>
-                </div>
-                <div className="menu-flex-container"><section className="menu-section"><ul className="menu-flex-layout">
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Sides/FalafelBox.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Falafel Tray" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Falafel Tray (10/24 Pack)</p></div>
-                    <p className="menu-item__details--description">crispy falafel sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/House-Chicken.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Chicken Tray" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Chicken Tray (10/24 Pack)</p></div>
-                    <p className="menu-item__details--description">chicken kebob sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Falafel-Chicken.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Shawarma Tray" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Shawarma Tray (10/24 Pack)</p></div>
-                    <p className="menu-item__details--description">shawarma sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
-                  </li>
-                </ul></section></div>
-              </section>
-            )}
+            {/* Sandwich Trays */}
+            <section id="sandwich-trays" className="menu-category-section" role="region" aria-labelledby="tab-sandwich-trays" style={{ display: activeTab === 'sandwich-trays' ? undefined : 'none' }}>
+              <div className="menu-description container-sm">
+                <h1>Sandwich Trays</h1>
+                <p>trays of our signature sandwiches, available in 10 or 24 packs</p>
+              </div>
+              <div className="menu-flex-container">
+                <section className="menu-section">
+                  <ul className="menu-flex-layout">
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Sides/FalafelBox.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Falafel Tray" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Falafel Tray (10/24 Pack)</p></div>
+                      <p className="menu-item__details--description">crispy falafel sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/House-Chicken.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Chicken Tray" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Chicken Tray (10/24 Pack)</p></div>
+                      <p className="menu-item__details--description">chicken kebob sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Falafel-Chicken.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Shawarma Tray" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Shawarma Tray (10/24 Pack)</p></div>
+                      <p className="menu-item__details--description">shawarma sandwiches in a pita with lettuce, tomatoes, onions, and tahineh sauce</p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </section>
 
-            {/* STATIONS */}
-            {activeTab === 'stations' && (
-              <section id="stations" className="menu-category-section" role="region" aria-labelledby="tab-stations">
-                <div className="menu-description container-sm">
-                  <h1>Sandwich Stations</h1><p>DIY sandwich stations with all the fixings &mdash; let your guests build their own</p>
-                </div>
-                <div className="menu-flex-container"><section className="menu-section"><ul className="menu-flex-layout">
-                  <li className="menu-item menu-item--flex" data-popular="">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Sides/FalafelBox.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Falafel Station" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Falafel Station</p></div>
-                    <p className="menu-item__details--description">crispy falafel with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/House-Chicken.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Chicken Station" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Chicken Station</p></div>
-                    <p className="menu-item__details--description">grilled chicken kebob with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Lamp-Chicken.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Shawarma Station" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Shawarma Station</p></div>
-                    <p className="menu-item__details--description">thinly sliced shawarma with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
-                  </li>
-                </ul></section></div>
-              </section>
-            )}
+            {/* Stations */}
+            <section id="stations" className="menu-category-section" role="region" aria-labelledby="tab-stations" style={{ display: activeTab === 'stations' ? undefined : 'none' }}>
+              <div className="menu-description container-sm">
+                <h1>Sandwich Stations</h1>
+                <p>DIY sandwich stations with all the fixings &mdash; let your guests build their own</p>
+              </div>
+              <div className="menu-flex-container">
+                <section className="menu-section">
+                  <ul className="menu-flex-layout">
+                    <li className="menu-item menu-item--flex" data-popular>
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Sides/FalafelBox.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Falafel Station" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Falafel Station</p></div>
+                      <p className="menu-item__details--description">crispy falafel with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/House-Chicken.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Chicken Station" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Chicken Station</p></div>
+                      <p className="menu-item__details--description">grilled chicken kebob with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Lamp-Chicken.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Shawarma Station" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Shawarma Station</p></div>
+                      <p className="menu-item__details--description">thinly sliced shawarma with pita, lettuce, tomatoes, onions, tahineh, and hot sauce</p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </section>
 
-            {/* SIDE TRAYS */}
-            {activeTab === 'side-trays' && (
-              <section id="side-trays" className="menu-category-section" role="region" aria-labelledby="tab-side-trays">
-                <div className="menu-description container-sm">
-                  <h1>Side Trays</h1><p>large trays of our most popular sides</p>
-                </div>
-                <div className="menu-flex-container"><section className="menu-section"><ul className="menu-flex-layout">
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Sides/FalafelBox.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Falafel Tray 30pc" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Falafel Tray 30pc</p></div>
-                    <p className="menu-item__details--description">30 pieces of our crispy, golden falafel</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Compo-Platter.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Hummus / Baba Ganouj" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Hummus / Baba Ganouj</p></div>
-                    <p className="menu-item__details--description">large tray of our home-made hummus or roasted eggplant baba ganouj</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Compo-Platter.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Tabbouleh" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Tabbouleh</p></div>
-                    <p className="menu-item__details--description">bulgur wheat salad with finely chopped mint, parsley, garlic, onions, and peppers</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Compo-Platter.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Seasoned Rice" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Seasoned Rice</p></div>
-                    <p className="menu-item__details--description">large tray of our signature seasoned rice</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Sides/SeasonFries.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Seasoned Fries" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Seasoned Fries</p></div>
-                    <p className="menu-item__details--description">large tray of our seasoned fries with our special blend of spices</p>
-                  </li>
-                </ul></section></div>
-              </section>
-            )}
+            {/* Side Trays */}
+            <section id="side-trays" className="menu-category-section" role="region" aria-labelledby="tab-side-trays" style={{ display: activeTab === 'side-trays' ? undefined : 'none' }}>
+              <div className="menu-description container-sm">
+                <h1>Side Trays</h1>
+                <p>large trays of our most popular sides</p>
+              </div>
+              <div className="menu-flex-container">
+                <section className="menu-section">
+                  <ul className="menu-flex-layout">
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Sides/FalafelBox.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Falafel Tray 30pc" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Falafel Tray 30pc</p></div>
+                      <p className="menu-item__details--description">30 pieces of our crispy, golden falafel</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Hummus / Baba Ganouj" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Hummus / Baba Ganouj</p></div>
+                      <p className="menu-item__details--description">large tray of our home-made hummus or roasted eggplant baba ganouj</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Tabbouleh" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Tabbouleh</p></div>
+                      <p className="menu-item__details--description">bulgur wheat salad with finely chopped mint, parsley, garlic, onions, and peppers</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Seasoned Rice" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Seasoned Rice</p></div>
+                      <p className="menu-item__details--description">large tray of our signature seasoned rice</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Sides/SeasonFries.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Seasoned Fries" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Seasoned Fries</p></div>
+                      <p className="menu-item__details--description">large tray of our seasoned fries with our special blend of spices</p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </section>
 
-            {/* PASTRIES & DRINKS */}
-            {activeTab === 'pastries-drinks' && (
-              <section id="pastries-drinks" className="menu-category-section" role="region" aria-labelledby="tab-pastries-drinks">
-                <div className="menu-description container-sm">
-                  <h1>Pastries &amp; Drinks</h1><p>sweet treats and refreshing drinks for your event</p>
-                </div>
-                <div className="menu-flex-container"><section className="menu-section"><ul className="menu-flex-layout">
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Desserts/Baklava.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Baklava Walnuts 72pc" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Baklava Walnuts 72pc</p></div>
-                    <p className="menu-item__details--description">72 pieces of traditional fillo dough baklava stuffed with walnuts</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Desserts/Baklava.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Baklava Pistachios 72pc" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Baklava Pistachios 72pc</p></div>
-                    <p className="menu-item__details--description">72 pieces of traditional fillo dough baklava stuffed with pistachios</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Drinks/Lmonade.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Specialty Drinks 1gal" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Specialty Drinks 1gal</p></div>
-                    <p className="menu-item__details--description">one gallon of your choice: mint lemonade, mango, tamarind, or iced tea</p>
-                  </li>
-                </ul></section></div>
-              </section>
-            )}
+            {/* Pastries & Drinks */}
+            <section id="pastries-drinks" className="menu-category-section" role="region" aria-labelledby="tab-pastries-drinks" style={{ display: activeTab === 'pastries-drinks' ? undefined : 'none' }}>
+              <div className="menu-description container-sm">
+                <h1>Pastries &amp; Drinks</h1>
+                <p>sweet treats and refreshing drinks for your event</p>
+              </div>
+              <div className="menu-flex-container">
+                <section className="menu-section">
+                  <ul className="menu-flex-layout">
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Desserts/Baklava.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Baklava Walnuts 72pc" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Baklava Walnuts 72pc</p></div>
+                      <p className="menu-item__details--description">72 pieces of traditional fillo dough baklava stuffed with walnuts</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Desserts/Baklava.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Baklava Pistachios 72pc" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Baklava Pistachios 72pc</p></div>
+                      <p className="menu-item__details--description">72 pieces of traditional fillo dough baklava stuffed with pistachios</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Drinks/Lmonade.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Specialty Drinks 1gal" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Specialty Drinks 1gal</p></div>
+                      <p className="menu-item__details--description">one gallon of your choice: mint lemonade, mango, tamarind, or iced tea</p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </section>
 
-            {/* EXTRAS */}
-            {activeTab === 'extras' && (
-              <section id="extras" className="menu-category-section" role="region" aria-labelledby="tab-extras">
-                <div className="menu-description container-sm">
-                  <h1>Extra Sides</h1><p>add-ons and extras to complete your catering order</p>
-                </div>
-                <div className="menu-flex-container"><section className="menu-section"><ul className="menu-flex-layout">
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Compo-Platter.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Hot Sauce" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Hot Sauce</p></div>
-                    <p className="menu-item__details--description">spicy sauce made from the finest, imported hot pepper spices</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Compo-Platter.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Tahineh Sauce" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Tahineh Sauce</p></div>
-                    <p className="menu-item__details--description">smooth sesame seed-based sauce</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Compo-Platter.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Garlic Sauce" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Garlic Sauce</p></div>
-                    <p className="menu-item__details--description">savory, garlic infused sauce</p>
-                  </li>
-                  <li className="menu-item menu-item--flex">
-                    <div className="image-thumbnail" style={{ backgroundImage: "url('" + IMG + "Platters/Compo-Platter.jpeg')", backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Bag of Pita Bread" /></div>
-                    <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Bag of Pita Bread</p></div>
-                    <p className="menu-item__details--description">6 pieces; baked fresh in-house daily</p>
-                  </li>
-                </ul></section></div>
-              </section>
-            )}
+            {/* Extras */}
+            <section id="extras" className="menu-category-section" role="region" aria-labelledby="tab-extras" style={{ display: activeTab === 'extras' ? undefined : 'none' }}>
+              <div className="menu-description container-sm">
+                <h1>Extra Sides</h1>
+                <p>add-ons and extras to complete your catering order</p>
+              </div>
+              <div className="menu-flex-container">
+                <section className="menu-section">
+                  <ul className="menu-flex-layout">
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Hot Sauce" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Hot Sauce</p></div>
+                      <p className="menu-item__details--description">spicy sauce made from the finest, imported hot pepper spices</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Tahineh Sauce" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Tahineh Sauce</p></div>
+                      <p className="menu-item__details--description">smooth sesame seed-based sauce</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Garlic Sauce" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Garlic Sauce</p></div>
+                      <p className="menu-item__details--description">savory, garlic infused sauce</p>
+                    </li>
+                    <li className="menu-item menu-item--flex">
+                      <div className="image-thumbnail" style={{ backgroundImage: `url('${IMG}Platters/Compo-Platter.jpeg')`, backgroundPosition: 'center', backgroundSize: 'cover' }}><img className="sr-only" alt="Bag of Pita Bread" /></div>
+                      <div className="menu-item__heading"><p className="menu-item__heading menu-item__heading--name">Bag of Pita Bread</p></div>
+                      <p className="menu-item__details--description">6 pieces; baked fresh in-house daily</p>
+                    </li>
+                  </ul>
+                </section>
+              </div>
+            </section>
 
           </div>
         </div>
@@ -414,7 +434,7 @@ export default function CateringPage() {
         </div>
       </section>
 
-      {/* Order CTA */}
+      {/* Order CTA Strip */}
       <section className="menu-order-cta" aria-label="Order catering">
         <div className="menu-order-cta__inner">
           <h2 className="menu-order-cta__title">Ready to order catering?</h2>

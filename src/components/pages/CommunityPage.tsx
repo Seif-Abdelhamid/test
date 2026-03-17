@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
@@ -6,6 +6,17 @@ const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
 export default function CommunityPage() {
   useEffect(() => { document.title = 'Community | OMGYRO Halal in NJ'; }, []);
   const [slide, setSlide] = useState(0);
+  const slideCount = 3;
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  useEffect(() => {
+    intervalRef.current = setInterval(() => {
+      setSlide(prev => (prev + 1) % slideCount);
+    }, 5000);
+    return () => {
+      if (intervalRef.current) clearInterval(intervalRef.current);
+    };
+  }, []);
 
   const slides = [
     { quote: '"OMGYRO is the go-to spot on campus. The student discount makes it even better -- real food, real flavor, and they actually care about us."', cite: 'Student at Seton Hall University' },

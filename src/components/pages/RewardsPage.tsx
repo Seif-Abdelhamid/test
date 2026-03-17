@@ -2,46 +2,55 @@ import { useEffect, useState } from 'react';
 
 const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
 
-type PopupData = {
-  name: string; pts: string; img: string; desc: string; spend: string;
-};
+interface RewardCard {
+  name: string;
+  pts: number;
+  img: string;
+  desc: string;
+  spend: string;
+}
+
+const rewardCards: RewardCard[] = [
+  { name: 'Side of Fries', pts: 85, img: IMG + 'Sides/SeasonFries.jpeg', desc: 'Crispy golden seasoned fries — the perfect side. Lightly salted with our signature spice blend.', spend: '$8.50' },
+  { name: 'Onion Rings', pts: 350, img: IMG + 'Sides/OnionsRings.jpeg', desc: 'Hand-battered crispy onion rings served golden and hot. A fan-favorite side that pairs with everything.', spend: '$35' },
+  { name: 'Fountain Drink', pts: 400, img: IMG + 'Drinks/Lmonade.jpeg', desc: 'Ice-cold fountain drink of your choice. Fresh lemonade, soda, or iced tea to wash it all down.', spend: '$40' },
+  { name: 'Falafel Box', pts: 500, img: IMG + 'Sides/FalafelBox.jpeg', desc: 'Freshly fried crispy falafel served in a box with tahini sauce. Made from scratch, always fresh, never frozen.', spend: '$50' },
+  { name: 'Double Protein', pts: 700, img: IMG + 'Sides/Lamp-Chicken.jpeg', desc: 'Double up on protein in any platter or gyro. Extra lamb, chicken, or falafel — because one serving is never enough.', spend: '$70' },
+  { name: 'Free Entree', pts: 1625, img: IMG + 'Gyros/Combo-Gyro.jpeg', desc: 'Any entree on the menu — completely free. Gyro, platter, salad, or wrap. You earned it, you choose it.', spend: '$162.50' },
+];
 
 export default function RewardsPage() {
   useEffect(() => { document.title = 'Rewards | OMGyro Halal'; }, []);
-  const [popup, setPopup] = useState<PopupData | null>(null);
+
+  const [popup, setPopup] = useState<RewardCard | null>(null);
   const [calcValue, setCalcValue] = useState(25);
 
   const calcPoints = calcValue * 10;
-  const rewards = [
-    { pts: 85, label: 'Side of Fries' },
-    { pts: 350, label: 'Onion Rings' },
-    { pts: 400, label: 'Fountain Drink' },
-    { pts: 500, label: 'Falafel Box' },
-    { pts: 700, label: 'Double Protein' },
-    { pts: 1625, label: 'Free Entree' },
-  ];
-  const unlocked = [...rewards].reverse().find(r => calcPoints >= r.pts);
 
-  const openPopup = (el: EventTarget & HTMLDivElement) => {
-    setPopup({
-      name: el.dataset.popupName || '',
-      pts: el.dataset.popupPts || '',
-      img: el.dataset.popupImg?.replace('../assets/images/', IMG) || '',
-      desc: el.dataset.popupDesc || '',
-      spend: el.dataset.popupSpend || '',
-    });
-  };
+  function getUnlocked(pts: number): string {
+    const earned = [...rewardCards].reverse().find(r => pts >= r.pts);
+    return earned ? earned.name + '!' : 'Keep earning!';
+  }
+
+  function getFillPct(pts: number): number {
+    const max = 1625;
+    return Math.min((pts / max) * 100, 100);
+  }
 
   return (
     <main className="site-content__main page-id--1001177">
 
-      {/* 1. Hero */}
+      {/* 1. HERO */}
       <section className="r-hero" aria-label="Join rewards">
         <div className="r-hero__particles" aria-hidden="true">
-          <span className="r-particle r-particle--1" /><span className="r-particle r-particle--2" />
-          <span className="r-particle r-particle--3" /><span className="r-particle r-particle--4" />
-          <span className="r-particle r-particle--5" /><span className="r-particle r-particle--6" />
-          <span className="r-particle r-particle--7" /><span className="r-particle r-particle--8" />
+          <span className="r-particle r-particle--1" />
+          <span className="r-particle r-particle--2" />
+          <span className="r-particle r-particle--3" />
+          <span className="r-particle r-particle--4" />
+          <span className="r-particle r-particle--5" />
+          <span className="r-particle r-particle--6" />
+          <span className="r-particle r-particle--7" />
+          <span className="r-particle r-particle--8" />
         </div>
         <div className="r-hero__floating" aria-hidden="true">
           <span className="r-float r-float--1"><i className="fa-solid fa-pepper-hot" /></span>
@@ -76,21 +85,29 @@ export default function RewardsPage() {
         </div>
       </section>
 
-      {/* 2. Ticker */}
+      {/* 2. MARQUEE TICKER */}
       <div className="r-ticker" aria-hidden="true">
         <div className="r-ticker__track">
-          <span className="r-ticker__item">$1 = 10 POINTS</span><span className="r-ticker__dot" />
-          <span className="r-ticker__item">FREE FOOD</span><span className="r-ticker__dot" />
-          <span className="r-ticker__item">BIRTHDAY REWARDS</span><span className="r-ticker__dot" />
-          <span className="r-ticker__item">EXCLUSIVE OFFERS</span><span className="r-ticker__dot" />
-          <span className="r-ticker__item">$1 = 10 POINTS</span><span className="r-ticker__dot" />
-          <span className="r-ticker__item">FREE FOOD</span><span className="r-ticker__dot" />
-          <span className="r-ticker__item">BIRTHDAY REWARDS</span><span className="r-ticker__dot" />
-          <span className="r-ticker__item">EXCLUSIVE OFFERS</span><span className="r-ticker__dot" />
+          <span className="r-ticker__item">$1 = 10 POINTS</span>
+          <span className="r-ticker__dot" />
+          <span className="r-ticker__item">FREE FOOD</span>
+          <span className="r-ticker__dot" />
+          <span className="r-ticker__item">BIRTHDAY REWARDS</span>
+          <span className="r-ticker__dot" />
+          <span className="r-ticker__item">EXCLUSIVE OFFERS</span>
+          <span className="r-ticker__dot" />
+          <span className="r-ticker__item">$1 = 10 POINTS</span>
+          <span className="r-ticker__dot" />
+          <span className="r-ticker__item">FREE FOOD</span>
+          <span className="r-ticker__dot" />
+          <span className="r-ticker__item">BIRTHDAY REWARDS</span>
+          <span className="r-ticker__dot" />
+          <span className="r-ticker__item">EXCLUSIVE OFFERS</span>
+          <span className="r-ticker__dot" />
         </div>
       </div>
 
-      {/* 3. Feature Cards */}
+      {/* 3. FEATURE CARDS – alternating */}
       <section className="r-features" id="how-it-works" aria-label="How rewards work">
         <div className="r-features__container">
           <div className="r-features__line" aria-hidden="true">
@@ -166,7 +183,7 @@ export default function RewardsPage() {
         </div>
       </section>
 
-      {/* 4. Extra */}
+      {/* 4. IT'S OKAY TO BE EXTRA */}
       <section className="r-extra" aria-label="Be extra">
         <div className="r-extra__bg-text" aria-hidden="true">EXTRA</div>
         <div className="r-extra__wrap reveal-on-scroll">
@@ -180,7 +197,7 @@ export default function RewardsPage() {
         </div>
       </section>
 
-      {/* 5. Exchange */}
+      {/* 5. REWARDS EXCHANGE */}
       <section className="r-exchange" aria-label="Rewards exchange">
         <div className="r-exchange__wrap">
           <div className="r-exchange__header reveal-on-scroll">
@@ -189,26 +206,23 @@ export default function RewardsPage() {
             <p className="r-exchange__sub">Exchange your points for free OMGyro favorites</p>
           </div>
           <div className="r-exchange__grid">
-            {[
-              { name: 'Side of Fries', pts: '85', img: IMG + 'Sides/SeasonFries.jpeg', desc: 'Crispy golden seasoned fries — the perfect side. Lightly salted with our signature spice blend.', spend: '$8.50' },
-              { name: 'Onion Rings', pts: '350', img: IMG + 'Sides/OnionsRings.jpeg', desc: 'Hand-battered crispy onion rings served golden and hot. A fan-favorite side that pairs with everything.', spend: '$35' },
-              { name: 'Fountain Drink', pts: '400', img: IMG + 'Drinks/Lmonade.jpeg', desc: 'Ice-cold fountain drink of your choice. Fresh lemonade, soda, or iced tea to wash it all down.', spend: '$40' },
-              { name: 'Falafel Box', pts: '500', img: IMG + 'Sides/FalafelBox.jpeg', desc: 'Freshly fried crispy falafel served in a box with tahini sauce. Made from scratch, always fresh, never frozen.', spend: '$50' },
-              { name: 'Double Protein', pts: '700', img: IMG + 'Sides/Lamp-Chicken.jpeg', desc: 'Double up on protein in any platter or gyro. Extra lamb, chicken, or falafel — because one serving is never enough.', spend: '$70' },
-              { name: 'Free Entree', pts: '1625', img: IMG + 'Gyros/Combo-Gyro.jpeg', desc: 'Any entree on the menu — completely free. Gyro, platter, salad, or wrap. You earned it, you choose it.', spend: '$162.50' },
-            ].map(item => (
+            {rewardCards.map((card) => (
               <div
-                key={item.name}
+                key={card.name}
                 className="r-exchange__card r-tilt reveal-on-scroll"
-                style={{ cursor: 'pointer' }}
-                onClick={() => setPopup(item)}
+                data-popup-name={card.name}
+                data-popup-pts={card.pts}
+                data-popup-img={card.img}
+                data-popup-desc={card.desc}
+                data-popup-spend={card.spend}
+                onClick={() => setPopup(card)}
               >
                 <div className="r-exchange__card-img">
-                  <img src={item.img} alt={item.name} loading="lazy" />
-                  <span className="r-exchange__card-badge">{item.pts} PTS</span>
+                  <img src={card.img} alt={card.name} loading="lazy" />
+                  <span className="r-exchange__card-badge" data-counter={card.pts}>{card.pts} PTS</span>
                 </div>
                 <div className="r-exchange__card-body">
-                  <h4 className="r-exchange__card-name">{item.name}</h4>
+                  <h4 className="r-exchange__card-name">{card.name}</h4>
                   <span className="r-exchange__card-arrow"><i className="fa-solid fa-arrow-right" /></span>
                 </div>
               </div>
@@ -217,41 +231,43 @@ export default function RewardsPage() {
         </div>
       </section>
 
-      {/* Popup */}
-      {popup && (
-        <div className="r-popup-overlay" style={{ display: 'flex' }} onClick={() => setPopup(null)}>
-          <div className="r-popup" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
-            <button className="r-popup__close" aria-label="Close popup" onClick={() => setPopup(null)}>
-              <i className="fa-solid fa-xmark" />
-            </button>
-            <div className="r-popup__img-wrap">
-              <img className="r-popup__img" src={popup.img} alt={popup.name} />
-              <span className="r-popup__badge">{popup.pts} PTS</span>
-            </div>
-            <div className="r-popup__content">
-              <h3 className="r-popup__name">{popup.name}</h3>
-              <p className="r-popup__desc">{popup.desc}</p>
-              <div className="r-popup__stats">
-                <div className="r-popup__stat">
-                  <span className="r-popup__stat-num">{popup.pts}</span>
-                  <span className="r-popup__stat-label">POINTS NEEDED</span>
-                </div>
-                <div className="r-popup__stat-divider" />
-                <div className="r-popup__stat">
-                  <span className="r-popup__stat-num">{popup.spend}</span>
-                  <span className="r-popup__stat-label">SPEND TO EARN</span>
-                </div>
+      {/* Reward Detail Popup Modal */}
+      <div className={`r-popup-overlay${popup ? ' active' : ''}`} id="rewardPopup" aria-hidden={!popup} onClick={() => setPopup(null)}>
+        <div className="r-popup" role="dialog" aria-modal="true" onClick={e => e.stopPropagation()}>
+          <button className="r-popup__close" aria-label="Close popup" onClick={() => setPopup(null)}>
+            <i className="fa-solid fa-xmark" />
+          </button>
+          {popup && (
+            <>
+              <div className="r-popup__img-wrap">
+                <img className="r-popup__img" src={popup.img} alt={popup.name} />
+                <span className="r-popup__badge">{popup.pts} PTS</span>
               </div>
-              <a href="https://omgyrohalal.square.site/" className="r-btn r-btn--primary" target="_blank" rel="noopener">
-                <span className="r-btn__text">ORDER TO REDEEM</span>
-                <span className="r-btn__icon"><i className="fa-solid fa-arrow-right" /></span>
-              </a>
-            </div>
-          </div>
+              <div className="r-popup__content">
+                <h3 className="r-popup__name">{popup.name}</h3>
+                <p className="r-popup__desc">{popup.desc}</p>
+                <div className="r-popup__stats">
+                  <div className="r-popup__stat">
+                    <span className="r-popup__stat-num" id="popupPts">{popup.pts}</span>
+                    <span className="r-popup__stat-label">POINTS NEEDED</span>
+                  </div>
+                  <div className="r-popup__stat-divider" />
+                  <div className="r-popup__stat">
+                    <span className="r-popup__stat-num" id="popupSpend">{popup.spend}</span>
+                    <span className="r-popup__stat-label">SPEND TO EARN</span>
+                  </div>
+                </div>
+                <a href="https://omgyrohalal.square.site/" className="r-btn r-btn--primary" target="_blank" rel="noopener">
+                  <span className="r-btn__text">ORDER TO REDEEM</span>
+                  <span className="r-btn__icon"><i className="fa-solid fa-arrow-right" /></span>
+                </a>
+              </div>
+            </>
+          )}
         </div>
-      )}
+      </div>
 
-      {/* 6. Calculator */}
+      {/* 6. INTERACTIVE POINTS CALCULATOR */}
       <section className="r-calc" aria-label="Points calculator">
         <div className="r-calc__wrap">
           <div className="r-calc__header reveal-on-scroll">
@@ -263,24 +279,31 @@ export default function RewardsPage() {
             <div className="r-calc__slider-wrap">
               <div className="r-calc__amount">
                 <span className="r-calc__dollar">$</span>
-                <span className="r-calc__value">{calcValue}</span>
+                <span className="r-calc__value" id="calcValue">{calcValue}</span>
               </div>
               <input
                 type="range"
                 className="r-calc__slider"
-                min={5} max={200} value={calcValue} step={5}
-                onChange={e => setCalcValue(Number(e.target.value))}
+                id="calcSlider"
+                min={5}
+                max={200}
+                value={calcValue}
+                step={5}
+                onChange={e => setCalcValue(parseInt(e.target.value))}
               />
-              <div className="r-calc__range-labels"><span>$5</span><span>$200</span></div>
+              <div className="r-calc__range-labels">
+                <span>$5</span>
+                <span>$200</span>
+              </div>
             </div>
             <div className="r-calc__result">
               <div className="r-calc__points-earned">
-                <span className="r-calc__points-num">{calcPoints}</span>
+                <span className="r-calc__points-num" id="calcPoints">{calcPoints}</span>
                 <span className="r-calc__points-label">POINTS EARNED</span>
               </div>
               <div className="r-calc__progress-wrap">
                 <div className="r-calc__progress-bar">
-                  <div className="r-calc__progress-fill" style={{ width: Math.min(100, (calcPoints / 1625) * 100) + '%' }} />
+                  <div className="r-calc__progress-fill" id="calcFill" style={{ width: getFillPct(calcPoints) + '%' }} />
                   <div className="r-calc__progress-markers">
                     <span className="r-calc__marker" data-pts="85" style={{ left: '5.2%' }}><span className="r-calc__marker-dot" /><span className="r-calc__marker-label">Fries</span></span>
                     <span className="r-calc__marker" data-pts="350" style={{ left: '21.5%' }}><span className="r-calc__marker-dot" /><span className="r-calc__marker-label">Rings</span></span>
@@ -291,16 +314,16 @@ export default function RewardsPage() {
                   </div>
                 </div>
               </div>
-              <div className="r-calc__unlocked">
-                <i className={unlocked ? 'fa-solid fa-lock-open' : 'fa-solid fa-lock'} />
-                <span>{unlocked ? <>You unlocked: <strong>{unlocked.label}!</strong></> : 'Keep spending to unlock rewards'}</span>
+              <div className="r-calc__unlocked" id="calcUnlocked">
+                <i className="fa-solid fa-lock-open" />
+                <span>You unlocked: <strong id="calcReward">{getUnlocked(calcPoints)}</strong></span>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. Split CTA */}
+      {/* 7. SPLIT CTA */}
       <section className="r-split" aria-label="Order online">
         <div className="r-split__left">
           <img src={IMG + 'Salad/Combo-Salad.jpeg'} alt="OMGyro Salad" className="r-split__img" loading="lazy" />
@@ -317,7 +340,7 @@ export default function RewardsPage() {
         </div>
       </section>
 
-      {/* 8. Become a Member */}
+      {/* 8. BECOME A MEMBER */}
       <section className="r-join" aria-label="Become a member">
         <div className="r-join__inner">
           <h2 className="r-join__h2">
