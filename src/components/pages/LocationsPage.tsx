@@ -1,91 +1,88 @@
-import { useEffect, useState } from 'react';
-import { BaseCrudService } from '@/integrations';
-import { Locations } from '@/entities';
-import { Image } from '@/components/ui/image';
-import { LoadingSpinner } from '@/components/ui/loading-spinner';
-import Reveal from '@/components/Reveal';
-
-const FALLBACK = 'https://seif-abdelhamid.github.io/inprogress/assets/images/The-store.jpg';
+import { useEffect } from 'react';
 
 export default function LocationsPage() {
-  const [locations, setLocations] = useState<Locations[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    document.title = 'Locations | OMGyro Halal';
-    BaseCrudService.getAll<Locations>('locations', undefined, { limit: 50 })
-      .then(r => setLocations(r.items))
-      .catch(console.error)
-      .finally(() => setLoading(false));
-  }, []);
+  useEffect(() => { document.title = 'Locations | OMGyro Halal'; }, []);
 
   return (
-    <main className="bg-white min-h-screen">
-      <section className="bg-brand-black py-20 px-4 text-center">
-        <Reveal>
-          <span className="text-primary font-heading uppercase tracking-widest text-sm">Visit Us</span>
-          <h1 className="font-display text-6xl md:text-7xl uppercase text-white mt-2">Our Locations</h1>
-          <p className="font-paragraph text-white/60 mt-4 max-w-md mx-auto">
-            Find an OMGYRO near you. Halal done right, across New Jersey.
-          </p>
-        </Reveal>
-      </section>
+    <main className="site-content__main page-id--1001174">
+      <section className="content container locations-page locations-page--full-width" style={{ padding: '40px 20px 60px' }}>
+        <div className="locations-container" style={{ display: 'flex', gap: '30px', alignItems: 'flex-start' }}>
 
-      <section className="py-16 px-4 max-w-6xl mx-auto">
-        {loading ? (
-          <div className="flex justify-center py-20"><LoadingSpinner /></div>
-        ) : locations.length === 0 ? (
-          <p className="text-center text-muted-foreground py-20 font-paragraph">
-            Locations coming soon — check back shortly!
-          </p>
-        ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {locations.map((loc, i) => (
-              <Reveal key={loc._id} delay={i * 80}>
-                <div className="rounded-2xl overflow-hidden border border-border shadow-sm hover:shadow-md transition-shadow bg-white flex flex-col">
-                  <div className="h-52 bg-brand-black overflow-hidden">
-                    {loc.locationImage ? (
-                      <Image src={loc.locationImage} alt={loc.locationName ?? 'Location'} className="w-full h-full object-cover" />
-                    ) : (
-                      <Image src={FALLBACK} alt={loc.locationName ?? 'Location'} className="w-full h-full object-cover opacity-70" />
-                    )}
-                  </div>
-                  <div className="p-6 flex flex-col flex-1">
-                    <h2 className="font-display text-2xl uppercase text-brand-black mb-4">{loc.locationName}</h2>
-                    {loc.address && (
-                      <div className="flex items-start gap-3 mb-3">
-                        <i className="fa-solid fa-location-dot text-primary mt-1 flex-shrink-0" />
-                        <span className="font-paragraph text-foreground/70 text-sm">{loc.address}</span>
-                      </div>
-                    )}
-                    {loc.operatingHours && (
-                      <div className="flex items-start gap-3 mb-3">
-                        <i className="fa-solid fa-clock text-primary mt-1 flex-shrink-0" />
-                        <span className="font-paragraph text-foreground/70 text-sm whitespace-pre-line">{loc.operatingHours}</span>
-                      </div>
-                    )}
-                    {loc.phoneNumber && (
-                      <div className="flex items-center gap-3 mb-3">
-                        <i className="fa-solid fa-phone text-primary flex-shrink-0" />
-                        <a href={'tel:' + loc.phoneNumber} className="font-paragraph text-primary text-sm hover:underline">{loc.phoneNumber}</a>
-                      </div>
-                    )}
-                    {loc.address && (
-                      <a
-                        href={'https://maps.google.com/?q=' + encodeURIComponent(loc.address)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="mt-auto inline-flex items-center gap-2 bg-brand-black text-white font-heading font-semibold px-6 py-3 rounded-full text-sm hover:bg-primary transition-colors self-start"
-                      >
-                        Get Directions <i className="fa-solid fa-arrow-right" />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </Reveal>
-            ))}
+          {/* Location List */}
+          <div className="locations-list" style={{ flex: '0 0 450px', background: 'linear-gradient(180deg,#fff 0%,#fffbf9 100%)', borderRadius: '20px', padding: '32px', boxShadow: '0 8px 32px rgba(0,0,0,0.08),0 0 0 1px rgba(255,102,0,0.1)', maxHeight: '750px', overflowY: 'auto', position: 'sticky', top: '20px' }}>
+
+            <div className="location-item" data-lat="40.7489" data-lng="-74.2610" style={{ marginBottom: '30px', padding: '25px', border: '2px solid #f0f0f0', borderRadius: '10px', background: '#ffffff', transition: 'all 0.3s ease' }}>
+              <h2 className="h2" style={{ color: 'var(--omgyro-orange)', marginBottom: '15px', fontSize: '22px', fontWeight: 600 }}>📍 South Orange, NJ</h2>
+              <p style={{ color: 'var(--omgyro-black)', marginBottom: '20px', fontSize: '14px', lineHeight: 1.7 }}>
+                <strong style={{ color: 'var(--omgyro-black)', fontSize: '15px', display: 'block', marginBottom: '8px' }}>Hours</strong>
+                <span style={{ display: 'block', marginTop: '4px' }}>🕒 Sunday-Tuesday: 10:30am - 1:00am</span>
+                <span style={{ display: 'block', marginTop: '4px' }}>🕒 Wednesday-Thursday: 10:30am - 2:00am</span>
+                <span style={{ display: 'block', marginTop: '4px' }}>🕒 Friday-Saturday: 10:30am - 3:00am</span>
+              </p>
+              <div className="location-buttons" style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '18px', alignItems: 'center', width: '100%' }}>
+                <a href="https://maps.google.com/?q=South+Orange+NJ+OMGyro" className="btn btn-brand location-btn" target="_blank" rel="noopener" style={{ width: '100%', padding: '12px 20px', borderRadius: '6px', fontWeight: 600, fontSize: '15px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>View on Map</a>
+                <a href="https://omgyrohalal.square.site/" className="btn btn-brand location-btn" target="_blank" rel="noopener" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '12px 20px', textDecoration: 'none', borderRadius: '6px', fontWeight: 600, fontSize: '15px', height: '44px', border: 'none' }}>Order Online</a>
+              </div>
+            </div>
+
+            <div className="location-item" data-lat="40.6976" data-lng="-74.2632" style={{ marginBottom: '30px', padding: '25px', border: '2px solid #f0f0f0', borderRadius: '10px', background: '#ffffff', transition: 'all 0.3s ease' }}>
+              <h2 className="h2" style={{ color: 'var(--omgyro-orange)', marginBottom: '15px', fontSize: '22px', fontWeight: 600 }}>📍 Union, NJ</h2>
+              <p style={{ color: 'var(--omgyro-black)', marginBottom: '20px', fontSize: '14px', lineHeight: 1.7 }}>
+                <strong style={{ color: 'var(--omgyro-black)', fontSize: '15px', display: 'block', marginBottom: '8px' }}>Hours</strong>
+                <span style={{ display: 'block', marginTop: '4px' }}>🕒 Sunday-Thursday: 10:30am - 1:00am</span>
+                <span style={{ display: 'block', marginTop: '4px' }}>🕒 Friday-Saturday: 10:30am - 2:00am</span>
+              </p>
+              <div className="location-buttons" style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '18px', alignItems: 'center', width: '100%' }}>
+                <a href="https://maps.google.com/?q=Union+NJ+OMGyro" className="btn btn-brand location-btn" target="_blank" rel="noopener" style={{ width: '100%', padding: '12px 20px', borderRadius: '6px', fontWeight: 600, fontSize: '15px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>View on Map</a>
+                <a href="https://omgyrohalal.square.site/" className="btn btn-brand location-btn" target="_blank" rel="noopener" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '12px 20px', textDecoration: 'none', borderRadius: '6px', fontWeight: 600, fontSize: '15px', height: '44px', border: 'none' }}>Order Online</a>
+              </div>
+            </div>
+
+            <div className="location-item" data-lat="40.9485" data-lng="-74.0933" style={{ marginBottom: '30px', padding: '25px', border: '2px solid #f0f0f0', borderRadius: '10px', background: '#ffffff', transition: 'all 0.3s ease' }}>
+              <h2 className="h2" style={{ color: 'var(--omgyro-orange)', marginBottom: '15px', fontSize: '22px', fontWeight: 600 }}>📍 Paramus, NJ</h2>
+              <p style={{ color: 'var(--omgyro-black)', marginBottom: '20px', fontSize: '14px', lineHeight: 1.7 }}>
+                <strong style={{ color: 'var(--omgyro-black)', fontSize: '15px', display: 'block', marginBottom: '8px' }}>Hours</strong>
+                <span style={{ display: 'block', marginTop: '4px' }}>🕒 Sunday-Saturday: 10:30am - 11:00pm</span>
+              </p>
+              <div className="location-buttons" style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '18px', alignItems: 'center', width: '100%' }}>
+                <a href="https://maps.google.com/?q=Paramus+NJ+OMGyro" className="btn btn-brand location-btn" target="_blank" rel="noopener" style={{ width: '100%', padding: '12px 20px', borderRadius: '6px', fontWeight: 600, fontSize: '15px', height: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', textDecoration: 'none' }}>View on Map</a>
+                <a href="https://omgyrohalal.square.site/" className="btn btn-brand location-btn" target="_blank" rel="noopener" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', padding: '12px 20px', textDecoration: 'none', borderRadius: '6px', fontWeight: 600, fontSize: '15px', height: '44px', border: 'none' }}>Order Online</a>
+              </div>
+            </div>
+
+            <div style={{ marginTop: '40px', paddingTop: '30px', borderTop: '3px solid #e0e0e0' }}>
+              <h3 className="h3" style={{ color: 'var(--omgyro-black)', marginBottom: '20px', fontSize: '20px', fontWeight: 600 }}>Coming Soon</h3>
+              <div className="coming-soon-item" style={{ marginBottom: '12px', padding: '18px 20px', background: '#f9f9f9', borderRadius: '8px', border: '2px solid #e8e8e8' }}>
+                <h4 style={{ color: 'var(--omgyro-orange)', margin: 0, fontSize: '16px', fontWeight: 600 }}>📍 Old Bridge, NJ</h4>
+              </div>
+              <div className="coming-soon-item" style={{ marginBottom: '12px', padding: '18px 20px', background: '#f9f9f9', borderRadius: '8px', border: '2px solid #e8e8e8' }}>
+                <h4 style={{ color: 'var(--omgyro-orange)', margin: 0, fontSize: '16px', fontWeight: 600 }}>📍 Elmwood, NJ</h4>
+              </div>
+              <div className="coming-soon-item" style={{ marginBottom: '12px', padding: '18px 20px', background: '#f9f9f9', borderRadius: '8px', border: '2px solid #e8e8e8' }}>
+                <h4 style={{ color: 'var(--omgyro-orange)', margin: 0, fontSize: '16px', fontWeight: 600 }}>📍 Morris Twp, NJ</h4>
+              </div>
+            </div>
+
           </div>
-        )}
+
+          {/* Map */}
+          <div className="map-wrapper" style={{ flex: 1, minHeight: '750px', position: 'relative' }}>
+            <div className="map-container" style={{ borderRadius: '24px', overflow: 'hidden', minHeight: '750px', boxShadow: '0 24px 64px rgba(0,0,0,0.14)', position: 'relative' }}>
+              <div className="map-attribution" style={{ position: 'absolute', bottom: '12px', left: '12px', zIndex: 10, background: 'rgba(255,255,255,0.9)', padding: '4px 10px', borderRadius: '6px', fontSize: '12px', color: '#333' }}>OMGYRO® · Find us in NJ</div>
+              <iframe
+                title="OMGYRO Locations Map"
+                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d96873.3!2d-74.261!3d40.7489!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3a82f1352d0ab%3A0x9de34dba47de1df2!2sSouth%20Orange%2C%20NJ!5e0!3m2!1sen!2sus!4v1700000000000"
+                width="100%"
+                height="750"
+                style={{ border: 0, display: 'block' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+            </div>
+          </div>
+
+        </div>
       </section>
     </main>
   );

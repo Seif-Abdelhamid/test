@@ -1,20 +1,21 @@
 import { useEffect } from 'react';
 
-const IMG = 'https://seif-abdelhamid.github.io/inprogress/assets/images/';
-
-const tickerItems = ['HOT SAUCE', 'OMG SAUCE', 'WHITE SAUCE', 'GREEN SAUCE'];
-
 export default function StorePage() {
   useEffect(() => { document.title = 'The Sauce Bible | OMGyro Halal'; }, []);
 
   return (
-    <main className="site-content__main page-id--store">
+    <main className="site-content__main page-id--1001165">
 
       {/* Hero */}
       <section className="menu-hero" aria-label="Sauce Bible">
         <div className="menu-hero__bg" role="presentation" aria-hidden="true" />
         <div className="menu-hero__particles" aria-hidden="true">
-          {[1,2,3,4,5,6].map(n => <span key={n} className={'menu-hero__particle menu-hero__particle--' + n} />)}
+          <span className="menu-hero__particle menu-hero__particle--1" />
+          <span className="menu-hero__particle menu-hero__particle--2" />
+          <span className="menu-hero__particle menu-hero__particle--3" />
+          <span className="menu-hero__particle menu-hero__particle--4" />
+          <span className="menu-hero__particle menu-hero__particle--5" />
+          <span className="menu-hero__particle menu-hero__particle--6" />
         </div>
         <div className="menu-hero__floating" aria-hidden="true">
           <span className="menu-hero__float menu-hero__float--1"><i className="fa-solid fa-fire" /></span>
@@ -35,9 +36,10 @@ export default function StorePage() {
           </h1>
           <p className="menu-hero__tagline">Bring the flavor home. Explore our sauces below and order online for pickup or delivery.</p>
           <div className="menu-hero__cta">
-            <a href="https://omgyrohalal.square.site/" className="menu-hero__btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://omgyrohalal.square.site/" className="menu-hero__btn m-magnetic" target="_blank" rel="noopener">
               <span className="menu-hero__btn-text">ORDER NOW</span>
               <span className="menu-hero__btn-icon"><i className="fa-solid fa-arrow-right" /></span>
+              <span className="m-confetti-container" aria-hidden="true" />
             </a>
           </div>
           <a href="#sauces" className="menu-hero__scroll" aria-label="Scroll to sauces">
@@ -50,16 +52,26 @@ export default function StorePage() {
       {/* Ticker */}
       <div className="menu-ticker" aria-hidden="true">
         <div className="menu-ticker__track">
-          {[...tickerItems, ...tickerItems].map((item, i) => (
-            <span key={i}>
-              <span className="menu-ticker__item">{item}</span>
-              <span className="menu-ticker__dot" />
-            </span>
-          ))}
+          <span className="menu-ticker__item">HOT SAUCE</span>
+          <span className="menu-ticker__dot" />
+          <span className="menu-ticker__item">OMG SAUCE</span>
+          <span className="menu-ticker__dot" />
+          <span className="menu-ticker__item">WHITE SAUCE</span>
+          <span className="menu-ticker__dot" />
+          <span className="menu-ticker__item">GREEN SAUCE</span>
+          <span className="menu-ticker__dot" />
+          <span className="menu-ticker__item">HOT SAUCE</span>
+          <span className="menu-ticker__dot" />
+          <span className="menu-ticker__item">OMG SAUCE</span>
+          <span className="menu-ticker__dot" />
+          <span className="menu-ticker__item">WHITE SAUCE</span>
+          <span className="menu-ticker__dot" />
+          <span className="menu-ticker__item">GREEN SAUCE</span>
+          <span className="menu-ticker__dot" />
         </div>
       </div>
 
-      {/* Sauces */}
+      {/* Signature Sauces */}
       <section id="sauces" aria-label="Signature sauces">
         <div className="menu-description container-sm">
           <h1>Explore Our Signature Sauces</h1>
@@ -70,7 +82,7 @@ export default function StorePage() {
             <ul className="menu-flex-layout">
 
               <li className="menu-item menu-item--flex">
-                <a href="https://omgyrohalal.square.site/" aria-label="Hot Sauce" target="_blank" rel="noopener noreferrer">
+                <a href="https://omgyrohalal.square.site/" aria-label="Hot Sauce" target="_blank" rel="noopener">
                   <div className="image-thumbnail sauce-bottle-wrap">
                     <div className="sauce-bottle" data-sauce="hot" aria-hidden="true">
                       <div className="bottle-base">
@@ -79,7 +91,7 @@ export default function StorePage() {
                         <div className="bottle-body"><div className="juice" /></div>
                       </div>
                     </div>
-                    <img src={IMG + 'Sauces/Hot-Sauce.png'} alt="Hot Sauce" className="sauce-actual-img" loading="lazy" />
+                    <img className="sr-only" alt="Hot Sauce" />
                   </div>
                   <div className="menu-item__heading">
                     <p className="menu-item__heading--name">Hot Sauce</p>
@@ -93,7 +105,7 @@ export default function StorePage() {
               </li>
 
               <li className="menu-item menu-item--flex menu-item--featured">
-                <a href="https://omgyrohalal.square.site/" aria-label="OMG Sauce" target="_blank" rel="noopener noreferrer">
+                <a href="https://omgyrohalal.square.site/" aria-label="OMG Sauce" target="_blank" rel="noopener">
                   <div className="sauce-featured-badge">Signature</div>
                   <div className="image-thumbnail sauce-bottle-wrap">
                     <div className="sauce-bottle" data-sauce="omg" aria-hidden="true">
@@ -103,7 +115,7 @@ export default function StorePage() {
                         <div className="bottle-body"><div className="juice" /></div>
                       </div>
                     </div>
-                    <img src={IMG + 'Sauces/OMG-Sauce.png'} alt="OMG Sauce" className="sauce-actual-img" loading="lazy" />
+                    <img className="sr-only" alt="OMG Sauce" />
                   </div>
                   <div className="menu-item__heading">
                     <p className="menu-item__heading--name">OMG Sauce</p>
@@ -117,7 +129,7 @@ export default function StorePage() {
               </li>
 
               <li className="menu-item menu-item--flex">
-                <a href="https://omgyrohalal.square.site/" aria-label="White Sauce" target="_blank" rel="noopener noreferrer">
+                <a href="https://omgyrohalal.square.site/" aria-label="White Sauce" target="_blank" rel="noopener">
                   <div className="image-thumbnail sauce-bottle-wrap">
                     <div className="sauce-bottle" data-sauce="white" aria-hidden="true">
                       <div className="bottle-base">
@@ -126,7 +138,7 @@ export default function StorePage() {
                         <div className="bottle-body"><div className="juice" /></div>
                       </div>
                     </div>
-                    <img src={IMG + 'Sauces/White-Sauce.png'} alt="White Sauce" className="sauce-actual-img" loading="lazy" />
+                    <img className="sr-only" alt="White Sauce" />
                   </div>
                   <div className="menu-item__heading">
                     <p className="menu-item__heading--name">White Sauce</p>
@@ -140,7 +152,7 @@ export default function StorePage() {
               </li>
 
               <li className="menu-item menu-item--flex">
-                <a href="https://omgyrohalal.square.site/" aria-label="Green Sauce" target="_blank" rel="noopener noreferrer">
+                <a href="https://omgyrohalal.square.site/" aria-label="Green Sauce" target="_blank" rel="noopener">
                   <div className="image-thumbnail sauce-bottle-wrap">
                     <div className="sauce-bottle" data-sauce="green" aria-hidden="true">
                       <div className="bottle-base">
@@ -149,7 +161,7 @@ export default function StorePage() {
                         <div className="bottle-body"><div className="juice" /></div>
                       </div>
                     </div>
-                    <img src={IMG + 'Sauces/Green-Sauce.png'} alt="Green Sauce" className="sauce-actual-img" loading="lazy" />
+                    <img className="sr-only" alt="Green Sauce" />
                   </div>
                   <div className="menu-item__heading">
                     <p className="menu-item__heading--name">Green Sauce</p>
