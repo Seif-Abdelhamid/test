@@ -797,16 +797,34 @@
 			transform: scale(1.02);
 		}
 
-		/* Scroll Reveal Animation */
+		/* Scroll Reveal — disabled, all sections visible immediately */
 		.revealable {
-			opacity: 0;
-			transform: translateY(50px);
-			transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+			opacity: 1 !important;
+			transform: none !important;
+			transition: none !important;
+		}
+		.revealable.revealed {
+			opacity: 1 !important;
+			transform: none !important;
 		}
 
-		.revealable.revealed {
-			opacity: 1;
-			transform: translateY(0);
+		/* Typewriter title lines (matches menu/catering style) */
+		.menu-hero__title-line {
+			display: block;
+			font-weight: 800;
+			letter-spacing: -0.03em;
+			min-height: 1.1em;
+		}
+		.menu-hero__title-line--1 {
+			font-size: clamp(2rem, 8vw, 3.5rem);
+			color: #fff;
+		}
+		.menu-hero__title-line--2 {
+			font-size: clamp(3rem, 14vw, 6.5rem);
+			background: linear-gradient(135deg, #fff 0%, #ff6600 50%, #ff8533 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
 		}
 
 
@@ -2193,7 +2211,7 @@
 						<li><a class="site-nav-link" href="catering/index.html" aria-label="Catering" role="button">Catering</a></li>
 						<li><a class="site-nav-link" href="store/index.html" aria-label="Sauce Bible" role="button">Sauce Bible</a></li>
 						<li><a class="site-nav-link" href="blog/index.html" aria-label="Blog" role="button">Blog</a></li>
-						<li><a href="https://omgyrohalal.square.site/" class="btn btn-brand site-nav-cta" target="_blank" rel="noopener" aria-label="Order Online" role="button">Order Online</a></li>
+						<li><a href="https://omgyrohalal.square.site/" class="btn btn-brand site-nav-cta" aria-label="Order Online" role="button">Order Online</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -2221,7 +2239,7 @@
 						</a>
 					</div>
 					<div class="nav-quick-actions">
-						<a href="https://omgyrohalal.square.site/" class="quick-action-card" target="_blank" rel="noopener">
+						<a href="https://omgyrohalal.square.site/" class="quick-action-card">
 							<span class="quick-action-icon"><i class="fa fa-bag-shopping"></i></span>
 							<span class="quick-action-text">Order Now</span>
 						</a>
@@ -2257,9 +2275,9 @@
 						<div class="social-section-title">Connect With Us</div>
 					</div>
 					<ul class="social-accounts">
-						<li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook" target="_blank" rel="noopener"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
-						<li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram" target="_blank" rel="noopener"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
-						<li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok" target="_blank" rel="noopener"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
+						<li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
+						<li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
+						<li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
 						<li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#101;&#100;&#98;&#97;&#99;&#107;&#64;&#109;&#97;&#109;&#111;&#117;&#110;&#115;&#46;&#99;&#111;&#109;" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
 					</ul>
 				</div>
@@ -2276,7 +2294,7 @@
 			<main class="site-content__main page-id--1001173">
           <h1 class="sr-only">Home</h1>
 <!-- Hero Section: Full-Height Video Background -->
-			<section id="hero" aria-label="hero-section" class="hero hero--gallery hero--fullheight revealable">
+			<section id="hero" aria-label="hero-section" class="hero hero--gallery hero--fullheight">
 				<div class="gallery gallery--fit">
 					<div class="gallery__item gallery__item--dimmed">
 						<video autoplay muted loop playsinline>
@@ -2284,10 +2302,13 @@
 						</video>
 						<div class="hero-overlay"></div>
 						<div class="gallery__content container">
-							<h2 class="h1 hero-title">Experience<br>the OMG Way</h2>
-							<p class="hero-subtitle">Creamy, savory, and absolutely delicious platters that will have you saying "Oh my GAWWD"</p>
+							<h2 class="h1 hero-title">
+							<span class="menu-hero__title-line menu-hero__title-line--1" data-typewriter="SERVED WITH"></span>
+							<span class="menu-hero__title-line menu-hero__title-line--2" data-typewriter="LOVE"></span>
+						</h2>
+							<p class="hero-subtitle">Do yourself a favor and come on down to OMGYRO for a creamy, savory, and delicious platter that will have you saying "Oh my GAWWD".</p>
 							<img class="sr-only" alt="Buy One Feed One Heart">
-							<a href="https://omgyrohalal.square.site/" class="btn btn-brand-alt hero-cta" target="_blank" rel="noopener" aria-label="Order Now" role="button">Order Now</a>
+							<a href="https://omgyrohalal.square.site/" class="btn btn-brand-alt hero-cta" aria-label="Order Now" role="button">Order Now</a>
 						</div>
 					</div>
 				</div>
@@ -2337,7 +2358,7 @@
 			<section class="modern-content-section revealable">
 				<div class="modern-content-wrapper">
 					<div class="modern-content-image">
-						<div class="image-container" style="background-image: url('assets/images/Platters/Compo-Platter.jpeg');"></div>
+						<div class="image-container" style="background-image: url('assets/images/OMGYRO-213+(1).png');"></div>
 					</div>
 					<div class="modern-content-text">
 						<span class="content-label">Our Story</span>
@@ -2358,7 +2379,7 @@
 						<span class="content-label">In The News</span>
 						<h2 data-heading="OMGYRO Is Taking Over New Jersey"><span>OMGYRO Is Taking Over New Jersey</span></h2>
 						<p>From our South Orange roots to new locations in Morris Plains, Old Bridge, and Elmwood Park — OMGYRO is redefining halal dining across the state. Featured on Yahoo Finance and NJ.com, our bold platters and signature sauces have caught the attention of food lovers everywhere. As Partner Lou Bari puts it: "We want to create an experience where people remember both the meal and the hospitality."</p>
-						<a href="https://finance.yahoo.com/news/omgyro-expands-footprint-across-jersey-125500175.html" class="modern-btn" target="_blank" rel="noopener">Read The Full Story</a>
+						<a href="https://finance.yahoo.com/news/omgyro-expands-footprint-across-jersey-125500175.html" class="modern-btn">Read The Full Story</a>
 					</div>
 				</div>
 			</section>
@@ -2393,9 +2414,9 @@
                   <div class="site-footer-desktop-primary">
                       <div class="site-footer-desktop-primary__container container">
                               <ul class="social-accounts">
-        <li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook" target="_blank" rel="noopener"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
-        <li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram" target="_blank" rel="noopener"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
-        <li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok" target="_blank" rel="noopener"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
+        <li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
+        <li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
+        <li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
         <li><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#102;&#101;&#101;&#100;&#98;&#97;&#99;&#107;&#64;&#109;&#97;&#109;&#111;&#117;&#110;&#115;&#46;&#99;&#111;&#109;" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
 		</ul>
                               <nav class="site-nav">
@@ -2536,6 +2557,30 @@
 				setTimeout(removeSectionLines, 3000);
 				
 			});
+		</script>
+		<script>
+			// Typewriter effect — matches menu/catering hero
+			(function() {
+				var lines = document.querySelectorAll('.menu-hero__title-line[data-typewriter]');
+				var lineIdx = 0;
+				function typeLine() {
+					if (lineIdx >= lines.length) return;
+					var el = lines[lineIdx];
+					var text = el.getAttribute('data-typewriter');
+					var charIdx = 0;
+					el.textContent = '';
+					var timer = setInterval(function() {
+						charIdx++;
+						el.textContent = text.slice(0, charIdx);
+						if (charIdx >= text.length) {
+							clearInterval(timer);
+							lineIdx++;
+							setTimeout(typeLine, 150);
+						}
+					}, 100);
+				}
+				setTimeout(typeLine, 400);
+			})();
 		</script>
 		<script src="assets/js/mobile-panel.js"></script>
 	</body>

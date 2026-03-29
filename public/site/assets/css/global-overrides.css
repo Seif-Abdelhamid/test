@@ -898,21 +898,116 @@ textarea {
      Single place to edit panel look: this file + header-unified.css.
      See MOBILE_PANEL_README.md for behavior (mobile-panel.js) and canonical HTML.
      ============================================ */
-  
+
+  /* ── Inner pages: solid black header, sits above content normally ── */
+  html body .site-header,
+  html body header.site-header {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    position: relative !important;
+  }
+  html body header.site-header::before,
+  html body .site-header::before {
+    display: none !important;
+    content: none !important;
+  }
+  html body header.site-header::after,
+  html body .site-header::after {
+    display: none !important;
+    content: none !important;
+  }
+  html body .site-header-mobi .site-logo img {
+    filter: none !important;
+  }
+  html body .site-header-mobi .nav-toggle-btn {
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  /* ── Home page only: transparent overlay on hero ── */
+  html body.index-template .site-header,
+  html body.index-template header.site-header {
+    background: transparent !important;
+    background-color: transparent !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+  }
+
+  /* Home page: radial spotlight + dark gradient */
+  html body.index-template header.site-header::before,
+  html body.index-template .site-header::before {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 380px !important;
+    background:
+      radial-gradient(ellipse 70% 200px at 50% 0px,
+        rgba(255, 90, 0, 0.22) 0%,
+        transparent 70%
+      ),
+      linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0.78) 0%,
+        rgba(0, 0, 0, 0.30) 45%,
+        transparent 100%
+      ) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  /* Home page: logo glow */
+  html body.index-template .site-header-mobi .site-logo img {
+    filter: drop-shadow(0 0 18px rgba(255, 100, 0, 0.55)) drop-shadow(0 0 6px rgba(255, 160, 60, 0.4)) !important;
+  }
+
+  /* Home page: frosted glass hamburger */
+  html body.index-template .site-header-mobi .nav-toggle-btn {
+    background: rgba(255, 255, 255, 0.10) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border-radius: 10px !important;
+    padding: 10px 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  }
+
+  /* Hamburger lines — always white on mobile (visible on both dark bg and transparent) */
+  html body .site-header-mobi .nav-toggle-btn .nav-toggle-btn__line,
+  html body .site-header-mobi .nav-toggle-btn__line {
+    background: #ffffff !important;
+  }
+
+  /* Keep mobi above gradient on home */
+  html body.index-template .site-header-mobi {
+    z-index: 1 !important;
+  }
+
   /* Header bar: NO overflow hidden so panel can cover full screen */
   .site-header-mobi,
   body .site-header-mobi,
   html body .site-header-mobi {
     position: relative !important;
     padding: 14px 20px !important;
-    min-height: 108px !important;
-    height: 108px !important;
+    min-height: 210px !important;
+    height: 210px !important;
     width: 100% !important;
     box-sizing: border-box !important;
     overflow: visible !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    background: transparent !important;
+    background-color: transparent !important;
   }
 
   /* Logo: in-flow so it truly centers vertically, BIG */
@@ -928,8 +1023,8 @@ textarea {
     margin: 0 auto !important;
     padding: 0 !important;
     width: auto !important;
-    max-width: 260px !important;
-    height: 92px !important;
+    max-width: 400px !important;
+    height: 184px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -949,7 +1044,7 @@ textarea {
     margin: 0 !important;
     padding: 0 !important;
     max-width: 100% !important;
-    max-height: 92px !important;
+    max-height: 184px !important;
     width: auto !important;
     height: auto !important;
     object-fit: contain !important;
@@ -972,7 +1067,7 @@ textarea {
     padding: 0 !important;
     width: 100% !important;
     height: 100% !important;
-    max-height: 92px !important;
+    max-height: 184px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -3426,4 +3521,144 @@ html body.rewards-page footer .site-footer-desktop-secondary {
   display: none !important;
   min-height: 0 !important;
   padding: 0 !important;
+}
+
+/* ============================================
+   KILL ALL PAGE-LOAD REVEAL / ENTRANCE ANIMATIONS
+   Users see content immediately — no fades, slides, or shimmer on load.
+   Typewriter JS is unaffected (it's content, not CSS animation).
+   ============================================ */
+
+/* Revealable scroll system — immediately visible on all pages */
+.revealable,
+.revealable * {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+.revealable.revealed {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Kill blog / community / store / home entry animations */
+.blog-hero__content,
+.blog-title-line,
+.blog-title-line--accent,
+.blog-hero__subtitle,
+.community-hero .title-line,
+.community-hero .title-line--accent,
+.community-hero__subtitle,
+.hero-title,
+.hero-subtitle,
+.hero-cta,
+.sauce-detail__badge,
+.sauce-detail__title,
+.sauce-detail__tagline,
+.r-hero__sub {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Kill rewards entry animations — rRevealUp */
+.r-hero__line--1,
+.r-hero__line--2,
+.r-hero__line--3 {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ============================================
+   GLOBAL HERO REVEAL ANIMATION — mRevealUp
+   Matches the animation on menu-hero__title-line--2.
+   Applied to all hero/top sections across every page.
+   ============================================ */
+
+@keyframes mRevealUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+:root {
+  --m-ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+  --omgyro-orange: #ff6600;
+}
+
+/* ── Home page hero ── */
+html body .hero-title {
+  animation: mRevealUp 0.6s var(--m-ease) 0.1s both !important;
+}
+html body .hero-subtitle {
+  animation: mRevealUp 0.6s var(--m-ease) 0.28s both !important;
+}
+html body .hero-cta,
+html body .btn.hero-cta {
+  animation: mRevealUp 0.6s var(--m-ease) 0.42s both !important;
+}
+
+/* ── Blog hero — container already has blogHeroIn; stagger just the lines ── */
+html body .blog-title-line {
+  display: block !important;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: mRevealUp 0.6s var(--m-ease) 0.15s both !important;
+}
+html body .blog-title-line--accent {
+  opacity: 0;
+  transform: translateY(30px);
+  /* keep shimmer alongside reveal by chaining animations */
+  animation: mRevealUp 0.6s var(--m-ease) 0.30s both, blogTitleShimmer 4s ease-in-out 0.9s infinite !important;
+}
+html body .blog-hero__subtitle {
+  opacity: 0;
+  animation: mRevealUp 0.6s var(--m-ease) 0.45s both !important;
+}
+
+/* ── Community hero ── */
+html body .community-hero .title-line {
+  display: block !important;
+  animation: mRevealUp 0.6s var(--m-ease) 0.1s both !important;
+}
+html body .community-hero .title-line--accent {
+  /* chain reveal + shimmer so shimmer isn't lost */
+  animation: mRevealUp 0.6s var(--m-ease) 0.25s both, titleShimmer 3s ease-in-out 0.85s infinite !important;
+}
+html body .community-hero__subtitle {
+  animation: mRevealUp 0.6s var(--m-ease) 0.40s both !important;
+}
+
+/* ── Rewards: already has rRevealUp in rewards.css — no override needed ── */
+/* ── Contact: already has wordReveal in page CSS — no override needed ── */
+
+/* ── Sauce / Store product hero ── */
+html body .sauce-detail__badge {
+  animation: mRevealUp 0.6s var(--m-ease) 0.08s both !important;
+}
+html body .sauce-detail__title {
+  animation: mRevealUp 0.6s var(--m-ease) 0.22s both !important;
+}
+html body .sauce-detail__tagline {
+  animation: mRevealUp 0.6s var(--m-ease) 0.36s both !important;
+}
+
+/* ── Store (Sauce Bible) hero — already uses menu-hero classes,
+       but apply to any additional elements ── */
+html body.store-page .menu-hero__subtitle,
+html body.store-page .menu-hero__cta {
+  animation: mRevealUp 0.6s var(--m-ease) 0.40s both !important;
+}
+
+/* ── Catering hero subtitles / CTAs ── */
+html body.catering-page .menu-hero__subtitle,
+html body.catering-page .catering-hero__subtitle,
+html body.catering-page .catering-hero__cta {
+  animation: mRevealUp 0.6s var(--m-ease) 0.40s both !important;
+}
+
+/* ── Menu page subtitles / CTAs ── */
+html body.menu-page .menu-hero__subtitle,
+html body.menu-page .menu-hero__cta {
+  animation: mRevealUp 0.6s var(--m-ease) 0.40s both !important;
 }

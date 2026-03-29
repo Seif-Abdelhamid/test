@@ -274,7 +274,7 @@ html body.rewards-page .r-hero__badge {
 	letter-spacing: .25em !important;
 	text-transform: uppercase !important;
 	margin: 0 0 36px !important;
-	animation: rRevealUp .8s var(--r-ease) both !important;
+	animation: none !important;
 }
 html body.rewards-page .r-hero__badge i {
 	color: var(--r-orange) !important;
@@ -297,17 +297,17 @@ html body.rewards-page .r-hero__line {
 html body.rewards-page .r-hero__line--1 {
 	font-size: clamp(3rem, 14vw, 8rem) !important;
 	color: var(--r-black) !important;
-	animation: rRevealUp .7s var(--r-ease) .15s both !important;
+	animation: none !important;
 }
 html body.rewards-page .r-hero__line--2 {
 	font-size: clamp(3rem, 14vw, 8rem) !important;
 	color: var(--r-orange) !important;
-	animation: rRevealUp .7s var(--r-ease) .3s both !important;
+	animation: none !important;
 }
 html body.rewards-page .r-hero__line--3 {
 	font-size: clamp(1.6rem, 5vw, 3.2rem) !important;
 	color: var(--r-gray) !important;
-	animation: rRevealUp .7s var(--r-ease) .45s both !important;
+	animation: none !important;
 	letter-spacing: .05em !important;
 	margin-top: 8px !important;
 }
@@ -318,7 +318,7 @@ html body.rewards-page .r-hero__sub {
 	line-height: 1.55 !important;
 	margin: 0 0 44px !important;
 	text-align: center !important;
-	animation: rRevealUp .7s var(--r-ease) .6s both !important;
+	animation: none !important;
 }
 html body.rewards-page .r-hero__sub strong {
 	color: var(--r-orange) !important;
@@ -326,7 +326,7 @@ html body.rewards-page .r-hero__sub strong {
 }
 
 html body.rewards-page .r-hero__btns {
-	animation: rRevealUp .7s var(--r-ease) .75s both !important;
+	animation: none !important;
 }
 
 /* Scroll indicator */
@@ -337,7 +337,7 @@ html body.rewards-page .r-hero__scroll {
 	gap: 8px !important;
 	margin-top: 64px !important;
 	text-decoration: none !important;
-	animation: rRevealUp .7s var(--r-ease) .9s both !important;
+	animation: none !important;
 }
 html body.rewards-page .r-hero__scroll-line {
 	display: block !important;

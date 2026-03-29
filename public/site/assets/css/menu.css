@@ -1294,7 +1294,7 @@ html body.store-page #sauces .menu-item:nth-child(4) .flavor-tag {
   letter-spacing: 0.2em;
   text-transform: uppercase;
   margin: 0 0 28px;
-  animation: mRevealUp 0.7s var(--m-ease) both;
+  animation: none;
 }
 .menu-hero__badge i {
   font-size: 0.9rem;
@@ -1311,7 +1311,7 @@ html body.store-page #sauces .menu-item:nth-child(4) .flavor-tag {
 .menu-hero__title-line--1 {
   font-size: clamp(2rem, 8vw, 3.5rem);
   color: #fff;
-  animation: mRevealUp 0.6s var(--m-ease) 0.1s both;
+  animation: none;
 }
 .menu-hero__title-line--2 {
   font-size: clamp(3rem, 14vw, 6.5rem);
@@ -1319,7 +1319,7 @@ html body.store-page #sauces .menu-item:nth-child(4) .flavor-tag {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  animation: mRevealUp 0.6s var(--m-ease) 0.25s both;
+  animation: none;
 }
 .menu-hero__tagline {
   font-size: clamp(1rem, 2vw, 1.15rem);
@@ -1328,7 +1328,7 @@ html body.store-page #sauces .menu-item:nth-child(4) .flavor-tag {
   margin: 0 auto 32px;
   max-width: 480px;
   text-align: center;
-  animation: mRevealUp 0.6s var(--m-ease) 0.4s both;
+  animation: none;
 }
 .menu-hero__cta {
   display: flex;
@@ -1336,7 +1336,7 @@ html body.store-page #sauces .menu-item:nth-child(4) .flavor-tag {
   align-items: center;
   justify-content: center;
   gap: 16px;
-  animation: mRevealUp 0.6s var(--m-ease) 0.55s both;
+  animation: none;
 }
 .menu-hero__btn {
   display: inline-flex;
@@ -1416,7 +1416,7 @@ html body.store-page #sauces .menu-item:nth-child(4) .flavor-tag {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  animation: mRevealUp 0.6s var(--m-ease) 0.7s both;
+  animation: none;
   transition: color 0.25s ease;
 }
 .menu-hero__scroll:hover {
@@ -2367,7 +2367,7 @@ body.catering-page .tabs {
   display: block !important;
 }
 .menu-category-section.is-visible .menu-description {
-  animation: mRevealUp 0.5s var(--m-ease) both;
+  animation: none;
 }
 .menu-category-section.is-visible .menu-flex-layout .menu-item {
   animation: mCardStagger 0.5s var(--m-ease-spring) backwards;
@@ -4425,7 +4425,7 @@ html body.store-page .menu-featured__card:hover::before {
 html body.menu-page .menu-hero__badge,
 html body.catering-page .menu-hero__badge,
 html body.store-page .menu-hero__badge {
-  animation: mRevealUp .7s var(--m-ease) both, mBadgeGlow 3s ease-in-out infinite 1s !important;
+  animation: none;
 }
 
 /* Number count-up animation text glow */

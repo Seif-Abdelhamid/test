@@ -14,10 +14,10 @@
   --header-accent-hover: #E55A00;
   --header-font: "Exuberance Family", sans-serif;
   --header-logo-height: 85px;
-  --header-logo-height-mobile: 92px;
+  --header-logo-height-mobile: 184px;
   --header-padding: 10px 20px;
   --header-padding-mobile: 14px 20px;
-  --header-mobi-height: 108px;
+  --header-mobi-height: 210px;
 }
 
 /* ============================================
@@ -203,7 +203,7 @@ html body .site-header-desktop-primary .site-nav-cta:hover {
    ============================================ */
 
 .site-header-mobi {
-  background: var(--header-bg) !important;
+  background: transparent !important;
   padding: var(--header-padding-mobile) !important;
   display: flex !important;
   justify-content: center !important;
@@ -228,7 +228,7 @@ html body .site-header-desktop-primary .site-nav-cta:hover {
 }
 
 .site-header-mobi .site-logo img {
-  max-height: 92px !important;
+  max-height: 184px !important;
   width: auto !important;
   height: auto !important;
   object-fit: contain !important;
@@ -251,7 +251,7 @@ html body .site-header-desktop-primary .site-nav-cta:hover {
   display: block !important;
   width: 24px !important;
   height: 2px !important;
-  background: var(--header-text) !important;
+  background: #000000 !important;
   margin: 5px 0 !important;
   transition: transform 0.3s ease, opacity 0.3s ease !important;
 }
