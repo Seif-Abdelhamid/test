@@ -1165,8 +1165,8 @@ textarea {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 28px 20px 20px !important;
-    padding-top: 56px !important;
+    padding: 0 20px 20px !important;
+    padding-top: 0 !important;
     box-sizing: border-box !important;
     overflow-y: visible !important;
     overflow-x: hidden !important;
@@ -1239,18 +1239,18 @@ textarea {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    margin-bottom: 36px !important;
+    margin-bottom: 0 !important;
     padding-top: 0 !important;
   }
   body .site-header-mobi-panel .nav-header .site-logo,
   html body .site-header-mobi-panel .nav-header .site-logo {
     display: block !important;
-    margin-bottom: 28px !important;
+    margin-bottom: 4px !important;
   }
   body .site-header-mobi-panel .nav-header .site-logo img,
   html body .site-header-mobi-panel .nav-header .site-logo img {
-    max-width: 160px !important;
-    max-height: 52px !important;
+    max-width: 100px !important;
+    max-height: 32px !important;
     height: auto !important;
     width: auto !important;
     object-fit: contain !important;
@@ -1262,6 +1262,7 @@ textarea {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 12px !important;
     width: 100% !important;
+    margin-bottom: 16px !important;
     max-width: 280px !important;
     margin: 0 auto !important;
   }
@@ -1317,21 +1318,15 @@ textarea {
   body .site-header-mobi-panel .site-nav,
   html body .site-header-mobi-panel .site-nav {
     flex: 1 !important;
-    margin-bottom: 28px !important;
+    margin-bottom: 16px !important;
   }
   body .site-header-mobi-panel .nav-section,
   html body .site-header-mobi-panel .nav-section {
-    margin-bottom: 28px !important;
+    margin-bottom: 0 !important;
   }
   body .site-header-mobi-panel .nav-section-title,
   html body .site-header-mobi-panel .nav-section-title {
-    font-size: 11px !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.15em !important;
-    text-transform: uppercase !important;
-    color: #FF6600 !important;
-    margin: 0 0 12px !important;
-    padding: 0 12px !important;
+    display: none !important;
   }
   body .site-header-mobi-panel .site-nav-menu,
   html body .site-header-mobi-panel .site-nav-menu {
@@ -3065,74 +3060,18 @@ html body [class*="btn"] {
 }
 
 /* ============================================
-   LOCATIONS PAGE: map visible and proper on mobile
+   LOCATIONS PAGE: hide map on mobile
    ============================================ */
 @media (max-width: 768px) {
   .locations-page .map-wrapper,
   html body .locations-page .map-wrapper {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    min-height: 380px !important;
-    flex: 1 1 auto !important;
-    width: 100% !important;
+    display: none !important;
+    visibility: hidden !important;
   }
   .locations-page .map-container,
   html body .locations-page .map-container {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    min-height: 380px !important;
-    height: auto !important;
-    width: 100% !important;
-    overflow: visible !important;
-    padding-bottom: 28px !important;
-    box-sizing: border-box !important;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.08) !important;
-    border-radius: 16px !important;
-  }
-  .locations-page .map-container::before,
-  .locations-page .map-container::after,
-  html body .locations-page .map-container::before,
-  html body .locations-page .map-container::after {
     display: none !important;
-  }
-  .locations-page .map-inner,
-  .locations-page #map,
-  html body .locations-page .map-inner,
-  html body .locations-page #map {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    min-height: 380px !important;
-    height: 380px !important;
-    width: 100% !important;
-    border-radius: 16px !important;
-  }
-  .locations-page .map-container .leaflet-container,
-  html body .locations-page .map-container .leaflet-container {
-    border-radius: 16px !important;
-  }
-  .locations-page .map-attribution,
-  html body .locations-page .map-attribution {
-    bottom: 36px !important;
-    right: 8px !important;
-    left: auto !important;
-    font-size: 10px !important;
-    padding: 4px 8px !important;
-  }
-  .locations-page .map-container .leaflet-control-zoom,
-  html body .locations-page .map-container .leaflet-control-zoom {
-    top: auto !important;
-    bottom: 36px !important;
-    left: 8px !important;
-    right: auto !important;
-  }
-  .locations-page .map-container .leaflet-control-attribution,
-  html body .locations-page .map-container .leaflet-control-attribution {
-    font-size: 9px !important;
-    padding: 2px 5px !important;
-    line-height: 1.2 !important;
+    visibility: hidden !important;
   }
 }
 
