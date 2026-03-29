@@ -173,7 +173,7 @@
 						<!-- Custom card designer (visible when Custom is selected) -->
 						<div class="gift-card-custom-panel" id="custom-design-panel" aria-hidden="true">
 							<h3 class="gift-card-custom-panel-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Design your card <span class="gift-card-custom-emoji">✨</span></h3>
-							<p class="gift-card-custom-panel-desc">Colors, photo, message — make it yours! Everything updates live. 🎨</p>
+							<p class="gift-card-custom-panel-desc">Colors, photo, message, make it yours! Everything updates live. 🎨</p>
 
 							<div class="gift-card-custom-section">
 								<h4 class="gift-card-custom-section-title"><span class="gift-card-custom-section-emoji">🖼️</span> Add a photo</h4>
@@ -183,7 +183,7 @@
 										<span class="gift-card-custom-photo-btn-inner"><i class="fa-solid fa-image"></i> Choose image</span>
 									</label>
 									<button type="button" class="gift-card-custom-photo-remove" id="custom-card-photo-remove" style="display:none;" aria-label="Remove photo">Remove</button>
-									<span class="gift-card-custom-photo-hint">Shows on your card — max 5MB</span>
+									<span class="gift-card-custom-photo-hint">Shows on your card, max 5MB</span>
 								</div>
 							</div>
 
@@ -193,7 +193,7 @@
 							</div>
 
 							<div class="gift-card-custom-section">
-								<h4 class="gift-card-custom-section-title"><span class="gift-card-custom-section-emoji">🎨</span> Colors — tap a swatch or use picker</h4>
+								<h4 class="gift-card-custom-section-title"><span class="gift-card-custom-section-emoji">🎨</span> Colors, tap a swatch or use picker</h4>
 								<div class="gift-card-custom-swatches">
 									<div class="gift-card-custom-swatch-group">
 										<span class="gift-card-custom-swatch-label">Top bar</span>
@@ -357,7 +357,7 @@
 							<div class="gift-card-buttons">
 								<button type="button" id="gift-card-pay-btn" class="gift-card-pay-btn">
 									<span class="gift-card-pay-btn-shine" aria-hidden="true"></span>
-									<span class="btn-text">Pay $52.50 — Send Gift Card</span>
+									<span class="btn-text">Pay $52.50, Send Gift Card</span>
 								</button>
 								<div class="gift-card-secure"><i class="fa-solid fa-lock"></i> Secure checkout (Square)</div>
 							</div>
@@ -429,7 +429,7 @@
 				void totalEl.offsetWidth;
 				totalEl.classList.add('amount-bump');
 				setTimeout(function() { totalEl.classList.remove('amount-bump'); }, 500);
-				payBtn.querySelector('.btn-text').textContent = 'Pay $' + total.toFixed(2) + ' — Send Gift Card';
+				payBtn.querySelector('.btn-text').textContent = 'Pay $' + total.toFixed(2) + ', Send Gift Card';
 				updatePreview();
 			}
 
@@ -705,7 +705,7 @@
 				customCardPhoto.addEventListener('change', function() {
 					var file = this.files && this.files[0];
 					if (!file || file.size > 5 * 1024 * 1024) {
-						if (file && file.size > 5 * 1024 * 1024 && typeof showToast === 'function') showToast('Image too big — max 5MB 😅', true);
+						if (file && file.size > 5 * 1024 * 1024 && typeof showToast === 'function') showToast('Image too big, max 5MB 😅', true);
 						return;
 					}
 					var reader = new FileReader();

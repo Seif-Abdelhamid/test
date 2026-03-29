@@ -50,7 +50,6 @@
 	
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet" crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="../assets/css/global-overrides.css" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
 	<!-- OMGYRO Custom Theme: Black, Orange, White -->
 	<style>
 		/* Hide Accessibility Widget */
@@ -483,15 +482,15 @@
 			</div>
 			
 			<!-- Paramus, NJ -->
-			<div class="location-item" data-lat="40.9485" data-lng="-74.0933" style="margin-bottom: 30px; padding: 25px; border: 2px solid #f0f0f0; border-radius: 10px; background: #ffffff; transition: all 0.3s ease; cursor: default;">
-				<h2 class="h2" style="color: var(--omgyro-orange); margin-bottom: 15px; font-size: 22px; cursor: pointer; font-weight: 600; transition: color 0.3s ease;" onclick="handleViewOnMap('Paramus, NJ', 40.9485, -74.0933, 'Sunday-Saturday: 10:30am - 11:00pm', 'https://www.google.com/maps/search/?api=1&query=40.9485,-74.0933')" onmouseover="this.style.color='#E55A00'" onmouseout="this.style.color='var(--omgyro-orange)'">📍 Paramus, NJ</h2>
+			<div class="location-item" data-lat="40.9679" data-lng="-74.0736" style="margin-bottom: 30px; padding: 25px; border: 2px solid #f0f0f0; border-radius: 10px; background: #ffffff; transition: all 0.3s ease; cursor: default;">
+				<h2 class="h2" style="color: var(--omgyro-orange); margin-bottom: 15px; font-size: 22px; cursor: pointer; font-weight: 600; transition: color 0.3s ease;" onclick="handleViewOnMap('Paramus, NJ', 40.9679, -74.0736, 'Sunday-Saturday: 10:30am - 11:00pm', 'https://maps.app.goo.gl/Cs7SsN39iHi9ZmQVA')" onmouseover="this.style.color='#E55A00'" onmouseout="this.style.color='var(--omgyro-orange)'">📍 Paramus, NJ</h2>
 				<p style="color: var(--omgyro-black); margin-bottom: 20px; font-size: 14px; line-height: 1.7;">
 					<strong style="color: var(--omgyro-black); font-size: 15px; display: block; margin-bottom: 8px;">Hours</strong>
 					<span style="display: block; margin-top: 4px;">🕒 Sunday-Saturday: 10:30am - 11:00pm</span>
 				</p>
 				<div class="location-buttons" style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px; align-items: center; width: 100%;">
-					<button onclick="handleViewOnMap('Paramus, NJ', 40.9485, -74.0933, 'Sunday-Saturday: 10:30am - 11:00pm', 'https://www.google.com/maps/search/?api=1&query=40.9485,-74.0933')" class="btn btn-brand location-btn" style="width: 100%; padding: 12px 20px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 15px; transition: all 0.3s ease; height: 44px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center; margin: 0;">View on Map</button>
-					<button onclick="showLocationDetails('Paramus, NJ', '40.9485', '-74.0933')" class="btn btn-brand-alt location-btn" style="width: 100%; padding: 12px 20px; border: 2px solid var(--omgyro-orange); background: transparent; color: var(--omgyro-orange); border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 15px; transition: all 0.3s ease; height: 44px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center; margin: 0;">Location Details</button>
+					<button onclick="handleViewOnMap('Paramus, NJ', 40.9679, -74.0736, 'Sunday-Saturday: 10:30am - 11:00pm', 'https://maps.app.goo.gl/Cs7SsN39iHi9ZmQVA')" class="btn btn-brand location-btn" style="width: 100%; padding: 12px 20px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 15px; transition: all 0.3s ease; height: 44px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center; margin: 0;">View on Map</button>
+					<button onclick="showLocationDetails('Paramus, NJ', '40.9679', '-74.0736')" class="btn btn-brand-alt location-btn" style="width: 100%; padding: 12px 20px; border: 2px solid var(--omgyro-orange); background: transparent; color: var(--omgyro-orange); border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 15px; transition: all 0.3s ease; height: 44px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; text-align: center; margin: 0;">Location Details</button>
 					<a href="https://omgyrohalal.square.site/" class="btn btn-brand location-btn" style="display: flex; align-items: center; justify-content: center; width: 100%; text-align: center; padding: 12px 20px; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 15px; transition: all 0.3s ease; height: 44px; box-sizing: border-box; border: none; margin: 0;">Order Online</a>
 				</div>
 			</div>
@@ -640,7 +639,7 @@
 		-webkit-mask-composite: xor;
 		mask-composite: exclude;
 		pointer-events: none;
-		z-index: 2;
+		z-index: 4;
 	}
 	.locations-page .map-container::after {
 		content: '';
@@ -650,7 +649,7 @@
 		padding: 1px;
 		background: linear-gradient(135deg, rgba(255,102,0,0.4), transparent 40%, rgba(255,102,0,0.2) 100%);
 		pointer-events: none;
-		z-index: 1;
+		z-index: 4;
 		opacity: 0;
 		transition: opacity 0.4s ease;
 	}
@@ -677,7 +676,7 @@
 		background: linear-gradient(90deg, transparent 0%, #FF6600 15%, #ff8533 50%, #FF6600 85%, transparent 100%);
 		background-size: 200% 100%;
 		animation: mapAccentShift 3.5s ease-in-out infinite;
-		z-index: 1;
+		z-index: 5;
 		pointer-events: none;
 		box-shadow: 0 2px 12px rgba(255,102,0,0.4);
 	}
@@ -702,11 +701,19 @@
 		position: relative;
 		z-index: 0;
 		border-radius: 0 0 24px 24px;
-		transition: filter 0.5s ease, transform 0.5s ease;
+		overflow: hidden;
+	}
+	.locations-page .map-inner iframe {
+		display: block;
+		width: 100%;
+		height: 100%;
+		border: 0;
+		border-radius: 0 0 24px 24px;
+		position: relative;
+		z-index: 0;
 	}
 	.locations-page .map-container.active .map-inner {
 		filter: brightness(1.06) saturate(1.08);
-		transform: scale(1.01);
 	}
 	.locations-page .map-attribution {
 		position: absolute;
@@ -720,124 +727,187 @@
 		padding: 8px 14px;
 		border-radius: 10px;
 		box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 0 0 1px rgba(255,102,0,0.2);
-		z-index: 1;
+		z-index: 3;
 		pointer-events: none;
 	}
-	/* Leaflet theme overrides */
-	.locations-page .map-container .leaflet-container {
-		background: #f0ede8 !important;
-		font-family: inherit;
-	}
-	.locations-page .map-container .leaflet-control-zoom {
-		border: none !important;
-		box-shadow: 0 4px 16px rgba(0,0,0,0.3) !important;
-		border-radius: 10px !important;
+	/* ===== Map Info Popup (desktop overlay card) ===== */
+	.map-info-popup {
+		position: absolute;
+		top: 20px;
+		left: 20px;
+		z-index: 6;
+		background: rgba(255,255,255,0.92);
+		backdrop-filter: blur(16px) saturate(1.6);
+		-webkit-backdrop-filter: blur(16px) saturate(1.6);
+		border-radius: 18px;
+		box-shadow:
+			0 20px 60px rgba(0,0,0,0.18),
+			0 0 0 1px rgba(255,255,255,0.5) inset,
+			0 0 0 1.5px rgba(255,102,0,0.25);
+		max-width: 330px;
+		width: calc(100% - 40px);
+		padding: 0;
+		opacity: 0;
+		transform: translateX(-20px) scale(0.92);
+		pointer-events: none;
+		transition: opacity 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
 		overflow: hidden;
 	}
-	.locations-page .map-container .leaflet-control-zoom a {
-		background: #1a1a1a !important;
-		color: #fff !important;
-		border: none !important;
-		width: 36px !important;
-		height: 36px !important;
-		line-height: 36px !important;
-		font-size: 20px !important;
-		transition: background 0.2s, color 0.2s;
+	.map-info-popup.visible {
+		opacity: 1;
+		transform: translateX(0) scale(1);
+		pointer-events: all;
 	}
-	.locations-page .map-container .leaflet-control-zoom a:hover {
-		background: #FF6600 !important;
-		color: #fff !important;
-	}
-	.locations-page .map-container .leaflet-popup-content-wrapper {
-		background: linear-gradient(180deg, #fff 0%, #fffbf8 100%);
-		border-radius: 16px;
-		box-shadow: 0 16px 48px rgba(0,0,0,0.18), 0 0 0 2px rgba(255,102,0,0.15);
-		border: none;
-		animation: popupIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-	}
-	@keyframes popupIn {
-		from { opacity: 0; transform: scale(0.92) translateY(-8px); }
-		to { opacity: 1; transform: scale(1) translateY(0); }
-	}
-	.locations-page .map-container .leaflet-popup-tip {
-		background: #fffbf8;
-		box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-	}
-	.locations-page .map-container .leaflet-popup-content {
-		margin: 0;
-	}
-	.locations-page .map-container .leaflet-popup-content a[href*="google.com/maps"],
-	.locations-page .map-container .leaflet-popup-content a[href*="maps.app"] {
-		background: #FF6600 !important;
-		color: #fff !important;
-		padding: 10px 16px !important;
-		border-radius: 8px !important;
-		font-weight: 600 !important;
-		text-decoration: none !important;
-		display: inline-block !important;
-		transition: background 0.2s, transform 0.2s !important;
-	}
-	.locations-page .map-container .leaflet-popup-content a[href*="google.com/maps"]:hover,
-	.locations-page .map-container .leaflet-popup-content a[href*="maps.app"]:hover {
-		background: #E55A00 !important;
-		transform: translateY(-1px);
-	}
-	/* Marker: ring ripple + pulse */
-	.locations-page .omgyro-marker {
-		position: relative;
-	}
-	.locations-page .omgyro-marker::before {
+	/* Orange accent stripe at top of popup */
+	.map-info-popup::before {
 		content: '';
 		position: absolute;
-		left: 50%;
-		top: 50%;
-		width: 24px;
-		height: 24px;
-		margin: -12px 0 0 -12px;
-		border: 2px solid rgba(255,102,0,0.6);
-		border-radius: 50%;
-		animation: markerRipple 2.2s ease-out infinite;
-		pointer-events: none;
-	}
-	.locations-page .omgyro-marker.soon::before {
-		border-color: rgba(100,100,100,0.5);
-		animation-duration: 2.8s;
-	}
-	@keyframes markerRipple {
-		0% { transform: scale(0.8); opacity: 0.8; }
-		100% { transform: scale(2.2); opacity: 0; }
-	}
-	.locations-page .omgyro-marker span,
-	.locations-page .omgyro-marker.soon span {
-		animation: markerPulse 2.2s ease-in-out infinite;
-		position: relative;
+		top: 0; left: 0; right: 0;
+		height: 4px;
+		background: linear-gradient(90deg, #e55a00, #FF6600, #ff8533, #FF6600);
+		background-size: 200% 100%;
+		animation: popupAccentShift 3s ease-in-out infinite;
 		z-index: 1;
 	}
-	.locations-page .omgyro-marker.soon span {
-		animation-duration: 2.8s;
+	@keyframes popupAccentShift {
+		0%, 100% { background-position: 0% 50%; }
+		50% { background-position: 100% 50%; }
 	}
-	@keyframes markerPulse {
-		0%, 100% { transform: scale(1); box-shadow: 0 2px 10px rgba(0,0,0,0.25), 0 0 0 0 rgba(255,102,0,0.4); }
-		50% { transform: scale(1.15); box-shadow: 0 6px 20px rgba(255,102,0,0.35), 0 0 0 8px rgba(255,102,0,0); }
+	.map-info-popup__header {
+		padding: 20px 20px 0;
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		gap: 10px;
 	}
-	.locations-page .omgyro-marker.soon span {
-		box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+	.map-info-popup__name {
+		color: var(--omgyro-orange);
+		font-size: 17px;
+		font-weight: 700;
+		margin: 0;
+		flex: 1;
+		line-height: 1.3;
 	}
-	.locations-page .omgyro-marker.soon span {
-		animation-name: markerPulseSoon;
+	.map-info-popup__close {
+		background: transparent;
+		border: 1.5px solid rgba(0,0,0,0.1);
+		width: 28px;
+		height: 28px;
+		min-width: 28px;
+		border-radius: 8px;
+		font-size: 18px;
+		line-height: 1;
+		color: #aaa;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+		padding: 0;
 	}
-	@keyframes markerPulseSoon {
-		0%, 100% { transform: scale(1); opacity: 0.92; }
-		50% { transform: scale(1.1); opacity: 1; }
+	.map-info-popup__close:hover {
+		background: rgba(255,102,0,0.1);
+		border-color: rgba(255,102,0,0.3);
+		color: var(--omgyro-orange);
+		transform: scale(1.1) rotate(90deg);
+	}
+	.map-info-popup__divider {
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(255,102,0,0.2), transparent);
+		margin: 14px 20px 0;
+	}
+	.map-info-popup__body {
+		padding: 14px 20px 18px;
+	}
+	.map-info-popup__hours {
+		color: #444;
+		font-size: 13px;
+		line-height: 1.7;
+		margin: 0 0 10px;
+	}
+	.map-info-popup__hours span {
+		display: block;
+		margin-top: 2px;
+	}
+	.map-info-popup__parking {
+		font-size: 12px;
+		color: #666;
+		margin: 0 0 14px;
+		padding: 8px 10px;
+		background: rgba(255,102,0,0.05);
+		border-radius: 8px;
+		border-left: 3px solid rgba(255,102,0,0.3);
+	}
+	.map-info-popup__actions {
+		display: flex;
+		gap: 8px;
+	}
+	.map-info-popup__directions {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		padding: 9px 16px;
+		background: var(--omgyro-orange);
+		color: #fff !important;
+		text-decoration: none;
+		border-radius: 10px;
+		font-weight: 600;
+		font-size: 13px;
+		transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+		box-shadow: 0 2px 8px rgba(255,102,0,0.3);
+		flex: 1;
+		justify-content: center;
+	}
+	.map-info-popup__directions:hover {
+		background: #E55A00;
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(255,102,0,0.35);
+	}
+	.map-info-popup__back {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+		padding: 9px 14px;
+		background: transparent;
+		color: #666;
+		text-decoration: none;
+		border: 1.5px solid rgba(0,0,0,0.12);
+		border-radius: 10px;
+		font-weight: 600;
+		font-size: 12px;
+		cursor: pointer;
+		transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+		white-space: nowrap;
+	}
+	.map-info-popup__back:hover {
+		border-color: var(--omgyro-orange);
+		color: var(--omgyro-orange);
+		background: rgba(255,102,0,0.05);
+		transform: translateY(-1px);
+	}
+
+	/* ===== Map loading shimmer ===== */
+	.map-inner.loading::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: linear-gradient(110deg, transparent 30%, rgba(255,102,0,0.06) 50%, transparent 70%);
+		background-size: 200% 100%;
+		animation: mapLoadShimmer 1.2s ease-in-out infinite;
+		pointer-events: none;
+		border-radius: 0 0 24px 24px;
+	}
+	@keyframes mapLoadShimmer {
+		0% { background-position: 200% 0; }
+		100% { background-position: -200% 0; }
 	}
 	@media (prefers-reduced-motion: reduce) {
 		.locations-page .map-container,
 		.locations-page .map-container::before,
 		.locations-page .map-accent,
 		.locations-page .map-accent::after,
-		.locations-page .map-wrapper,
-		.locations-page .omgyro-marker::before,
-		.locations-page .omgyro-marker span { animation: none !important; }
+		.locations-page .map-wrapper { animation: none !important; }
 		.locations-page .map-container { opacity: 1; transform: none; }
 		.locations-page .map-wrapper { opacity: 1; }
 		.locations-page .location-item { animation: none !important; opacity: 1; transform: none; }
@@ -1544,22 +1614,42 @@
 	
 	@media (max-width: 768px) {
 		.coming-soon-content {
-			max-width: 95%;
-			border-radius: 20px;
+			max-width: calc(100vw - 24px);
+			width: calc(100vw - 24px);
+			max-height: calc(100vh - 40px);
+			border-radius: 18px;
+			box-sizing: border-box;
+			overflow-y: auto;
+			-webkit-overflow-scrolling: touch;
 		}
-		
+
 		.coming-soon-header {
-			padding: 30px 20px 20px;
+			padding: 24px 16px 16px;
 		}
-		
+
 		.coming-soon-title {
-			font-size: 26px;
+			font-size: 22px;
+			word-break: break-word;
 		}
-		
+
 		.coming-soon-body {
-			padding: 25px 20px 30px;
+			padding: 16px 16px 24px;
 		}
-		
+
+		.coming-soon-close {
+			top: 10px;
+			right: 10px;
+			width: 40px;
+			height: 40px;
+			font-size: 28px;
+			background: rgba(255,255,255,0.9);
+			z-index: 10003;
+		}
+
+		.coming-soon-map {
+			height: 220px;
+		}
+
 		.coming-soon-parking-badge {
 			flex-direction: column;
 			text-align: center;
@@ -1574,54 +1664,48 @@
 	.site-header .site-nav-cta:hover, .site-header-desktop-primary .site-nav-cta:hover, .site-header-mobi-panel .site-nav-cta:hover, .mobi-footer .site-nav-cta:hover { background: #E55A00 !important; background-color: #E55A00 !important; border-color: #E55A00 !important; }
 	</style>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
 	// Locations data (open + coming soon from https://www.omgyrohalal.com/locations)
 	var LOCATIONS_DATA = [
 		{ name: 'South Orange, NJ', lat: 40.7489, lng: -74.2610, hours: 'Sunday-Tuesday: 10:30am - 1:00am<br>Wednesday-Thursday: 10:30am - 2:00am<br>Friday-Saturday: 10:30am - 3:00am', parking: 'Free parking available on-site and nearby street parking', status: 'open', googleMapsUrl: 'https://maps.app.goo.gl/shMSTyc97xvK8syq9' },
 		{ name: 'Union, NJ', lat: 40.6976, lng: -74.2632, hours: 'Sunday-Thursday: 10:30am - 1:00am<br>Friday-Saturday: 10:30am - 2:00am', parking: 'Free parking available on-site and nearby street parking', status: 'open', googleMapsUrl: 'https://maps.app.goo.gl/JPYjqnsVPQ4ZLAs4A' },
-		{ name: 'Paramus, NJ', lat: 40.9485, lng: -74.0933, hours: 'Sunday-Saturday: 10:30am - 11:00pm', parking: 'Free parking available on-site and nearby street parking', status: 'open', googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=40.9485,-74.0933' },
+		{ name: 'Paramus, NJ', lat: 40.9679, lng: -74.0736, hours: 'Sunday-Saturday: 10:30am - 11:00pm', parking: 'Free parking available on-site and nearby street parking', status: 'open', googleMapsUrl: 'https://maps.app.goo.gl/Cs7SsN39iHi9ZmQVA' },
 		{ name: 'Old Bridge, NJ', lat: 40.4140, lng: -74.3196, status: 'coming-soon', googleMapsUrl: '' },
 		{ name: 'Elmwood, NJ', lat: 40.8198, lng: -74.2904, status: 'coming-soon', googleMapsUrl: 'https://maps.app.goo.gl/GUYA9pCF2kG1CsTB8' },
 		{ name: 'Morris Twp, NJ', lat: 40.7968, lng: -74.4815, status: 'coming-soon', googleMapsUrl: 'https://maps.app.goo.gl/47v2nt45n4TyGx9A6' }
 	];
 
+	function getGoogleMapsEmbedUrl(lat, lng, zoom) {
+		return 'https://maps.google.com/maps?q=' + lat + ',' + lng + '&z=' + (zoom || 15) + '&output=embed';
+	}
+
 	function initMap() {
 		var mapEl = document.getElementById('map');
-		if (!mapEl || !window.L) return;
-		// Leaflet: center NJ, zoom 9
-		var map = L.map('map').setView([40.7, -74.3], 9);
-		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>', maxZoom: 19 }).addTo(map);
-		window.map = map;
+		if (!mapEl) return;
+		var iframe = document.createElement('iframe');
+		iframe.src = 'https://maps.google.com/maps?q=OMGYRO+Halal+NJ&z=9&output=embed';
+		iframe.width = '100%';
+		iframe.height = '100%';
+		iframe.style.border = '0';
+		iframe.style.borderRadius = '0 0 24px 24px';
+		iframe.allowFullscreen = true;
+		iframe.loading = 'lazy';
+		iframe.referrerPolicy = 'no-referrer-when-downgrade';
+		iframe.title = 'OMGYRO Locations Map';
+		mapEl.innerHTML = '';
+		mapEl.appendChild(iframe);
+		window.mapIframe = iframe;
+
+		// Build markersByLocation for location details functionality
 		var markersByLocation = {};
-		var openIcon = L.divIcon({ className: 'omgyro-marker', html: '<span style="background:#FF6600;width:24px;height:24px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,0.3);display:block;"></span>', iconSize: [24, 24], iconAnchor: [12, 24] });
-		var soonIcon = L.divIcon({ className: 'omgyro-marker soon', html: '<span style="background:#888;width:20px;height:20px;border-radius:50%;border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,0.2);display:block;"></span>', iconSize: [20, 20], iconAnchor: [10, 20] });
 		LOCATIONS_DATA.forEach(function(loc) {
-			var googleMapsUrl = loc.googleMapsUrl || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(loc.lat + ',' + loc.lng));
-			var content = '<div style="padding:16px;min-width:260px;font-family:inherit"><h3 style="color:#FF6600;margin:0 0 10px;font-size:18px">' + loc.name + '</h3>';
-			if (loc.status === 'coming-soon') {
-				content += '<p style="color:#666;margin:0 0 12px;font-size:14px"><strong>Coming Soon</strong></p>';
-			} else {
-				content += '<p style="color:#333;margin:0 0 10px;font-size:13px;line-height:1.5">' + (loc.hours || '') + '</p>';
-				if (loc.parking) content += '<p style="margin:0 0 12px;font-size:12px;color:#555">🅿️ ' + loc.parking + '</p>';
-			}
-			content += '<a href="' + googleMapsUrl + '" style="display:inline-block;padding:8px 14px;background:#FF6600;color:#fff!important;text-decoration:none;border-radius:6px;font-weight:600;font-size:13px">Directions</a></div>';
-			var marker = L.marker([loc.lat, loc.lng], { icon: loc.status === 'coming-soon' ? soonIcon : openIcon }).addTo(map).bindPopup(content);
-			marker.on('click', function() {
-				if (loc.status === 'coming-soon') showComingSoonModal(loc.name, loc.lat, loc.lng);
-			});
 			var key = loc.lat + ',' + loc.lng;
-			markersByLocation[key] = { marker: marker, location: loc };
+			markersByLocation[key] = { location: loc };
 		});
 		window.markersByLocation = markersByLocation;
-		window.infoWindows = [];
-		setTimeout(function() { map.invalidateSize(); }, 100);
-		// Mobile: redraw map after layout so it gets correct dimensions
-		setTimeout(function() { map.invalidateSize(); }, 500);
 	}
 
 	function focusLocation(lat, lng) {
-		if (!window.map) return;
 		var targetLat = parseFloat(lat);
 		var targetLng = parseFloat(lng);
 		var locationKey = targetLat + ',' + targetLng;
@@ -1631,24 +1715,30 @@
 			return;
 		}
 		if (window.innerWidth <= 768) {
-			// Map is hidden on mobile — nothing to do here (modal handles it via handleViewOnMap)
 			return;
-		} else {
-			window.map.flyTo([targetLat, targetLng], 14, { duration: 0.8 });
-			var mapContainer = document.querySelector('.map-container');
-			if (mapContainer) { mapContainer.classList.add('active'); setTimeout(function() { mapContainer.classList.remove('active'); }, 1000); }
-			if (data) setTimeout(function() { data.marker.openPopup(); }, 900);
+		}
+		// Close any existing info popup before switching
+		closeMapInfoPopup();
+		// Update Google Maps iframe to zoom into this location
+		if (window.mapIframe) {
+			window.mapIframe.src = getGoogleMapsEmbedUrl(targetLat, targetLng, 15);
+		}
+		var mapContainer = document.querySelector('.map-container');
+		if (mapContainer) {
+			mapContainer.classList.add('active');
+			setTimeout(function() { mapContainer.classList.remove('active'); }, 1000);
 		}
 	}
 
 	function openLocationInfo(lat, lng) {
-		// On mobile, focusLocation already handles the popup after scroll settles — skip to avoid interfering
 		if (window.innerWidth <= 768) return;
 		var locationKey = parseFloat(lat) + ',' + parseFloat(lng);
 		var data = window.markersByLocation && window.markersByLocation[locationKey];
 		if (!data || data.location.status === 'coming-soon') return;
-		window.map.eachLayer(function(l) { if (l.closePopup) l.closePopup(); });
-		setTimeout(function() { data.marker.openPopup(); }, 150);
+		var loc = data.location;
+		var hours = loc.hours ? loc.hours.replace(/<br>/g, '\n') : '';
+		var mapsUrl = loc.googleMapsUrl || ('https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng);
+		showMapInfoPopup(loc.name, lat, lng, hours, mapsUrl);
 	}
 	
 	function showLocationDetails(locationName, lat, lng) {
@@ -1726,7 +1816,69 @@
 			showLocationMapModal(name, lat, lng, hours, mapsUrl);
 		} else {
 			focusLocation(lat, lng);
-			openLocationInfo(lat, lng);
+			showMapInfoPopup(name, lat, lng, hours, mapsUrl);
+		}
+	}
+
+	function showMapInfoPopup(name, lat, lng, hours, mapsUrl) {
+		var container = document.querySelector('.map-container');
+		if (!container) return;
+		// Remove existing popup
+		var existing = container.querySelector('.map-info-popup');
+		if (existing) existing.remove();
+
+		var locationKey = parseFloat(lat) + ',' + parseFloat(lng);
+		var data = window.markersByLocation && window.markersByLocation[locationKey];
+		var loc = data ? data.location : null;
+		var parkingInfo = loc && loc.parking ? loc.parking : '';
+		var hoursHtml = hours ? hours.split('\n').map(function(line) {
+			return '<span>🕒 ' + line + '</span>';
+		}).join('') : (loc && loc.hours ? loc.hours : '');
+		var directionsUrl = mapsUrl || (loc && loc.googleMapsUrl ? loc.googleMapsUrl : 'https://www.google.com/maps/search/?api=1&query=' + lat + ',' + lng);
+
+		var popup = document.createElement('div');
+		popup.className = 'map-info-popup';
+		popup.innerHTML =
+			'<div class="map-info-popup__header">' +
+			'<h3 class="map-info-popup__name">📍 ' + name + '</h3>' +
+			'<button class="map-info-popup__close" onclick="closeMapInfoPopup()" aria-label="Close">&times;</button>' +
+			'</div>' +
+			'<div class="map-info-popup__divider"></div>' +
+			'<div class="map-info-popup__body">' +
+			(hoursHtml ? '<div class="map-info-popup__hours">' + hoursHtml + '</div>' : '') +
+			(parkingInfo ? '<p class="map-info-popup__parking">🅿️ ' + parkingInfo + '</p>' : '') +
+			'<div class="map-info-popup__actions">' +
+			'<a href="' + directionsUrl + '" target="_blank" rel="noopener" class="map-info-popup__directions"><i class="fa-solid fa-diamond-turn-right"></i> Directions</a>' +
+			'<button class="map-info-popup__back" onclick="resetMapView()"><i class="fa-solid fa-arrow-left"></i> All locations</button>' +
+			'</div>' +
+			'</div>';
+		container.appendChild(popup);
+		// Trigger animation
+		requestAnimationFrame(function() {
+			requestAnimationFrame(function() {
+				popup.classList.add('visible');
+			});
+		});
+	}
+
+	function closeMapInfoPopup() {
+		var popup = document.querySelector('.map-info-popup');
+		if (popup) {
+			popup.classList.remove('visible');
+			setTimeout(function() { popup.remove(); }, 400);
+		}
+	}
+
+	function resetMapView() {
+		closeMapInfoPopup();
+		if (window.mapIframe) {
+			var mapInner = document.querySelector('.map-inner');
+			if (mapInner) mapInner.classList.add('loading');
+			window.mapIframe.src = 'https://maps.google.com/maps?q=OMGYRO+Halal+NJ&z=9&output=embed';
+			window.mapIframe.onload = function() {
+				if (mapInner) mapInner.classList.remove('loading');
+				window.mapIframe.onload = null;
+			};
 		}
 	}
 
@@ -1738,7 +1890,6 @@
 			modal.className = 'coming-soon-modal';
 			document.body.appendChild(modal);
 		}
-		var mapId = 'loc-map-' + Date.now();
 		var hoursHtml = hours.split('\n').map(function(line) {
 			return '<span style="display:block;margin-top:4px;">🕒 ' + line + '</span>';
 		}).join('');
@@ -1755,7 +1906,7 @@
 			hoursHtml +
 			'</div>' +
 			'<div class="coming-soon-map-container">' +
-			'<div id="' + mapId + '" class="coming-soon-map"></div>' +
+			'<iframe class="coming-soon-map" src="' + getGoogleMapsEmbedUrl(lat, lng, 15) + '" width="100%" height="100%" style="border:0;border-radius:12px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="' + locationName + ' Map"></iframe>' +
 			'</div>' +
 			'<div style="padding:0 20px 24px;text-align:center;">' +
 			'<a href="' + googleMapsUrl + '" class="btn btn-brand" style="display:inline-flex;align-items:center;gap:8px;padding:12px 28px;text-decoration:none;border-radius:8px;font-weight:600;font-size:15px;">Get Directions</a>' +
@@ -1764,16 +1915,6 @@
 			'</div>';
 		modal.classList.add('active');
 		document.body.style.overflow = 'hidden';
-		setTimeout(function() {
-			if (!window.L) return;
-			var el = document.getElementById(mapId);
-			if (!el) return;
-			var m = L.map(mapId).setView([lat, lng], 15);
-			L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap', maxZoom: 19 }).addTo(m);
-			var icon = L.divIcon({ className: '', html: '<span style="background:#FF6600;width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.3);display:block;"></span>', iconSize: [28, 28], iconAnchor: [14, 28] });
-			var marker = L.marker([lat, lng], { icon: icon }).addTo(m).bindPopup('<strong style="color:#FF6600">' + locationName + '</strong>');
-			setTimeout(function() { marker.openPopup(); }, 400);
-		}, 300);
 	}
 
 	function closeLocationMapModal() {
@@ -1785,7 +1926,6 @@
 	}
 
 	function showComingSoonModal(locationName, lat, lng) {
-		// Create or get modal
 		var modal = document.getElementById('coming-soon-modal');
 		if (!modal) {
 			modal = document.createElement('div');
@@ -1793,10 +1933,7 @@
 			modal.className = 'coming-soon-modal';
 			document.body.appendChild(modal);
 		}
-		
-		// Create unique map container ID
-		var mapId = 'coming-soon-map-' + Date.now();
-		
+
 		modal.innerHTML = '<div class="coming-soon-overlay" onclick="closeComingSoonModal()"></div>' +
 			'<div class="coming-soon-content">' +
 			'<button class="coming-soon-close" onclick="closeComingSoonModal()" aria-label="Close">×</button>' +
@@ -1820,32 +1957,13 @@
 			'</div>' +
 			'<div class="coming-soon-map-container">' +
 			'<h3 class="map-title">Location Preview</h3>' +
-			'<div id="' + mapId + '" class="coming-soon-map"></div>' +
+			'<iframe class="coming-soon-map" src="' + getGoogleMapsEmbedUrl(lat, lng, 15) + '" width="100%" height="100%" style="border:0;border-radius:12px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="' + locationName + ' Map"></iframe>' +
 			'</div>' +
 			'</div>' +
 			'</div>';
-		
-		// Show modal with animation
+
 		modal.classList.add('active');
 		document.body.style.overflow = 'hidden';
-		
-		// Initialize map after modal is shown
-		setTimeout(function() {
-			initComingSoonMap(mapId, lat, lng, locationName);
-		}, 300);
-	}
-	
-	function initComingSoonMap(mapId, lat, lng, locationName) {
-		if (!window.L) return;
-		var el = document.getElementById(mapId);
-		if (!el) return;
-		var latN = parseFloat(lat);
-		var lngN = parseFloat(lng);
-		var m = L.map(mapId).setView([latN, lngN], 15);
-		L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '&copy; OpenStreetMap', maxZoom: 19 }).addTo(m);
-		var icon = L.divIcon({ className: 'coming-soon-marker', html: '<span style="background:#888;width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.3);display:block;"></span>', iconSize: [28, 28], iconAnchor: [14, 28] });
-		var marker = L.marker([latN, lngN], { icon: icon }).addTo(m).bindPopup('<strong style="color:#FF6600">' + locationName + '</strong><p style="margin:4px 0 0 0;color:#666;font-size:13px">Coming Soon</p>');
-		setTimeout(function() { marker.openPopup(); }, 400);
 	}
 	
 	function closeComingSoonModal() {
@@ -1860,13 +1978,7 @@
 </script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
-		if (window.L && document.getElementById('map')) initMap();
-		// On resize (e.g. mobile rotate), redraw map so it stays visible
-		window.addEventListener('resize', function() {
-			if (window.map) {
-				setTimeout(function() { window.map.invalidateSize(); }, 150);
-			}
-		});
+		if (document.getElementById('map')) initMap();
 	});
 </script>
 			</main>
