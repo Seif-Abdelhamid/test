@@ -373,7 +373,7 @@ html body .site-header-desktop-primary .site-nav-cta:hover {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  margin-bottom: var(--panel-space-md) !important;
+  margin-bottom: var(--panel-space-lg) !important;
   padding-top: 0 !important;
 }
 

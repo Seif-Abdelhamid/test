@@ -1239,7 +1239,7 @@ textarea {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    margin-bottom: 0 !important;
+    margin-bottom: 24px !important;
     padding-top: 0 !important;
   }
   body .site-header-mobi-panel .nav-header .site-logo,

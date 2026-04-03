@@ -67,7 +67,6 @@
 			position: absolute;
 			border-radius: 50%;
 			filter: blur(80px);
-			animation: orbFloat 8s ease-in-out infinite;
 		}
 		.hero-orb--1 {
 			width: 500px;
@@ -104,11 +103,6 @@
 			z-index: 2;
 			text-align: center;
 			max-width: 800px;
-			animation: heroContentIn 1s ease-out;
-		}
-		@keyframes heroContentIn {
-			0% { opacity: 0; transform: translateY(40px); }
-			100% { opacity: 1; transform: translateY(0); }
 		}
 		.community-hero__badge-wrap {
 			margin-bottom: 24px;
@@ -140,18 +134,16 @@
 		.title-line {
 			display: block;
 			color: #000;
+			font-weight: 800;
+			letter-spacing: -0.03em;
+			min-height: 1.1em;
 		}
 		.title-line--accent {
 			background: linear-gradient(135deg, #0a0a0a 0%, #ff6600 50%, #e55a00 100%);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 			background-clip: text;
-			animation: titleShimmer 3s ease-in-out infinite;
 			background-size: 200% 200%;
-		}
-		@keyframes titleShimmer {
-			0%, 100% { background-position: 0% 50%; }
-			50% { background-position: 100% 50%; }
 		}
 		.community-hero__subtitle {
 			font-size: 1.2rem;
@@ -250,20 +242,14 @@
 			color: #000;
 			font-weight: 600;
 			backdrop-filter: blur(10px);
-			animation: cardSlideIn 0.6s ease-out forwards;
-			opacity: 0;
 		}
 		.hero-card i {
 			font-size: 1.4rem;
 		}
-		.hero-card--1 { animation-delay: 0.2s; border-color: rgba(255, 102, 0, 0.3); }
-		.hero-card--2 { animation-delay: 0.35s; border-color: rgba(59, 130, 246, 0.3); }
-		.hero-card--3 { animation-delay: 0.5s; border-color: rgba(34, 197, 94, 0.3); }
-		.hero-card--4 { animation-delay: 0.65s; border-color: rgba(168, 85, 247, 0.3); }
-		@keyframes cardSlideIn {
-			0% { opacity: 0; transform: translateX(30px); }
-			100% { opacity: 1; transform: translateX(0); }
-		}
+		.hero-card--1 { border-color: rgba(255, 102, 0, 0.3); }
+		.hero-card--2 { border-color: rgba(59, 130, 246, 0.3); }
+		.hero-card--3 { border-color: rgba(34, 197, 94, 0.3); }
+		.hero-card--4 { border-color: rgba(168, 85, 247, 0.3); }
 		.hero-scroll-indicator {
 			position: absolute;
 			bottom: 40px;
@@ -282,11 +268,6 @@
 			width: 1px;
 			height: 40px;
 			background: linear-gradient(to bottom, rgba(255, 102, 0, 0.5), transparent);
-			animation: scrollPulse 2s ease-in-out infinite;
-		}
-		@keyframes scrollPulse {
-			0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
-			50% { opacity: 1; transform: scaleY(1); }
 		}
 
 		/* ========== COMMUNITY SECTIONS ========== */
@@ -1399,6 +1380,7 @@
 		@media (max-width: 768px) {
 			/* Community page: remove top whitespace on mobile */
 			.community-hero {
+				min-height: auto !important;
 				padding-top: 20px !important;
 				margin-top: 0 !important;
 			}
@@ -1518,6 +1500,7 @@
 							<li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
 							<li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
 							<li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
+							<li><a href="https://www.youtube.com/@omgyrohalal" aria-label="YouTube Shorts"><span class="fa-brands fa-youtube" aria-hidden="true"></span><span class="sr-only">YouTube Shorts</span></a></li>
 							<li><a href="mailto:omgyrohalal@gmail.com" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
 						</ul>
 					</div>
@@ -1547,8 +1530,9 @@
 						</span>
 					</div>
 					<h1 class="community-hero__title">
-						<span class="title-line">We're More Than</span>
-						<span class="title-line title-line--accent">Just Food</span>
+						<span class="title-line" data-typewriter="We Are"></span>
+						<span class="title-line" data-typewriter="More Than"></span>
+						<span class="title-line title-line--accent" data-typewriter="Just A Food"></span>
 					</h1>
 					<p class="community-hero__subtitle" style="text-align:center!important">From college campuses to first responders, veterans to loyal neighbors, you're all family here. Bring your ID, get exclusive discounts, and taste the OMGYRO difference.</p>
 					<div class="community-hero__stats">
@@ -1591,10 +1575,6 @@
 							<span>Veterans</span>
 						</div>
 					</div>
-				</div>
-				<div class="hero-scroll-indicator">
-					<span>Scroll to explore</span>
-					<div class="scroll-line"></div>
 				</div>
 			</section>
 
@@ -1725,6 +1705,30 @@
 	</footer>
 
 	<script src="../assets/js/mobile-panel.js"></script>
+	<script>
+	// Typewriter effect for hero title
+	(function() {
+		var lines = document.querySelectorAll('.title-line[data-typewriter]');
+		var lineIdx = 0;
+		function typeLine() {
+			if (lineIdx >= lines.length) return;
+			var el = lines[lineIdx];
+			var text = el.getAttribute('data-typewriter');
+			var charIdx = 0;
+			el.textContent = '';
+			var timer = setInterval(function() {
+				charIdx++;
+				el.textContent = text.slice(0, charIdx);
+				if (charIdx >= text.length) {
+					clearInterval(timer);
+					lineIdx++;
+					setTimeout(typeLine, 150);
+				}
+			}, 100);
+		}
+		setTimeout(typeLine, 400);
+	})();
+	</script>
 	<script>
 	(function() {
 		'use strict';
