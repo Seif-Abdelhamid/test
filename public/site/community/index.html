@@ -342,21 +342,6 @@
 			.cm-serve-card {
 				padding: 32px 24px;
 			}
-			.tl-line { display: none; }
-			.tl-node--left .tl-card,
-			.tl-node--right .tl-card {
-				width: 100%;
-				text-align: left;
-				padding-left: 24px;
-				padding-right: 0;
-			}
-			.tl-node--left,
-			.tl-node--right {
-				justify-content: flex-start;
-			}
-			.tl-dot {
-				left: 0;
-			}
 		}
 
 		/* Community hero: light bg, all text black so users can read (catch-all) */
@@ -788,136 +773,113 @@
 			z-index: 1;
 		}
 
-		/* ========== TIMELINE (HOW IT WORKS) ========== */
-		.cm-timeline {
+		/* ========== STEPS (HOW IT WORKS) ========== */
+		.cm-steps {
 			padding: var(--space-section) 24px 110px;
 			background: linear-gradient(180deg, var(--c-gray-100) 0%, #f0f0f2 50%, var(--c-gray-100) 100%);
 			position: relative;
 		}
-		.cm-timeline__inner {
-			max-width: 900px;
+		.cm-steps__inner {
+			max-width: 960px;
 			margin: 0 auto;
 		}
-		.cm-timeline__nodes {
-			position: relative;
-			margin-top: 64px;
-		}
-		/* Vertical connecting line */
-		.tl-line {
-			position: absolute;
-			left: 50%;
-			top: 0;
-			bottom: 0;
-			width: 2px;
-			background: var(--c-gray-200);
-			transform: translateX(-50%);
-			border-radius: 2px;
-		}
-		.tl-line-inner {
-			width: 100%;
-			height: 0;
-			background: linear-gradient(180deg, var(--c-orange), var(--c-orange-light));
-			transition: height 1.6s var(--ease-out-expo);
-			border-radius: 2px;
-			box-shadow: 0 0 20px rgba(255,102,0,0.25), 0 0 40px rgba(255,102,0,0.1);
-		}
-		.tl-line-inner.tl-drawn {
-			height: 100%;
-		}
-
-		.tl-node {
-			position: relative;
+		.cm-steps-grid {
 			display: flex;
 			align-items: flex-start;
-			margin-bottom: 64px;
+			justify-content: center;
+			gap: 0;
+			margin-top: 56px;
 		}
-		.tl-node:last-child { margin-bottom: 0; }
-
-		.tl-node--left .tl-card {
-			margin-right: auto;
-			text-align: right;
-			padding-right: 60px;
-			width: 50%;
+		.cm-step-card {
+			flex: 1;
+			max-width: 280px;
+			text-align: center;
+			padding: 36px 24px;
+			background: var(--c-white);
+			border-radius: var(--radius-lg);
+			border: 1px solid var(--c-gray-200);
+			box-shadow: var(--shadow-md);
+			position: relative;
+			transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
 		}
-		.tl-node--right .tl-card {
-			margin-left: auto;
-			text-align: left;
-			padding-left: 60px;
-			width: 50%;
+		.cm-step-card:hover {
+			transform: translateY(-8px);
+			box-shadow: var(--shadow-lg);
 		}
-		.tl-card {
-			padding: 20px 0;
-			transition: transform 0.4s var(--ease-out-expo);
-		}
-		.tl-dot {
+		.cm-step-card__num {
 			position: absolute;
+			top: -14px;
 			left: 50%;
-			top: 20px;
-			width: 18px;
-			height: 18px;
-			background: var(--c-orange);
-			border-radius: 50%;
 			transform: translateX(-50%);
-			z-index: 2;
-			border: 3px solid var(--c-gray-100);
-			box-shadow: 0 0 0 0 rgba(255,102,0,0.4);
-			transition: box-shadow 0.5s ease;
-		}
-		.tl-node.cm-visible .tl-dot {
-			animation: dotPop 0.6s var(--ease-spring) forwards;
-		}
-		.tl-dot::after {
-			content: '';
-			position: absolute;
-			inset: -6px;
+			width: 28px;
+			height: 28px;
+			background: var(--c-orange);
+			color: #fff;
 			border-radius: 50%;
-			border: 2px solid var(--c-orange);
-			opacity: 0;
-			animation: dotPulse 2.2s ease-in-out infinite;
-		}
-		@keyframes dotPop {
-			0% { box-shadow: 0 0 0 0 rgba(255,102,0,0.5); }
-			70% { box-shadow: 0 0 0 12px rgba(255,102,0,0); }
-			100% { box-shadow: 0 0 0 0 rgba(255,102,0,0); }
-		}
-		@keyframes dotPulse {
-			0%,100% { opacity: 0; transform: scale(0.8); }
-			50% { opacity: 0.35; transform: scale(1.35); }
-		}
-
-		.tl-card__icon {
-			display: inline-flex;
+			font-size: 0.8rem;
+			font-weight: 800;
+			display: flex;
 			align-items: center;
 			justify-content: center;
-			width: 52px;
-			height: 52px;
-			border-radius: 14px;
-			background: rgba(255,102,0,0.1);
+			box-shadow: 0 4px 12px rgba(255,102,0,0.3);
+		}
+		.cm-step-card__icon {
+			width: 60px;
+			height: 60px;
+			border-radius: 16px;
+			background: rgba(255,102,0,0.08);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 18px;
+			font-size: 1.4rem;
 			color: var(--c-orange) !important;
-			font-size: 1.25rem;
-			margin-bottom: 14px;
-			box-shadow: var(--shadow-sm);
-			transition: transform 0.4s var(--ease-spring), background 0.3s ease;
+			transition: transform 0.4s var(--ease-spring);
 		}
-		.tl-node:hover .tl-card__icon {
-			transform: scale(1.08);
-			background: rgba(255,102,0,0.14);
+		.cm-step-card:hover .cm-step-card__icon {
+			transform: scale(1.1) rotate(-3deg);
 		}
-		.tl-node--right .tl-card__icon,
-		.tl-node--left .tl-card__icon {
-			display: inline-flex;
+		.cm-step-card__icon i {
+			color: var(--c-orange) !important;
 		}
-		.tl-card h3 {
+		.cm-step-card h3 {
 			margin: 0 0 8px;
-			font-size: 1.2rem;
+			font-size: 1.15rem;
 			font-weight: 800;
 			color: var(--c-dark) !important;
 		}
-		.tl-card p {
+		.cm-step-card p {
 			margin: 0;
-			font-size: 0.95rem;
+			font-size: 0.9rem;
 			color: var(--c-gray-500) !important;
-			line-height: 1.6;
+			line-height: 1.55;
+		}
+		.cm-step-connector {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 0 12px;
+			margin-top: 72px;
+			color: var(--c-orange);
+			font-size: 1rem;
+			opacity: 0.4;
+		}
+		@media (max-width: 768px) {
+			.cm-steps { padding: var(--space-section-sm) 20px 80px; }
+			.cm-steps-grid {
+				flex-direction: column;
+				align-items: center;
+				gap: 24px;
+			}
+			.cm-step-card {
+				max-width: 340px;
+				width: 100%;
+			}
+			.cm-step-connector {
+				transform: rotate(90deg);
+				margin: 0;
+				padding: 0;
+			}
 		}
 
 		/* ========== TESTIMONIALS ========== */
@@ -1383,6 +1345,104 @@
 			.cm-cta__card { padding: 28px 16px; }
 			.cm-cta__card h2 { font-size: 1.3rem; }
 		}
+		/* How It Works: tighter spacing, centered, numbered */
+		.cm-timeline .tl-line { display: none !important; }
+		.cm-timeline .tl-dot { display: none !important; }
+		.cm-timeline .tl-node {
+			margin-bottom: 20px !important;
+			justify-content: center !important;
+		}
+		.cm-timeline .tl-card {
+			text-align: center !important;
+			width: 100% !important;
+			max-width: 500px !important;
+			margin: 0 auto !important;
+			padding: 24px 20px !important;
+		}
+		.cm-timeline .tl-card h3 {
+			text-align: center !important;
+		}
+		.cm-timeline .tl-card p {
+			text-align: center !important;
+		}
+		.cm-timeline .tl-card__icon {
+			margin: 0 auto 12px !important;
+		}
+		.cm-timeline .cm-section-title,
+		.cm-timeline .cm-section-sub,
+		.cm-timeline .cm-section-label {
+			text-align: center !important;
+		}
+		.cm-timeline__nodes {
+			gap: 0 !important;
+		}
+		.cm-timeline .tl-node--left .tl-card,
+		.cm-timeline .tl-node--right .tl-card {
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+		/* Step numbers inside cards */
+		.tl-card__step-num {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 32px;
+			height: 32px;
+			border-radius: 50%;
+			background: rgba(255,102,0,0.1);
+			color: #ff6600;
+			font-weight: 800;
+			font-size: 15px;
+			margin: 0 auto 10px;
+		}
+
+		@media (max-width: 768px) {
+			/* Community page: remove top whitespace on mobile */
+			.community-hero {
+				padding-top: 20px !important;
+				margin-top: 0 !important;
+			}
+			/* Center all text on mobile */
+			html body .community-hero__subtitle,
+			.community-hero__subtitle {
+				text-align: center !important;
+			}
+			.community-sections p,
+			.cm-serve p,
+			.cm-timeline p,
+			.cm-blog p,
+			.cm-testimonials p,
+			.cm-serve-card p,
+			.tl-card p,
+			.cm-section-sub {
+				text-align: center !important;
+			}
+			/* How It Works: remove all gaps */
+			.cm-timeline .tl-node {
+				margin-bottom: 8px !important;
+			}
+			.cm-timeline .tl-card {
+				padding: 16px 12px !important;
+			}
+			.cm-timeline__nodes {
+				gap: 0 !important;
+			}
+		}
+
+		/* ========== CENTER ALL PARAGRAPHS GLOBALLY ========== */
+		html body.community-page .site-content p,
+		html body.community-page .site-content .cm-section-sub,
+		html body.community-page .site-content blockquote,
+		html body.community-page .community-hero__subtitle,
+		html body.community-page .cm-serve-card p,
+		html body.community-page .cm-step-card p,
+		html body.community-page .cm-section-sub,
+		html body.community-page .cm-cta__card p,
+		html body.community-page .cm-blog-card__body p,
+		html body.community-page .site-content__main p {
+			text-align: center !important;
+			text-align-last: center !important;
+		}
 	</style>
 </head>
 <body class="has-hero-intent has-mobi-footer community-page">
@@ -1399,7 +1459,6 @@
 						<ul class="site-nav-menu" data-menu-type="desktop">
 							<li><a class="site-nav-link" href="../locations/index.html" aria-label="Locations">Locations</a></li>
 							<li><a class="site-nav-link" href="../menu/index.html" aria-label="Menu">Menu</a></li>
-							<li><a class="site-nav-link" href="../catering/index.html" aria-label="Catering">Catering</a></li>
 							<li><a class="site-nav-link" href="../store/index.html" aria-label="Sauce Bible">Sauce Bible</a></li>
 							<li><a class="site-nav-link" href="../blog/index.html" aria-label="Blog">Blog</a></li>
 							<li><a href="https://omgyrohalal.square.site/" class="btn btn-brand site-nav-cta" aria-label="Order Online">Order Online</a></li>
@@ -1444,7 +1503,6 @@
 						<ul class="site-nav-menu" data-menu-type="mobile">
 							<li><a class="site-nav-link" href="../menu/index.html"><span class="nav-icon"><i class="fa-solid fa-utensils"></i></span><span>Menu</span></a></li>
 							<li><a class="site-nav-link" href="../locations/index.html"><span class="nav-icon"><i class="fa-solid fa-location-dot"></i></span><span>Locations</span></a></li>
-							<li><a class="site-nav-link" href="../catering/index.html"><span class="nav-icon"><i class="fa-solid fa-champagne-glasses"></i></span><span>Catering</span></a></li>
 							<li><a class="site-nav-link" href="../store/index.html"><span class="nav-icon"><i class="fa-solid fa-fire"></i></span><span>Sauce Bible</span></a></li>
 							<li><a class="site-nav-link" href="../blog/index.html"><span class="nav-icon"><i class="fa-solid fa-newspaper"></i></span><span>Blog</span></a></li>
 							<li><a class="site-nav-link" href="../gift-card/index.html"><span class="nav-icon"><i class="fa-solid fa-gift"></i></span><span>Gift Card</span></a></li>
@@ -1460,7 +1518,7 @@
 							<li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
 							<li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
 							<li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
-							<li><a href="mailto:feedback@mamouns.com" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
+							<li><a href="mailto:omgyrohalal@gmail.com" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -1492,14 +1550,14 @@
 						<span class="title-line">We're More Than</span>
 						<span class="title-line title-line--accent">Just Food</span>
 					</h1>
-					<p class="community-hero__subtitle">From college campuses to first responders, veterans to loyal neighbors, you're all family here. Bring your ID, get exclusive discounts, and taste the OMGYRO difference.</p>
+					<p class="community-hero__subtitle" style="text-align:center!important">From college campuses to first responders, veterans to loyal neighbors, you're all family here. Bring your ID, get exclusive discounts, and taste the OMGYRO difference.</p>
 					<div class="community-hero__stats">
 						<div class="hero-stat">
 							<span class="hero-stat__number">50K+</span>
 							<span class="hero-stat__label">Community Members</span>
 						</div>
 						<div class="hero-stat">
-							<span class="hero-stat__number">15%</span>
+							<span class="hero-stat__number">10%</span>
 							<span class="hero-stat__label">Discount for Heroes</span>
 						</div>
 						<div class="hero-stat">
@@ -1532,10 +1590,6 @@
 							<i class="fa-solid fa-medal"></i>
 							<span>Veterans</span>
 						</div>
-						<div class="hero-card hero-card--4">
-							<i class="fa-solid fa-users"></i>
-							<span>Everyone</span>
-						</div>
 					</div>
 				</div>
 				<div class="hero-scroll-indicator">
@@ -1544,20 +1598,10 @@
 				</div>
 			</section>
 
-			<!-- ==================== COMMUNITY SECTIONS ==================== -->
-			<section class="community-sections" id="community-sections">
-					</div>
-					<a href="#cm-serve" class="menu-hero__scroll" id="heroScrollBtn" aria-label="Scroll to Who We Serve">
-						<span class="menu-hero__scroll-line"></span>
-						<span class="menu-hero__scroll-label">WHO WE SERVE</span>
-					</a>
-				</div>
-			</section>
 			<div class="cm-section-divider" aria-hidden="true"></div>
 			<!-- ========== WHO WE SERVE ========== -->
 			<section class="cm-serve" id="cm-serve" aria-label="Who We Serve">
 				<div class="cm-serve__inner">
-					<span class="cm-section-label cm-hidden">WHO WE SERVE</span>
 					<h2 class="cm-section-title cm-hidden">Built for the People Who Matter</h2>
 					<p class="cm-section-sub cm-hidden">We give back to the people who make our neighborhoods strong. Bring a valid ID to any store.</p>
 
@@ -1586,53 +1630,37 @@
 							<h3>Veterans &amp; Military</h3>
 							<p>Active duty and veterans: military or veteran ID gets you a discount. We're proud to serve those who served.</p>
 						</div>
-						<div class="cm-serve-card cm-serve-card--purple cm-hidden cm-from-right" style="transition-delay:0.4s">
-							<div class="card-icon">
-								<div class="card-icon__ring card-icon__ring--purple"></div>
-								<i class="fa-solid fa-heart"></i>
-							</div>
-							<h3>Everyone</h3>
-							<p>Halal, fresh, and our Sauce Bible at every spot. You're part of the OMGYRO family too.</p>
-						</div>
 					</div>
 				</div>
 			</section>
 			<div class="cm-section-divider" aria-hidden="true"></div>
 			<!-- ========== TIMELINE (HOW IT WORKS) ========== -->
-			<section class="cm-timeline" aria-label="How It Works">
-				<div class="cm-timeline__inner">
+			<section class="cm-steps" aria-label="How It Works">
+				<div class="cm-steps__inner">
 					<span class="cm-section-label cm-hidden">HOW IT WORKS</span>
 					<h2 class="cm-section-title cm-hidden">Three Simple Steps</h2>
 					<p class="cm-section-sub cm-hidden">No apps. No codes. Just bring yourself and your ID.</p>
 
-					<div class="cm-timeline__nodes">
-						<div class="tl-line"><div class="tl-line-inner" id="tlLine"></div></div>
-
-						<div class="tl-node tl-node--left">
-							<div class="tl-card cm-hidden cm-from-left">
-								<div class="tl-card__icon"><i class="fa-solid fa-door-open"></i></div>
-								<h3>Walk In</h3>
-								<p>Visit any OMGYRO location across New Jersey. No reservation needed.</p>
-							</div>
-							<div class="tl-dot"></div>
+					<div class="cm-steps-grid">
+						<div class="cm-step-card cm-hidden" style="transition-delay:0.1s">
+							<div class="cm-step-card__num">1</div>
+							<div class="cm-step-card__icon"><i class="fa-solid fa-door-open"></i></div>
+							<h3>Walk In</h3>
+							<p>Visit any OMGYRO location across New Jersey.</p>
 						</div>
-
-						<div class="tl-node tl-node--right">
-							<div class="tl-card cm-hidden cm-from-right" style="transition-delay:0.15s">
-								<div class="tl-card__icon"><i class="fa-solid fa-id-card"></i></div>
-								<h3>Show Your ID</h3>
-								<p>Present your student, military, or first-responder ID at checkout. That's it.</p>
-							</div>
-							<div class="tl-dot"></div>
+						<div class="cm-step-connector" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+						<div class="cm-step-card cm-hidden" style="transition-delay:0.2s">
+							<div class="cm-step-card__num">2</div>
+							<div class="cm-step-card__icon"><i class="fa-solid fa-id-card"></i></div>
+							<h3>Show Your ID</h3>
+							<p>Present your student, military, or first-responder ID at checkout.</p>
 						</div>
-
-						<div class="tl-node tl-node--left">
-							<div class="tl-card cm-hidden cm-from-left" style="transition-delay:0.3s">
-								<div class="tl-card__icon"><i class="fa-solid fa-face-laugh-beam"></i></div>
-								<h3>Save &amp; Enjoy</h3>
-								<p>Your discount applies instantly. Great halal food for less, every single time.</p>
-							</div>
-							<div class="tl-dot"></div>
+						<div class="cm-step-connector" aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></div>
+						<div class="cm-step-card cm-hidden" style="transition-delay:0.3s">
+							<div class="cm-step-card__num">3</div>
+							<div class="cm-step-card__icon"><i class="fa-solid fa-face-laugh-beam"></i></div>
+							<h3>Save &amp; Enjoy</h3>
+							<p>Your discount applies instantly. Great halal food for less.</p>
 						</div>
 					</div>
 				</div>
@@ -1668,87 +1696,6 @@
 				</div>
 			</section>
 
-			<!-- ========== MARQUEE ========== -->
-			<div class="cm-marquee" aria-hidden="true">
-				<div class="marquee__track">
-					<div class="marquee__set">
-						<span class="marquee__item">10,000+ STUDENTS SERVED</span><span class="marquee__dot"></span>
-						<span class="marquee__item">50+ CAMPUS EVENTS</span><span class="marquee__dot"></span>
-						<span class="marquee__item">6 NJ LOCATIONS</span><span class="marquee__dot"></span>
-						<span class="marquee__item">100% HALAL</span><span class="marquee__dot"></span>
-						<span class="marquee__item">4 SIGNATURE SAUCES</span><span class="marquee__dot"></span>
-					</div>
-					<div class="marquee__set">
-						<span class="marquee__item">10,000+ STUDENTS SERVED</span><span class="marquee__dot"></span>
-						<span class="marquee__item">50+ CAMPUS EVENTS</span><span class="marquee__dot"></span>
-						<span class="marquee__item">6 NJ LOCATIONS</span><span class="marquee__dot"></span>
-						<span class="marquee__item">100% HALAL</span><span class="marquee__dot"></span>
-						<span class="marquee__item">4 SIGNATURE SAUCES</span><span class="marquee__dot"></span>
-					</div>
-				</div>
-			</div>
-			<div class="cm-section-divider" aria-hidden="true"></div>
-			<!-- ========== BLOG PREVIEW ========== -->
-			<section class="cm-blog" aria-label="Blog">
-				<div class="cm-blog__inner">
-					<span class="cm-section-label cm-hidden">STORIES &amp; UPDATES</span>
-					<h2 class="cm-section-title cm-hidden">Read the Blog</h2>
-					<div class="cm-blog__heading cm-hidden">
-						<a href="../blog/index.html">View all posts <i class="fa-solid fa-arrow-right"></i></a>
-					</div>
-
-					<div class="cm-blog-grid">
-						<div class="cm-blog-card cm-hidden" style="transition-delay:0.1s">
-							<a href="../blog/index.html">
-								<div class="cm-blog-card__img">
-									<img src="../assets/images/The-store.jpg" alt="OMGYRO Store" loading="lazy" />
-								</div>
-								<div class="cm-blog-card__body">
-									<h3>OMGYRO Locations in NJ: Now Open &amp; Coming Soon</h3>
-									<p>Where to find us across New Jersey -- and where we're opening next.</p>
-									<span class="read-link">Read more <i class="fa-solid fa-arrow-right"></i></span>
-								</div>
-							</a>
-						</div>
-						<div class="cm-blog-card cm-hidden" style="transition-delay:0.2s">
-							<a href="../blog/index.html">
-								<div class="cm-blog-card__img">
-									<img src="../assets/images/people.jpg" alt="OMGYRO Community" loading="lazy" />
-								</div>
-								<div class="cm-blog-card__body">
-									<h3>NJ.com Spotlights OMGYRO Halal</h3>
-									<p>Fresh halal flavors, fast service, and the momentum behind our expansion.</p>
-									<span class="read-link">Read more <i class="fa-solid fa-arrow-right"></i></span>
-								</div>
-							</a>
-						</div>
-						<div class="cm-blog-card cm-hidden" style="transition-delay:0.3s">
-							<a href="../blog/index.html">
-								<div class="cm-blog-card__img">
-									<img src="../assets/images/Platters/Compo-Platter.jpeg" alt="OMGYRO Platter" loading="lazy" />
-								</div>
-								<div class="cm-blog-card__body">
-									<h3>What Makes OMGYRO the Best Gyro Spot Near You</h3>
-									<p>Quality halal, house-made sauces, and the Sauce Bible you can take home.</p>
-									<span class="read-link">Read more <i class="fa-solid fa-arrow-right"></i></span>
-								</div>
-							</a>
-						</div>
-					</div>
-				</div>
-			</section>
-			<div class="cm-section-divider" aria-hidden="true"></div>
-			<!-- ========== CTA ========== -->
-			<section class="cm-cta" aria-label="Call to Action">
-				<div class="cm-cta__box cm-hidden">
-					<div class="cm-cta__card">
-						<h2>Find a Location</h2>
-						<p>Show your student, military, or first-responder ID for discounts at any OMGYRO in New Jersey.</p>
-						<a href="../locations/index.html" class="cm-cta__btn">Find Your Nearest OMGYRO <i class="fa-solid fa-arrow-right"></i></a>
-					</div>
-				</div>
-			</section>
-
 		</main>
 	</div>
 
@@ -1760,7 +1707,8 @@
 						<li><a href="https://www.facebook.com/profile.php?id=61565412359779&mibextid=ZbWKwL" aria-label="Facebook"><span class="fa-brands fa-facebook" aria-hidden="true"></span><span class="sr-only">Facebook</span></a></li>
 						<li><a href="https://www.instagram.com/omgyrohalal/#" aria-label="Instagram"><span class="fa-brands fa-instagram" aria-hidden="true"></span><span class="sr-only">Instagram</span></a></li>
 						<li><a href="https://www.tiktok.com/@omgyrohalal" aria-label="TikTok"><span class="tiktok-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" width="1em" height="1em"><path d="M448 209.91a210.06 210.06 0 0 1 -122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.17h0A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14z"/></svg></span><span class="sr-only">TikTok</span></a></li>
-						<li><a href="mailto:feedback@mamouns.com" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
+						<li><a href="https://www.youtube.com/@omgyrohalal" aria-label="YouTube Shorts"><span class="fa-brands fa-youtube" aria-hidden="true"></span><span class="sr-only">YouTube Shorts</span></a></li>
+						<li><a href="mailto:omgyrohalal@gmail.com" aria-label="Email" target="_self"><span class="fa-solid fa-envelope" aria-hidden="true"></span><span class="sr-only">Email</span></a></li>
 					</ul>
 					<nav class="site-nav">
 						<ul class="site-nav-menu">
@@ -1954,5 +1902,13 @@
 
 		})();
 	</script>
+	<style>
+		html body.community-page .site-content p,
+		html body.community-page .site-content__main p,
+		html body.community-page p {
+			text-align: center !important;
+			text-align-last: center !important;
+		}
+	</style>
 </body>
 </html>

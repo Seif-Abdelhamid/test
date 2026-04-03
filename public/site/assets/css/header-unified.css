@@ -316,8 +316,8 @@ html body .site-header-desktop-primary .site-nav-cta:hover {
   display: flex !important;
   flex-direction: column !important;
   min-height: 100% !important;
-  padding: var(--panel-space-lg) var(--panel-space-md) var(--panel-space-xl) !important;
-  padding-top: 56px !important;
+  padding: 16px var(--panel-space-md) var(--panel-space-lg) !important;
+  padding-top: 16px !important;
   box-sizing: border-box !important;
 }
 
@@ -373,13 +373,13 @@ html body .site-header-desktop-primary .site-nav-cta:hover {
   display: flex !important;
   flex-direction: column !important;
   align-items: center !important;
-  margin-bottom: var(--panel-space-xl) !important;
+  margin-bottom: var(--panel-space-md) !important;
   padding-top: 0 !important;
 }
 
 .site-header-mobi-panel .nav-header .site-logo {
   display: block !important;
-  margin-bottom: var(--panel-space-lg) !important;
+  margin-bottom: var(--panel-space-sm) !important;
 }
 
 .site-header-mobi-panel .nav-header .site-logo img {
@@ -483,7 +483,7 @@ html body .site-header-desktop-primary .site-nav-cta:hover {
   padding: 0 !important;
   display: flex !important;
   flex-direction: column !important;
-  gap: 2px !important;
+  gap: 4px !important;
   border-radius: var(--panel-radius) !important;
   overflow: hidden !important;
   background: var(--panel-bg-subtle) !important;
@@ -571,7 +571,8 @@ html body .site-header-desktop-primary .site-nav-cta:hover {
   margin-top: auto !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
-  padding-top: 20px !important;
+  padding-top: 28px !important;
+  padding-bottom: 16px !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
   border-top: 1px solid var(--panel-border) !important;
